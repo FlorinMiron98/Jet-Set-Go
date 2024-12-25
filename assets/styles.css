@@ -1,1 +1,70 @@
+/* ================== */
+/* Google Fonts */
+/* ================== */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+/* =============== */
+/* CSS Reset */
+/* =============== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+/* =================== */
+/* CSS Variables */
+/* =================== */
+:root {
+  /* Font families */
+  --font-primary: "Poppins", serif;
+  --font-secondary: "Roboto", serif;
+
+  /* Flights */
+  --flights-primary: #0052b5;
+  --flights-secondary: #5997e0;
+
+  /* Stays */
+  --stays-primary: #63411c;
+  --stays-secondary: #a05000;
+
+  /* Car rentals */
+  --cars-primary: #1d2836;
+  --cars-secondary: #273545;
+
+  /* Attractions */
+  --attractions-primary: #4c6c0b;
+  --attractions-secondary: #5c8900;
+
+  /* Basics */
+  --color-white: #fff;
+  --color-black: #101010;
+  --color-dark-1: #10141b;
+  --color-dark-2: #202d3d;
+  --color-brown: #543d25;
+  --color-gray: #f5f5f5;
+  --darkening-bg-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+}
+
+/* ============== */
+/* CSS Base */
+/* ============== */
+html {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-gray);
+  font-family: var(--font-secondary);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-primary);
+}

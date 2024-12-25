@@ -1,3 +1,40 @@
 @import "https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap";
+*, :before, :after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
 
+:root {
+  --font-primary: "Poppins", serif;
+  --font-secondary: "Roboto", serif;
+  --flights-primary: #0052b5;
+  --flights-secondary: #5997e0;
+  --stays-primary: #63411c;
+  --stays-secondary: #a05000;
+  --cars-primary: #1d2836;
+  --cars-secondary: #273545;
+  --attractions-primary: #4c6c0b;
+  --attractions-secondary: #5c8900;
+  --color-white: #fff;
+  --color-black: #101010;
+  --color-dark-1: #10141b;
+  --color-dark-2: #202d3d;
+  --color-brown: #543d25;
+  --color-gray: #f5f5f5;
+  --darkening-bg-image: linear-gradient(#00000080, #00000080);
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-gray);
+  font-family: var(--font-secondary);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-primary);
+}
 /*# sourceMappingURL=index.14d3b604.css.map */
