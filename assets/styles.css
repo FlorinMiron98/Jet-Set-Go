@@ -68,3 +68,14 @@ h5,
 h6 {
   font-family: var(--font-primary);
 }
+
+header {
+  min-height: 100vh;
+  background-image: url("../assets/images/background-image-flights-large-min.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+#nav .logo-container {
+  max-width: 12rem;
+}
