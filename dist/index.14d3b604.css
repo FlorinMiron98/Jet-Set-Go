@@ -70,6 +70,14 @@ header #nav .hamburger-btn i:hover {
   background-color: var(--flights-primary);
 }
 
+header #nav .right-navigation li i {
+  transition: color .25s linear;
+}
+
+header #nav .right-navigation li i:hover {
+  color: var(--color-highlight);
+}
+
 header .header-main-content-nav a {
   background-color: var(--color-gray-transparent);
   color: var(--color-white);
