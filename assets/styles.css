@@ -94,3 +94,7 @@ header #nav .hamburger-btn i {
 header #nav .hamburger-btn i:hover {
   background-color: var(--flights-primary);
 }
+
+header .header-main-content h1 {
+  color: var(--color-white);
+}

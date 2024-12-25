@@ -39,9 +39,9 @@
     <link rel="stylesheet" href="./assets/styles.css" />
   </head>
   <body>
-    <header>
-      <nav id="nav">
-        <div class="container d-flex justify-content-between px-3 py-4">
+    <header class="d-flex flex-column justify-content-center">
+      <nav id="nav" class="position-fixed top-0 w-100">
+        <div class="container d-flex justify-content-between p-0 py-4">
           <div class="left-navigation d-flex align-items-center">
             <button
               class="hamburger-btn align-self-center me-4 fs-2 focus-ring"
@@ -61,6 +61,13 @@
           </div>
         </div>
       </nav>
+      <section class="header-main-content container px-3">
+        <h1 class="display-5 fw-bolder">
+          <span>Easy Booking</span>,<br />
+          <span>Endless Destinations</span><br />
+          <span class="highlight">Fly Your Dreams!</span>
+        </h1>
+      </section>
     </header>
     <!-- Bootstrap's compiled JavaScript -->
     <script
