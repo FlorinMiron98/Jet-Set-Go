@@ -45,6 +45,7 @@
   --color-dark-2: #202d3d;
   --color-brown: #543d25;
   --color-gray: #f5f5f5;
+  --color-highlight: #ffa200;
   --darkening-bg-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
 }
 
@@ -67,6 +68,13 @@ h4,
 h5,
 h6 {
   font-family: var(--font-primary);
+}
+
+/* ===================== */
+/* Utility classes */
+/* ===================== */
+.highlight {
+  color: var(--color-highlight);
 }
 
 header {
