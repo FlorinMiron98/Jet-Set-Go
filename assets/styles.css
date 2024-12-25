@@ -76,6 +76,21 @@ header {
   background-position: center;
 }
 
-#nav .logo-container {
-  max-width: 12rem;
+header #nav .logo-container {
+  max-width: 16rem;
+}
+
+header #nav .hamburger-btn {
+  background-color: transparent;
+  border: none;
+  color: var(--color-white);
+  outline: none;
+}
+
+header #nav .hamburger-btn i {
+  transition: background-color 0.25s linear;
+}
+
+header #nav .hamburger-btn i:hover {
+  background-color: var(--flights-primary);
 }
