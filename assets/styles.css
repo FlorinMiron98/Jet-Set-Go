@@ -46,6 +46,8 @@
   --color-brown: #543d25;
   --color-gray: #f5f5f5;
   --color-highlight: #ffa200;
+  --color-flights-highlight: #ffa200;
+  --color-gray-transparent: rgba(245, 245, 245, 0.25);
   --darkening-bg-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
 }
 
@@ -77,6 +79,9 @@ h6 {
   color: var(--color-highlight);
 }
 
+/* ============ */
+/* Header */
+/* ============ */
 header {
   min-height: 100vh;
   background-image: url("../assets/images/background-image-flights-large-min.jpg");
@@ -91,7 +96,6 @@ header #nav .logo-container {
 header #nav .hamburger-btn {
   background-color: transparent;
   border: none;
-  color: var(--color-white);
   outline: none;
 }
 
@@ -103,6 +107,13 @@ header #nav .hamburger-btn i:hover {
   background-color: var(--flights-primary);
 }
 
-header .header-main-content h1 {
+header .header-main-content-nav a {
+  background-color: var(--color-gray-transparent);
   color: var(--color-white);
+}
+
+header .header-main-content-nav .flights-link.active,
+header .header-main-content-nav .flights-link:hover {
+  background-color: var(--color-white);
+  color: var(--color-flights-highlight);
 }
