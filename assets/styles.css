@@ -127,13 +127,67 @@ header .header-main-content-nav .flights-link:hover {
   color: var(--color-flights-highlight);
 }
 
-header .header-main-content #flights-search-form .dropdown-btn {
+header #flights-search-form .dropdown-btn {
   transition: all 0.25s linear;
   color: var(--color-white);
   letter-spacing: 1.05;
 }
 
-header .header-main-content #flights-search-form .dropdown-btn:hover {
+header #flights-search-form .dropdown-btn:hover {
   color: var(--flights-primary);
   background-color: var(--color-white);
+}
+
+header #flights-search-form .inputs-container {
+  gap: 2rem;
+}
+
+header #flights-search-form .location-inputs-wrapper,
+header #flights-search-form .dates-wrapper {
+  flex: 0 1 40%;
+}
+
+header #flights-search-form .departure-location-wrapper,
+header #flights-search-form .arrival-location-wrapper,
+header #flights-search-form .departure-date-wrapper,
+header #flights-search-form .arrival-date-wrapper {
+  flex: 0 1 50%;
+}
+
+/* Style each input wrapper to ensure the icon fits beside the input and display a smooth visual appearance */
+header #flights-search-form .input-wrapper {
+  background-color: var(--color-gray);
+  min-height: 3rem;
+  gap: 0.8rem;
+}
+
+header #flights-search-form .input-wrapper i {
+  color: var(--flights-secondary);
+  width: 1.3rem;
+}
+
+header #flights-search-form .input-wrapper input {
+  background-color: transparent;
+  color: var(--color-dark-2);
+}
+
+header #flights-search-form .input-wrapper input:focus {
+  outline: none;
+}
+
+header #flights-search-form .input-wrapper input::placeholder {
+  color: var(--flights-secondary);
+  font-size: 0.9rem;
+}
+
+header #flights-search-form .input-wrapper .locations-reverse-button {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  right: 0;
+  transform: translate(50%);
+}
+
+header #flights-search-form .input-wrapper .locations-reverse-button:hover {
+  background-color: var(--flights-secondary);
 }
