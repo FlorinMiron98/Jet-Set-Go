@@ -67,21 +67,69 @@
             </li>
           </ul>
         </nav>
+        <!-- Search Form -->
         <form id="flights-search-form" class="mt-5">
           <div class="d-flex">
+            <!-- Travellers Button -->
             <button class="dropdown-btn btn border border-3 border-white rounded-5 fw-semibold me-3 focus-ring">
-              <i class="fa-solid fa-user-group"></i>&nbsp;
+              <i class="fa-solid fa-user-group"></i>
               <span>1</span>
               Adult,
               <span>1</span>
-              Child&nbsp;
+              Child
               <i class="fa-solid fa-chevron-down"></i>
             </button>
+            <!-- Flight Ticket Class Button -->
             <button class="dropdown-btn btn border border-3 border-white rounded-5 fw-semibold focus-ring">
-              <i class="fa-solid fa-plane-circle-check"></i>&nbsp;
-              <span>Economy</span>&nbsp;
+              <i class="fa-solid fa-plane-circle-check"></i>
+              <span>Economy</span>
               <i class="fa-solid fa-chevron-down"></i>
             </button>
+          </div>
+          <div class="inputs-container d-flex flex-wrap mt-3">
+            <div class="location-inputs-wrapper d-flex">
+              <!-- Departure Location Input -->
+              <div class="departure-location-wrapper">
+                <label for="departure-location" class="form-label mb-0 fw-semibold text-white">From</label>
+                <div class="input-wrapper position-relative d-flex align-items-center px-3 rounded-start-3 w-100 border-end">
+                  <i class="fa-solid fa-plane-departure fs-5"></i>
+                  <input type="text" class="border border-0" id="departure-location" placeholder="Departure Location" required="">
+                  <!-- Locations Reverse Button -->
+                  <button class="locations-reverse-button position-absolute border z-1" aria-label="Location reverse button">
+                    <i class="fa-solid fa-arrows-rotate"></i>
+                  </button>
+                </div>
+              </div>
+              <!-- Arrival Location Input -->
+              <div class="arrival-location-wrapper">
+                <label for="arrival-location" class="form-label mb-0 fw-semibold text-white">To</label>
+                <div class="input-wrapper position-relative d-flex align-items-center ps-4 rounded-end-3 w-100">
+                  <i class="fa-solid fa-plane-arrival fs-5"></i>
+                  <input type="text" id="arrival-location" class="border border-0" placeholder="Arrival Location" required="">
+                </div>
+              </div>
+            </div>
+            <div class="dates-wrapper d-flex">
+              <!-- Departure Date Input -->
+              <div class="departure-date-wrapper">
+                <label for="departure-date" class="form-label mb-0 fw-semibold text-white">Departure Date</label>
+                <div class="input-wrapper position-relative d-flex align-items-center px-3 rounded-start-3 w-100 border-end">
+                  <i class="fa-regular fa-calendar-days fs-5"></i>
+                  <input type="text" id="departure-date" class="border border-0" placeholder="Arrival Date" required="">
+                </div>
+              </div>
+              <!-- Arrival Date Input -->
+              <div class="arrival-date-wrapper">
+                <label for="return-date" class="form-label mb-0 fw-semibold text-white">Return Date</label>
+                <div class="input-wrapper position-relative d-flex align-items-center ps-4 rounded-end-3 w-100">
+                  <i class="fa-regular fa-calendar-days fs-5"></i>
+                  <input type="text" id="return-date" class="border border-0" placeholder="Return Date" required="">
+                </div>
+              </div>
+            </div>
+            <!-- <button class="search-button" aria-label="Search button">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button> -->
           </div>
         </form>
       </section>
