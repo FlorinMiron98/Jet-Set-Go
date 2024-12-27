@@ -148,4 +148,16 @@ header #flights-search-form .input-wrapper .locations-reverse-button {
 header #flights-search-form .input-wrapper .locations-reverse-button:hover {
   background-color: var(--flights-secondary);
 }
+
+@media only screen and (width <= 1200px) {
+  header #nav .logo-container {
+    max-width: 14rem;
+  }
+}
+
+@media only screen and (width <= 992px) {
+  header #nav .logo-container {
+    max-width: 12rem;
+  }
+}
 /*# sourceMappingURL=index.14d3b604.css.map */
