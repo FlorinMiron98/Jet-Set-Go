@@ -89,6 +89,21 @@ header .header-main-content-nav .flights-link.active, header .header-main-conten
   color: var(--color-flights-highlight);
 }
 
+header .header-main-content-nav .stays-link.active, header .header-main-content-nav .stays-link:hover {
+  background-color: var(--color-white);
+  color: var(--stays-primary);
+}
+
+header .header-main-content-nav .cars-link.active, header .header-main-content-nav .cars-link:hover {
+  background-color: var(--color-white);
+  color: var(--cars-primary);
+}
+
+header .header-main-content-nav .attractions-link.active, header .header-main-content-nav .attractions-link:hover {
+  background-color: var(--color-white);
+  color: var(--attractions-primary);
+}
+
 header #flights-search-form .dropdown-btn {
   color: var(--color-white);
   letter-spacing: 1.05px;
