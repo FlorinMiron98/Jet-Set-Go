@@ -26,6 +26,7 @@
   --color-flights-highlight: #ffa200;
   --color-gray-transparent: #f5f5f540;
   --darkening-bg-image: linear-gradient(#00000080, #00000080);
+  --box-shadow: 0px 9px 6px -4px #464646;
 }
 
 html {
@@ -129,8 +130,9 @@ header #flights-search-form .departure-location-wrapper, header #flights-search-
 
 header #flights-search-form .input-wrapper {
   background-color: var(--color-gray);
-  gap: .8rem;
   min-height: 3rem;
+  box-shadow: var(--box-shadow);
+  gap: .8rem;
 }
 
 header #flights-search-form .input-wrapper i {
@@ -168,10 +170,11 @@ header #flights-search-form .inputs-container .search-button {
   background-color: var(--color-highlight);
   height: 3rem;
   color: var(--color-white);
+  box-shadow: var(--box-shadow);
   transition: all .25s linear;
 }
 
-header #flights-search-form .inputs-container .search-button:hover {
+header #flights-search-form .inputs-container .search-button:hover, header #flights-search-form .inputs-container .search-button:active {
   background-color: var(--color-white);
   color: var(--color-highlight);
 }
