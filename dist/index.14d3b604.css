@@ -190,4 +190,10 @@ header #flights-search-form .inputs-container .search-button:hover, header #flig
     max-width: 12rem;
   }
 }
+
+@media only screen and (width <= 576px) {
+  header #nav .logo-container img {
+    height: 2rem;
+  }
+}
 /*# sourceMappingURL=index.14d3b604.css.map */

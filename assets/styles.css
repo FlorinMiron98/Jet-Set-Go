@@ -238,3 +238,9 @@ header #flights-search-form .inputs-container .search-button:active {
     max-width: 12rem;
   }
 }
+
+@media only screen and (max-width: 576px) {
+  header #nav .logo-container img {
+    height: 2rem;
+  }
+}
