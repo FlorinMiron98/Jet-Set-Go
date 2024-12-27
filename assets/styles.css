@@ -121,10 +121,26 @@ header .header-main-content-nav a {
   letter-spacing: 1.05;
 }
 
+/* Style each header main navigation links according to each feature color palette */
 header .header-main-content-nav .flights-link.active,
 header .header-main-content-nav .flights-link:hover {
   background-color: var(--color-white);
   color: var(--color-flights-highlight);
+}
+header .header-main-content-nav .stays-link.active,
+header .header-main-content-nav .stays-link:hover {
+  background-color: var(--color-white);
+  color: var(--stays-primary);
+}
+header .header-main-content-nav .cars-link.active,
+header .header-main-content-nav .cars-link:hover {
+  background-color: var(--color-white);
+  color: var(--cars-primary);
+}
+header .header-main-content-nav .attractions-link.active,
+header .header-main-content-nav .attractions-link:hover {
+  background-color: var(--color-white);
+  color: var(--attractions-primary);
 }
 
 header #flights-search-form .dropdown-btn {
@@ -195,7 +211,6 @@ header #flights-search-form .input-wrapper .locations-reverse-button:hover {
 /* =================== */
 /* Media Queries */
 /* =================== */
-
 @media only screen and (max-width: 1200px) {
   header #nav .logo-container {
     max-width: 14rem;
