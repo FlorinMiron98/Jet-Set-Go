@@ -105,6 +105,10 @@ header .header-main-content-nav .attractions-link.active, header .header-main-co
   color: var(--attractions-secondary);
 }
 
+header #flights-search-form {
+  margin-top: 5rem;
+}
+
 header #flights-search-form .dropdown-btn {
   color: var(--color-white);
   letter-spacing: 1.05px;

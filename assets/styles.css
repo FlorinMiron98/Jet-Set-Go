@@ -144,6 +144,10 @@ header .header-main-content-nav .attractions-link:hover {
   color: var(--attractions-secondary);
 }
 
+header #flights-search-form {
+  margin-top: 5rem;
+}
+
 header #flights-search-form .dropdown-btn {
   transition: all 0.25s linear;
   color: var(--color-white);
