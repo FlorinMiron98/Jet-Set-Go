@@ -234,6 +234,10 @@ header #flights-search-form .input-wrapper .locations-reverse-button:hover {
 }
 
 @media only screen and (width <= 576px) {
+  header {
+    background-image: url("background-image-flights-small.c4e98885.jpg");
+  }
+
   header #nav .logo-container img {
     height: 2rem;
   }
