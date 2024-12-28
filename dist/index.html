@@ -71,10 +71,10 @@
           </ul>
         </nav>
         <!-- Search Form -->
-        <form id="flights-search-form" class="mt-5">
-          <div class="d-flex">
+        <form id="flights-search-form" class="mt-4 mt-sm-5">
+          <div class="dropdown-inputs-container d-flex">
             <!-- Travellers Button -->
-            <button class="dropdown-btn btn border border-3 border-white rounded-5 fw-semibold me-3 focus-ring" type="button">
+            <button class="dropdown-btn btn border border-3 border-white rounded-5 fw-semibold focus-ring" type="button">
               <i class="fa-solid fa-user-group"></i>
               <span>1</span>
               Adult,
@@ -106,13 +106,13 @@
               <!-- Arrival Location Input -->
               <div class="arrival-location-wrapper">
                 <label for="arrival-location" class="form-label mb-0 fw-semibold text-white">To</label>
-                <div class="input-wrapper position-relative d-flex align-items-center ps-4 rounded-end-3 w-100">
+                <div class="input-wrapper position-relative d-flex align-items-center ps-3 ps-sm-4 rounded-end-3 w-100">
                   <i class="fa-solid fa-plane-arrival fs-5"></i>
                   <input type="text" id="arrival-location" class="border border-0" placeholder="Arrival Location" required="">
                 </div>
               </div>
             </div>
-            <div class="dates-wrapper d-flex">
+            <div class="dates-wrapper d-flex flex-column flex-sm-row">
               <!-- Departure Date Input -->
               <div class="departure-date-wrapper">
                 <label for="departure-date" class="form-label mb-0 fw-semibold text-white">Departure Date</label>
@@ -121,10 +121,10 @@
                   <input type="text" id="departure-date" class="border border-0" placeholder="Arrival Date" required="">
                 </div>
               </div>
-              <!-- Arrival Date Input -->
-              <div class="arrival-date-wrapper">
+              <!-- Return Date Input -->
+              <div class="return-date-wrapper">
                 <label for="return-date" class="form-label mb-0 fw-semibold text-white">Return Date</label>
-                <div class="input-wrapper position-relative d-flex align-items-center ps-4 rounded-end-3 w-100">
+                <div class="input-wrapper position-relative d-flex align-items-center ps-3 rounded-end-3 w-100">
                   <i class="fa-regular fa-calendar-days fs-5"></i>
                   <input type="text" id="return-date" class="border border-0" placeholder="Return Date" required="">
                 </div>
