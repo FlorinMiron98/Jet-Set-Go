@@ -24,6 +24,7 @@
   --color-gray: #f5f5f5;
   --color-highlight: #ffa200;
   --color-flights-highlight: #ffa200;
+  --color-hightlight-transparent: #ffa200b3;
   --color-gray-transparent: #f5f5f540;
   --darkening-bg-image: linear-gradient(#00000026, #00000026);
   --box-shadow: 0px 9px 6px -4px #464646;
@@ -199,12 +200,32 @@ header #flights-search-form .input-wrapper .locations-reverse-button:hover {
   background-color: var(--color-white);
 }
 
-main #introduction-section h1, main #introduction-section h2 {
+main #introduction-section h1, main #introduction-section h2, main #best-destinations-section h1 {
   color: var(--flights-primary);
 }
 
 main #introduction-section .card .card-text {
   color: var(--flights-secondary);
+}
+
+main #best-destinations-section .card .destinations-features-links {
+  background-color: var(--color-hightlight-transparent);
+  gap: 1rem;
+  width: 70%;
+  bottom: 15%;
+  right: 0;
+}
+
+main #best-destinations-section .card .destinations-features-links a {
+  transition: color .25s linear;
+}
+
+main #best-destinations-section .card .destinations-features-links a:visited, main #best-destinations-section .card .destinations-features-links a:link {
+  color: var(--color-white);
+}
+
+main #best-destinations-section .card .destinations-features-links a:hover, main #best-destinations-section .card .destinations-features-links a:active {
+  color: var(--flights-primary);
 }
 
 @media only screen and (width <= 1400px) {

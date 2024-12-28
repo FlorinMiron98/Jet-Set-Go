@@ -47,6 +47,7 @@
   --color-gray: #f5f5f5;
   --color-highlight: #ffa200;
   --color-flights-highlight: #ffa200;
+  --color-hightlight-transparent: rgba(255, 162, 0, 0.7);
   --color-gray-transparent: rgba(245, 245, 245, 0.25);
   --darkening-bg-image: linear-gradient(
     rgba(0, 0, 0, 0.15),
@@ -253,12 +254,33 @@ header #flights-search-form .input-wrapper .locations-reverse-button:hover {
 /* Main */
 /* ========== */
 main #introduction-section h1,
-main #introduction-section h2 {
+main #introduction-section h2,
+main #best-destinations-section h1 {
   color: var(--flights-primary);
 }
 
 main #introduction-section .card .card-text {
   color: var(--flights-secondary);
+}
+
+main #best-destinations-section .card .destinations-features-links {
+  width: 70%;
+  gap: 1rem;
+  right: 0;
+  bottom: 15%;
+  background-color: var(--color-hightlight-transparent);
+}
+
+main #best-destinations-section .card .destinations-features-links a {
+  transition: color 0.25s linear;
+}
+main #best-destinations-section .card .destinations-features-links a:visited,
+main #best-destinations-section .card .destinations-features-links a:link {
+  color: var(--color-white);
+}
+main #best-destinations-section .card .destinations-features-links a:hover,
+main #best-destinations-section .card .destinations-features-links a:active {
+  color: var(--flights-primary);
 }
 
 /* =================== */
