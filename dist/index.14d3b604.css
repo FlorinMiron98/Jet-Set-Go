@@ -27,7 +27,8 @@
   --color-hightlight-transparent: #ffa200b3;
   --color-gray-transparent: #f5f5f540;
   --darkening-bg-image: linear-gradient(#00000026, #00000026);
-  --box-shadow: 0px 9px 6px -4px #464646;
+  --box-shadow-dark: 0px 9px 6px -4px #464646;
+  --box-shadow-light: 0px 2px 8px 1px #afafaf;
 }
 
 html {
@@ -147,7 +148,7 @@ header #flights-search-form .inputs-container .search-button {
   background-color: var(--color-highlight);
   height: 3rem;
   color: var(--color-white);
-  box-shadow: var(--box-shadow);
+  box-shadow: var(--box-shadow-dark);
   grid-area: search;
   transition: all .25s linear;
 }
@@ -164,7 +165,7 @@ header #flights-search-form .departure-location-wrapper, header #flights-search-
 header #flights-search-form .input-wrapper {
   background-color: var(--color-gray);
   min-height: 3rem;
-  box-shadow: var(--box-shadow);
+  box-shadow: var(--box-shadow-dark);
   gap: .8rem;
 }
 
@@ -202,6 +203,10 @@ header #flights-search-form .input-wrapper .locations-reverse-button:hover {
 
 main #introduction-section h1, main #introduction-section h2, main #best-destinations-section h1, main #seasonal-destination-section h1, main #seasonal-destination-section .card h2 {
   color: var(--flights-primary);
+}
+
+main #introduction-section .card, main #best-destinations-section .card, main #seasonal-destination-section .card {
+  box-shadow: var(--box-shadow-light);
 }
 
 main #introduction-section .card .card-text {
