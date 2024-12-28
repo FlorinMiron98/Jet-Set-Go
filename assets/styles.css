@@ -156,12 +156,31 @@ header #flights-search-form .dropdown-btn:hover {
 }
 
 header #flights-search-form .inputs-container {
+  display: grid;
+  grid-template-areas: "locations locations date date search";
   gap: 1.2rem;
 }
 
-header #flights-search-form .location-inputs-wrapper,
+header #flights-search-form .location-inputs-wrapper {
+  grid-area: locations;
+}
 header #flights-search-form .dates-wrapper {
-  flex: 0 1 40%;
+  grid-area: date;
+}
+
+header #flights-search-form .inputs-container .search-button {
+  grid-area: search;
+  height: 3rem;
+  background-color: var(--color-highlight);
+  color: var(--color-white);
+  transition: all 0.25s linear;
+  box-shadow: var(--box-shadow);
+}
+
+header #flights-search-form .inputs-container .search-button:hover,
+header #flights-search-form .inputs-container .search-button:active {
+  background-color: var(--color-white);
+  color: var(--color-highlight);
 }
 
 header #flights-search-form .departure-location-wrapper,
@@ -210,32 +229,47 @@ header #flights-search-form .input-wrapper .locations-reverse-button:hover {
   background-color: var(--flights-secondary);
 }
 
-header #flights-search-form .inputs-container .search-button {
-  height: 3rem;
-  background-color: var(--color-highlight);
-  color: var(--color-white);
-  transition: all 0.25s linear;
-  box-shadow: var(--box-shadow);
-}
-
-header #flights-search-form .inputs-container .search-button:hover,
-header #flights-search-form .inputs-container .search-button:active {
-  background-color: var(--color-white);
-  color: var(--color-highlight);
-}
-
 /* =================== */
 /* Media Queries */
 /* =================== */
+@media only screen and (max-width: 1400px) {
+  header #flights-search-form .inputs-container {
+    gap: 0.8rem;
+  }
+}
+
 @media only screen and (max-width: 1200px) {
   header #nav .logo-container {
     max-width: 14rem;
+  }
+
+  header #flights-search-form .inputs-container {
+    grid-template-areas:
+      "locations locations locations locations"
+      "date date date date"
+      ". search search .";
+    grid-auto-columns: 1fr;
+    gap: 1rem;
+  }
+
+  header #flights-search-form .inputs-container .search-button {
+    margin-top: 0.8rem;
   }
 }
 
 @media only screen and (max-width: 992px) {
   header #nav .logo-container {
     max-width: 12rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  header #flights-search-form .inputs-container {
+    grid-template-areas:
+      "locations"
+      "date"
+      "search";
+    gap: 1rem;
   }
 }
 
