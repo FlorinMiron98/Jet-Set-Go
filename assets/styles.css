@@ -249,6 +249,18 @@ header #flights-search-form .input-wrapper .locations-reverse-button:hover {
   background-color: var(--color-white);
 }
 
+/* ========== */
+/* Main */
+/* ========== */
+main #introduction-section h1,
+main #introduction-section h2 {
+  color: var(--flights-primary);
+}
+
+main #introduction-section .card .card-text {
+  color: var(--flights-secondary);
+}
+
 /* =================== */
 /* Media Queries */
 /* =================== */
