@@ -255,7 +255,9 @@ header #flights-search-form .input-wrapper .locations-reverse-button:hover {
 /* ========== */
 main #introduction-section h1,
 main #introduction-section h2,
-main #best-destinations-section h1 {
+main #best-destinations-section h1,
+main #seasonal-destination-section h1,
+main #seasonal-destination-section .card h2 {
   color: var(--flights-primary);
 }
 
@@ -283,6 +285,28 @@ main #best-destinations-section .card .destinations-features-links a:active {
   color: var(--flights-primary);
 }
 
+main #seasonal-destination-section .card img {
+  max-height: 24rem;
+}
+
+main #seasonal-destination-section .card .card-body > * {
+  flex: 1 1 50%;
+}
+
+main #seasonal-destination-section .card .card-body p {
+  color: var(--flights-secondary);
+}
+
+main #seasonal-destination-section .card .book-btn:link,
+main #seasonal-destination-section .card .book-btn:visited {
+  border: 3px solid var(--color-highlight);
+  color: var(--color-highlight);
+}
+main #seasonal-destination-section .card .book-btn:hover,
+main #seasonal-destination-section .card .book-btn:active {
+  background-color: var(--color-highlight);
+  color: var(--color-white);
+}
 /* =================== */
 /* Media Queries */
 /* =================== */
