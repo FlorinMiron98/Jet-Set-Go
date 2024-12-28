@@ -186,12 +186,13 @@ header #flights-search-form .input-wrapper .locations-reverse-button {
   border-radius: 50%;
   width: 2rem;
   height: 2rem;
+  transition: background-color .25s linear;
   right: 0;
   transform: translate(50%);
 }
 
 header #flights-search-form .input-wrapper .locations-reverse-button:hover {
-  background-color: var(--flights-secondary);
+  background-color: var(--color-white);
 }
 
 @media only screen and (width <= 1400px) {

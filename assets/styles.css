@@ -155,10 +155,6 @@ header .header-main-content-nav .attractions-link:hover {
   color: var(--attractions-secondary);
 }
 
-/* header #flights-search-form {
-  margin-top: 5rem;
-} */
-
 header #flights-search-form .dropdown-inputs-container {
   gap: 0.8rem;
 }
@@ -242,10 +238,11 @@ header #flights-search-form .input-wrapper .locations-reverse-button {
   border-radius: 50%;
   right: 0;
   transform: translate(50%);
+  transition: background-color 0.25s linear;
 }
 
 header #flights-search-form .input-wrapper .locations-reverse-button:hover {
-  background-color: var(--flights-secondary);
+  background-color: var(--color-white);
 }
 
 /* =================== */
