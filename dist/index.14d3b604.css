@@ -71,6 +71,14 @@ header #nav .hamburger-btn i:hover {
   background-color: var(--flights-primary);
 }
 
+header #nav .left-navigation {
+  gap: .8rem;
+}
+
+header #nav .right-navigation ul {
+  gap: 1rem;
+}
+
 header #nav .right-navigation li i {
   transition: color .25s linear;
 }
@@ -103,10 +111,6 @@ header .header-main-content-nav .cars-link.active, header .header-main-content-n
 header .header-main-content-nav .attractions-link.active, header .header-main-content-nav .attractions-link:hover {
   background-color: var(--color-white);
   color: var(--attractions-secondary);
-}
-
-header #flights-search-form {
-  margin-top: 5rem;
 }
 
 header #flights-search-form .dropdown-btn {
