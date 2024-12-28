@@ -112,7 +112,7 @@ header #nav .hamburger-btn i:hover {
 }
 
 header #nav .left-navigation {
-  gap: 0.8rem;
+  gap: 1rem;
 }
 
 header #nav .right-navigation ul {
@@ -159,6 +159,10 @@ header .header-main-content-nav .attractions-link:hover {
   margin-top: 5rem;
 } */
 
+header #flights-search-form .dropdown-inputs-container {
+  gap: 0.8rem;
+}
+
 header #flights-search-form .dropdown-btn {
   transition: all 0.25s linear;
   color: var(--color-white);
@@ -201,7 +205,7 @@ header #flights-search-form .inputs-container .search-button:active {
 header #flights-search-form .departure-location-wrapper,
 header #flights-search-form .arrival-location-wrapper,
 header #flights-search-form .departure-date-wrapper,
-header #flights-search-form .arrival-date-wrapper {
+header #flights-search-form .return-date-wrapper {
   flex: 0 1 50%;
 }
 
@@ -296,5 +300,25 @@ header #flights-search-form .input-wrapper .locations-reverse-button:hover {
 
   header #nav .logo-container img {
     height: 2rem;
+  }
+
+  header #flights-search-form .dropdown-inputs-container {
+    flex-direction: column;
+  }
+
+  header #flights-search-form .input-wrapper {
+    min-height: 2.6rem;
+    border-radius: 0.5rem;
+  }
+
+  header #flights-search-form .location-inputs-wrapper,
+  header #flights-search-form .dates-wrapper {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  header #flights-search-form .input-wrapper .locations-reverse-button {
+    right: 1rem;
+    transform: none;
   }
 }

@@ -71,11 +71,7 @@ header #nav .hamburger-btn i:hover {
   background-color: var(--flights-primary);
 }
 
-header #nav .left-navigation {
-  gap: .8rem;
-}
-
-header #nav .right-navigation ul {
+header #nav .left-navigation, header #nav .right-navigation ul {
   gap: 1rem;
 }
 
@@ -111,6 +107,10 @@ header .header-main-content-nav .cars-link.active, header .header-main-content-n
 header .header-main-content-nav .attractions-link.active, header .header-main-content-nav .attractions-link:hover {
   background-color: var(--color-white);
   color: var(--attractions-secondary);
+}
+
+header #flights-search-form .dropdown-inputs-container {
+  gap: .8rem;
 }
 
 header #flights-search-form .dropdown-btn {
@@ -152,7 +152,7 @@ header #flights-search-form .inputs-container .search-button:hover, header #flig
   color: var(--color-highlight);
 }
 
-header #flights-search-form .departure-location-wrapper, header #flights-search-form .arrival-location-wrapper, header #flights-search-form .departure-date-wrapper, header #flights-search-form .arrival-date-wrapper {
+header #flights-search-form .departure-location-wrapper, header #flights-search-form .arrival-location-wrapper, header #flights-search-form .departure-date-wrapper, header #flights-search-form .return-date-wrapper {
   flex: 0 50%;
 }
 
@@ -240,6 +240,25 @@ header #flights-search-form .input-wrapper .locations-reverse-button:hover {
 
   header #nav .logo-container img {
     height: 2rem;
+  }
+
+  header #flights-search-form .dropdown-inputs-container {
+    flex-direction: column;
+  }
+
+  header #flights-search-form .input-wrapper {
+    border-radius: .5rem;
+    min-height: 2.6rem;
+  }
+
+  header #flights-search-form .location-inputs-wrapper, header #flights-search-form .dates-wrapper {
+    flex-direction: column;
+    gap: .6rem;
+  }
+
+  header #flights-search-form .input-wrapper .locations-reverse-button {
+    right: 1rem;
+    transform: none;
   }
 }
 /*# sourceMappingURL=index.14d3b604.css.map */
