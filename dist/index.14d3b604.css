@@ -46,6 +46,10 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-highlight);
 }
 
+.section {
+  margin-top: 6rem;
+}
+
 header {
   background-image: url("background-image-flights-large.752d6f0a.jpg");
   background-position: center;
@@ -193,6 +197,14 @@ header #flights-search-form .input-wrapper .locations-reverse-button {
 
 header #flights-search-form .input-wrapper .locations-reverse-button:hover {
   background-color: var(--color-white);
+}
+
+main #introduction-section h1, main #introduction-section h2 {
+  color: var(--flights-primary);
+}
+
+main #introduction-section .card .card-text {
+  color: var(--flights-secondary);
 }
 
 @media only screen and (width <= 1400px) {
