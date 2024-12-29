@@ -92,6 +92,41 @@ h6 {
   margin-top: 6rem;
 }
 
+/* ======================== */
+/* Sidebar Navigation */
+/* ======================== */
+.sidebar-navigation {
+  min-height: 100vh;
+  background-color: var(--color-gray-light);
+  /* transform: translate(-100%); */
+  transition: transform 0.5s ease-out;
+  min-width: max-content;
+}
+
+.sidebar-navigation-visible {
+  transform: translate(0);
+}
+
+.sidebar-navigation ul a:visited,
+.sidebar-navigation ul a:link {
+  gap: 1.6rem;
+  color: var(--color-dark-2);
+}
+
+.sidebar-navigation ul a:hover,
+.sidebar-navigation ul a:active {
+  background-color: var(--color-gray);
+}
+
+.sidebar-navigation ul a i {
+  flex: 0 0 1rem;
+}
+
+.sidebar-navigation-scrolling {
+  background-color: var(--color-gray-light);
+  color: var(--flights-primary);
+}
+
 /* ============ */
 /* Header */
 /* ============ */
@@ -393,6 +428,10 @@ footer .social-media-links a:active {
 }
 
 @media only screen and (max-width: 576px) {
+  .sidebar-navigation {
+    min-width: 100%;
+  }
+
   header {
     background-image: var(--darkening-bg-image),
       url("../assets/images/background-image-flights-small.jpg");
