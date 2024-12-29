@@ -53,6 +53,35 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 6rem;
 }
 
+.sidebar-navigation {
+  background-color: var(--color-gray-light);
+  min-width: max-content;
+  min-height: 100vh;
+  transition: transform .5s ease-out;
+}
+
+.sidebar-navigation-visible {
+  transform: translate(0);
+}
+
+.sidebar-navigation ul a:visited, .sidebar-navigation ul a:link {
+  color: var(--color-dark-2);
+  gap: 1.6rem;
+}
+
+.sidebar-navigation ul a:hover, .sidebar-navigation ul a:active {
+  background-color: var(--color-gray);
+}
+
+.sidebar-navigation ul a i {
+  flex: 0 0 1rem;
+}
+
+.sidebar-navigation-scrolling {
+  background-color: var(--color-gray-light);
+  color: var(--flights-primary);
+}
+
 header {
   background-image: url("background-image-flights-large.752d6f0a.jpg");
   background-position: center;
@@ -317,6 +346,10 @@ footer .quick-links a:hover, footer .quick-links a:active, footer .social-media-
 }
 
 @media only screen and (width <= 576px) {
+  .sidebar-navigation {
+    min-width: 100%;
+  }
+
   header {
     background-image: var(--darkening-bg-image), url("background-image-flights-small.c4e98885.jpg");
   }
