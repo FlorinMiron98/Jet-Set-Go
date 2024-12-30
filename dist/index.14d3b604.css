@@ -46,19 +46,19 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-primary);
 }
 
-.overlay {
-  background-color: var(--color-dark-transparent);
-  transition: all .25s ease-in-out;
-  inset: 0;
-  transform: translate(-100%);
-}
-
 .highlight {
   color: var(--color-highlight);
 }
 
 .section {
   margin-top: 6rem;
+}
+
+.overlay {
+  background-color: var(--color-dark-transparent);
+  transition: all .25s ease-in-out;
+  inset: 0;
+  transform: translate(-100%);
 }
 
 .sidebar-navigation {
@@ -166,6 +166,45 @@ header .header-main-content-nav .attractions-link.active, header .header-main-co
 
 header #flights-search-form .dropdown-inputs-container {
   gap: .8rem;
+}
+
+header #flights-search-form .persons-selection, header #flights-search-form .flights-class-selection {
+  background-color: var(--color-white);
+  z-index: 3;
+  top: 105%;
+  transform: translateY(10%);
+}
+
+header #flights-search-form .persons-selection {
+  gap: 1.4rem;
+  width: 30%;
+}
+
+header #flights-search-form .flights-class-selection {
+  gap: 1rem;
+  left: 40%;
+}
+
+header #flights-search-form .flights-class-selection .flight-class-btn {
+  color: var(--flights-secondary);
+}
+
+header #flights-search-form .flights-class-selection .flight-class-btn:hover {
+  background-color: var(--color-gray-light);
+}
+
+header #flights-search-form .selection-number {
+  gap: 1rem;
+}
+
+header #flights-search-form .selection-decrease-btn, header #flights-search-form .selection-increase-btn {
+  width: 3rem;
+  height: 100%;
+  color: var(--flights-secondary);
+}
+
+header #flights-search-form .selection-decrease-btn:hover, header #flights-search-form .selection-increase-btn:hover {
+  background-color: var(--color-gray-light);
 }
 
 header #flights-search-form .dropdown-btn {
@@ -353,6 +392,10 @@ footer .quick-links a:hover, footer .quick-links a:active, footer .social-media-
   header #nav .logo-container {
     max-width: 12rem;
   }
+
+  header #flights-search-form .persons-selection, header #flights-search-form .flight-class-selection {
+    width: 50%;
+  }
 }
 
 @media only screen and (width <= 768px) {
@@ -361,6 +404,10 @@ footer .quick-links a:hover, footer .quick-links a:active, footer .social-media-
                          "date"
                          "search";
     gap: 1rem;
+  }
+
+  header #flights-search-form .persons-selection, header #flights-search-form .flight-class-selection {
+    width: 100%;
   }
 }
 

@@ -104,9 +104,9 @@
         </nav>
         <!-- Search Form -->
         <form id="flights-search-form" class="mt-4 mt-sm-5">
-          <div class="dropdown-inputs-container d-flex">
+          <div class="dropdown-inputs-container d-flex position-relative">
             <!-- Travellers Button -->
-            <button class="dropdown-btn btn border border-3 border-white rounded-5 fw-semibold focus-ring" type="button">
+            <button id="flights-persons-dropdown" class="dropdown-btn btn border border-3 border-white rounded-5 fw-semibold focus-ring" type="button">
               <i class="fa-solid fa-user-group"></i>
               <span>1</span>
               Adult,
@@ -115,11 +115,80 @@
               <i class="fa-solid fa-chevron-down"></i>
             </button>
             <!-- Flight Ticket Class Button -->
-            <button class="dropdown-btn btn border border-3 border-white rounded-5 fw-semibold focus-ring" type="button">
+            <button id="flights-class-dropdown-btn" class="dropdown-btn btn border border-3 border-white rounded-5 fw-semibold focus-ring" type="button">
               <i class="fa-solid fa-plane-circle-check"></i>
               <span>Economy</span>
               <i class="fa-solid fa-chevron-down"></i>
             </button>
+            <div class="persons-selection d-flex flex-column position-absolute rounded-3 p-4">
+              <div class="adults d-flex justify-content-between">
+                <div class="selection-content d-flex flex-column">
+                  <h3 class="fs-5 fw-semibold">Adults</h3>
+                  <p class="m-0">Age 18+</p>
+                </div>
+                <div class="selection-number d-flex align-items-center">
+                  <button type="button" class="selection-decrease-btn border-0 rounded-3 focus-ring">
+                    <i class="fa-solid fa-minus"></i>
+                  </button>
+                  <span class="selection-count">1</span>
+                  <button type="button" class="selection-increase-btn border-0 rounded-3 focus-ring">
+                    <i class="fa-solid fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="children d-flex justify-content-between">
+                <div class="selection-content">
+                  <h3 class="fs-5 fw-semibold">Children</h3>
+                  <p class="m-0">Age 0 - 17</p>
+                </div>
+                <div class="selection-number d-flex align-items-center">
+                  <button type="button" class="selection-decrease-btn border-0 rounded-3 focus-ring">
+                    <i class="fa-solid fa-minus"></i>
+                  </button>
+                  <span class="selection-count">1</span>
+                  <button type="button" class="selection-increase-btn border-0 rounded-3 focus-ring">
+                    <i class="fa-solid fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="selection-children-age d-flex flex-column mb-4">
+                <label class="fs-5 fw-semibold" for="child-age">1st child's age</label>
+                <select name="1st-child-age" id="child-age" class="px-3 py-2 rounded-3 focus-ring">
+                  <option value="">Select age at time of flying</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                </select>
+              </div>
+            </div>
+            <div class="flights-class-selection d-flex flex-column position-absolute rounded-3 p-4">
+              <button class="flight-class-btn border-0 rounded-3 py-2 px-3 focus-ring" type="button" data-flight-class="ECONOMY">
+                Economy
+              </button>
+              <button class="flight-class-btn border-0 rounded-3 py-2 px-3 focus-ring" type="button" data-flight-class="PREMIUM_ECONOMY">
+                Premium Economy
+              </button>
+              <button class="flight-class-btn border-0 rounded-3 py-2 px-3 focus-ring" type="button" data-flight-class="BUSINESS">
+                Business Class
+              </button>
+              <button class="flight-class-btn border-0 rounded-3 py-2 px-3 focus-ring" type="button" data-flight-class="FIRST">
+                First Class
+              </button>
+            </div>
           </div>
           <div class="inputs-container mt-3">
             <div class="location-inputs-wrapper d-flex">
@@ -130,7 +199,7 @@
                   <i class="fa-solid fa-plane-departure fs-5"></i>
                   <input type="text" class="border border-0" id="departure-location" placeholder="Departure Location" required="">
                   <!-- Locations Reverse Button -->
-                  <button class="locations-reverse-button position-absolute border z-1 focus-ring" aria-label="Location reverse button">
+                  <button class="locations-reverse-button position-absolute border z-1 focus-ring" type="button" aria-label="Location reverse button">
                     <i class="fa-solid fa-arrows-rotate"></i>
                   </button>
                 </div>
