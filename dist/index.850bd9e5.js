@@ -604,17 +604,18 @@ var _navbarViewJsDefault = parcelHelpers.interopDefault(_navbarViewJs);
 const init = function() {
     (0, _navbarViewJsDefault.default).setDynamicStyling();
     (0, _sideNavbarViewJsDefault.default).setDynamicMargin();
-    (0, _sideNavbarViewJsDefault.default).displaySideNavbar();
+    (0, _sideNavbarViewJsDefault.default).toggleSideNavbar();
 };
 init();
 
-},{"./views/sideNavbarView.js":"9BkUd","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./views/navbarView.js":"9sJsi"}],"9BkUd":[function(require,module,exports,__globalThis) {
+},{"./views/sideNavbarView.js":"9BkUd","./views/navbarView.js":"9sJsi","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9BkUd":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 class SideNavbarView {
     navbar = document.getElementById("nav");
     sideNavbar = document.querySelector(".sidebar-navigation");
     hamburgerBtn = document.getElementById("hamburger-btn");
+    overlay = document.querySelector(".overlay");
     getSize() {
         const size = this.navbar.getBoundingClientRect().height;
         return size;
@@ -629,9 +630,21 @@ class SideNavbarView {
             });
         });
     }
-    displaySideNavbar() {
+    toggleSideNavbar() {
+        document.body.addEventListener("click", (e)=>{
+            if (e.target.classList.contains("overlay")) {
+                this.sideNavbar.classList.remove("sidebar-navigation-visible");
+                e.target.classList.remove("overlay-visible");
+            }
+            if (e.target.classList.contains("overlay") && window.scrollY === 0) {
+                this.navbar.classList.remove("navigation-highlight");
+                this.sideNavbar.classList.remove("sidebar-navigation-visible");
+                e.target.classList.remove("overlay-visible");
+            }
+        });
         this.hamburgerBtn.addEventListener("click", ()=>{
             this.sideNavbar.classList.toggle("sidebar-navigation-visible");
+            this.overlay.classList.toggle("overlay-visible");
             if (window.scrollY === 0) {
                 if (this.navbar.classList.contains("navigation-highlight")) this.navbar.classList.remove("navigation-highlight");
                 else this.navbar.classList.add("navigation-highlight");

@@ -27,6 +27,7 @@
   --color-flights-highlight: #ffa200;
   --color-hightlight-transparent: #ffa200b3;
   --color-gray-transparent: #f5f5f540;
+  --color-dark-transparent: #202d3d80;
   --darkening-bg-image: linear-gradient(#00000026, #00000026);
   --box-shadow-dark: 0px 9px 6px -4px #464646;
   --box-shadow-light: 0px 2px 8px 1px #afafaf;
@@ -43,6 +44,13 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-primary);
+}
+
+.overlay {
+  background-color: var(--color-dark-transparent);
+  transition: all .25s ease-in-out;
+  inset: 0;
+  transform: translate(-100%);
 }
 
 .highlight {
@@ -87,6 +95,11 @@ h1, h2, h3, h4, h5, h6 {
   background-color: var(--flights-primary);
 }
 
+.overlay-visible {
+  z-index: 2;
+  transform: translate(0);
+}
+
 header {
   background-image: url("background-image-flights-large.752d6f0a.jpg");
   background-position: center;
@@ -106,13 +119,10 @@ header #nav .hamburger-btn {
   background-color: #0000;
   border: none;
   outline: none;
-}
-
-header #nav .hamburger-btn i {
   transition: background-color .25s linear;
 }
 
-header #nav .hamburger-btn i:hover {
+header #nav .hamburger-btn:hover {
   background-color: var(--flights-primary);
 }
 
@@ -357,6 +367,10 @@ footer .quick-links a:hover, footer .quick-links a:active, footer .social-media-
 @media only screen and (width <= 576px) {
   .sidebar-navigation {
     min-width: 100%;
+  }
+
+  .overlay {
+    display: none;
   }
 
   header {
