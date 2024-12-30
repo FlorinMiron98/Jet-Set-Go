@@ -82,6 +82,17 @@ h6 {
   font-family: var(--font-primary);
 }
 
+/* ===================== */
+/* Utility classes */
+/* ===================== */
+.highlight {
+  color: var(--color-highlight);
+}
+
+.section {
+  margin-top: 6rem;
+}
+
 /* ============= */
 /* Overlay */
 /* ============= */
@@ -93,17 +104,6 @@ h6 {
   background-color: var(--color-dark-transparent);
   transform: translate(-100%);
   transition: all 0.25s ease-in-out;
-}
-
-/* ===================== */
-/* Utility classes */
-/* ===================== */
-.highlight {
-  color: var(--color-highlight);
-}
-
-.section {
-  margin-top: 6rem;
 }
 
 /* ======================== */
@@ -231,6 +231,48 @@ header .header-main-content-nav .attractions-link:hover {
 
 header #flights-search-form .dropdown-inputs-container {
   gap: 0.8rem;
+}
+
+header #flights-search-form .persons-selection,
+header #flights-search-form .flights-class-selection {
+  background-color: var(--color-white);
+  z-index: 3;
+  top: 105%;
+  transform: translateY(10%);
+}
+
+header #flights-search-form .persons-selection {
+  width: 30%;
+  gap: 1.4rem;
+}
+
+header #flights-search-form .flights-class-selection {
+  left: 40%;
+  gap: 1rem;
+}
+
+header #flights-search-form .flights-class-selection .flight-class-btn {
+  color: var(--flights-secondary);
+}
+
+header #flights-search-form .flights-class-selection .flight-class-btn:hover {
+  background-color: var(--color-gray-light);
+}
+
+header #flights-search-form .selection-number {
+  gap: 1rem;
+}
+
+header #flights-search-form .selection-decrease-btn,
+header #flights-search-form .selection-increase-btn {
+  height: 100%;
+  width: 3rem;
+  color: var(--flights-secondary);
+}
+
+header #flights-search-form .selection-decrease-btn:hover,
+header #flights-search-form .selection-increase-btn:hover {
+  background-color: var(--color-gray-light);
 }
 
 header #flights-search-form .dropdown-btn {
@@ -445,6 +487,11 @@ footer .social-media-links a:active {
   header #nav .logo-container {
     max-width: 12rem;
   }
+
+  header #flights-search-form .persons-selection,
+  header #flights-search-form .flight-class-selection {
+    width: 50%;
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -454,6 +501,11 @@ footer .social-media-links a:active {
       "date"
       "search";
     gap: 1rem;
+  }
+
+  header #flights-search-form .persons-selection,
+  header #flights-search-form .flight-class-selection {
+    width: 100%;
   }
 }
 
