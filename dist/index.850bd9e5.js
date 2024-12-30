@@ -601,14 +601,17 @@ var _sideNavbarViewJs = require("./views/sideNavbarView.js");
 var _sideNavbarViewJsDefault = parcelHelpers.interopDefault(_sideNavbarViewJs);
 var _navbarViewJs = require("./views/navbarView.js");
 var _navbarViewJsDefault = parcelHelpers.interopDefault(_navbarViewJs);
+var _searchFormViewJs = require("./views/searchFormView.js");
+var _searchFormViewJsDefault = parcelHelpers.interopDefault(_searchFormViewJs);
 const init = function() {
     (0, _navbarViewJsDefault.default).setDynamicStyling();
     (0, _sideNavbarViewJsDefault.default).setDynamicMargin();
     (0, _sideNavbarViewJsDefault.default).toggleSideNavbar();
+    (0, _searchFormViewJsDefault.default).setDropdownDynamicStyling();
 };
 init();
 
-},{"./views/sideNavbarView.js":"9BkUd","./views/navbarView.js":"9sJsi","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9BkUd":[function(require,module,exports,__globalThis) {
+},{"./views/sideNavbarView.js":"9BkUd","./views/navbarView.js":"9sJsi","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./views/searchFormView.js":"gHYzF"}],"9BkUd":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 class SideNavbarView {
@@ -699,6 +702,33 @@ class NavbarView {
     }
 }
 exports.default = new NavbarView();
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gHYzF":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+class SearchFormView {
+    dropdownInputsContainer = document.querySelector(".dropdown-inputs-container");
+    flightPersonsDropdownBtn = document.getElementById("flight-persons-dropdown-btn");
+    flightClassDropdownBtn = document.getElementById("flight-class-dropdown-btn");
+    personsSelectionDropdown = document.querySelector(".persons-selection");
+    flightClassDropdown = document.querySelector(".flight-class-selection");
+    setDropdownDynamicStyling() {
+        [
+            "load",
+            "resize"
+        ].forEach((e)=>{
+            window.addEventListener(e, ()=>{
+                const parentSizes = this.dropdownInputsContainer.getBoundingClientRect();
+                const selectPersonsBtnSizes = this.flightPersonsDropdownBtn.getBoundingClientRect();
+                const selectFlightClassBtnSizes = this.flightClassDropdownBtn.getBoundingClientRect();
+                this.personsSelectionDropdown.style.top = `${selectPersonsBtnSizes.height}px`;
+                this.flightClassDropdown.style.top = `${parentSizes.height}px`;
+                this.flightClassDropdown.style.left = `${selectFlightClassBtnSizes.left - parentSizes.left}px`;
+            });
+        });
+    }
+}
+exports.default = new SearchFormView();
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["4nnrR","1GgH0"], "1GgH0", "parcelRequire94c2")
 
