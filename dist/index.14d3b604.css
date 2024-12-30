@@ -61,12 +61,21 @@ h1, h2, h3, h4, h5, h6 {
   transform: translate(-100%);
 }
 
+.overlay.overlay-visible {
+  z-index: 2;
+  transform: translate(0);
+}
+
 .sidebar-navigation {
   background-color: var(--flights-primary);
   min-width: max-content;
   min-height: 100vh;
   transition: transform .5s ease-out;
   transform: translate(-100%);
+}
+
+.sidebar-navigation.sidebar-navigation-visible {
+  transform: translate(0);
 }
 
 .sidebar-navigation ul a:visited, .sidebar-navigation ul a:link {
@@ -87,19 +96,6 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--flights-primary);
 }
 
-.sidebar-navigation-visible {
-  transform: translate(0);
-}
-
-.navigation-highlight {
-  background-color: var(--flights-primary);
-}
-
-.overlay-visible {
-  z-index: 2;
-  transform: translate(0);
-}
-
 header {
   background-image: url("background-image-flights-large.752d6f0a.jpg");
   background-position: center;
@@ -108,7 +104,11 @@ header {
 }
 
 header #nav {
-  transition: all .25s ease-in-out;
+  transition: background-color .25s ease-in-out;
+}
+
+header #nav.navigation-highlight {
+  background-color: var(--flights-primary);
 }
 
 header #nav .logo-container {
@@ -171,8 +171,17 @@ header #flights-search-form .dropdown-inputs-container {
 header #flights-search-form .persons-selection, header #flights-search-form .flights-class-selection {
   background-color: var(--color-white);
   z-index: 3;
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility .2s ease-in-out, opacity .25s ease-in-out, transform .25s ease-in-out;
   top: 105%;
   transform: translateY(10%);
+}
+
+header #flights-search-form .persons-selection.dropdown-visible, header #flights-search-form .flights-class-selection.dropdown-visible {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(3%);
 }
 
 header #flights-search-form .persons-selection {
