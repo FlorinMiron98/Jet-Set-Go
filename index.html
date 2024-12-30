@@ -38,9 +38,11 @@
     <!-- CSS Styles -->
     <link rel="stylesheet" href="./assets/styles.css" />
   </head>
-  <body>
+  <body class="position-relative">
+    <!-- Overlay -->
+    <div class="overlay position-absolute z-2"></div>
     <!-- Sidebar Navigation -->
-    <nav class="sidebar-navigation position-fixed z-2 px-4 py-3">
+    <nav class="sidebar-navigation position-fixed px-4 py-3 z-2">
       <ul class="list-unstyled d-flex flex-column justify-content-start">
         <li class="mb-2 fs-6">
           <a
@@ -116,10 +118,10 @@
           <div class="left-navigation d-flex align-items-center">
             <button
               id="hamburger-btn"
-              class="hamburger-btn nav-btn align-self-center fs-2 text-white focus-ring"
+              class="hamburger-btn nav-btn align-self-center fs-2 text-white rounded rounded-3 focus-ring"
               aria-label="Navigation hamburger button"
             >
-              <i class="fa-solid fa-bars p-0 p-sm-3 rounded rounded-3"></i>
+              <i class="fa-solid fa-bars p-0 p-sm-3"></i>
             </button>
             <div class="logo-container">
               <a href="#" class="w-100 h-100">

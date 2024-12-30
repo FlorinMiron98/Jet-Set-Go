@@ -16,9 +16,11 @@
     <!-- CSS Styles -->
     <link rel="stylesheet" href="/index.14d3b604.css">
   </head>
-  <body>
+  <body class="position-relative">
+    <!-- Overlay -->
+    <div class="overlay position-absolute z-2"></div>
     <!-- Sidebar Navigation -->
-    <nav class="sidebar-navigation position-fixed z-2 px-4 py-3">
+    <nav class="sidebar-navigation position-fixed px-4 py-3 z-2">
       <ul class="list-unstyled d-flex flex-column justify-content-start">
         <li class="mb-2 fs-6">
           <a href="#" class="d-flex align-items-center py-2 px-4 text-decoration-none rounded-3"><i class="fa-solid fa-plane"></i> Flights</a>
@@ -54,8 +56,8 @@
       <nav id="nav" class="position-fixed top-0 w-100 z-3">
         <div class="container d-flex align-items-center justify-content-between px-3 py-3 ps-sm-0">
           <div class="left-navigation d-flex align-items-center">
-            <button id="hamburger-btn" class="hamburger-btn nav-btn align-self-center fs-2 text-white focus-ring" aria-label="Navigation hamburger button">
-              <i class="fa-solid fa-bars p-0 p-sm-3 rounded rounded-3"></i>
+            <button id="hamburger-btn" class="hamburger-btn nav-btn align-self-center fs-2 text-white rounded rounded-3 focus-ring" aria-label="Navigation hamburger button">
+              <i class="fa-solid fa-bars p-0 p-sm-3"></i>
             </button>
             <div class="logo-container">
               <a href="#" class="w-100 h-100">
