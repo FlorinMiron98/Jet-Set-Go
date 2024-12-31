@@ -138,6 +138,10 @@ header #nav .right-navigation li i:hover {
   color: var(--color-highlight);
 }
 
+header .header-main-content {
+  flex: 1 0 100%;
+}
+
 header .header-main-content-nav a {
   background-color: var(--color-gray-transparent);
   color: var(--color-white);
