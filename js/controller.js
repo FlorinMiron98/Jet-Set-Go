@@ -8,6 +8,8 @@ const init = function () {
   sideNavbarView.setDynamicStyling();
   sideNavbarView.toggleSideNavbar();
   searchFormView.setDropdownDynamicStyling();
+  searchFormView.showSelectionDropdown();
+  searchFormView.hideSelectionDropdown();
   headerContentView.setDynamicStyling();
 };
 
