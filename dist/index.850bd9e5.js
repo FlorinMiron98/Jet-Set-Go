@@ -610,6 +610,8 @@ const init = function() {
     (0, _sideNavbarViewJsDefault.default).setDynamicStyling();
     (0, _sideNavbarViewJsDefault.default).toggleSideNavbar();
     (0, _searchFormViewJsDefault.default).setDropdownDynamicStyling();
+    (0, _searchFormViewJsDefault.default).showSelectionDropdown();
+    (0, _searchFormViewJsDefault.default).hideSelectionDropdown();
     (0, _headerContentViewJsDefault.default).setDynamicStyling();
 };
 init();
@@ -712,6 +714,7 @@ class SearchFormView {
     flightClassDropdownBtn = document.getElementById("flight-class-dropdown-btn");
     personsSelectionDropdown = document.querySelector(".persons-selection");
     flightClassDropdown = document.querySelector(".flight-class-selection");
+    selectionDoneBtns = document.querySelectorAll(".selection-done-btn");
     setDropdownDynamicStyling() {
         [
             "load",
@@ -724,6 +727,28 @@ class SearchFormView {
                 this.personsSelectionDropdown.style.top = `${selectPersonsBtnSizes.height}px`;
                 this.flightClassDropdown.style.top = `${parentSizes.height}px`;
                 this.flightClassDropdown.style.left = `${selectFlightClassBtnSizes.left - parentSizes.left}px`;
+            });
+        });
+    }
+    showSelectionDropdown() {
+        this.dropdownInputsContainer.addEventListener("click", (e)=>{
+            const visibleDropdowns = document.querySelectorAll(".dropdown-visible");
+            if (e.target.closest("#flight-persons-dropdown-btn")) {
+                visibleDropdowns.forEach((e)=>e.classList.remove("dropdown-visible"));
+                this.personsSelectionDropdown.classList.add("dropdown-visible");
+                this.personsSelectionDropdown.scrollIntoView(false);
+            }
+            if (e.target.closest("#flight-class-dropdown-btn")) {
+                visibleDropdowns.forEach((e)=>e.classList.remove("dropdown-visible"));
+                this.flightClassDropdown.classList.add("dropdown-visible");
+                this.flightClassDropdown.scrollIntoView(false);
+            }
+        });
+    }
+    hideSelectionDropdown() {
+        this.selectionDoneBtns.forEach((btn)=>{
+            btn.addEventListener("click", (e)=>{
+                e.target.closest(".dropdown-visible").classList.remove("dropdown-visible");
             });
         });
     }
