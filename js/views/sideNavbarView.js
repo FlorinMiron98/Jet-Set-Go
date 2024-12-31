@@ -4,15 +4,11 @@ class SideNavbarView {
   hamburgerBtn = document.getElementById("hamburger-btn");
   overlay = document.querySelector(".overlay");
 
-  getSize() {
-    const size = this.navbar.getBoundingClientRect().height;
-    return size;
-  }
-
-  setDynamicMargin() {
+  setDynamicStyling() {
     ["load", "resize"].forEach((e) => {
       window.addEventListener(e, () => {
-        this.sideNavbar.style.marginTop = `${this.getSize()}px`;
+        const navbarSize = this.navbar.getBoundingClientRect();
+        this.sideNavbar.style.marginTop = `${navbarSize.height}px`;
       });
     });
   }
