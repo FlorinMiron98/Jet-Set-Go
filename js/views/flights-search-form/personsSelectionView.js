@@ -1,3 +1,5 @@
+import personsSelectionBtnView from "./personsSelectionBtnView";
+
 class PersonsSelectionView {
   _parentEl = document.querySelector(".persons-selection");
   _adultsParentEl = document.querySelector(".adults");
@@ -123,11 +125,13 @@ class PersonsSelectionView {
     this._adultsParentEl.addEventListener("click", (e) => {
       if (e.target.closest(".selection-increase-btn")) {
         this._adults++;
+        personsSelectionBtnView._generateMarkup(this._adults, this._children);
         this._generateAdultsMarkup();
         this._generateChildrenMarkup();
       }
       if (e.target.closest(".selection-decrease-btn")) {
         this._adults--;
+        personsSelectionBtnView._generateMarkup(this._adults, this._children);
         this._generateAdultsMarkup();
         this._generateChildrenMarkup();
       }
@@ -138,6 +142,7 @@ class PersonsSelectionView {
     this._childrenParentEl.addEventListener("click", (e) => {
       if (e.target.closest(".selection-increase-btn")) {
         this._children++;
+        personsSelectionBtnView._generateMarkup(this._adults, this._children);
         this._generateSelectChildAgeMarkup(this._children);
         this._showChildrenSelectAgeParentEl();
         this._displaySelectChildAgeEl();
@@ -146,6 +151,7 @@ class PersonsSelectionView {
       }
       if (e.target.closest(".selection-decrease-btn")) {
         this._children--;
+        personsSelectionBtnView._generateMarkup(this._adults, this._children);
         this._removeChildAgeEl(this._childrenSelectAgeElements);
         this._displaySelectChildAgeEl();
         this._generateChildrenMarkup();

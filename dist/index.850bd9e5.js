@@ -607,6 +607,8 @@ var _headerContentViewJs = require("./views/headerContentView.js");
 var _headerContentViewJsDefault = parcelHelpers.interopDefault(_headerContentViewJs);
 var _personsSelectionViewJs = require("./views/flights-search-form/personsSelectionView.js");
 var _personsSelectionViewJsDefault = parcelHelpers.interopDefault(_personsSelectionViewJs);
+var _personsSelectionBtnViewJs = require("./views/flights-search-form/personsSelectionBtnView.js");
+var _personsSelectionBtnViewJsDefault = parcelHelpers.interopDefault(_personsSelectionBtnViewJs);
 const controlSelectPersons = function() {
     // Generate persons selection markup
     (0, _personsSelectionViewJsDefault.default)._generateAdultsMarkup();
@@ -616,6 +618,8 @@ const controlSelectPersons = function() {
     // Add the functionality for selecting the number of persons
     (0, _personsSelectionViewJsDefault.default)._adultsCounter();
     (0, _personsSelectionViewJsDefault.default)._childrenCounter();
+    // Dynamically update the content of the persons dropdown button
+    (0, _personsSelectionBtnViewJsDefault.default)._generateMarkup((0, _personsSelectionViewJsDefault.default)._adults, (0, _personsSelectionViewJsDefault.default)._children);
     // Add the functionality for selection done
     (0, _searchFormViewJsDefault.default)._hideSelectionDropdown();
 };
@@ -630,7 +634,7 @@ const init = function() {
 };
 init();
 
-},{"./views/sideNavbarView.js":"9BkUd","./views/navbarView.js":"9sJsi","./views/searchFormView.js":"gHYzF","./views/headerContentView.js":"d8zti","./views/flights-search-form/personsSelectionView.js":"dn95k","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9BkUd":[function(require,module,exports,__globalThis) {
+},{"./views/sideNavbarView.js":"9BkUd","./views/navbarView.js":"9sJsi","./views/searchFormView.js":"gHYzF","./views/headerContentView.js":"d8zti","./views/flights-search-form/personsSelectionView.js":"dn95k","./views/flights-search-form/personsSelectionBtnView.js":"hLXZN","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9BkUd":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 class SideNavbarView {
@@ -793,6 +797,8 @@ exports.default = new HeaderContentView();
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dn95k":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
+var _personsSelectionBtnView = require("./personsSelectionBtnView");
+var _personsSelectionBtnViewDefault = parcelHelpers.interopDefault(_personsSelectionBtnView);
 class PersonsSelectionView {
     _parentEl = document.querySelector(".persons-selection");
     _adultsParentEl = document.querySelector(".adults");
@@ -904,11 +910,13 @@ class PersonsSelectionView {
         this._adultsParentEl.addEventListener("click", (e)=>{
             if (e.target.closest(".selection-increase-btn")) {
                 this._adults++;
+                (0, _personsSelectionBtnViewDefault.default)._generateMarkup(this._adults, this._children);
                 this._generateAdultsMarkup();
                 this._generateChildrenMarkup();
             }
             if (e.target.closest(".selection-decrease-btn")) {
                 this._adults--;
+                (0, _personsSelectionBtnViewDefault.default)._generateMarkup(this._adults, this._children);
                 this._generateAdultsMarkup();
                 this._generateChildrenMarkup();
             }
@@ -918,6 +926,7 @@ class PersonsSelectionView {
         this._childrenParentEl.addEventListener("click", (e)=>{
             if (e.target.closest(".selection-increase-btn")) {
                 this._children++;
+                (0, _personsSelectionBtnViewDefault.default)._generateMarkup(this._adults, this._children);
                 this._generateSelectChildAgeMarkup(this._children);
                 this._showChildrenSelectAgeParentEl();
                 this._displaySelectChildAgeEl();
@@ -926,6 +935,7 @@ class PersonsSelectionView {
             }
             if (e.target.closest(".selection-decrease-btn")) {
                 this._children--;
+                (0, _personsSelectionBtnViewDefault.default)._generateMarkup(this._adults, this._children);
                 this._removeChildAgeEl(this._childrenSelectAgeElements);
                 this._displaySelectChildAgeEl();
                 this._generateChildrenMarkup();
@@ -961,6 +971,29 @@ class PersonsSelectionView {
     }
 }
 exports.default = new PersonsSelectionView();
+
+},{"./personsSelectionBtnView":"hLXZN","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hLXZN":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+class PersonsSelectionBtnView {
+    _personsBtn = document.getElementById("flight-persons-dropdown-btn");
+    _generateMarkup(adults, children) {
+        this._clearMarkup();
+        const markup = `
+    <i class="fa-solid fa-user-group"></i>
+              <span>${adults}</span>
+              Adult${adults > 1 ? "s" : ""},
+              <span>${children}</span>
+              Child${children > 1 ? "ren" : ""}
+    <i class="fa-solid fa-chevron-down"></i>
+    `;
+        this._personsBtn.insertAdjacentHTML("afterbegin", markup);
+    }
+    _clearMarkup() {
+        this._personsBtn.innerHTML = "";
+    }
+}
+exports.default = new PersonsSelectionBtnView();
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["4nnrR","1GgH0"], "1GgH0", "parcelRequire94c2")
 
