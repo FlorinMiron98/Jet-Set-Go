@@ -3,6 +3,7 @@ import navbarView from "./views/navbarView.js";
 import searchFormView from "./views/searchFormView.js";
 import headerContentView from "./views/headerContentView.js";
 import personsSelectionView from "./views/flights-search-form/personsSelectionView.js";
+import personsSelectionBtnView from "./views/flights-search-form/personsSelectionBtnView.js";
 
 const controlSelectPersons = function () {
   // Generate persons selection markup
@@ -15,6 +16,12 @@ const controlSelectPersons = function () {
   // Add the functionality for selecting the number of persons
   personsSelectionView._adultsCounter();
   personsSelectionView._childrenCounter();
+
+  // Dynamically update the content of the persons dropdown button
+  personsSelectionBtnView._generateMarkup(
+    personsSelectionView._adults,
+    personsSelectionView._children
+  );
 
   // Add the functionality for selection done
   searchFormView._hideSelectionDropdown();
