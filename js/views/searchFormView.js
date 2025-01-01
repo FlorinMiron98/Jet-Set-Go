@@ -10,7 +10,7 @@ class SearchFormView {
   flightClassDropdown = document.querySelector(".flight-class-selection");
   selectionDoneBtns = document.querySelectorAll(".selection-done-btn");
 
-  setDropdownDynamicStyling() {
+  _setDropdownDynamicStyling() {
     ["load", "resize"].forEach((e) => {
       window.addEventListener(e, () => {
         const parentSizes =
@@ -20,8 +20,10 @@ class SearchFormView {
         const selectFlightClassBtnSizes =
           this.flightClassDropdownBtn.getBoundingClientRect();
 
-        this.personsSelectionDropdown.style.top = `${selectPersonsBtnSizes.height}px`;
-        this.flightClassDropdown.style.top = `${parentSizes.height}px`;
+        this.personsSelectionDropdown.style.top = `${
+          selectPersonsBtnSizes.height + 10
+        }px`;
+        this.flightClassDropdown.style.top = `${parentSizes.height + 10}px`;
         this.flightClassDropdown.style.left = `${
           selectFlightClassBtnSizes.left - parentSizes.left
         }px`;
@@ -29,7 +31,7 @@ class SearchFormView {
     });
   }
 
-  showSelectionDropdown() {
+  _showSelectionDropdown() {
     this.dropdownInputsContainer.addEventListener("click", (e) => {
       const visibleDropdowns = document.querySelectorAll(".dropdown-visible");
 
@@ -46,7 +48,7 @@ class SearchFormView {
     });
   }
 
-  hideSelectionDropdown() {
+  _hideSelectionDropdown() {
     this.selectionDoneBtns.forEach((btn) => {
       btn.addEventListener("click", (e) => {
         e.target
