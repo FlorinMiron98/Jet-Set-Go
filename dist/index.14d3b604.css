@@ -179,8 +179,11 @@ header #flights-search-form .persons-selection, header #flights-search-form .fli
   opacity: 0;
   visibility: hidden;
   transition: visibility .2s ease-in-out, opacity .25s ease-in-out, transform .25s ease-in-out;
-  top: 105%;
   transform: translateY(10%);
+}
+
+header #flights-search-form .persons-selection {
+  max-height: 26.875rem;
 }
 
 header #flights-search-form .selection-done-btn {
@@ -195,7 +198,7 @@ header #flights-search-form .selection-done-btn:hover {
 header #flights-search-form .persons-selection.dropdown-visible, header #flights-search-form .flight-class-selection.dropdown-visible {
   visibility: visible;
   opacity: 1;
-  transform: translateY(3%);
+  transform: translateY(0);
 }
 
 header #flights-search-form .persons-selection {
@@ -229,6 +232,10 @@ header #flights-search-form .selection-decrease-btn, header #flights-search-form
 
 header #flights-search-form .selection-decrease-btn:hover, header #flights-search-form .selection-increase-btn:hover {
   background-color: var(--color-gray-light);
+}
+
+header #flights-search-form .selection-decrease-btn:disabled, header #flights-search-form .selection-increase-btn:disabled {
+  cursor: not-allowed;
 }
 
 header #flights-search-form .dropdown-btn {

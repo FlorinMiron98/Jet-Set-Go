@@ -239,13 +239,17 @@ header #flights-search-form .flight-class-selection {
   background-color: var(--color-white);
   box-shadow: var(--box-shadow-dark);
   z-index: 1;
-  top: 105%;
   opacity: 0;
   visibility: hidden;
   transform: translateY(10%);
   /* As visibility doesn't support transition, I added a short delay of 0.05s so the transition on opacity and transform is visible */
   transition: visibility 0.2s ease-in-out, opacity 0.25s ease-in-out,
     transform 0.25s ease-in-out;
+}
+
+header #flights-search-form .persons-selection {
+  /* 430px / 16px */
+  max-height: 26.875rem;
 }
 
 /* Style the 'Done' buttons for persons and flight class dropdown containers */
@@ -262,7 +266,7 @@ header #flights-search-form .persons-selection.dropdown-visible,
 header #flights-search-form .flight-class-selection.dropdown-visible {
   visibility: visible;
   opacity: 1;
-  transform: translateY(3%);
+  transform: translateY(0);
 }
 
 header #flights-search-form .persons-selection {
@@ -298,6 +302,10 @@ header #flights-search-form .selection-increase-btn {
 header #flights-search-form .selection-decrease-btn:hover,
 header #flights-search-form .selection-increase-btn:hover {
   background-color: var(--color-gray-light);
+}
+header #flights-search-form .selection-decrease-btn:disabled,
+header #flights-search-form .selection-increase-btn:disabled {
+  cursor: not-allowed;
 }
 
 header #flights-search-form .dropdown-btn {
