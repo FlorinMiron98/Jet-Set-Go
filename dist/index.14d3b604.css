@@ -145,7 +145,7 @@ header .header-main-content {
 header .header-main-content-nav a {
   background-color: var(--color-gray-transparent);
   color: var(--color-white);
-  letter-spacing: 1.05px;
+  letter-spacing: 1.1px;
 }
 
 header .header-main-content-nav .flights-link.active, header .header-main-content-nav .flights-link:hover {
@@ -216,6 +216,10 @@ header #flights-search-form .flight-class-selection .flight-class-btn {
   color: var(--flights-secondary);
 }
 
+header #flights-search-form .flight-class-selection .flight-class-btn.selected {
+  outline: 2px solid var(--flights-primary);
+}
+
 header #flights-search-form .flight-class-selection .flight-class-btn:hover {
   background-color: var(--color-gray-light);
 }
@@ -240,7 +244,7 @@ header #flights-search-form .selection-decrease-btn:disabled, header #flights-se
 
 header #flights-search-form .dropdown-btn {
   color: var(--color-white);
-  letter-spacing: 1.05px;
+  letter-spacing: 1.1px;
   transition: all .25s linear;
 }
 

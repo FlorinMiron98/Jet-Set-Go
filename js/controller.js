@@ -4,6 +4,8 @@ import searchFormView from "./views/searchFormView.js";
 import headerContentView from "./views/headerContentView.js";
 import personsSelectionView from "./views/flights-search-form/personsSelectionView.js";
 import personsSelectionBtnView from "./views/flights-search-form/personsSelectionBtnView.js";
+import flightClassSelectionView from "./views/flights-search-form/flightClassSelectionView.js";
+import flightClassSelectionBtnView from "./views/flights-search-form/flightClassSelectionBtnView.js";
 
 const controlSelectPersons = function () {
   // Generate persons selection markup
@@ -27,9 +29,20 @@ const controlSelectPersons = function () {
   searchFormView._hideSelectionDropdown();
 };
 
+const controlSelectFlightClass = function () {
+  // Select flight class
+  flightClassSelectionView._selectFlightClass();
+
+  // Dynamically update the select flight class button text content
+  flightClassSelectionBtnView._generateMarkup(
+    flightClassSelectionView._selectedBtn
+  );
+};
+
 const init = function () {
   navbarView.setDynamicStyling();
   personsSelectionView._addHandlerRender(controlSelectPersons);
+  flightClassSelectionView._addHandlerRender(controlSelectFlightClass);
   sideNavbarView.setDynamicStyling();
   sideNavbarView.toggleSideNavbar();
   searchFormView._setDropdownDynamicStyling();
