@@ -609,6 +609,10 @@ var _personsSelectionViewJs = require("./views/flights-search-form/personsSelect
 var _personsSelectionViewJsDefault = parcelHelpers.interopDefault(_personsSelectionViewJs);
 var _personsSelectionBtnViewJs = require("./views/flights-search-form/personsSelectionBtnView.js");
 var _personsSelectionBtnViewJsDefault = parcelHelpers.interopDefault(_personsSelectionBtnViewJs);
+var _flightClassSelectionViewJs = require("./views/flights-search-form/flightClassSelectionView.js");
+var _flightClassSelectionViewJsDefault = parcelHelpers.interopDefault(_flightClassSelectionViewJs);
+var _flightClassSelectionBtnViewJs = require("./views/flights-search-form/flightClassSelectionBtnView.js");
+var _flightClassSelectionBtnViewJsDefault = parcelHelpers.interopDefault(_flightClassSelectionBtnViewJs);
 const controlSelectPersons = function() {
     // Generate persons selection markup
     (0, _personsSelectionViewJsDefault.default)._generateAdultsMarkup();
@@ -623,9 +627,16 @@ const controlSelectPersons = function() {
     // Add the functionality for selection done
     (0, _searchFormViewJsDefault.default)._hideSelectionDropdown();
 };
+const controlSelectFlightClass = function() {
+    // Select flight class
+    (0, _flightClassSelectionViewJsDefault.default)._selectFlightClass();
+    // Dynamically update the select flight class button text content
+    (0, _flightClassSelectionBtnViewJsDefault.default)._generateMarkup((0, _flightClassSelectionViewJsDefault.default)._selectedBtn);
+};
 const init = function() {
     (0, _navbarViewJsDefault.default).setDynamicStyling();
     (0, _personsSelectionViewJsDefault.default)._addHandlerRender(controlSelectPersons);
+    (0, _flightClassSelectionViewJsDefault.default)._addHandlerRender(controlSelectFlightClass);
     (0, _sideNavbarViewJsDefault.default).setDynamicStyling();
     (0, _sideNavbarViewJsDefault.default).toggleSideNavbar();
     (0, _searchFormViewJsDefault.default)._setDropdownDynamicStyling();
@@ -634,7 +645,7 @@ const init = function() {
 };
 init();
 
-},{"./views/sideNavbarView.js":"9BkUd","./views/navbarView.js":"9sJsi","./views/searchFormView.js":"gHYzF","./views/headerContentView.js":"d8zti","./views/flights-search-form/personsSelectionView.js":"dn95k","./views/flights-search-form/personsSelectionBtnView.js":"hLXZN","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9BkUd":[function(require,module,exports,__globalThis) {
+},{"./views/sideNavbarView.js":"9BkUd","./views/navbarView.js":"9sJsi","./views/searchFormView.js":"gHYzF","./views/headerContentView.js":"d8zti","./views/flights-search-form/personsSelectionView.js":"dn95k","./views/flights-search-form/personsSelectionBtnView.js":"hLXZN","./views/flights-search-form/flightClassSelectionView.js":"bMDTa","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./views/flights-search-form/flightClassSelectionBtnView.js":"5GwaT"}],"9BkUd":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 class SideNavbarView {
@@ -727,44 +738,44 @@ exports.default = new NavbarView();
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 class SearchFormView {
-    dropdownInputsContainer = document.querySelector(".dropdown-inputs-container");
-    flightPersonsDropdownBtn = document.getElementById("flight-persons-dropdown-btn");
-    flightClassDropdownBtn = document.getElementById("flight-class-dropdown-btn");
-    personsSelectionDropdown = document.querySelector(".persons-selection");
-    flightClassDropdown = document.querySelector(".flight-class-selection");
-    selectionDoneBtns = document.querySelectorAll(".selection-done-btn");
+    _dropdownInputsContainer = document.querySelector(".dropdown-inputs-container");
+    _flightPersonsDropdownBtn = document.getElementById("flight-persons-dropdown-btn");
+    _flightClassDropdownBtn = document.getElementById("flight-class-dropdown-btn");
+    _personsSelectionDropdown = document.querySelector(".persons-selection");
+    _flightClassDropdown = document.querySelector(".flight-class-selection");
+    _selectionDoneBtns = document.querySelectorAll(".selection-done-btn");
     _setDropdownDynamicStyling() {
         [
             "load",
             "resize"
         ].forEach((e)=>{
             window.addEventListener(e, ()=>{
-                const parentSizes = this.dropdownInputsContainer.getBoundingClientRect();
-                const selectPersonsBtnSizes = this.flightPersonsDropdownBtn.getBoundingClientRect();
-                const selectFlightClassBtnSizes = this.flightClassDropdownBtn.getBoundingClientRect();
-                this.personsSelectionDropdown.style.top = `${selectPersonsBtnSizes.height + 10}px`;
-                this.flightClassDropdown.style.top = `${parentSizes.height + 10}px`;
-                this.flightClassDropdown.style.left = `${selectFlightClassBtnSizes.left - parentSizes.left}px`;
+                const parentSizes = this._dropdownInputsContainer.getBoundingClientRect();
+                const selectPersonsBtnSizes = this._flightPersonsDropdownBtn.getBoundingClientRect();
+                const selectFlightClassBtnSizes = this._flightClassDropdownBtn.getBoundingClientRect();
+                this._personsSelectionDropdown.style.top = `${selectPersonsBtnSizes.height + 10}px`;
+                this._flightClassDropdown.style.top = `${parentSizes.height + 10}px`;
+                this._flightClassDropdown.style.left = `${selectFlightClassBtnSizes.left - parentSizes.left}px`;
             });
         });
     }
     _showSelectionDropdown() {
-        this.dropdownInputsContainer.addEventListener("click", (e)=>{
+        this._dropdownInputsContainer.addEventListener("click", (e)=>{
             const visibleDropdowns = document.querySelectorAll(".dropdown-visible");
             if (e.target.closest("#flight-persons-dropdown-btn")) {
                 visibleDropdowns.forEach((e)=>e.classList.remove("dropdown-visible"));
-                this.personsSelectionDropdown.classList.add("dropdown-visible");
-                this.personsSelectionDropdown.scrollIntoView(false);
+                this._personsSelectionDropdown.classList.add("dropdown-visible");
+                this._personsSelectionDropdown.scrollIntoView(false);
             }
             if (e.target.closest("#flight-class-dropdown-btn")) {
                 visibleDropdowns.forEach((e)=>e.classList.remove("dropdown-visible"));
-                this.flightClassDropdown.classList.add("dropdown-visible");
-                this.flightClassDropdown.scrollIntoView(false);
+                this._flightClassDropdown.classList.add("dropdown-visible");
+                this._flightClassDropdown.scrollIntoView(false);
             }
         });
     }
     _hideSelectionDropdown() {
-        this.selectionDoneBtns.forEach((btn)=>{
+        this._selectionDoneBtns.forEach((btn)=>{
             btn.addEventListener("click", (e)=>{
                 e.target.closest(".dropdown-visible").classList.remove("dropdown-visible");
             });
@@ -994,6 +1005,52 @@ class PersonsSelectionBtnView {
     }
 }
 exports.default = new PersonsSelectionBtnView();
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bMDTa":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _flightClassSelectionBtnView = require("./flightClassSelectionBtnView");
+var _flightClassSelectionBtnViewDefault = parcelHelpers.interopDefault(_flightClassSelectionBtnView);
+class FlightClassSelectionView {
+    _flightClassBtns = document.querySelectorAll(".flight-class-btn");
+    _selectedBtn;
+    _addHandlerRender(handler) {
+        window.addEventListener("load", handler);
+    }
+    _selectFlightClass() {
+        this._flightClassBtns.forEach((btn)=>{
+            btn.addEventListener("click", ()=>{
+                this._flightClassBtns.forEach((btn)=>{
+                    btn.classList.remove("selected");
+                });
+                btn.classList.add("selected");
+                this._selectedBtn = btn;
+                (0, _flightClassSelectionBtnViewDefault.default)._generateMarkup(this._selectedBtn.textContent);
+            });
+        });
+    }
+}
+exports.default = new FlightClassSelectionView();
+
+},{"./flightClassSelectionBtnView":"5GwaT","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5GwaT":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+class FlightClassSelectionBtnView {
+    _flightsClassBtn = document.getElementById("flight-class-dropdown-btn");
+    _generateMarkup(flightClass = "Economy") {
+        this._clearMarkup();
+        const markup = `
+    <i class="fa-solid fa-plane-circle-check"></i>
+              <span>${flightClass}</span>
+    <i class="fa-solid fa-chevron-down"></i>
+    `;
+        this._flightsClassBtn.insertAdjacentHTML("afterbegin", markup);
+    }
+    _clearMarkup() {
+        this._flightsClassBtn.innerHTML = "";
+    }
+}
+exports.default = new FlightClassSelectionBtnView();
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["4nnrR","1GgH0"], "1GgH0", "parcelRequire94c2")
 

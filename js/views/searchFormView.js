@@ -1,30 +1,32 @@
 class SearchFormView {
-  dropdownInputsContainer = document.querySelector(
+  _dropdownInputsContainer = document.querySelector(
     ".dropdown-inputs-container"
   );
-  flightPersonsDropdownBtn = document.getElementById(
+  _flightPersonsDropdownBtn = document.getElementById(
     "flight-persons-dropdown-btn"
   );
-  flightClassDropdownBtn = document.getElementById("flight-class-dropdown-btn");
-  personsSelectionDropdown = document.querySelector(".persons-selection");
-  flightClassDropdown = document.querySelector(".flight-class-selection");
-  selectionDoneBtns = document.querySelectorAll(".selection-done-btn");
+  _flightClassDropdownBtn = document.getElementById(
+    "flight-class-dropdown-btn"
+  );
+  _personsSelectionDropdown = document.querySelector(".persons-selection");
+  _flightClassDropdown = document.querySelector(".flight-class-selection");
+  _selectionDoneBtns = document.querySelectorAll(".selection-done-btn");
 
   _setDropdownDynamicStyling() {
     ["load", "resize"].forEach((e) => {
       window.addEventListener(e, () => {
         const parentSizes =
-          this.dropdownInputsContainer.getBoundingClientRect();
+          this._dropdownInputsContainer.getBoundingClientRect();
         const selectPersonsBtnSizes =
-          this.flightPersonsDropdownBtn.getBoundingClientRect();
+          this._flightPersonsDropdownBtn.getBoundingClientRect();
         const selectFlightClassBtnSizes =
-          this.flightClassDropdownBtn.getBoundingClientRect();
+          this._flightClassDropdownBtn.getBoundingClientRect();
 
-        this.personsSelectionDropdown.style.top = `${
+        this._personsSelectionDropdown.style.top = `${
           selectPersonsBtnSizes.height + 10
         }px`;
-        this.flightClassDropdown.style.top = `${parentSizes.height + 10}px`;
-        this.flightClassDropdown.style.left = `${
+        this._flightClassDropdown.style.top = `${parentSizes.height + 10}px`;
+        this._flightClassDropdown.style.left = `${
           selectFlightClassBtnSizes.left - parentSizes.left
         }px`;
       });
@@ -32,24 +34,24 @@ class SearchFormView {
   }
 
   _showSelectionDropdown() {
-    this.dropdownInputsContainer.addEventListener("click", (e) => {
+    this._dropdownInputsContainer.addEventListener("click", (e) => {
       const visibleDropdowns = document.querySelectorAll(".dropdown-visible");
 
       if (e.target.closest("#flight-persons-dropdown-btn")) {
         visibleDropdowns.forEach((e) => e.classList.remove("dropdown-visible"));
-        this.personsSelectionDropdown.classList.add("dropdown-visible");
-        this.personsSelectionDropdown.scrollIntoView(false);
+        this._personsSelectionDropdown.classList.add("dropdown-visible");
+        this._personsSelectionDropdown.scrollIntoView(false);
       }
       if (e.target.closest("#flight-class-dropdown-btn")) {
         visibleDropdowns.forEach((e) => e.classList.remove("dropdown-visible"));
-        this.flightClassDropdown.classList.add("dropdown-visible");
-        this.flightClassDropdown.scrollIntoView(false);
+        this._flightClassDropdown.classList.add("dropdown-visible");
+        this._flightClassDropdown.scrollIntoView(false);
       }
     });
   }
 
   _hideSelectionDropdown() {
-    this.selectionDoneBtns.forEach((btn) => {
+    this._selectionDoneBtns.forEach((btn) => {
       btn.addEventListener("click", (e) => {
         e.target
           .closest(".dropdown-visible")
