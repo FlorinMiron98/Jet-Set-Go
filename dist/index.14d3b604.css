@@ -54,6 +54,25 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 6rem;
 }
 
+.loader {
+  border: .5rem solid var(--color-gray-light);
+  border-top: .5rem solid var(--flights-secondary);
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  animation: 2s linear infinite spin;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .overlay {
   background-color: var(--color-dark-transparent);
   transition: all .25s ease-in-out;
@@ -265,6 +284,46 @@ header #flights-search-form .location-inputs-wrapper {
 
 header #flights-search-form .dates-wrapper {
   grid-area: date;
+}
+
+header #flights-search-form .departure-location-results, header #flights-search-form .arrival-location-results {
+  background-color: var(--color-white);
+  width: 100%;
+  box-shadow: var(--box-shadow-dark);
+  max-height: 23.4375rem;
+  top: calc(100% + 10px);
+}
+
+header #flights-search-form .departure-location-results h2, header #flights-search-form .arrival-location-results h2 {
+  color: var(--flights-primary);
+}
+
+header #flights-search-form .departure-location-city:visited, header #flights-search-form .departure-location-city:link, header #flights-search-form .arrival-location-city:visited, header #flights-search-form .arrival-location-city:link {
+  color: var(--color-dark-2);
+  gap: 1rem;
+}
+
+header #flights-search-form .departure-location-city:hover, header #flights-search-form .departure-location-city:active, header #flights-search-form .arrival-location-city:hover, header #flights-search-form .arrival-location-city:active {
+  background-color: var(--color-gray-light);
+}
+
+header #flights-search-form .departure-location-city .city-image, header #flights-search-form .arrival-location-city .city-image {
+  max-width: 4.4rem;
+  max-height: 4.4rem;
+}
+
+header #flights-search-form .result-list-item a:link, header #flights-search-form .result-list-item a:visited {
+  color: var(--color-dark-2);
+  gap: 1rem;
+}
+
+header #flights-search-form .result-list-item a:hover, header #flights-search-form .result-list-item a:active {
+  background-color: var(--color-gray-light);
+}
+
+header #flights-search-form .result-list-item .result-icon {
+  width: 2.6rem;
+  height: 2.6rem;
 }
 
 header #flights-search-form .inputs-container .search-button {
@@ -479,6 +538,16 @@ footer .quick-links a:hover, footer .quick-links a:active, footer .social-media-
   header #flights-search-form .location-inputs-wrapper, header #flights-search-form .dates-wrapper {
     flex-direction: column;
     gap: .6rem;
+  }
+
+  header #flights-search-form .departure-location-city .city-image, header #flights-search-form .arrival-location-city .city-image {
+    max-width: 4rem;
+    max-height: 4rem;
+  }
+
+  header #flights-search-form .result-list-item .result-icon {
+    width: 1.6rem;
+    height: 1.6rem;
   }
 
   header #flights-search-form .input-wrapper .locations-reverse-button {

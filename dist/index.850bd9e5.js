@@ -645,7 +645,7 @@ const init = function() {
 };
 init();
 
-},{"./views/sideNavbarView.js":"9BkUd","./views/navbarView.js":"9sJsi","./views/searchFormView.js":"gHYzF","./views/headerContentView.js":"d8zti","./views/flights-search-form/personsSelectionView.js":"dn95k","./views/flights-search-form/personsSelectionBtnView.js":"hLXZN","./views/flights-search-form/flightClassSelectionView.js":"bMDTa","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./views/flights-search-form/flightClassSelectionBtnView.js":"5GwaT"}],"9BkUd":[function(require,module,exports,__globalThis) {
+},{"./views/sideNavbarView.js":"9BkUd","./views/navbarView.js":"9sJsi","./views/searchFormView.js":"gHYzF","./views/headerContentView.js":"d8zti","./views/flights-search-form/personsSelectionView.js":"dn95k","./views/flights-search-form/personsSelectionBtnView.js":"hLXZN","./views/flights-search-form/flightClassSelectionView.js":"bMDTa","./views/flights-search-form/flightClassSelectionBtnView.js":"5GwaT","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9BkUd":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 class SideNavbarView {
