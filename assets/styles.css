@@ -357,6 +357,7 @@ header #flights-search-form .dates-wrapper {
 /* Search results dropdown containers styling */
 header #flights-search-form .departure-location-results,
 header #flights-search-form .arrival-location-results {
+  display: none;
   top: calc(100% + 10px);
   width: 100%;
   background-color: var(--color-white);
@@ -364,6 +365,11 @@ header #flights-search-form .arrival-location-results {
   /* 375px / 16 */
   max-height: 23.4375rem;
 }
+header #flights-search-form .departure-location-results.visible,
+header #flights-search-form .arrival-location-results.visible {
+  display: block;
+}
+
 header #flights-search-form .departure-location-results h2,
 header #flights-search-form .arrival-location-results h2 {
   color: var(--flights-primary);
