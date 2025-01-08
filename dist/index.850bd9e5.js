@@ -596,15 +596,18 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"1GgH0":[function(require,module,exports,__globalThis) {
+// Model import
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-var _sideNavbarViewJs = require("./views/sideNavbarView.js");
-var _sideNavbarViewJsDefault = parcelHelpers.interopDefault(_sideNavbarViewJs);
+var _modelJs = require("./model.js");
+// Views imports
 var _navbarViewJs = require("./views/navbarView.js");
 var _navbarViewJsDefault = parcelHelpers.interopDefault(_navbarViewJs);
-var _searchFormViewJs = require("./views/searchFormView.js");
-var _searchFormViewJsDefault = parcelHelpers.interopDefault(_searchFormViewJs);
+var _sideNavbarViewJs = require("./views/sideNavbarView.js");
+var _sideNavbarViewJsDefault = parcelHelpers.interopDefault(_sideNavbarViewJs);
 var _headerContentViewJs = require("./views/headerContentView.js");
 var _headerContentViewJsDefault = parcelHelpers.interopDefault(_headerContentViewJs);
+var _searchFormViewJs = require("./views/searchFormView.js");
+var _searchFormViewJsDefault = parcelHelpers.interopDefault(_searchFormViewJs);
 var _personsSelectionViewJs = require("./views/flights-search-form/personsSelectionView.js");
 var _personsSelectionViewJsDefault = parcelHelpers.interopDefault(_personsSelectionViewJs);
 var _personsSelectionBtnViewJs = require("./views/flights-search-form/personsSelectionBtnView.js");
@@ -613,6 +616,10 @@ var _flightClassSelectionViewJs = require("./views/flights-search-form/flightCla
 var _flightClassSelectionViewJsDefault = parcelHelpers.interopDefault(_flightClassSelectionViewJs);
 var _flightClassSelectionBtnViewJs = require("./views/flights-search-form/flightClassSelectionBtnView.js");
 var _flightClassSelectionBtnViewJsDefault = parcelHelpers.interopDefault(_flightClassSelectionBtnViewJs);
+var _departureLocationSearchViewJs = require("./views/flights-search-form/departureLocationSearchView.js");
+var _departureLocationSearchViewJsDefault = parcelHelpers.interopDefault(_departureLocationSearchViewJs);
+var _arrivalLocationSearchViewJs = require("./views/flights-search-form/arrivalLocationSearchView.js");
+var _arrivalLocationSearchViewJsDefault = parcelHelpers.interopDefault(_arrivalLocationSearchViewJs);
 const controlSelectPersons = function() {
     // Generate persons selection markup
     (0, _personsSelectionViewJsDefault.default)._generateAdultsMarkup();
@@ -633,10 +640,53 @@ const controlSelectFlightClass = function() {
     // Dynamically update the select flight class button text content
     (0, _flightClassSelectionBtnViewJsDefault.default)._generateMarkup((0, _flightClassSelectionViewJsDefault.default)._selectedBtn);
 };
+const controlDepartureSearchLocations = async function() {
+    try {
+        // Render spinner
+        (0, _departureLocationSearchViewJsDefault.default)._renderSpinner();
+        // Get search query
+        const query = (0, _departureLocationSearchViewJsDefault.default)._getQuery();
+        if (!query) return;
+        // Load search results
+        await _modelJs.loadSearchFlightsResults(query, (0, _departureLocationSearchViewJsDefault.default)._transit);
+        // Render results
+        (0, _departureLocationSearchViewJsDefault.default)._renderMarkup(_modelJs.state.locationResults.departureLocationResults, (0, _departureLocationSearchViewJsDefault.default)._transit);
+    } catch (error) {
+        (0, _departureLocationSearchViewJsDefault.default)._renderError(error.message);
+    }
+};
+const controlArrivalSearchLocations = async function() {
+    // Render spinner
+    (0, _arrivalLocationSearchViewJsDefault.default)._renderSpinner();
+    // Get search query
+    const query = (0, _arrivalLocationSearchViewJsDefault.default)._getQuery();
+    if (!query) return;
+    // Load search results
+    await _modelJs.loadSearchFlightsResults(query, (0, _arrivalLocationSearchViewJsDefault.default)._transit);
+    // Render results
+    (0, _arrivalLocationSearchViewJsDefault.default)._renderMarkup(_modelJs.state.locationResults.arrivalLocationResults, (0, _arrivalLocationSearchViewJsDefault.default)._transit);
+};
+const controlDepartureSearchLoseFocus = function() {
+    // Hide the results container
+    (0, _departureLocationSearchViewJsDefault.default)._hideContainerResults();
+    // Clear the markup
+    (0, _departureLocationSearchViewJsDefault.default)._clearMarkup();
+};
+const controlArrivalSearchLoseFocus = function() {
+    // Hide the results container
+    (0, _arrivalLocationSearchViewJsDefault.default)._hideContainerResults();
+    // Clear the markup
+    (0, _arrivalLocationSearchViewJsDefault.default)._clearMarkup();
+};
 const init = function() {
-    (0, _navbarViewJsDefault.default).setDynamicStyling();
     (0, _personsSelectionViewJsDefault.default)._addHandlerRender(controlSelectPersons);
     (0, _flightClassSelectionViewJsDefault.default)._addHandlerRender(controlSelectFlightClass);
+    (0, _departureLocationSearchViewJsDefault.default)._addHandlerSearch(controlDepartureSearchLocations);
+    (0, _arrivalLocationSearchViewJsDefault.default)._addHandlerSearch(controlArrivalSearchLocations);
+    (0, _departureLocationSearchViewJsDefault.default)._addHandlerLoseFocus(controlDepartureSearchLoseFocus);
+    (0, _arrivalLocationSearchViewJsDefault.default)._addHandlerLoseFocus(controlArrivalSearchLoseFocus);
+    // Dynamic styling
+    (0, _navbarViewJsDefault.default).setDynamicStyling();
     (0, _sideNavbarViewJsDefault.default).setDynamicStyling();
     (0, _sideNavbarViewJsDefault.default).toggleSideNavbar();
     (0, _searchFormViewJsDefault.default)._setDropdownDynamicStyling();
@@ -645,48 +695,44 @@ const init = function() {
 };
 init();
 
-},{"./views/sideNavbarView.js":"9BkUd","./views/navbarView.js":"9sJsi","./views/searchFormView.js":"gHYzF","./views/headerContentView.js":"d8zti","./views/flights-search-form/personsSelectionView.js":"dn95k","./views/flights-search-form/personsSelectionBtnView.js":"hLXZN","./views/flights-search-form/flightClassSelectionView.js":"bMDTa","./views/flights-search-form/flightClassSelectionBtnView.js":"5GwaT","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9BkUd":[function(require,module,exports,__globalThis) {
+},{"./model.js":"Py0LO","./views/navbarView.js":"9sJsi","./views/sideNavbarView.js":"9BkUd","./views/headerContentView.js":"d8zti","./views/searchFormView.js":"gHYzF","./views/flights-search-form/personsSelectionView.js":"dn95k","./views/flights-search-form/personsSelectionBtnView.js":"hLXZN","./views/flights-search-form/flightClassSelectionView.js":"bMDTa","./views/flights-search-form/flightClassSelectionBtnView.js":"5GwaT","./views/flights-search-form/departureLocationSearchView.js":"7D4AX","./views/flights-search-form/arrivalLocationSearchView.js":"gjx8h","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"Py0LO":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-class SideNavbarView {
-    navbar = document.getElementById("nav");
-    sideNavbar = document.querySelector(".sidebar-navigation");
-    hamburgerBtn = document.getElementById("hamburger-btn");
-    overlay = document.querySelector(".overlay");
-    setDynamicStyling() {
-        [
-            "load",
-            "resize"
-        ].forEach((e)=>{
-            window.addEventListener(e, ()=>{
-                const navbarSize = this.navbar.getBoundingClientRect();
-                this.sideNavbar.style.marginTop = `${navbarSize.height}px`;
-            });
-        });
+parcelHelpers.export(exports, "state", ()=>state);
+parcelHelpers.export(exports, "loadSearchFlightsResults", ()=>loadSearchFlightsResults);
+var _configJs = require("./config.js");
+const state = {
+    locationResults: {
+        departureLocationResults: [],
+        arrivalLocationResults: []
     }
-    toggleSideNavbar() {
-        document.body.addEventListener("click", (e)=>{
-            if (e.target.classList.contains("overlay")) {
-                this.sideNavbar.classList.remove("sidebar-navigation-visible");
-                e.target.classList.remove("overlay-visible");
-            }
-            if (e.target.classList.contains("overlay") && window.scrollY === 0) {
-                this.navbar.classList.remove("navigation-highlight");
-                this.sideNavbar.classList.remove("sidebar-navigation-visible");
-                e.target.classList.remove("overlay-visible");
-            }
-        });
-        this.hamburgerBtn.addEventListener("click", ()=>{
-            this.sideNavbar.classList.toggle("sidebar-navigation-visible");
-            this.overlay.classList.toggle("overlay-visible");
-            if (window.scrollY === 0) {
-                if (this.navbar.classList.contains("navigation-highlight")) this.navbar.classList.remove("navigation-highlight");
-                else this.navbar.classList.add("navigation-highlight");
-            }
-        });
+};
+const loadSearchFlightsResults = async function(query, transit) {
+    const url = `https://booking-com15.p.rapidapi.com/api/v1/flights/searchDestination?query=${query}`;
+    try {
+        const response = await fetch(url, (0, _configJs.OPTIONS));
+        if (!response.ok) throw new Error("Something went wrong. Please try again!");
+        const data = await response.json();
+        if (transit === "departure") state.locationResults.departureLocationResults = data.data;
+        if (transit === "arrival") state.locationResults.arrivalLocationResults = data.data;
+        console.log(state);
+    } catch (error) {
+        console.log(error);
+        throw error;
     }
-}
-exports.default = new SideNavbarView();
+};
+
+},{"./config.js":"4Wc5b","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4Wc5b":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "OPTIONS", ()=>OPTIONS);
+const OPTIONS = {
+    method: "GET",
+    headers: {
+        "x-rapidapi-key": "3728498269msh3cdb30e7c87b59bp10ba56jsn2d4cff454307",
+        "x-rapidapi-host": "booking-com15.p.rapidapi.com"
+    }
+};
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports,__globalThis) {
 exports.interopDefault = function(a) {
@@ -733,6 +779,70 @@ class NavbarView {
     }
 }
 exports.default = new NavbarView();
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9BkUd":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+class SideNavbarView {
+    navbar = document.getElementById("nav");
+    sideNavbar = document.querySelector(".sidebar-navigation");
+    hamburgerBtn = document.getElementById("hamburger-btn");
+    overlay = document.querySelector(".overlay");
+    setDynamicStyling() {
+        [
+            "load",
+            "resize"
+        ].forEach((e)=>{
+            window.addEventListener(e, ()=>{
+                const navbarSize = this.navbar.getBoundingClientRect();
+                this.sideNavbar.style.marginTop = `${navbarSize.height}px`;
+            });
+        });
+    }
+    toggleSideNavbar() {
+        document.body.addEventListener("click", (e)=>{
+            if (e.target.classList.contains("overlay")) {
+                this.sideNavbar.classList.remove("sidebar-navigation-visible");
+                e.target.classList.remove("overlay-visible");
+            }
+            if (e.target.classList.contains("overlay") && window.scrollY === 0) {
+                this.navbar.classList.remove("navigation-highlight");
+                this.sideNavbar.classList.remove("sidebar-navigation-visible");
+                e.target.classList.remove("overlay-visible");
+            }
+        });
+        this.hamburgerBtn.addEventListener("click", ()=>{
+            this.sideNavbar.classList.toggle("sidebar-navigation-visible");
+            this.overlay.classList.toggle("overlay-visible");
+            if (window.scrollY === 0) {
+                if (this.navbar.classList.contains("navigation-highlight")) this.navbar.classList.remove("navigation-highlight");
+                else this.navbar.classList.add("navigation-highlight");
+            }
+        });
+    }
+}
+exports.default = new SideNavbarView();
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"d8zti":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+class HeaderContentView {
+    navbar = document.getElementById("nav");
+    header = document.getElementById("header");
+    setDynamicStyling() {
+        [
+            "load",
+            "resize"
+        ].forEach((e)=>{
+            window.addEventListener(e, ()=>{
+                const navbarSizes = this.navbar.getBoundingClientRect();
+                this.header.style.paddingTop = `${navbarSizes.height}px`;
+                this.header.style.paddingBottom = `${navbarSizes.height}px`;
+            });
+        });
+    }
+}
+exports.default = new HeaderContentView();
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gHYzF":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -783,27 +893,6 @@ class SearchFormView {
     }
 }
 exports.default = new SearchFormView();
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"d8zti":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-class HeaderContentView {
-    navbar = document.getElementById("nav");
-    header = document.getElementById("header");
-    setDynamicStyling() {
-        [
-            "load",
-            "resize"
-        ].forEach((e)=>{
-            window.addEventListener(e, ()=>{
-                const navbarSizes = this.navbar.getBoundingClientRect();
-                this.header.style.paddingTop = `${navbarSizes.height}px`;
-                this.header.style.paddingBottom = `${navbarSizes.height}px`;
-            });
-        });
-    }
-}
-exports.default = new HeaderContentView();
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dn95k":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -1052,6 +1141,168 @@ class FlightClassSelectionBtnView {
 }
 exports.default = new FlightClassSelectionBtnView();
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["4nnrR","1GgH0"], "1GgH0", "parcelRequire94c2")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7D4AX":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _locationSearchViewJs = require("./locationSearchView.js");
+var _locationSearchViewJsDefault = parcelHelpers.interopDefault(_locationSearchViewJs);
+class DepartureLocationSearchView extends (0, _locationSearchViewJsDefault.default) {
+    _parentEl = document.querySelector(".departure-location-results");
+    _searchResultsList = document.querySelector(".departure-location-results-list");
+    _searchLocationInput = document.getElementById("departure-location");
+    _transit = "departure";
+}
+exports.default = new DepartureLocationSearchView();
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./locationSearchView.js":"h4rke"}],"h4rke":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+class LocationSearchView {
+    _errorMessage = "No locations found for your query. Please try again!";
+    _addHandlerSearch(handler) {
+        this._searchLocationInput.addEventListener("input", (e)=>{
+            e.preventDefault();
+            // Display the search results container if the length of the input's value is bigger than 1
+            if (this._searchLocationInput.value.length >= 1) this._showContainerResults();
+            else this._hideContainerResults();
+            handler();
+        });
+    }
+    _addHandlerLoseFocus(handler) {
+        this._searchLocationInput.addEventListener("blur", ()=>{
+            handler();
+        });
+    }
+    _showContainerResults() {
+        this._parentEl.classList.add("visible");
+    }
+    _hideContainerResults() {
+        this._parentEl.classList.remove("visible");
+    }
+    _clearMarkup() {
+        this._searchResultsList.innerHTML = "";
+    }
+    _getQuery() {
+        const query = this._searchLocationInput.value;
+        return query;
+    }
+    _renderSpinner() {
+        const markup = `
+        <div class="loader-container d-flex justify-content-center">
+            <div class="loader"></div>
+        </div>
+    `;
+        this._clearMarkup();
+        this._searchResultsList.insertAdjacentHTML("afterbegin", markup);
+    }
+    _renderError(message = this._errorMessage) {
+        this._clearMarkup();
+        const markup = `
+      <div class="error">
+            <p>${message}</p>
+      </div>
+    `;
+        this._searchResultsList.insertAdjacentHTML("afterbegin", markup);
+    }
+    _renderMarkup(data, transit) {
+        this._clearMarkup();
+        const markup = data.map((item, index)=>{
+            const currentItem = data[index];
+            const previousItem = data[index - 1];
+            if (currentItem.type === "CITY") return `
+        <li class="result-list-item">
+        <a
+            href="#"
+            class="${transit}-location-city d-flex align-items-center p-0 p-sm-3 text-decoration-none rounded-3"
+            data-id=${item.id}
+            >
+                  <div class="city-image">
+                    <img
+                      src=${item.photoUri}
+                      alt="City Image"
+                      class="w-100 h-100 rounded-3"
+                    />
+                  </div>
+                  <div class="city-details">
+                    <h3 class="fs-5 fw-bold">
+                      ${item.name}, ${item.regionName}, ${item.countryName}
+                      <span class="fw-normal">(${item.code})</span>
+                    </h3>
+                    <p class="m-0">All airports</p>
+                  </div>
+        </a>
+        </li>
+        `;
+            if (currentItem.type === "AIRPORT") {
+                if (previousItem && currentItem.regionName === previousItem.regionName) return `
+            <li class="result-list-item ms-3">
+                    <a
+                      href="#"
+                      class="d-flex align-items-center text-decoration-none py-3 px-0 px-sm-3 rounded-3"
+                      data-id=${item.id}
+                      data-city=${item.city}
+                    >
+                      <div class="result-icon">
+                        <img
+                          src="/plane-icon.d3f3c76d.png"
+                          class="w-100 h-100"
+                          alt="Plane icon"
+                        />
+                      </div>
+                      <div class="result-content">
+                        <p class="fw-bold mb-1">${item.code} ${item.name}</p>
+                        <p class="m-0">${item.distanceToCity.value.toFixed(2)}${item.distanceToCity.unit} from city centre</p>
+                      </div>
+                    </a>
+           </li>
+          `;
+                if (previousItem && currentItem.regionName !== previousItem.regionName || data.length === 1) return `
+            <li class="result-list-item">
+                    <a
+                      href="#"
+                      class="d-flex align-items-center text-decoration-none py-3 px-0 px-sm-3 rounded-3"
+                      data-id=${item.id}
+                      data-city=${item.city}
+                    >
+                      <div class="result-icon">
+                        <img
+                          src="/plane-icon.d3f3c76d.png"
+                          class="w-100 h-100"
+                          alt="Plane icon"
+                        />
+                      </div>
+                      <div class="result-content">
+                        <p class="fw-bold mb-1">${item.code} ${item.name}</p>
+                        <p class="m-0">${item.cityName}, ${item.regionName}, ${item.countryName}</p>
+                      </div>
+                    </a>
+           </li>
+          `;
+                if (data.length === 0) return `
+            <li class="result-list-item">
+              <p>No locations found for your query. Please try again!</p>
+            </li>
+            `;
+            }
+        }).join("");
+        this._searchResultsList.insertAdjacentHTML("afterbegin", markup);
+    }
+}
+exports.default = LocationSearchView;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gjx8h":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _locationSearchViewJs = require("./locationSearchView.js");
+var _locationSearchViewJsDefault = parcelHelpers.interopDefault(_locationSearchViewJs);
+class ArrivalLocationSearchView extends (0, _locationSearchViewJsDefault.default) {
+    _parentEl = document.querySelector(".arrival-location-results");
+    _searchResultsList = document.querySelector(".arrival-location-results-list");
+    _searchLocationInput = document.getElementById("arrival-location");
+    _transit = "arrival";
+}
+exports.default = new ArrivalLocationSearchView();
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./locationSearchView.js":"h4rke"}]},["4nnrR","1GgH0"], "1GgH0", "parcelRequire94c2")
 
 //# sourceMappingURL=index.850bd9e5.js.map
