@@ -1,11 +1,17 @@
-import sideNavbarView from "./views/sideNavbarView.js";
+// Model import
+import * as model from "./model.js";
+
+// Views imports
 import navbarView from "./views/navbarView.js";
-import searchFormView from "./views/searchFormView.js";
+import sideNavbarView from "./views/sideNavbarView.js";
 import headerContentView from "./views/headerContentView.js";
+import searchFormView from "./views/searchFormView.js";
 import personsSelectionView from "./views/flights-search-form/personsSelectionView.js";
 import personsSelectionBtnView from "./views/flights-search-form/personsSelectionBtnView.js";
 import flightClassSelectionView from "./views/flights-search-form/flightClassSelectionView.js";
 import flightClassSelectionBtnView from "./views/flights-search-form/flightClassSelectionBtnView.js";
+import departureLocationSearchView from "./views/flights-search-form/departureLocationSearchView.js";
+import arrivalLocationSearchView from "./views/flights-search-form/arrivalLocationSearchView.js";
 
 const controlSelectPersons = function () {
   // Generate persons selection markup
@@ -39,10 +45,83 @@ const controlSelectFlightClass = function () {
   );
 };
 
+const controlDepartureSearchLocations = async function () {
+  try {
+    // Render spinner
+    departureLocationSearchView._renderSpinner();
+
+    // Get search query
+    const query = departureLocationSearchView._getQuery();
+    if (!query) return;
+
+    // Load search results
+    await model.loadSearchFlightsResults(
+      query,
+      departureLocationSearchView._transit
+    );
+
+    // Render results
+    departureLocationSearchView._renderMarkup(
+      model.state.locationResults.departureLocationResults,
+      departureLocationSearchView._transit
+    );
+  } catch (error) {
+    departureLocationSearchView._renderError(error.message);
+  }
+};
+
+const controlArrivalSearchLocations = async function () {
+  // Render spinner
+  arrivalLocationSearchView._renderSpinner();
+
+  // Get search query
+  const query = arrivalLocationSearchView._getQuery();
+  if (!query) return;
+
+  // Load search results
+  await model.loadSearchFlightsResults(
+    query,
+    arrivalLocationSearchView._transit
+  );
+
+  // Render results
+  arrivalLocationSearchView._renderMarkup(
+    model.state.locationResults.arrivalLocationResults,
+    arrivalLocationSearchView._transit
+  );
+};
+
+const controlDepartureSearchLoseFocus = function () {
+  // Hide the results container
+  departureLocationSearchView._hideContainerResults();
+
+  // Clear the markup
+  departureLocationSearchView._clearMarkup();
+};
+
+const controlArrivalSearchLoseFocus = function () {
+  // Hide the results container
+  arrivalLocationSearchView._hideContainerResults();
+
+  // Clear the markup
+  arrivalLocationSearchView._clearMarkup();
+};
+
 const init = function () {
-  navbarView.setDynamicStyling();
   personsSelectionView._addHandlerRender(controlSelectPersons);
   flightClassSelectionView._addHandlerRender(controlSelectFlightClass);
+  departureLocationSearchView._addHandlerSearch(
+    controlDepartureSearchLocations
+  );
+  arrivalLocationSearchView._addHandlerSearch(controlArrivalSearchLocations);
+
+  departureLocationSearchView._addHandlerLoseFocus(
+    controlDepartureSearchLoseFocus
+  );
+  arrivalLocationSearchView._addHandlerLoseFocus(controlArrivalSearchLoseFocus);
+
+  // Dynamic styling
+  navbarView.setDynamicStyling();
   sideNavbarView.setDynamicStyling();
   sideNavbarView.toggleSideNavbar();
   searchFormView._setDropdownDynamicStyling();

@@ -291,7 +291,12 @@ header #flights-search-form .departure-location-results, header #flights-search-
   width: 100%;
   box-shadow: var(--box-shadow-dark);
   max-height: 23.4375rem;
+  display: none;
   top: calc(100% + 10px);
+}
+
+header #flights-search-form .departure-location-results.visible, header #flights-search-form .arrival-location-results.visible {
+  display: block;
 }
 
 header #flights-search-form .departure-location-results h2, header #flights-search-form .arrival-location-results h2 {

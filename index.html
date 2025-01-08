@@ -203,70 +203,19 @@
               id="flight-persons-dropdown-btn"
               class="dropdown-btn btn border border-3 border-white rounded-5 fw-semibold focus-ring"
               type="button"
-            >
-              <!-- <i class="fa-solid fa-user-group"></i>
-              <span>1</span>
-              Adult,
-              <span>1</span>
-              Child
-              <i class="fa-solid fa-chevron-down"></i> -->
-            </button>
+            ></button>
             <!-- Flight Ticket Class Button -->
             <button
               id="flight-class-dropdown-btn"
               class="dropdown-btn btn border border-3 border-white rounded-5 fw-semibold focus-ring"
               type="button"
-            >
-              <!-- <i class="fa-solid fa-plane-circle-check"></i>
-              <span>Economy</span>
-              <i class="fa-solid fa-chevron-down"></i> -->
-            </button>
+            ></button>
             <!-- Persons Selection Dropdown -->
             <div
               class="persons-selection d-flex flex-column position-absolute z-2 rounded-3 p-4"
             >
-              <div class="adults d-flex justify-content-between">
-                <!-- <div class="selection-content d-flex flex-column">
-                  <h3 class="fs-5 fw-semibold">Adults</h3>
-                  <p class="m-0">Age 18+</p>
-                </div>
-                <div class="selection-number d-flex align-items-center">
-                  <button
-                    type="button"
-                    class="selection-decrease-btn border-0 rounded-3 focus-ring"
-                  >
-                    <i class="fa-solid fa-minus"></i>
-                  </button>
-                  <span class="selection-count">1</span>
-                  <button
-                    type="button"
-                    class="selection-increase-btn border-0 rounded-3 focus-ring"
-                  >
-                    <i class="fa-solid fa-plus"></i>
-                  </button>
-                </div> -->
-              </div>
-              <div class="children d-flex justify-content-between">
-                <!-- <div class="selection-content">
-                  <h3 class="fs-5 fw-semibold">Children</h3>
-                  <p class="m-0">Age 0 - 17</p>
-                </div>
-                <div class="selection-number d-flex align-items-center">
-                  <button
-                    type="button"
-                    class="selection-decrease-btn border-0 rounded-3 focus-ring"
-                  >
-                    <i class="fa-solid fa-minus"></i>
-                  </button>
-                  <span class="selection-count">1</span>
-                  <button
-                    type="button"
-                    class="selection-increase-btn border-0 rounded-3 focus-ring"
-                  >
-                    <i class="fa-solid fa-plus"></i>
-                  </button>
-                </div> -->
-              </div>
+              <div class="adults d-flex justify-content-between"></div>
+              <div class="children d-flex justify-content-between"></div>
               <div
                 class="selection-children-age flex-column overflow-auto"
               ></div>
@@ -374,134 +323,14 @@
               <div
                 class="departure-location-results position-absolute p-3 rounded-3 z-2 overflow-auto"
               >
-                <!-- @@@@@@@@@@@@@@@@@@@ Spinner -->
-                <!-- <div class="loader-container d-flex justify-content-center">
-                  <div class="loader"></div>
-                </div> -->
-                <!-- <h2 class="fs-4">Departure Location</h2> -->
-                <!-- <a
-                  href="#"
-                  class="departure-location-city d-flex align-items-center p-0 p-sm-3 text-decoration-none rounded-3"
-                >
-                  <div class="city-image">
-                    <img
-                      src="https://q-xx.bstatic.com/xdata/images/city/square150/977261.jpg?k=6e056b414cda72f979d7227aff6f5cb43035a30555649dce0292bae146ba4d57&o="
-                      alt="City Image"
-                      class="w-100 h-100 rounded-3"
-                    />
-                  </div>
-                  <div class="city-details">
-                    <h3 class="fs-5 fw-bold">
-                      London, England, United Kingdom
-                      <span class="fw-normal">(LON)</span>
-                    </h3>
-                    <p class="m-0">All airports</p>
-                  </div>
-                </a>
-                <ul class="list-unstyled">
-                  <li class="result-list-item">
-                    <a
-                      href="#"
-                      class="d-flex align-items-center text-decoration-none py-3 px-0 px-sm-3 rounded-3"
-                    >
-                      <div class="result-icon">
-                        <img
-                          src="./assets/images/plane-icon.png"
-                          class="w-100 h-100"
-                          alt=""
-                        />
-                      </div>
-                      <div class="result-content">
-                        <p class="fw-bold mb-1">LHR London Heathrow Airport</p>
-                        <p class="m-0">23km from city centre</p>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="result-list-item">
-                    <a
-                      href="#"
-                      class="d-flex align-items-center text-decoration-none py-3 px-0 px-sm-3 rounded-3"
-                    >
-                      <div class="result-icon">
-                        <img
-                          src="./assets/images/plane-icon.png"
-                          class="w-100 h-100"
-                          alt=""
-                        />
-                      </div>
-                      <div class="result-content">
-                        <p class="fw-bold mb-1">LHR London Heathrow Airport</p>
-                        <p class="m-0">23km from city centre</p>
-                      </div>
-                    </a>
-                  </li>
-                </ul> -->
+                <h2 class="fs-4">Departure Location</h2>
+                <ul class="departure-location-results-list list-unstyled"></ul>
               </div>
               <div
                 class="arrival-location-results position-absolute p-3 rounded-3 z-2 overflow-auto"
               >
                 <h2 class="fs-4">Arrival Location</h2>
-                <!-- @@@@@@@@@@@@@@@@@@@ Spinner -->
-                <!-- <div class="loader-container d-flex justify-content-center">
-                  <div class="loader"></div>
-                </div> -->
-                <a
-                  href="#"
-                  class="arrival-location-city d-flex align-items-center p-0 p-sm-3 text-decoration-none rounded-3"
-                >
-                  <div class="city-image">
-                    <img
-                      src="https://q-xx.bstatic.com/xdata/images/city/square150/977261.jpg?k=6e056b414cda72f979d7227aff6f5cb43035a30555649dce0292bae146ba4d57&o="
-                      alt="City Image"
-                      class="w-100 h-100 rounded-3"
-                    />
-                  </div>
-                  <div class="city-details">
-                    <h3 class="fs-6 fw-bold">
-                      London, England, United Kingdom
-                      <span class="fw-normal">(LON)</span>
-                    </h3>
-                    <p class="m-0">All airports</p>
-                  </div>
-                </a>
-                <ul class="list-unstyled">
-                  <li class="result-list-item">
-                    <a
-                      href="#"
-                      class="d-flex align-items-center text-decoration-none py-3 px-0 px-sm-3 rounded-3"
-                    >
-                      <div class="result-icon">
-                        <img
-                          src="./assets/images/plane-icon.png"
-                          class="w-100 h-100"
-                          alt=""
-                        />
-                      </div>
-                      <div class="result-content">
-                        <p class="fw-bold mb-1">LHR London Heathrow Airport</p>
-                        <p class="m-0">23km from city centre</p>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="result-list-item">
-                    <a
-                      href="#"
-                      class="d-flex align-items-center text-decoration-none py-3 px-0 px-sm-3 rounded-3"
-                    >
-                      <div class="result-icon">
-                        <img
-                          src="./assets/images/plane-icon.png"
-                          class="w-100 h-100"
-                          alt=""
-                        />
-                      </div>
-                      <div class="result-content">
-                        <p class="fw-bold mb-1">LHR London Heathrow Airport</p>
-                        <p class="m-0">23km from city centre</p>
-                      </div>
-                    </a>
-                  </li>
-                </ul>
+                <ul class="arrival-location-results-list list-unstyled"></ul>
               </div>
             </div>
             <div class="dates-wrapper d-flex flex-column flex-sm-row">
