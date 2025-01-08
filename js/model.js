@@ -17,15 +17,17 @@ export const loadSearchFlightsResults = async function (query, transit) {
     }
 
     const data = await response.json();
+    if (data.data.length === 0) {
+      throw new Error("No results found for your query. Please try again!");
+    }
+
     if (transit === "departure") {
       state.locationResults.departureLocationResults = data.data;
     }
     if (transit === "arrival") {
       state.locationResults.arrivalLocationResults = data.data;
     }
-    console.log(state);
   } catch (error) {
-    console.log(error);
     throw error;
   }
 };
