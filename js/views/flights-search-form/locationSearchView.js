@@ -1,5 +1,6 @@
 export default class LocationSearchView {
   _errorMessage = "No locations found for your query. Please try again!";
+  _noResultsMessage = "No results for this search, try something else.";
 
   _addHandlerSearch(handler) {
     this._searchLocationInput.addEventListener("input", (e) => {
@@ -35,7 +36,7 @@ export default class LocationSearchView {
   }
 
   _getQuery() {
-    const query = this._searchLocationInput.value;
+    const query = this._searchLocationInput.value.toLowerCase();
 
     return query;
   }
@@ -53,9 +54,9 @@ export default class LocationSearchView {
   _renderError(message = this._errorMessage) {
     this._clearMarkup();
     const markup = `
-      <div class="error">
-            <p>${message}</p>
-      </div>
+      <li class="text-center">
+            <p class="mb-0">${message}</p>
+      </li>
     `;
     this._searchResultsList.insertAdjacentHTML("afterbegin", markup);
   }
@@ -74,10 +75,16 @@ export default class LocationSearchView {
             href="#"
             class="${transit}-location-city d-flex align-items-center p-0 p-sm-3 text-decoration-none rounded-3"
             data-id=${item.id}
+            data-code=${item.code}
+            data-name=${item.name}
             >
                   <div class="city-image">
                     <img
-                      src=${item.photoUri}
+                      src=${
+                        !item.photoUri
+                          ? "/plane-icon.d3f3c76d.png"
+                          : item.photoUri
+                      }
                       alt="City Image"
                       class="w-100 h-100 rounded-3"
                     />
@@ -104,7 +111,8 @@ export default class LocationSearchView {
                       href="#"
                       class="d-flex align-items-center text-decoration-none py-3 px-0 px-sm-3 rounded-3"
                       data-id=${item.id}
-                      data-city=${item.city}
+                      data-code=${item.code}
+                      data-name=${item.cityName}
                     >
                       <div class="result-icon">
                         <img
@@ -135,7 +143,8 @@ export default class LocationSearchView {
                       href="#"
                       class="d-flex align-items-center text-decoration-none py-3 px-0 px-sm-3 rounded-3"
                       data-id=${item.id}
-                      data-city=${item.city}
+                      data-code=${item.code}
+                      data-name=${item.cityName}
                     >
                       <div class="result-icon">
                         <img
@@ -151,13 +160,6 @@ export default class LocationSearchView {
                     </a>
            </li>
           `;
-          }
-          if (data.length === 0) {
-            return `
-            <li class="result-list-item">
-              <p>No locations found for your query. Please try again!</p>
-            </li>
-            `;
           }
         }
       })
