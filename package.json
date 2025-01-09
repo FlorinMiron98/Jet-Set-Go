@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
+    "air-datepicker": "^3.5.3",
     "ansi-styles": "^4.3.0",
     "argparse": "^2.0.1",
     "base-x": "^3.0.10",
