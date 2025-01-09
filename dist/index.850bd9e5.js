@@ -712,10 +712,11 @@ const init = function() {
     (0, _searchFormViewJsDefault.default)._setDropdownDynamicStyling();
     (0, _searchFormViewJsDefault.default)._showSelectionDropdown();
     (0, _headerContentViewJsDefault.default).setDynamicStyling();
+    (0, _departureLocationSearchViewJsDefault.default).setDynamicStyling();
 };
 init();
 
-},{"./model.js":"Py0LO","./views/navbarView.js":"9sJsi","./views/sideNavbarView.js":"9BkUd","./views/headerContentView.js":"d8zti","./views/searchFormView.js":"gHYzF","./views/flights-search-form/personsSelectionView.js":"dn95k","./views/flights-search-form/personsSelectionBtnView.js":"hLXZN","./views/flights-search-form/flightClassSelectionView.js":"bMDTa","./views/flights-search-form/flightClassSelectionBtnView.js":"5GwaT","./views/flights-search-form/departureLocationSearchView.js":"7D4AX","./views/flights-search-form/arrivalLocationSearchView.js":"gjx8h","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./views/flights-search-form/reverseInputValuesView.js":"l8EtC","./views/flights-search-form/datePickerView.js":"8Mc3D"}],"Py0LO":[function(require,module,exports,__globalThis) {
+},{"./model.js":"Py0LO","./views/navbarView.js":"9sJsi","./views/sideNavbarView.js":"9BkUd","./views/headerContentView.js":"d8zti","./views/searchFormView.js":"gHYzF","./views/flights-search-form/personsSelectionView.js":"dn95k","./views/flights-search-form/personsSelectionBtnView.js":"hLXZN","./views/flights-search-form/flightClassSelectionView.js":"bMDTa","./views/flights-search-form/flightClassSelectionBtnView.js":"5GwaT","./views/flights-search-form/departureLocationSearchView.js":"7D4AX","./views/flights-search-form/arrivalLocationSearchView.js":"gjx8h","./views/flights-search-form/reverseInputValuesView.js":"l8EtC","./views/flights-search-form/datePickerView.js":"8Mc3D","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"Py0LO":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "state", ()=>state);
@@ -992,7 +993,7 @@ class PersonsSelectionView {
                         >${counter}${this._childrenCount(counter)} child's age</label
               >
               <select
-                name="${this._childrenCount(counter)}-child-age"
+                name="${counter}${this._childrenCount(counter)}-child-age"
                 id="child-age-${counter}"
                 class="px-3 py-2 rounded-3 focus-ring mb-3"
               >
@@ -1077,7 +1078,7 @@ class PersonsSelectionView {
         return array;
     }
     _childrenCount(count) {
-        switch(count){
+        switch(true){
             case count === 1:
                 return "st";
             case count === 2:
@@ -1168,8 +1169,21 @@ var _locationSearchViewJsDefault = parcelHelpers.interopDefault(_locationSearchV
 class DepartureLocationSearchView extends (0, _locationSearchViewJsDefault.default) {
     _parentEl = document.querySelector(".departure-location-results");
     _searchResultsList = document.querySelector(".departure-location-results-list");
+    _searchLocationWrapper = document.querySelector(".departure-location-wrapper");
     _searchLocationInput = document.getElementById("departure-location");
     _transit = "departure";
+    // Set the top position dynamically so the dropdown results list is displayed properly on small screen sizes
+    setDynamicStyling() {
+        [
+            "load",
+            "resize"
+        ].forEach((e)=>{
+            window.addEventListener(e, ()=>{
+                const sizes = this._searchLocationWrapper.getBoundingClientRect();
+                this._parentEl.style.top = `${sizes.height + 10}px`;
+            });
+        });
+    }
 }
 exports.default = new DepartureLocationSearchView();
 
@@ -1375,7 +1389,7 @@ class DatePickerView {
 }
 exports.default = new DatePickerView();
 
-},{"air-datepicker":"grWkP","air-datepicker/air-datepicker.css":"aM9jX","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","air-datepicker/locale/en":"6URka"}],"grWkP":[function(require,module,exports,__globalThis) {
+},{"air-datepicker":"grWkP","air-datepicker/air-datepicker.css":"aM9jX","air-datepicker/locale/en":"6URka","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"grWkP":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _airDatepicker = require("./air-datepicker");

@@ -149,6 +149,7 @@ const init = function () {
   searchFormView._setDropdownDynamicStyling();
   searchFormView._showSelectionDropdown();
   headerContentView.setDynamicStyling();
+  departureLocationSearchView.setDynamicStyling();
 };
 
 init();
