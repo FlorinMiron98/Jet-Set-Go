@@ -685,6 +685,8 @@ const init = function() {
     (0, _arrivalLocationSearchViewJsDefault.default)._addHandlerSearch(controlArrivalSearchLocations);
     (0, _departureLocationSearchViewJsDefault.default)._addHandlerLoseFocus(controlDepartureSearchLoseFocus);
     (0, _arrivalLocationSearchViewJsDefault.default)._addHandlerLoseFocus(controlArrivalSearchLoseFocus);
+    (0, _departureLocationSearchViewJsDefault.default)._assignInputValue();
+    (0, _arrivalLocationSearchViewJsDefault.default)._assignInputValue();
     // Dynamic styling
     (0, _navbarViewJsDefault.default).setDynamicStyling();
     (0, _sideNavbarViewJsDefault.default).setDynamicStyling();
@@ -713,11 +715,10 @@ const loadSearchFlightsResults = async function(query, transit) {
         const response = await fetch(url, (0, _configJs.OPTIONS));
         if (!response.ok) throw new Error("Something went wrong. Please try again!");
         const data = await response.json();
+        if (data.data.length === 0) throw new Error("No results found for your query. Please try again!");
         if (transit === "departure") state.locationResults.departureLocationResults = data.data;
         if (transit === "arrival") state.locationResults.arrivalLocationResults = data.data;
-        console.log(state);
     } catch (error) {
-        console.log(error);
         throw error;
     }
 };
@@ -1058,7 +1059,7 @@ class PersonsSelectionView {
         return array;
     }
     _childrenCount(count) {
-        switch(true){
+        switch(count){
             case count === 1:
                 return "st";
             case count === 2:
@@ -1154,11 +1155,12 @@ class DepartureLocationSearchView extends (0, _locationSearchViewJsDefault.defau
 }
 exports.default = new DepartureLocationSearchView();
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./locationSearchView.js":"h4rke"}],"h4rke":[function(require,module,exports,__globalThis) {
+},{"./locationSearchView.js":"h4rke","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"h4rke":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 class LocationSearchView {
     _errorMessage = "No locations found for your query. Please try again!";
+    _noResultsMessage = "No results for this search, try something else.";
     _addHandlerSearch(handler) {
         this._searchLocationInput.addEventListener("input", (e)=>{
             e.preventDefault();
@@ -1183,7 +1185,7 @@ class LocationSearchView {
         this._searchResultsList.innerHTML = "";
     }
     _getQuery() {
-        const query = this._searchLocationInput.value;
+        const query = this._searchLocationInput.value.toLowerCase();
         return query;
     }
     _renderSpinner() {
@@ -1198,9 +1200,9 @@ class LocationSearchView {
     _renderError(message = this._errorMessage) {
         this._clearMarkup();
         const markup = `
-      <div class="error">
-            <p>${message}</p>
-      </div>
+      <li class="text-center">
+            <p class="mb-0">${message}</p>
+      </li>
     `;
         this._searchResultsList.insertAdjacentHTML("afterbegin", markup);
     }
@@ -1215,10 +1217,13 @@ class LocationSearchView {
             href="#"
             class="${transit}-location-city d-flex align-items-center p-0 p-sm-3 text-decoration-none rounded-3"
             data-id=${item.id}
+            data-code=${item.code}
+            data-name=${item.name}
+            data-type=${item.type}
             >
                   <div class="city-image">
                     <img
-                      src=${item.photoUri}
+                      src=${!item.photoUri ? "/plane-icon.d3f3c76d.png" : item.photoUri}
                       alt="City Image"
                       class="w-100 h-100 rounded-3"
                     />
@@ -1240,7 +1245,9 @@ class LocationSearchView {
                       href="#"
                       class="d-flex align-items-center text-decoration-none py-3 px-0 px-sm-3 rounded-3"
                       data-id=${item.id}
-                      data-city=${item.city}
+                      data-code=${item.code}
+                      data-name=${item.cityName}
+                      data-type=${item.type}
                     >
                       <div class="result-icon">
                         <img
@@ -1262,7 +1269,9 @@ class LocationSearchView {
                       href="#"
                       class="d-flex align-items-center text-decoration-none py-3 px-0 px-sm-3 rounded-3"
                       data-id=${item.id}
-                      data-city=${item.city}
+                      data-code=${item.code}
+                      data-name=${item.cityName}
+                      data-type=${item.type}
                     >
                       <div class="result-icon">
                         <img
@@ -1278,14 +1287,18 @@ class LocationSearchView {
                     </a>
            </li>
           `;
-                if (data.length === 0) return `
-            <li class="result-list-item">
-              <p>No locations found for your query. Please try again!</p>
-            </li>
-            `;
             }
         }).join("");
         this._searchResultsList.insertAdjacentHTML("afterbegin", markup);
+    }
+    _assignInputValue() {
+        this._searchResultsList.addEventListener("mousedown", (e)=>{
+            const target = e.target.closest("a");
+            const code = target.dataset.code;
+            const name = target.dataset.name;
+            const assignedValue = `${name} ${code}`;
+            this._searchLocationInput.value = assignedValue;
+        });
     }
 }
 exports.default = LocationSearchView;
@@ -1303,6 +1316,6 @@ class ArrivalLocationSearchView extends (0, _locationSearchViewJsDefault.default
 }
 exports.default = new ArrivalLocationSearchView();
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./locationSearchView.js":"h4rke"}]},["4nnrR","1GgH0"], "1GgH0", "parcelRequire94c2")
+},{"./locationSearchView.js":"h4rke","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["4nnrR","1GgH0"], "1GgH0", "parcelRequire94c2")
 
 //# sourceMappingURL=index.850bd9e5.js.map

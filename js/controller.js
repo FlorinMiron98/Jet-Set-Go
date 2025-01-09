@@ -119,6 +119,8 @@ const init = function () {
     controlDepartureSearchLoseFocus
   );
   arrivalLocationSearchView._addHandlerLoseFocus(controlArrivalSearchLoseFocus);
+  departureLocationSearchView._assignInputValue();
+  arrivalLocationSearchView._assignInputValue();
 
   // Dynamic styling
   navbarView.setDynamicStyling();
