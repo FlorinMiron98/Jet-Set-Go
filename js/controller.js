@@ -13,6 +13,7 @@ import flightClassSelectionBtnView from "./views/flights-search-form/flightClass
 import departureLocationSearchView from "./views/flights-search-form/departureLocationSearchView.js";
 import arrivalLocationSearchView from "./views/flights-search-form/arrivalLocationSearchView.js";
 import reverseInputValuesView from "./views/flights-search-form/reverseInputValuesView.js";
+import datePickerView from "./views/flights-search-form/datePickerView.js";
 
 const controlSelectPersons = function () {
   // Generate persons selection markup
@@ -72,24 +73,28 @@ const controlDepartureSearchLocations = async function () {
 };
 
 const controlArrivalSearchLocations = async function () {
-  // Render spinner
-  arrivalLocationSearchView._renderSpinner();
+  try {
+    // Render spinner
+    arrivalLocationSearchView._renderSpinner();
 
-  // Get search query
-  const query = arrivalLocationSearchView._getQuery();
-  if (!query) return;
+    // Get search query
+    const query = arrivalLocationSearchView._getQuery();
+    if (!query) return;
 
-  // Load search results
-  await model.loadSearchFlightsResults(
-    query,
-    arrivalLocationSearchView._transit
-  );
+    // Load search results
+    await model.loadSearchFlightsResults(
+      query,
+      arrivalLocationSearchView._transit
+    );
 
-  // Render results
-  arrivalLocationSearchView._renderMarkup(
-    model.state.locationResults.arrivalLocationResults,
-    arrivalLocationSearchView._transit
-  );
+    // Render results
+    arrivalLocationSearchView._renderMarkup(
+      model.state.locationResults.arrivalLocationResults,
+      arrivalLocationSearchView._transit
+    );
+  } catch (error) {
+    arrivalLocationSearchView._renderError(error.message);
+  }
 };
 
 const controlDepartureSearchLoseFocus = function () {
@@ -135,6 +140,7 @@ const init = function () {
   departureLocationSearchView._assignInputValue();
   arrivalLocationSearchView._assignInputValue();
   reverseInputValuesView._addHandlerReverseValues(controlReverseInputValues);
+  datePickerView._setDatePicker();
 
   // Dynamic styling
   navbarView.setDynamicStyling();
