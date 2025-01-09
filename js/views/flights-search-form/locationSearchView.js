@@ -77,6 +77,7 @@ export default class LocationSearchView {
             data-id=${item.id}
             data-code=${item.code}
             data-name=${item.name}
+            data-type=${item.type}
             >
                   <div class="city-image">
                     <img
@@ -113,6 +114,7 @@ export default class LocationSearchView {
                       data-id=${item.id}
                       data-code=${item.code}
                       data-name=${item.cityName}
+                      data-type=${item.type}
                     >
                       <div class="result-icon">
                         <img
@@ -145,6 +147,7 @@ export default class LocationSearchView {
                       data-id=${item.id}
                       data-code=${item.code}
                       data-name=${item.cityName}
+                      data-type=${item.type}
                     >
                       <div class="result-icon">
                         <img
@@ -165,5 +168,17 @@ export default class LocationSearchView {
       })
       .join("");
     this._searchResultsList.insertAdjacentHTML("afterbegin", markup);
+  }
+
+  _assignInputValue() {
+    this._searchResultsList.addEventListener("mousedown", (e) => {
+      const target = e.target.closest("a");
+      const code = target.dataset.code;
+      const name = target.dataset.name;
+
+      const assignedValue = `${name} ${code}`;
+
+      this._searchLocationInput.value = assignedValue;
+    });
   }
 }

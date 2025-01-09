@@ -181,7 +181,7 @@ class PersonsSelectionView {
   }
 
   _childrenCount(count) {
-    switch (true) {
+    switch (count) {
       case count === 1:
         return "st";
       case count === 2:
