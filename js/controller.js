@@ -12,6 +12,7 @@ import flightClassSelectionView from "./views/flights-search-form/flightClassSel
 import flightClassSelectionBtnView from "./views/flights-search-form/flightClassSelectionBtnView.js";
 import departureLocationSearchView from "./views/flights-search-form/departureLocationSearchView.js";
 import arrivalLocationSearchView from "./views/flights-search-form/arrivalLocationSearchView.js";
+import reverseInputValuesView from "./views/flights-search-form/reverseInputValuesView.js";
 
 const controlSelectPersons = function () {
   // Generate persons selection markup
@@ -107,6 +108,18 @@ const controlArrivalSearchLoseFocus = function () {
   arrivalLocationSearchView._clearMarkup();
 };
 
+const controlReverseInputValues = function () {
+  // Extract the values and store them into variables
+  const departureLocationValue =
+    departureLocationSearchView._searchLocationInput.value;
+  const arrivalLocationValue =
+    arrivalLocationSearchView._searchLocationInput.value;
+
+  // Assign the new values
+  departureLocationSearchView._searchLocationInput.value = arrivalLocationValue;
+  arrivalLocationSearchView._searchLocationInput.value = departureLocationValue;
+};
+
 const init = function () {
   personsSelectionView._addHandlerRender(controlSelectPersons);
   flightClassSelectionView._addHandlerRender(controlSelectFlightClass);
@@ -121,6 +134,7 @@ const init = function () {
   arrivalLocationSearchView._addHandlerLoseFocus(controlArrivalSearchLoseFocus);
   departureLocationSearchView._assignInputValue();
   arrivalLocationSearchView._assignInputValue();
+  reverseInputValuesView._addHandlerReverseValues(controlReverseInputValues);
 
   // Dynamic styling
   navbarView.setDynamicStyling();

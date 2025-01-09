@@ -620,6 +620,8 @@ var _departureLocationSearchViewJs = require("./views/flights-search-form/depart
 var _departureLocationSearchViewJsDefault = parcelHelpers.interopDefault(_departureLocationSearchViewJs);
 var _arrivalLocationSearchViewJs = require("./views/flights-search-form/arrivalLocationSearchView.js");
 var _arrivalLocationSearchViewJsDefault = parcelHelpers.interopDefault(_arrivalLocationSearchViewJs);
+var _reverseInputValuesViewJs = require("./views/flights-search-form/reverseInputValuesView.js");
+var _reverseInputValuesViewJsDefault = parcelHelpers.interopDefault(_reverseInputValuesViewJs);
 const controlSelectPersons = function() {
     // Generate persons selection markup
     (0, _personsSelectionViewJsDefault.default)._generateAdultsMarkup();
@@ -678,6 +680,14 @@ const controlArrivalSearchLoseFocus = function() {
     // Clear the markup
     (0, _arrivalLocationSearchViewJsDefault.default)._clearMarkup();
 };
+const controlReverseInputValues = function() {
+    // Extract the values and store them into variables
+    const departureLocationValue = (0, _departureLocationSearchViewJsDefault.default)._searchLocationInput.value;
+    const arrivalLocationValue = (0, _arrivalLocationSearchViewJsDefault.default)._searchLocationInput.value;
+    // Assign the new values
+    (0, _departureLocationSearchViewJsDefault.default)._searchLocationInput.value = arrivalLocationValue;
+    (0, _arrivalLocationSearchViewJsDefault.default)._searchLocationInput.value = departureLocationValue;
+};
 const init = function() {
     (0, _personsSelectionViewJsDefault.default)._addHandlerRender(controlSelectPersons);
     (0, _flightClassSelectionViewJsDefault.default)._addHandlerRender(controlSelectFlightClass);
@@ -687,6 +697,7 @@ const init = function() {
     (0, _arrivalLocationSearchViewJsDefault.default)._addHandlerLoseFocus(controlArrivalSearchLoseFocus);
     (0, _departureLocationSearchViewJsDefault.default)._assignInputValue();
     (0, _arrivalLocationSearchViewJsDefault.default)._assignInputValue();
+    (0, _reverseInputValuesViewJsDefault.default)._addHandlerReverseValues(controlReverseInputValues);
     // Dynamic styling
     (0, _navbarViewJsDefault.default).setDynamicStyling();
     (0, _sideNavbarViewJsDefault.default).setDynamicStyling();
@@ -697,7 +708,7 @@ const init = function() {
 };
 init();
 
-},{"./model.js":"Py0LO","./views/navbarView.js":"9sJsi","./views/sideNavbarView.js":"9BkUd","./views/headerContentView.js":"d8zti","./views/searchFormView.js":"gHYzF","./views/flights-search-form/personsSelectionView.js":"dn95k","./views/flights-search-form/personsSelectionBtnView.js":"hLXZN","./views/flights-search-form/flightClassSelectionView.js":"bMDTa","./views/flights-search-form/flightClassSelectionBtnView.js":"5GwaT","./views/flights-search-form/departureLocationSearchView.js":"7D4AX","./views/flights-search-form/arrivalLocationSearchView.js":"gjx8h","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"Py0LO":[function(require,module,exports,__globalThis) {
+},{"./model.js":"Py0LO","./views/navbarView.js":"9sJsi","./views/sideNavbarView.js":"9BkUd","./views/headerContentView.js":"d8zti","./views/searchFormView.js":"gHYzF","./views/flights-search-form/personsSelectionView.js":"dn95k","./views/flights-search-form/personsSelectionBtnView.js":"hLXZN","./views/flights-search-form/flightClassSelectionView.js":"bMDTa","./views/flights-search-form/flightClassSelectionBtnView.js":"5GwaT","./views/flights-search-form/departureLocationSearchView.js":"7D4AX","./views/flights-search-form/arrivalLocationSearchView.js":"gjx8h","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./views/flights-search-form/reverseInputValuesView.js":"l8EtC"}],"Py0LO":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "state", ()=>state);
@@ -1316,6 +1327,19 @@ class ArrivalLocationSearchView extends (0, _locationSearchViewJsDefault.default
 }
 exports.default = new ArrivalLocationSearchView();
 
-},{"./locationSearchView.js":"h4rke","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["4nnrR","1GgH0"], "1GgH0", "parcelRequire94c2")
+},{"./locationSearchView.js":"h4rke","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"l8EtC":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+class ReverseInputValuesBtn {
+    _locationsReverseBtn = document.querySelector(".locations-reverse-button");
+    _addHandlerReverseValues(handler) {
+        this._locationsReverseBtn.addEventListener("click", ()=>{
+            handler();
+        });
+    }
+}
+exports.default = new ReverseInputValuesBtn();
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["4nnrR","1GgH0"], "1GgH0", "parcelRequire94c2")
 
 //# sourceMappingURL=index.850bd9e5.js.map
