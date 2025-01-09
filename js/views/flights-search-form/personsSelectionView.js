@@ -82,7 +82,7 @@ class PersonsSelectionView {
     )} child's age</label
               >
               <select
-                name="${this._childrenCount(counter)}-child-age"
+                name="${counter}${this._childrenCount(counter)}-child-age"
                 id="child-age-${counter}"
                 class="px-3 py-2 rounded-3 focus-ring mb-3"
               >
@@ -181,7 +181,7 @@ class PersonsSelectionView {
   }
 
   _childrenCount(count) {
-    switch (count) {
+    switch (true) {
       case count === 1:
         return "st";
       case count === 2:
