@@ -1,6 +1,10 @@
 export default class LocationSearchView {
   _errorMessage = "No locations found for your query. Please try again!";
   _noResultsMessage = "No results for this search, try something else.";
+  _queryValues = {
+    departureLocationId: "",
+    arrivalLocationId: "",
+  };
 
   _addHandlerSearch(handler) {
     this._searchLocationInput.addEventListener("input", (e) => {
@@ -177,10 +181,23 @@ export default class LocationSearchView {
       const target = e.target.closest("a");
       const code = target.dataset.code;
       const name = target.dataset.name;
+      const id = target.dataset.id;
+
+      this._updateQueryValues(this._transit, id);
 
       const assignedValue = `${name} ${code}`;
 
       this._searchLocationInput.value = assignedValue;
     });
+  }
+
+  _updateQueryValues(transit, idValue) {
+    if (transit === "departure") {
+      this._queryValues.departureLocationId = idValue;
+      console.log(this._queryValues);
+    }
+    if (transit === "arrival") {
+      this._queryValues.arrivalLocationId = idValue;
+    }
   }
 }
