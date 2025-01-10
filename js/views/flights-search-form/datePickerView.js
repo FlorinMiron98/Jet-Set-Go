@@ -4,21 +4,41 @@ import localeEn from "air-datepicker/locale/en";
 
 class DatePickerView {
   _departureDate = document.getElementById("departure-date");
-  _arrivalDate = document.getElementById("return-date");
+  _returnDate = document.getElementById("return-date");
+
+  _queryValues = {
+    departureDate: "",
+    returnDate: "",
+  };
 
   // Dynamically create the today date
   _today = new Date().toISOString().split("T")[0];
 
-  _datepickerOptions = {
+  _departureOptions = {
     position: "bottom center",
     buttons: ["clear"],
     locale: localeEn,
     minDate: this._today,
+    onSelect: (date) => {
+      this._queryValues.departureDate = date;
+      console.log(this._queryValues.departureDate);
+    },
+  };
+
+  _returnOptions = {
+    position: "bottom center",
+    buttons: ["clear"],
+    locale: localeEn,
+    minDate: this._today,
+    onSelect: (date) => {
+      this._queryValues.returnDate = date;
+      console.log(this._queryValues.returnDate);
+    },
   };
 
   _setDatePicker() {
-    new AirDatepicker(this._departureDate, this._datepickerOptions);
-    new AirDatepicker(this._arrivalDate, this._datepickerOptions);
+    new AirDatepicker(this._departureDate, this._departureOptions);
+    new AirDatepicker(this._returnDate, this._returnOptions);
   }
 }
 
