@@ -535,6 +535,10 @@ footer .quick-links a:hover, footer .quick-links a:active, footer .social-media-
     width: 100%;
   }
 
+  header #flights-search-form .selection-number {
+    gap: .75rem;
+  }
+
   header #flights-search-form .input-wrapper {
     border-radius: .5rem;
     min-height: 2.6rem;
