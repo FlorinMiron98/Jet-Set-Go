@@ -92,7 +92,9 @@ export default class LocationSearchView {
                   </div>
                   <div class="city-details">
                     <h3 class="fs-5 fw-bold">
-                      ${item.name}, ${item.regionName}, ${item.countryName}
+                      ${item.name}${
+            !item.regionName ? "" : ", " + item.regionName
+          }, ${item.countryName}
                       <span class="fw-normal">(${item.code})</span>
                     </h3>
                     <p class="m-0">All airports</p>
