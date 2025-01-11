@@ -7,7 +7,9 @@ class PersonsSelectionView {
   _childrenAgeParentEl = document.querySelector(".selection-children-age");
   _adults = 1;
   _children = 0;
-  _childrenSelectAgeElements = [];
+  _childrenSelectAgeMarkup = [];
+  _childrenSelectAgeEl =
+    this._childrenAgeParentEl.getElementsByTagName("select");
 
   _addHandlerRender(handler) {
     window.addEventListener("load", handler);
@@ -107,12 +109,12 @@ class PersonsSelectionView {
               </select>
           `;
 
-    this._childrenSelectAgeElements.push(selectMarkup);
+    this._childrenSelectAgeMarkup.push(selectMarkup);
   }
 
   _displaySelectChildAgeEl() {
     this._clearMarkup(this._childrenAgeParentEl);
-    const markup = this._childrenSelectAgeElements
+    const markup = this._childrenSelectAgeMarkup
       .map((el) => {
         return el;
       })
@@ -152,7 +154,7 @@ class PersonsSelectionView {
       if (e.target.closest(".selection-decrease-btn")) {
         this._children--;
         personsSelectionBtnView._generateMarkup(this._adults, this._children);
-        this._removeChildAgeEl(this._childrenSelectAgeElements);
+        this._removeChildAgeEl(this._childrenSelectAgeMarkup);
         this._displaySelectChildAgeEl();
         this._generateChildrenMarkup();
         this._generateAdultsMarkup();
