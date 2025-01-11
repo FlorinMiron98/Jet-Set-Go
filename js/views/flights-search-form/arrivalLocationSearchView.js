@@ -5,6 +5,7 @@ class ArrivalLocationSearchView extends SearchLocationView {
   _searchResultsList = document.querySelector(".arrival-location-results-list");
   _searchLocationInput = document.getElementById("arrival-location");
 
+  _arrivalLocationId = "";
   _transit = "arrival";
 }
 

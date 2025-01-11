@@ -10,6 +10,7 @@ class DepartureLocationSearchView extends searchLocationView {
   );
   _searchLocationInput = document.getElementById("departure-location");
 
+  _departureLocationId = "";
   _transit = "departure";
 
   // Set the top position dynamically so the dropdown results list is displayed properly on small screen sizes
