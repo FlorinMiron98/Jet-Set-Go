@@ -14,6 +14,7 @@ import departureLocationSearchView from "./views/flights-search-form/departureLo
 import arrivalLocationSearchView from "./views/flights-search-form/arrivalLocationSearchView.js";
 import reverseInputValuesView from "./views/flights-search-form/reverseInputValuesView.js";
 import datePickerView from "./views/flights-search-form/datePickerView.js";
+import searchResultsBtnView from "./views/flights-search-form/searchResultsBtnView.js";
 
 const controlSelectPersons = function () {
   // Generate persons selection markup
@@ -114,15 +115,29 @@ const controlArrivalSearchLoseFocus = function () {
 };
 
 const controlReverseInputValues = function () {
-  // Extract the values and store them into variables
+  // Extract the input values and store them into variables
   const departureLocationValue =
     departureLocationSearchView._searchLocationInput.value;
   const arrivalLocationValue =
     arrivalLocationSearchView._searchLocationInput.value;
 
-  // Assign the new values
+  // Assign the new values for the inputs
   departureLocationSearchView._searchLocationInput.value = arrivalLocationValue;
   arrivalLocationSearchView._searchLocationInput.value = departureLocationValue;
+
+  // Extract the query values and store them into variables
+  const departureLocationId = departureLocationSearchView._departureLocationId;
+  const arrivalLocationId = arrivalLocationSearchView._arrivalLocationId;
+  console.log(departureLocationId, arrivalLocationId);
+
+  // Assign the new values for the query parameters
+  departureLocationSearchView._departureLocationId = arrivalLocationId;
+  arrivalLocationSearchView._arrivalLocationId = departureLocationId;
+  console.log(departureLocationId, arrivalLocationId);
+};
+
+const controlReturnSearchQueries = function () {
+  searchResultsBtnView._checkValues();
 };
 
 const init = function () {
@@ -141,6 +156,8 @@ const init = function () {
   arrivalLocationSearchView._assignInputValue();
   reverseInputValuesView._addHandlerReverseValues(controlReverseInputValues);
   datePickerView._setDatePicker();
+
+  searchResultsBtnView._addHandlerCreateQueries(controlReturnSearchQueries);
 
   // Dynamic styling
   navbarView.setDynamicStyling();
