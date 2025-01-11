@@ -1,10 +1,6 @@
 export default class LocationSearchView {
   _errorMessage = "No locations found for your query. Please try again!";
   _noResultsMessage = "No results for this search, try something else.";
-  _queryValues = {
-    departureLocationId: "",
-    arrivalLocationId: "",
-  };
 
   _addHandlerSearch(handler) {
     this._searchLocationInput.addEventListener("input", (e) => {
@@ -193,11 +189,10 @@ export default class LocationSearchView {
 
   _updateQueryValues(transit, idValue) {
     if (transit === "departure") {
-      this._queryValues.departureLocationId = idValue;
-      console.log(this._queryValues);
+      this._departureLocationId = idValue;
     }
     if (transit === "arrival") {
-      this._queryValues.arrivalLocationId = idValue;
+      this._arrivalLocationId = idValue;
     }
   }
 }
