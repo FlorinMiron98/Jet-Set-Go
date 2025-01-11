@@ -406,9 +406,11 @@ header #flights-search-form .result-list-item .result-icon {
   height: 2.6rem;
 }
 
-header #flights-search-form .inputs-container .search-button {
+header #flights-search-form .inputs-container .search-button:visited,
+header #flights-search-form .inputs-container .search-button:link {
   grid-area: search;
   height: 3rem;
+  gap: 0.15rem;
   background-color: var(--color-highlight);
   color: var(--color-white);
   transition: all 0.25s linear;
