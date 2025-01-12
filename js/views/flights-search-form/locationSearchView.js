@@ -74,10 +74,10 @@ export default class LocationSearchView {
         <a
             href="#"
             class="${transit}-location-city d-flex align-items-center p-0 p-sm-3 text-decoration-none rounded-3"
-            data-id=${item.id}
-            data-code=${item.code}
-            data-name=${item.name}
-            data-type=${item.type}
+            data-id="${item.id}"
+            data-code="${item.code}"
+            data-name="${item.name}"
+            data-type="${item.type}"
             >
                   <div class="city-image">
                     <img
@@ -113,10 +113,10 @@ export default class LocationSearchView {
                     <a
                       href="#"
                       class="d-flex align-items-center text-decoration-none py-3 px-0 px-sm-3 rounded-3"
-                      data-id=${item.id}
-                      data-code=${item.code}
-                      data-name=${item.cityName}
-                      data-type=${item.type}
+                      data-id="${item.id}"
+                      data-code="${item.code}"
+                      data-name="${item.cityName}"
+                      data-type="${item.type}"
                     >
                       <div class="result-icon">
                         <img
@@ -146,10 +146,10 @@ export default class LocationSearchView {
                     <a
                       href="#"
                       class="d-flex align-items-center text-decoration-none py-3 px-0 px-sm-3 rounded-3"
-                      data-id=${item.id}
-                      data-code=${item.code}
-                      data-name=${item.cityName}
-                      data-type=${item.type}
+                      data-id="${item.id}"
+                      data-code="${item.code}"
+                      data-name="${item.cityName}"
+                      data-type="${item.type}"
                     >
                       <div class="result-icon">
                         <img
@@ -179,11 +179,10 @@ export default class LocationSearchView {
       const name = target.dataset.name;
       const id = target.dataset.id;
 
-      this._updateQueryValues(this._transit, id);
-
       const assignedValue = `${name} ${code}`;
-
       this._searchLocationInput.value = assignedValue;
+
+      this._updateQueryValues(this._transit, id);
     });
   }
 
