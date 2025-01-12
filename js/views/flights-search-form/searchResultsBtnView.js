@@ -26,7 +26,7 @@ class SearchResultsBtnView {
     returnDate: "",
   };
 
-  //
+  // Pass the handler function from the controller to the click event listener
   _addHandlerCreateQueries(handler) {
     this._searchBtn.addEventListener("click", handler);
   }
@@ -59,7 +59,6 @@ class SearchResultsBtnView {
           // Assign the value of each child's age to the queryStringValues object (converted into a number type)
           this._queryStringValues.persons.children.push(+el.value);
         }
-        console.log(el.value);
       }
     }
 
@@ -120,9 +119,11 @@ class SearchResultsBtnView {
           .join("-");
     }
 
-    console.log(this._queryStringValues);
-
-    return this._queryStringValues;
+    // Set the href attribute dynamically while adding all the user's input data stored as query parameters
+    this._searchBtn.setAttribute(
+      "href",
+      this._generateQueryParametersMarkup(this._queryStringValues)
+    );
   }
 
   // A method to help with the form validation created in order to avoid repetitive code
@@ -134,6 +135,33 @@ class SearchResultsBtnView {
 
     // Hide the tippy box after 3 seconds
     setTimeout(() => tippyInstance.hide(), 3000);
+  }
+
+  _generateQueryParametersMarkup(queryValues) {
+    // As the children ages will be stored in an array, we have to take into consideration the size of the array
+    let childrenAges;
+
+    if (queryValues.persons.children.length === 1) {
+      childrenAges = queryValues.persons.children[0];
+    }
+    if (queryValues.persons.children.length === 0) {
+      childrenAges = "";
+    }
+    if (queryValues.persons.children.length > 1) {
+      // '%2C' is the URL-encoded representation of a comma (,) character.
+      childrenAges = queryValues.persons.children.join("%2C");
+    }
+
+    const adults = queryValues.persons.adults;
+    const flightClass = queryValues.flightClass;
+    const departureLocationId = queryValues.departureLocationId;
+    const arrivalLocationId = queryValues.arrivalLocationId;
+    const departureDate = queryValues.departureDate;
+    const returnDate = queryValues.returnDate;
+
+    const URL = `results.html?adults=${adults}&children=${childrenAges}&flightClass=${flightClass}&departureLocationId=${departureLocationId}&arrivalLocationId=${arrivalLocationId}&departureDate=${departureDate}&returnDate=${returnDate}`;
+
+    return URL;
   }
 }
 
