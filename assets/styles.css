@@ -464,7 +464,7 @@ header #flights-search-form .inputs-container .search-button {
   color: var(--color-white);
   transition: all 0.25s linear;
   box-shadow: var(--box-shadow-dark);
-  /* As the href attribute will be dynamically added using JavaScript, I had to add the cursor: pointer property for a proper UX */
+  /* As the href attribute value will be dynamically added using JavaScript, I had to add the cursor: pointer property for a proper UX */
   cursor: pointer;
 }
 
