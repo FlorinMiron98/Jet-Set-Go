@@ -1,6 +1,8 @@
 class FlightClassSelectionBtnView {
+  // DOM elements
   _flightsClassBtn = document.getElementById("flight-class-dropdown-btn");
 
+  // Dynamically generate the markup for the flight class selection while setting the default value to 'Economy'
   _generateMarkup(flightClass = "Economy") {
     this._clearMarkup();
     const markup = `
@@ -12,6 +14,7 @@ class FlightClassSelectionBtnView {
     this._flightsClassBtn.insertAdjacentHTML("afterbegin", markup);
   }
 
+  // Clear markup method
   _clearMarkup() {
     this._flightsClassBtn.innerHTML = "";
   }

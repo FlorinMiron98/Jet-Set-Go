@@ -28,6 +28,7 @@
   --color-hightlight-transparent: #ffa200b3;
   --color-gray-transparent: #f5f5f540;
   --color-dark-transparent: #202d3d80;
+  --color-warning: #ff4500;
   --darkening-bg-image: linear-gradient(#00000026, #00000026);
   --box-shadow-dark: 0px 9px 6px -4px #464646;
   --box-shadow-light: 0px 2px 8px 1px #afafaf;
@@ -83,6 +84,39 @@ h1, h2, h3, h4, h5, h6 {
 .overlay.overlay-visible {
   z-index: 2;
   transform: translate(0);
+}
+
+.tippy-box {
+  transition: all .25s linear;
+}
+
+.tippy-box[data-theme~="warning"] {
+  background-color: var(--color-warning);
+  color: var(--color-white);
+  box-shadow: var(--box-shadow-dark);
+  border-radius: .5rem;
+  padding: 0 .5rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.tippy-box[data-animation="fade-custom"][data-state="hidden"] {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.tippy-box[data-animation="fade-custom"][data-state="visible"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tippy-box[data-theme~="warning"] .tippy-arrow {
+  border-color: var(--color-warning);
+  border-width: 5px;
+}
+
+.tippy-box[data-theme~="warning"] .tippy-arrow:before {
+  border-top-color: var(--color-warning);
 }
 
 .sidebar-navigation {
@@ -201,6 +235,12 @@ header #flights-search-form .persons-selection, header #flights-search-form .fli
   transform: translateY(10%);
 }
 
+header #flights-search-form .persons-selection.dropdown-visible, header #flights-search-form .flight-class-selection.dropdown-visible {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
 header #flights-search-form .persons-selection {
   max-height: 26.875rem;
 }
@@ -212,12 +252,6 @@ header #flights-search-form .selection-done-btn {
 
 header #flights-search-form .selection-done-btn:hover {
   background-color: var(--flights-secondary);
-}
-
-header #flights-search-form .persons-selection.dropdown-visible, header #flights-search-form .flight-class-selection.dropdown-visible {
-  visibility: visible;
-  opacity: 1;
-  transform: translateY(0);
 }
 
 header #flights-search-form .persons-selection {
@@ -336,7 +370,9 @@ header #flights-search-form .inputs-container .search-button {
   height: 3rem;
   color: var(--color-white);
   box-shadow: var(--box-shadow-dark);
+  cursor: pointer;
   grid-area: search;
+  gap: .15rem;
   transition: all .25s linear;
 }
 

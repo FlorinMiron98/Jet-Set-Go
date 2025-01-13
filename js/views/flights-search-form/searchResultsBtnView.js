@@ -33,6 +33,7 @@ class SearchResultsBtnView {
 
   _assignQueryParameterValues() {
     // tippy options object
+    // The code for the tippy options was taken from https://atomiks.github.io/tippyjs/
     const tippyOptions = {
       placement: "top",
       arrow: true,
@@ -129,6 +130,7 @@ class SearchResultsBtnView {
   // A method to help with the form validation created in order to avoid repetitive code
   _formValidator(content, instanceEl, tippyOptions) {
     // Create the form validation using tippy for UX
+    // The code for initializing a tippy instance and the tippy methods was taken from https://atomiks.github.io/tippyjs/
     tippyOptions.content = content;
     const tippyInstance = tippy(instanceEl, tippyOptions);
     tippyInstance.show();
@@ -141,6 +143,7 @@ class SearchResultsBtnView {
     // As the children ages will be stored in an array, we have to take into consideration the size of the array
     let childrenAges;
 
+    // Set the childrenAges value based on the length of the children array
     if (queryValues.persons.children.length === 1) {
       childrenAges = queryValues.persons.children[0];
     }
@@ -150,8 +153,10 @@ class SearchResultsBtnView {
     if (queryValues.persons.children.length > 1) {
       // '%2C' is the URL-encoded representation of a comma (,) character.
       childrenAges = queryValues.persons.children.join("%2C");
+      console.log(childrenAges);
     }
 
+    // Get rest of the query parameters values
     const adults = queryValues.persons.adults;
     const flightClass = queryValues.flightClass;
     const departureLocationId = queryValues.departureLocationId;
@@ -159,6 +164,7 @@ class SearchResultsBtnView {
     const departureDate = queryValues.departureDate;
     const returnDate = queryValues.returnDate;
 
+    // Dynamically generate the URL based on user's selections. The values will be extracted from the URL as the results.html page loads
     const URL = `results.html?adults=${adults}&children=${childrenAges}&flightClass=${flightClass}&departureLocationId=${departureLocationId}&arrivalLocationId=${arrivalLocationId}&departureDate=${departureDate}&returnDate=${returnDate}`;
 
     return URL;

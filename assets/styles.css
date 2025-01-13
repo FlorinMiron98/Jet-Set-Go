@@ -135,19 +135,23 @@ h6 {
 /* Tippy Box Custom Styling */
 /* ============================== */
 
+/* The code for the tippy box was taken from https://atomiks.github.io/tippyjs/ */
 .tippy-box {
   transition: all 0.25s linear;
 }
 
+/* Create custome styles for the tippy box */
 .tippy-box[data-theme~="warning"] {
   background-color: var(--color-warning);
   color: var(--color-white);
-  padding: 0.25rem 0.5rem 0.25rem;
+  padding: 0 0.5rem 0;
   border-radius: 0.5rem;
   font-size: 1rem;
   font-weight: 700;
+  box-shadow: var(--box-shadow-dark);
 }
 
+/* Create the fade custom animation for tippy box */
 .tippy-box[data-animation="fade-custom"][data-state="hidden"] {
   opacity: 0;
   transform: translateY(10px);
@@ -201,6 +205,10 @@ h6 {
   color: var(--flights-primary);
 }
 
+/* =================================================================== */
+/* index.html styling (Flight Tickets Search) */
+/* =================================================================== */
+
 /* ============ */
 /* Header */
 /* ============ */
@@ -219,6 +227,7 @@ header #nav.navigation-highlight {
   background-color: var(--flights-primary);
 }
 
+/* Set the size for the logo container */
 header #nav .logo-container {
   max-width: 16rem;
 }
@@ -302,6 +311,14 @@ header #flights-search-form .flight-class-selection {
     transform 0.25s ease-in-out;
 }
 
+/* The 'dropdown-visible' class will be added dynamically using JavaScript */
+header #flights-search-form .persons-selection.dropdown-visible,
+header #flights-search-form .flight-class-selection.dropdown-visible {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
 header #flights-search-form .persons-selection {
   /* 430px / 16px */
   max-height: 26.875rem;
@@ -315,13 +332,6 @@ header #flights-search-form .selection-done-btn {
 
 header #flights-search-form .selection-done-btn:hover {
   background-color: var(--flights-secondary);
-}
-
-header #flights-search-form .persons-selection.dropdown-visible,
-header #flights-search-form .flight-class-selection.dropdown-visible {
-  visibility: visible;
-  opacity: 1;
-  transform: translateY(0);
 }
 
 header #flights-search-form .persons-selection {
@@ -338,6 +348,7 @@ header #flights-search-form .flight-class-selection {
 header #flights-search-form .flight-class-selection .flight-class-btn {
   color: var(--flights-secondary);
 }
+/* The 'selected' class will be added dynamically using JavaScript */
 header #flights-search-form .flight-class-selection .flight-class-btn.selected {
   outline: 2px solid var(--flights-primary);
 }
@@ -361,6 +372,7 @@ header #flights-search-form .selection-decrease-btn:hover,
 header #flights-search-form .selection-increase-btn:hover {
   background-color: var(--color-gray-light);
 }
+/* Set the cursor to 'not-allowed' when the button is disabled */
 header #flights-search-form .selection-decrease-btn:disabled,
 header #flights-search-form .selection-increase-btn:disabled {
   cursor: not-allowed;
@@ -379,6 +391,7 @@ header #flights-search-form .dropdown-btn:hover {
 
 header #flights-search-form .inputs-container {
   display: grid;
+  /* Arrange the grid template areas for desktop and tablet sizes */
   grid-template-areas: "locations locations date date search";
   gap: 1.2rem;
 }
@@ -442,6 +455,7 @@ header #flights-search-form .result-list-item .result-icon {
   height: 2.6rem;
 }
 
+/* Style the search button */
 header #flights-search-form .inputs-container .search-button {
   grid-area: search;
   height: 3rem;
@@ -450,6 +464,7 @@ header #flights-search-form .inputs-container .search-button {
   color: var(--color-white);
   transition: all 0.25s linear;
   box-shadow: var(--box-shadow-dark);
+  /* As the href attribute will be dynamically added using JavaScript, I had to add the cursor: pointer property for a proper UX */
   cursor: pointer;
 }
 
@@ -493,6 +508,7 @@ header #flights-search-form .input-wrapper input::placeholder {
   font-size: 0.9rem;
 }
 
+/* Style the locations reverse button */
 header #flights-search-form .input-wrapper .locations-reverse-button {
   height: 2rem;
   width: 2rem;
@@ -517,6 +533,7 @@ main #seasonal-destination-section .card h2 {
   color: var(--flights-primary);
 }
 
+/* Style the introduction cards */
 main #introduction-section .card,
 main #best-destinations-section .card,
 main #seasonal-destination-section .card {
@@ -527,6 +544,7 @@ main #introduction-section .card .card-text {
   color: var(--flights-secondary);
 }
 
+/* Style the feature links container */
 main #best-destinations-section .card .destinations-features-links {
   width: 70%;
   gap: 1rem;
@@ -535,6 +553,7 @@ main #best-destinations-section .card .destinations-features-links {
   background-color: var(--color-hightlight-transparent);
 }
 
+/* Style the feature links for each best detinations card (flights, stays, car rentals, attractions) */
 main #best-destinations-section .card .destinations-features-links a {
   transition: color 0.25s linear;
 }
@@ -547,6 +566,7 @@ main #best-destinations-section .card .destinations-features-links a:active {
   color: var(--flights-primary);
 }
 
+/* Style the seasonal destination section */
 main #seasonal-destination-section .card img {
   max-height: 24rem;
 }
@@ -573,11 +593,14 @@ main #seasonal-destination-section .card .book-btn:active {
 /* ============ */
 /* Footer */
 /* ============ */
+
+/* Set the basic styling for the footer container */
 footer {
   background-color: var(--flights-secondary);
   margin-top: 8rem;
 }
 
+/* Quick links and social media links styling */
 footer .quick-links a,
 footer .social-media-links a {
   transition: color 0.25s linear;
@@ -603,18 +626,22 @@ footer .social-media-links a:active {
 /* =================== */
 /* Media Queries */
 /* =================== */
+
+/* Extra-extra-large screen sizes */
 @media only screen and (max-width: 1400px) {
   header #flights-search-form .inputs-container {
     gap: 0.8rem;
   }
 }
 
+/* Extra-large screen sizes */
 @media only screen and (max-width: 1200px) {
   header #nav .logo-container {
     max-width: 14rem;
   }
 
   header #flights-search-form .inputs-container {
+    /* Re-arrange the grid template areas for small extra-large screen sizes */
     grid-template-areas:
       "locations locations locations locations"
       "date date date date"
@@ -628,6 +655,7 @@ footer .social-media-links a:active {
   }
 }
 
+/* Large screen sizes */
 @media only screen and (max-width: 992px) {
   header #nav .logo-container {
     max-width: 12rem;
@@ -638,8 +666,10 @@ footer .social-media-links a:active {
   }
 }
 
+/* Medium screen sizes */
 @media only screen and (max-width: 768px) {
   header #flights-search-form .inputs-container {
+    /* Re-arrange the grid template areas for small screen sizes */
     grid-template-areas:
       "locations"
       "date"
@@ -652,6 +682,7 @@ footer .social-media-links a:active {
   }
 }
 
+/* Small screen sizes */
 @media only screen and (max-width: 576px) {
   .sidebar-navigation {
     min-width: 100%;
@@ -661,11 +692,13 @@ footer .social-media-links a:active {
     display: none;
   }
 
+  /* Change the background image for small screen sizes */
   header {
     background-image: var(--darkening-bg-image),
       url("../assets/images/background-image-flights-small.jpg");
   }
 
+  /* Change the size of the image */
   header #nav .logo-container img {
     height: 2rem;
   }
@@ -694,6 +727,7 @@ footer .social-media-links a:active {
     gap: 0.6rem;
   }
 
+  /* Change the search results images for cities */
   header #flights-search-form .departure-location-city .city-image,
   header #flights-search-form .arrival-location-city .city-image {
     max-width: 4rem;

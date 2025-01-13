@@ -1,6 +1,8 @@
+// Import the parent class
 import searchLocationView from "./locationSearchView.js";
 
 class DepartureLocationSearchView extends searchLocationView {
+  // DOM elements
   _parentEl = document.querySelector(".departure-location-results");
   _searchResultsList = document.querySelector(
     ".departure-location-results-list"
@@ -10,6 +12,7 @@ class DepartureLocationSearchView extends searchLocationView {
   );
   _searchLocationInput = document.getElementById("departure-location");
 
+  // Global variables
   _departureLocationId = "";
   _transit = "departure";
 

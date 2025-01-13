@@ -137,9 +137,10 @@ const controlReverseInputValues = function () {
 };
 
 const controlReturnSearchQueries = function () {
-  searchResultsBtnView._checkValues();
+  searchResultsBtnView._assignQueryParameterValues();
 };
 
+// The init function establishes the functionality for each user interaction as the page loads
 const init = function () {
   personsSelectionView._addHandlerRender(controlSelectPersons);
   flightClassSelectionView._addHandlerRender(controlSelectFlightClass);

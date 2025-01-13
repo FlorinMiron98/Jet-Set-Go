@@ -1,24 +1,32 @@
+// Import the button view so the text content of it can be dynamically updated based on user's selection
 import personsSelectionBtnView from "./personsSelectionBtnView";
 
 class PersonsSelectionView {
+  // DOM elements
   _parentEl = document.querySelector(".persons-selection");
   _adultsParentEl = document.querySelector(".adults");
   _childrenParentEl = document.querySelector(".children");
   _childrenAgeParentEl = document.querySelector(".selection-children-age");
-  _adults = 1;
-  _children = 0;
-  _childrenSelectAgeMarkup = [];
   _childrenSelectAgeEl =
     this._childrenAgeParentEl.getElementsByTagName("select");
 
+  // Global variables
+  _adults = 1;
+  _children = 0;
+  _childrenSelectAgeMarkup = [];
+
+  // Create the handler render method and assign the handler parameter which will be passed as a function in controller.js
   _addHandlerRender(handler) {
     window.addEventListener("load", handler);
   }
 
+  // The clear markup method takes a parameter which will be the container of the markup to be cleared
   _clearMarkup(container) {
     container.innerHTML = "";
   }
 
+  // Generate the adults markup and establish the behaviour of the increase and decrease buttons based on the user's selection
+  // The total number of persons (adults + children) is never bigger than 9
   _generateAdultsMarkup() {
     this._clearMarkup(this._adultsParentEl);
     const markup = `
@@ -47,6 +55,8 @@ class PersonsSelectionView {
     this._adultsParentEl.insertAdjacentHTML("afterbegin", markup);
   }
 
+  // Generate the children markup and establish the behaviour of the increase and decrease buttons based on the user's selection
+  // The total number of persons (adults + children) is never bigger than 9
   _generateChildrenMarkup() {
     this._clearMarkup(this._childrenParentEl);
     const markup = `
@@ -76,7 +86,9 @@ class PersonsSelectionView {
     this._childrenParentEl.insertAdjacentHTML("afterbegin", markup);
   }
 
+  // Generate the select elements markup for each child age as the user increases the number of children
   _generateSelectChildAgeMarkup(counter) {
+    // Use the childrenCount method to dynamically set the name and the label text content by adding the ordinal suffixes
     const selectMarkup = `
                  <label class="fs-5 fw-semibold" for="child-age-${counter}"
                         >${counter}${this._childrenCount(
@@ -112,6 +124,7 @@ class PersonsSelectionView {
     this._childrenSelectAgeMarkup.push(selectMarkup);
   }
 
+  // Display the select elements
   _displaySelectChildAgeEl() {
     this._clearMarkup(this._childrenAgeParentEl);
     const markup = this._childrenSelectAgeMarkup
@@ -123,6 +136,8 @@ class PersonsSelectionView {
     this._childrenAgeParentEl.insertAdjacentHTML("afterbegin", markup);
   }
 
+  // Apply all the above methods in the correct order as the user clicks the increase or decrease button for the adults
+  // Use event delegation to establish which button the user clicked (increase or decrease)
   _adultsCounter() {
     this._adultsParentEl.addEventListener("click", (e) => {
       if (e.target.closest(".selection-increase-btn")) {
@@ -140,6 +155,8 @@ class PersonsSelectionView {
     });
   }
 
+  // Apply all the above methods in the correct order as the user clicks the increase or decrease button for the children
+  // Use event delegation to establish which button the user clicked (increase or decrease)
   _childrenCounter() {
     this._childrenParentEl.addEventListener("click", (e) => {
       if (e.target.closest(".selection-increase-btn")) {
@@ -162,16 +179,16 @@ class PersonsSelectionView {
     });
   }
 
-  // ==================
-  // Utility Methods
-  // ==================
+  // Hide the container of the child age select element
   _hideChildrenSelectAgeParentEl() {
     this._childrenAgeParentEl.style.display = "none";
   }
+  // Display the container of the child age select element
   _showChildrenSelectAgeParentEl() {
     this._childrenAgeParentEl.style.display = "flex";
   }
 
+  // This method removes the last child age select element from the array
   _removeChildAgeEl(array) {
     array.pop();
 
@@ -182,6 +199,7 @@ class PersonsSelectionView {
     return array;
   }
 
+  // Set the ordinal suffixes as the children count increases or decreases
   _childrenCount(count) {
     switch (true) {
       case count === 1:

@@ -1,6 +1,8 @@
 class PersonsSelectionBtnView {
+  // DOM elements
   _personsBtn = document.getElementById("flight-persons-dropdown-btn");
 
+  // The generate markup method will get 2 parameters which will allow the function to update the text content of the button dynamically based on the user's selections
   _generateMarkup(adults, children) {
     this._clearMarkup();
     const markup = `
@@ -15,6 +17,7 @@ class PersonsSelectionBtnView {
     this._personsBtn.insertAdjacentHTML("afterbegin", markup);
   }
 
+  // Clear markup method
   _clearMarkup() {
     this._personsBtn.innerHTML = "";
   }

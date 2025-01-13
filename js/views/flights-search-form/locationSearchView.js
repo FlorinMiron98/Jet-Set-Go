@@ -1,8 +1,12 @@
+// This class is the parent class for departureLocationSearchView.js and arrivalLocationSearchView.js
+// All the methods from this class will be available to the children classes
 export default class LocationSearchView {
+  // Global variables
   _errorMessage = "No locations found for your query. Please try again!";
-  _noResultsMessage = "No results for this search, try something else.";
 
+  // Create the handler search method and assign the handler parameter which will be passed as a function in controller.js
   _addHandlerSearch(handler) {
+    // The input event makes sure the function is called as the user starts typing a location
     this._searchLocationInput.addEventListener("input", (e) => {
       e.preventDefault();
 
@@ -13,34 +17,41 @@ export default class LocationSearchView {
         this._hideContainerResults();
       }
 
+      // After checking the if statement, call the handler
       handler();
     });
   }
 
+  // Create the handler lose focus method and assign the handler parameter which will be passed as a function in controller.js
   _addHandlerLoseFocus(handler) {
     this._searchLocationInput.addEventListener("blur", () => {
       handler();
     });
   }
 
+  // This method displays the results container
   _showContainerResults() {
     this._parentEl.classList.add("visible");
   }
 
+  // This method hides the results container
   _hideContainerResults() {
     this._parentEl.classList.remove("visible");
   }
 
+  // Clear markup method
   _clearMarkup() {
     this._searchResultsList.innerHTML = "";
   }
 
+  // This method gets the input query
   _getQuery() {
     const query = this._searchLocationInput.value.toLowerCase();
 
     return query;
   }
 
+  // Create the loading spinner markup and render it before getting the results from the API
   _renderSpinner() {
     const markup = `
         <div class="loader-container d-flex justify-content-center">
@@ -51,6 +62,7 @@ export default class LocationSearchView {
     this._searchResultsList.insertAdjacentHTML("afterbegin", markup);
   }
 
+  // This method renders the error message if there is an error in fetching the results
   _renderError(message = this._errorMessage) {
     this._clearMarkup();
     const markup = `
@@ -61,13 +73,19 @@ export default class LocationSearchView {
     this._searchResultsList.insertAdjacentHTML("afterbegin", markup);
   }
 
+  //
   _renderMarkup(data, transit) {
+    // Clear the markup(loader spinner) before rendering the results of the user's search
     this._clearMarkup();
     const markup = data
       .map((item, index) => {
+        // Utility variables
         const currentItem = data[index];
         const previousItem = data[index - 1];
 
+        // Check the item type (specific of the booking API) and render the markup for that type
+        // Each item has other relevant properties which will be stored in data attributes and will later be assigned in an object as query parameter values
+        // type = CITY
         if (currentItem.type === "CITY") {
           return `
         <li class="result-list-item">
@@ -103,6 +121,9 @@ export default class LocationSearchView {
         </li>
         `;
         }
+
+        // type = AIRPORT
+        // Check if there are more airports in the same city and dynamically label the distance from each airport to the center of the city and add a small margin (ms-3) to distinguish this fact
         if (currentItem.type === "AIRPORT") {
           if (
             previousItem &&
@@ -136,6 +157,7 @@ export default class LocationSearchView {
           `;
           }
 
+          // If the previous item of AIRPORT type if from a different location, remove the margin and label the city name, the region name and the country name instead of the distance from the centre of the city
           if (
             (previousItem &&
               currentItem.regionName !== previousItem.regionName) ||
@@ -169,9 +191,12 @@ export default class LocationSearchView {
         }
       })
       .join("");
+
+    // Insert the markup in the parent element to be displayed to the user after passing the if statement analysis
     this._searchResultsList.insertAdjacentHTML("afterbegin", markup);
   }
 
+  // This method extracts the relevant data from the search option selected by the user and displays the value to the input
   _assignInputValue() {
     this._searchResultsList.addEventListener("mousedown", (e) => {
       const target = e.target.closest("a");
@@ -182,10 +207,12 @@ export default class LocationSearchView {
       const assignedValue = `${name} ${code}`;
       this._searchLocationInput.value = assignedValue;
 
+      // Assign the query parameter values based on the transit (departure or arrival) and the id
       this._updateQueryValues(this._transit, id);
     });
   }
 
+  // This method updates the query paramaters values (departureLocationId and arrivalLocationId are stored in their respective classes)
   _updateQueryValues(transit, idValue) {
     if (transit === "departure") {
       this._departureLocationId = idValue;

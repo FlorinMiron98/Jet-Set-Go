@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Florin-Ionut Miron">
+    <meta name="description" content="Find the best deals on flight tickets with our easy-to-use platform. Choose from a wide range of airlines and book your next trip with confidence.">
     <title>JetSetGo</title>
     <!-- Favicons -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.58f8223e.png">
@@ -53,12 +54,16 @@
     </nav>
     <!-- Header -->
     <header id="header" class="d-flex flex-column">
+      <!-- Navbar -->
       <nav id="nav" class="position-fixed top-0 w-100 z-3">
         <div class="container d-flex align-items-center justify-content-between px-3 py-3 ps-sm-0">
+          <!-- Left Navigation -->
           <div class="left-navigation d-flex align-items-center">
+            <!-- Hamburger Button -->
             <button id="hamburger-btn" class="hamburger-btn nav-btn align-self-center fs-2 text-white rounded rounded-3 focus-ring" aria-label="Navigation hamburger button">
               <i class="fa-solid fa-bars p-0 p-sm-3"></i>
             </button>
+            <!-- Logo -->
             <div class="logo-container">
               <a href="#" class="w-100 h-100">
                 <picture>
@@ -68,6 +73,7 @@
               </a>
             </div>
           </div>
+          <!-- Right Navigation -->
           <div class="right-navigation">
             <ul class="d-flex align-items-center list-unstyled m-0 fs-3">
               <li>
@@ -80,12 +86,14 @@
           </div>
         </div>
       </nav>
+      <!-- Main content of the header section -->
       <section class="header-main-content container d-flex flex-column justify-content-evenly px-3">
         <h1 class="display-6 fw-bold text-white">
           <span>Easy Booking</span>,<br>
           <span>Endless Destinations!</span><br>
           <span class="highlight">Fly Your Dreams</span>
         </h1>
+        <!-- Navigation links to the main features pages of the website -->
         <nav class="header-main-content-nav mt-4 d-none d-md-block">
           <ul class="d-flex list-unstyled m-0">
             <li class="me-3">
@@ -115,6 +123,7 @@
               <div class="children d-flex justify-content-between"></div>
               <div class="selection-children-age flex-column overflow-auto"></div>
               <div class="text-start">
+                <!-- 'Done' Button -->
                 <button class="selection-done-btn btn text-white w-100 w-md-50" type="button">
                   Done
                 </button>
@@ -141,6 +150,7 @@
               </div>
             </div>
           </div>
+          <!-- Inputs Container -->
           <div class="inputs-container mt-3">
             <div class="location-inputs-wrapper d-flex position-relative">
               <!-- Departure Location Input -->
@@ -163,10 +173,12 @@
                   <input type="text" id="arrival-location" class="border border-0" placeholder="Arrival Location" required="">
                 </div>
               </div>
+              <!-- Departure Locations Results Container -->
               <div class="departure-location-results position-absolute p-3 rounded-3 z-2 overflow-auto">
                 <h2 class="fs-4">Departure Location</h2>
                 <ul class="departure-location-results-list list-unstyled mb-0"></ul>
               </div>
+              <!-- Arrival Locations Results Container -->
               <div class="arrival-location-results position-absolute p-3 rounded-3 z-2 overflow-auto">
                 <h2 class="fs-4">Arrival Location</h2>
                 <ul class="arrival-location-results-list list-unstyled mb-0"></ul>
@@ -178,7 +190,7 @@
                 <label for="departure-date" class="form-label mb-0 fw-semibold text-white">Departure Date</label>
                 <div class="input-wrapper position-relative d-flex align-items-center px-3 rounded-start-3 w-100 border-end">
                   <i class="fa-regular fa-calendar-days fs-5"></i>
-                  <input type="text" id="departure-date" class="border border-0" placeholder="Arrival Date" required="">
+                  <input type="text" id="departure-date" class="border border-0" placeholder="Departure Date" required="">
                 </div>
               </div>
               <!-- Return Date Input -->
@@ -190,9 +202,11 @@
                 </div>
               </div>
             </div>
-            <button class="search-button align-self-end border border-0 px-3 rounded-3 focus-ring fw-bold" type="button">
+            <!-- Search Flight Tickets Results Button -->
+            <!-- The href attribute will be dynamically added using JavaScript, as the URL is created based on the user's selections -->
+            <a class="search-button d-flex align-items-center justify-content-center align-self-end border border-0 px-3 rounded-3 focus-ring fw-bold text-decoration-none" target="_blank">
               <i class="fa-solid fa-magnifying-glass"></i> Search
-            </button>
+            </a>
           </div>
         </form>
       </section>
@@ -206,6 +220,7 @@
           Anywhere
         </h1>
         <div class="row g-4 mt-4">
+          <!-- Single Card -->
           <div class="col-12 col-md-4">
             <div class="card h-100">
               <img src="/flight-booking-prices.b006df5e.jpg" class="card-img-top" alt="A computer showing a price diagram">
@@ -218,6 +233,7 @@
               </div>
             </div>
           </div>
+          <!-- Single Card -->
           <div class="col-12 col-md-4">
             <div class="card h-100">
               <img src="/multiple-airlines.c3a8122c.jpg" class="card-img-top" alt="A person choosing an airline on a screen">
@@ -230,6 +246,7 @@
               </div>
             </div>
           </div>
+          <!-- Single Card -->
           <div class="col-12 col-md-4">
             <div class="card h-100">
               <img src="/easy-booking.7ef2cb7a.jpg" class="card-img-top" alt="Person using macbook pro on white table">
@@ -252,6 +269,7 @@
           The World
         </h1>
         <div class="row g-4 mt-4">
+          <!-- Single Card -->
           <div class="col-12 col-lg-6 col-xl-4">
             <div class="card position-relative h-100">
               <img src="/new-york.3f958d40.jpg" class="card-img h-100" alt="High angle view of New York against cloudy sky">
@@ -267,6 +285,7 @@
               </div>
             </div>
           </div>
+          <!-- Single Card -->
           <div class="col-12 col-lg-6 col-xl-4">
             <div class="card position-relative h-100">
               <img src="/tokyo.beeca7bc.jpg" class="card-img h-100" alt="People walking on the streets of Tokyo surrounded by buildings">
@@ -282,6 +301,7 @@
               </div>
             </div>
           </div>
+          <!-- Single Card -->
           <div class="col-12 col-lg-6 col-xl-4">
             <div class="card position-relative h-100">
               <img src="/rio-de-janeiro.8bb5073e.jpg" class="card-img h-100" alt="Picture of Rio de Janeiro">
@@ -297,6 +317,7 @@
               </div>
             </div>
           </div>
+          <!-- Single Card -->
           <div class="col-12 col-lg-6 col-xl-4">
             <div class="card position-relative h-100">
               <img src="/sydney.d2280cd8.jpg" class="card-img h-100" alt="Aerial view of Sydney">
@@ -312,6 +333,7 @@
               </div>
             </div>
           </div>
+          <!-- Single Card -->
           <div class="col-12 col-lg-6 col-xl-4">
             <div class="card position-relative h-100">
               <img src="/cairo.a743e9b3.jpg" class="card-img h-100" alt="Picture of Cairo Mosque">
@@ -327,6 +349,7 @@
               </div>
             </div>
           </div>
+          <!-- Single Card -->
           <div class="col-12 col-lg-6 col-xl-4">
             <div class="card position-relative h-100">
               <img src="/paris.519cc901.jpg" class="card-img h-100" alt="Picture of Cairo Mosque">
@@ -352,6 +375,7 @@
           Season
         </h1>
         <div class="row mt-4 d-flex justify-content-center">
+          <!-- Single Card -->
           <div class="col-12 col-lg-10">
             <div class="card">
               <img src="/aspen.c0e1fbcc.jpg" class="card-img-top object-fit-cover" alt="Snow-covered mountain in Aspen">
@@ -378,6 +402,7 @@
     <!-- Footer -->
     <footer class="d-flex justify-content-center py-5">
       <div class="container row">
+        <!-- Contact Details Container -->
         <div class="col-12 col-md-4 mb-4 mb-md-0">
           <h3 class="text-center text-white">Contact Details</h3>
           <ul class="list-unstyled text-center mt-3">
@@ -392,6 +417,7 @@
             </li>
           </ul>
         </div>
+        <!-- Quick Links Container -->
         <div class="col-12 col-md-4 mb-4 mb-md-0">
           <h3 class="text-center text-white">Quick Links</h3>
           <ul class="quick-links list-unstyled text-center mt-3">
@@ -415,6 +441,7 @@
             </li>
           </ul>
         </div>
+        <!-- Social Media Container -->
         <div class="col-12 col-md-4">
           <h3 class="text-center text-white">Social Media</h3>
           <ul class="social-media-links list-unstyled d-flex justify-content-center">
@@ -433,6 +460,7 @@
     </footer>
     <!-- Bootstrap's compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Script JS -->
     <script src="/index.850bd9e5.js" defer=""></script>
   </body>
 </html>
