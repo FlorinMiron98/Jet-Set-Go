@@ -873,7 +873,7 @@ parcelHelpers.defineInteropFlag(exports);
 class HeaderContentView {
     // DOM elements
     navbar = document.getElementById("nav");
-    header = document.getElementById("header");
+    header = document.getElementById("flights-header");
     // As the navigation bar has position:fixed which will get it out of the normal flow of the page, I had to dynamically set a margin top for the main content of the header element so the navigation bar will not overwrite it
     setDynamicStyling() {
         [

@@ -150,9 +150,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 header {
-  background-image: url("background-image-flights-large.752d6f0a.jpg");
-  background-position: center;
-  background-size: cover;
   min-height: 100vh;
 }
 
@@ -191,41 +188,47 @@ header #nav .right-navigation li i:hover {
   color: var(--color-highlight);
 }
 
-header .header-main-content {
+#flights-header {
+  background-image: url("background-image-flights-large.752d6f0a.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+#flights-header .header-main-content {
   flex: 1 0 100%;
 }
 
-header .header-main-content-nav a {
+#flights-header .header-main-content-nav a {
   background-color: var(--color-gray-transparent);
   color: var(--color-white);
   letter-spacing: 1.1px;
 }
 
-header .header-main-content-nav .flights-link.active, header .header-main-content-nav .flights-link:hover {
+#flights-header .header-main-content-nav .flights-link.active, #flights-header .header-main-content-nav .flights-link:hover {
   background-color: var(--color-white);
   color: var(--color-flights-highlight);
 }
 
-header .header-main-content-nav .stays-link.active, header .header-main-content-nav .stays-link:hover {
+#flights-header .header-main-content-nav .stays-link.active, #flights-header .header-main-content-nav .stays-link:hover {
   background-color: var(--color-white);
   color: var(--stays-secondary);
 }
 
-header .header-main-content-nav .cars-link.active, header .header-main-content-nav .cars-link:hover {
+#flights-header .header-main-content-nav .cars-link.active, #flights-header .header-main-content-nav .cars-link:hover {
   background-color: var(--color-white);
   color: var(--cars-secondary);
 }
 
-header .header-main-content-nav .attractions-link.active, header .header-main-content-nav .attractions-link:hover {
+#flights-header .header-main-content-nav .attractions-link.active, #flights-header .header-main-content-nav .attractions-link:hover {
   background-color: var(--color-white);
   color: var(--attractions-secondary);
 }
 
-header #flights-search-form .dropdown-inputs-container {
+#flights-header #flights-search-form .dropdown-inputs-container {
   gap: .8rem;
 }
 
-header #flights-search-form .persons-selection, header #flights-search-form .flight-class-selection {
+#flights-header #flights-search-form .persons-selection, #flights-header #flights-search-form .flight-class-selection {
   background-color: var(--color-white);
   box-shadow: var(--box-shadow-dark);
   z-index: 1;
@@ -235,92 +238,92 @@ header #flights-search-form .persons-selection, header #flights-search-form .fli
   transform: translateY(10%);
 }
 
-header #flights-search-form .persons-selection.dropdown-visible, header #flights-search-form .flight-class-selection.dropdown-visible {
+#flights-header #flights-search-form .persons-selection.dropdown-visible, #flights-header #flights-search-form .flight-class-selection.dropdown-visible {
   visibility: visible;
   opacity: 1;
   transform: translateY(0);
 }
 
-header #flights-search-form .persons-selection {
+#flights-header #flights-search-form .persons-selection {
   max-height: 26.875rem;
 }
 
-header #flights-search-form .selection-done-btn {
+#flights-header #flights-search-form .selection-done-btn {
   background-color: var(--flights-primary);
   transition: background-color .25s linear;
 }
 
-header #flights-search-form .selection-done-btn:hover {
+#flights-header #flights-search-form .selection-done-btn:hover {
   background-color: var(--flights-secondary);
 }
 
-header #flights-search-form .persons-selection {
+#flights-header #flights-search-form .persons-selection {
   gap: 1.4rem;
   width: 35%;
   left: 0;
 }
 
-header #flights-search-form .flight-class-selection {
+#flights-header #flights-search-form .flight-class-selection {
   gap: 1rem;
   min-width: max-content;
 }
 
-header #flights-search-form .flight-class-selection .flight-class-btn {
+#flights-header #flights-search-form .flight-class-selection .flight-class-btn {
   color: var(--flights-secondary);
 }
 
-header #flights-search-form .flight-class-selection .flight-class-btn.selected {
+#flights-header #flights-search-form .flight-class-selection .flight-class-btn.selected {
   outline: 2px solid var(--flights-primary);
 }
 
-header #flights-search-form .flight-class-selection .flight-class-btn:hover {
+#flights-header #flights-search-form .flight-class-selection .flight-class-btn:hover {
   background-color: var(--color-gray-light);
 }
 
-header #flights-search-form .selection-number {
+#flights-header #flights-search-form .selection-number {
   gap: 1rem;
 }
 
-header #flights-search-form .selection-decrease-btn, header #flights-search-form .selection-increase-btn {
+#flights-header #flights-search-form .selection-decrease-btn, #flights-header #flights-search-form .selection-increase-btn {
   width: 3rem;
   height: 100%;
   color: var(--flights-primary);
 }
 
-header #flights-search-form .selection-decrease-btn:hover, header #flights-search-form .selection-increase-btn:hover {
+#flights-header #flights-search-form .selection-decrease-btn:hover, #flights-header #flights-search-form .selection-increase-btn:hover {
   background-color: var(--color-gray-light);
 }
 
-header #flights-search-form .selection-decrease-btn:disabled, header #flights-search-form .selection-increase-btn:disabled {
+#flights-header #flights-search-form .selection-decrease-btn:disabled, #flights-header #flights-search-form .selection-increase-btn:disabled {
   cursor: not-allowed;
 }
 
-header #flights-search-form .dropdown-btn {
+#flights-header #flights-search-form .dropdown-btn {
   color: var(--color-white);
   letter-spacing: 1.1px;
   transition: all .25s linear;
 }
 
-header #flights-search-form .dropdown-btn:hover {
+#flights-header #flights-search-form .dropdown-btn:hover {
   color: var(--flights-primary);
   background-color: var(--color-white);
 }
 
-header #flights-search-form .inputs-container {
+#flights-header #flights-search-form .inputs-container {
   grid-template-areas: "locations locations date date search";
   gap: 1.2rem;
   display: grid;
 }
 
-header #flights-search-form .location-inputs-wrapper {
+#flights-header #flights-search-form .location-inputs-wrapper {
   grid-area: locations;
 }
 
-header #flights-search-form .dates-wrapper {
+#flights-header #flights-search-form .dates-wrapper {
   grid-area: date;
 }
 
-header #flights-search-form .departure-location-results, header #flights-search-form .arrival-location-results {
+#flights-header #flights-search-form .departure-location-results, #flights-header #flights-search-form .arrival-location-results {
   background-color: var(--color-white);
   width: 100%;
   box-shadow: var(--box-shadow-dark);
@@ -329,43 +332,43 @@ header #flights-search-form .departure-location-results, header #flights-search-
   top: calc(100% + 10px);
 }
 
-header #flights-search-form .departure-location-results.visible, header #flights-search-form .arrival-location-results.visible {
+#flights-header #flights-search-form .departure-location-results.visible, #flights-header #flights-search-form .arrival-location-results.visible {
   display: block;
 }
 
-header #flights-search-form .departure-location-results h2, header #flights-search-form .arrival-location-results h2 {
+#flights-header #flights-search-form .departure-location-results h2, #flights-header #flights-search-form .arrival-location-results h2 {
   color: var(--flights-primary);
 }
 
-header #flights-search-form .departure-location-city:visited, header #flights-search-form .departure-location-city:link, header #flights-search-form .arrival-location-city:visited, header #flights-search-form .arrival-location-city:link {
+#flights-header #flights-search-form .departure-location-city:visited, #flights-header #flights-search-form .departure-location-city:link, #flights-header #flights-search-form .arrival-location-city:visited, #flights-header #flights-search-form .arrival-location-city:link {
   color: var(--color-dark-2);
   gap: 1rem;
 }
 
-header #flights-search-form .departure-location-city:hover, header #flights-search-form .departure-location-city:active, header #flights-search-form .arrival-location-city:hover, header #flights-search-form .arrival-location-city:active {
+#flights-header #flights-search-form .departure-location-city:hover, #flights-header #flights-search-form .departure-location-city:active, #flights-header #flights-search-form .arrival-location-city:hover, #flights-header #flights-search-form .arrival-location-city:active {
   background-color: var(--color-gray-light);
 }
 
-header #flights-search-form .departure-location-city .city-image, header #flights-search-form .arrival-location-city .city-image {
+#flights-header #flights-search-form .departure-location-city .city-image, #flights-header #flights-search-form .arrival-location-city .city-image {
   max-width: 4.4rem;
   max-height: 4.4rem;
 }
 
-header #flights-search-form .result-list-item a:link, header #flights-search-form .result-list-item a:visited {
+#flights-header #flights-search-form .result-list-item a:link, #flights-header #flights-search-form .result-list-item a:visited {
   color: var(--color-dark-2);
   gap: 1rem;
 }
 
-header #flights-search-form .result-list-item a:hover, header #flights-search-form .result-list-item a:active {
+#flights-header #flights-search-form .result-list-item a:hover, #flights-header #flights-search-form .result-list-item a:active {
   background-color: var(--color-gray-light);
 }
 
-header #flights-search-form .result-list-item .result-icon {
+#flights-header #flights-search-form .result-list-item .result-icon {
   width: 2.6rem;
   height: 2.6rem;
 }
 
-header #flights-search-form .inputs-container .search-button {
+#flights-header #flights-search-form .inputs-container .search-button {
   background-color: var(--color-highlight);
   height: 3rem;
   color: var(--color-white);
@@ -376,42 +379,42 @@ header #flights-search-form .inputs-container .search-button {
   transition: all .25s linear;
 }
 
-header #flights-search-form .inputs-container .search-button:hover, header #flights-search-form .inputs-container .search-button:active {
+#flights-header #flights-search-form .inputs-container .search-button:hover, #flights-header #flights-search-form .inputs-container .search-button:active {
   background-color: var(--color-white);
   color: var(--color-highlight);
 }
 
-header #flights-search-form .departure-location-wrapper, header #flights-search-form .arrival-location-wrapper, header #flights-search-form .departure-date-wrapper, header #flights-search-form .return-date-wrapper {
+#flights-header #flights-search-form .departure-location-wrapper, #flights-header #flights-search-form .arrival-location-wrapper, #flights-header #flights-search-form .departure-date-wrapper, #flights-header #flights-search-form .return-date-wrapper {
   flex: 0 50%;
 }
 
-header #flights-search-form .input-wrapper {
+#flights-header #flights-search-form .input-wrapper {
   background-color: var(--color-gray-light);
   min-height: 3rem;
   box-shadow: var(--box-shadow-dark);
   gap: .8rem;
 }
 
-header #flights-search-form .input-wrapper i {
+#flights-header #flights-search-form .input-wrapper i {
   color: var(--flights-secondary);
   width: 1.3rem;
 }
 
-header #flights-search-form .input-wrapper input {
+#flights-header #flights-search-form .input-wrapper input {
   color: var(--color-dark-2);
   background-color: #0000;
 }
 
-header #flights-search-form .input-wrapper input:focus {
+#flights-header #flights-search-form .input-wrapper input:focus {
   outline: none;
 }
 
-header #flights-search-form .input-wrapper input::placeholder {
+#flights-header #flights-search-form .input-wrapper input::placeholder {
   color: var(--flights-secondary);
   font-size: .9rem;
 }
 
-header #flights-search-form .input-wrapper .locations-reverse-button {
+#flights-header #flights-search-form .input-wrapper .locations-reverse-button {
   border-radius: 50%;
   width: 2rem;
   height: 2rem;
@@ -420,8 +423,12 @@ header #flights-search-form .input-wrapper .locations-reverse-button {
   transform: translate(50%);
 }
 
-header #flights-search-form .input-wrapper .locations-reverse-button:hover {
+#flights-header #flights-search-form .input-wrapper .locations-reverse-button:hover {
   background-color: var(--color-white);
+}
+
+#flights-results-header {
+  background-image: linear-gradient(to bottom, var(--flights-primary), var(--flights-secondary));
 }
 
 main #introduction-section h1, main #introduction-section h2, main #best-destinations-section h1, main #seasonal-destination-section h1, main #seasonal-destination-section .card h2 {

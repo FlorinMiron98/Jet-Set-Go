@@ -165,7 +165,7 @@ class SearchResultsBtnView {
     const returnDate = queryValues.returnDate;
 
     // Dynamically generate the URL based on user's selections. The values will be extracted from the URL as the results.html page loads
-    const URL = `results.html?adults=${adults}&children=${childrenAges}&flightClass=${flightClass}&departureLocationId=${departureLocationId}&arrivalLocationId=${arrivalLocationId}&departureDate=${departureDate}&returnDate=${returnDate}`;
+    const URL = `flights-results.html?adults=${adults}&children=${childrenAges}&flightClass=${flightClass}&departureLocationId=${departureLocationId}&arrivalLocationId=${arrivalLocationId}&departureDate=${departureDate}&returnDate=${returnDate}`;
 
     return URL;
   }
