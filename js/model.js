@@ -9,7 +9,7 @@ export const state = {
 };
 
 // Import the data of the departure and arrival locations
-export const loadSearchFlightsResults = async function (query, transit) {
+export const loadSearchDestinationsResults = async function (query, transit) {
   const url = `https://booking-com15.p.rapidapi.com/api/v1/flights/searchDestination?query=${query}`;
   try {
     const response = await fetch(url, OPTIONS);
