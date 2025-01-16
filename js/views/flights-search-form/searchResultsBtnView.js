@@ -125,6 +125,11 @@ class SearchResultsBtnView {
       "href",
       this._generateQueryParametersMarkup(this._queryStringValues)
     );
+
+    // Reload the page after 50ms
+    setTimeout(() => {
+      this._reloadPage();
+    }, 50);
   }
 
   // A method to help with the form validation created in order to avoid repetitive code
@@ -168,6 +173,12 @@ class SearchResultsBtnView {
     const URL = `flights-results.html?adults=${adults}&children=${childrenAges}&flightClass=${flightClass}&departureLocationId=${departureLocationId}&arrivalLocationId=${arrivalLocationId}&departureDate=${departureDate}&returnDate=${returnDate}`;
 
     return URL;
+  }
+
+  // This method makes sure the page is completely reloaded after the user has introduced the relevant data and pressed the 'Search' button
+  // As the page reloads, all the input values are cleared, as well as the URL which is dynamically attached as a value for the 'href' attribute of the 'Search' button
+  _reloadPage() {
+    window.location.reload();
   }
 }
 
