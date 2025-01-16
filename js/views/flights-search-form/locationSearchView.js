@@ -101,7 +101,7 @@ export default class LocationSearchView {
                     <img
                       src=${
                         !item.photoUri
-                          ? "/plane-icon.d3f3c76d.png"
+                          ? "./assets/images/plane-icon.png"
                           : item.photoUri
                       }
                       alt="City Image"

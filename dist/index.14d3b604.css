@@ -507,7 +507,7 @@ footer .quick-links a:hover, footer .quick-links a:active, footer .social-media-
 }
 
 @media only screen and (width <= 1400px) {
-  header #flights-search-form .inputs-container {
+  #flights-header #flights-search-form .inputs-container {
     gap: .8rem;
   }
 }
@@ -517,7 +517,7 @@ footer .quick-links a:hover, footer .quick-links a:active, footer .social-media-
     max-width: 14rem;
   }
 
-  header #flights-search-form .inputs-container {
+  #flights-header #flights-search-form .inputs-container {
     grid-template-areas: "locations locations locations locations"
                          "date date date date"
                          ". search search .";
@@ -525,7 +525,7 @@ footer .quick-links a:hover, footer .quick-links a:active, footer .social-media-
     gap: 1rem;
   }
 
-  header #flights-search-form .inputs-container .search-button {
+  #flights-header #flights-search-form .inputs-container .search-button {
     margin-top: .8rem;
   }
 }
@@ -535,20 +535,20 @@ footer .quick-links a:hover, footer .quick-links a:active, footer .social-media-
     max-width: 12rem;
   }
 
-  header #flights-search-form .persons-selection {
+  #flights-header #flights-search-form .persons-selection {
     width: 50%;
   }
 }
 
 @media only screen and (width <= 768px) {
-  header #flights-search-form .inputs-container {
+  #flights-header #flights-search-form .inputs-container {
     grid-template-areas: "locations"
                          "date"
                          "search";
     gap: 1rem;
   }
 
-  header #flights-search-form .persons-selection {
+  #flights-header #flights-search-form .persons-selection {
     width: 80%;
   }
 }
@@ -562,7 +562,7 @@ footer .quick-links a:hover, footer .quick-links a:active, footer .social-media-
     display: none;
   }
 
-  header {
+  #flights-header {
     background-image: var(--darkening-bg-image), url("background-image-flights-small.c4e98885.jpg");
   }
 
@@ -570,39 +570,39 @@ footer .quick-links a:hover, footer .quick-links a:active, footer .social-media-
     height: 2rem;
   }
 
-  header #flights-search-form .dropdown-inputs-container {
+  #flights-header #flights-search-form .dropdown-inputs-container {
     flex-direction: column;
   }
 
-  header #flights-search-form .persons-selection, header #flights-search-form .flight-class-selection {
+  #flights-header #flights-search-form .persons-selection, #flights-header #flights-search-form .flight-class-selection {
     width: 100%;
   }
 
-  header #flights-search-form .selection-number {
+  #flights-header #flights-search-form .selection-number {
     gap: .75rem;
   }
 
-  header #flights-search-form .input-wrapper {
+  #flights-header #flights-search-form .input-wrapper {
     border-radius: .5rem;
     min-height: 2.6rem;
   }
 
-  header #flights-search-form .location-inputs-wrapper, header #flights-search-form .dates-wrapper {
+  #flights-header #flights-search-form .location-inputs-wrapper, #flights-header #flights-search-form .dates-wrapper {
     flex-direction: column;
     gap: .6rem;
   }
 
-  header #flights-search-form .departure-location-city .city-image, header #flights-search-form .arrival-location-city .city-image {
+  #flights-header #flights-search-form .departure-location-city .city-image, #flights-header #flights-search-form .arrival-location-city .city-image {
     max-width: 4rem;
     max-height: 4rem;
   }
 
-  header #flights-search-form .result-list-item .result-icon {
+  #flights-header #flights-search-form .result-list-item .result-icon {
     width: 1.6rem;
     height: 1.6rem;
   }
 
-  header #flights-search-form .input-wrapper .locations-reverse-button {
+  #flights-header #flights-search-form .input-wrapper .locations-reverse-button {
     right: 1rem;
     transform: none;
   }

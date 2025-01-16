@@ -58,7 +58,7 @@ const controlDepartureSearchLocations = async function () {
     if (!query) return;
 
     // Load search results
-    await model.loadSearchFlightsResults(
+    await model.loadSearchDestinationsResults(
       query,
       departureLocationSearchView._transit
     );
@@ -83,7 +83,7 @@ const controlArrivalSearchLocations = async function () {
     if (!query) return;
 
     // Load search results
-    await model.loadSearchFlightsResults(
+    await model.loadSearchDestinationsResults(
       query,
       arrivalLocationSearchView._transit
     );

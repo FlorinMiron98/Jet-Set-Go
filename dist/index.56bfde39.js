@@ -142,14 +142,14 @@
       this[globalName] = mainExports;
     }
   }
-})({"1Ha3s":[function(require,module,exports,__globalThis) {
+})({"jcjZx":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
 var HMR_USE_SSE = false;
-module.bundle.HMR_BUNDLE_ID = "e667cd11b682fa28";
+module.bundle.HMR_BUNDLE_ID = "53207f4156bfde39";
 "use strict";
 /* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE, HMR_USE_SSE, chrome, browser, __parcel__import__, __parcel__importScripts__, ServiceWorkerGlobalScope */ /*::
 import type {
@@ -595,7 +595,7 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
     }
 }
 
-},{}],"evDea":[function(require,module,exports,__globalThis) {
+},{}],"38TcD":[function(require,module,exports,__globalThis) {
 // Model import
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _modelJs = require("./model.js");
@@ -654,7 +654,7 @@ const controlDepartureSearchLocations = async function() {
         const query = (0, _departureLocationSearchViewJsDefault.default)._getQuery();
         if (!query) return;
         // Load search results
-        await _modelJs.loadSearchFlightsResults(query, (0, _departureLocationSearchViewJsDefault.default)._transit);
+        await _modelJs.loadSearchDestinationsResults(query, (0, _departureLocationSearchViewJsDefault.default)._transit);
         // Render results
         (0, _departureLocationSearchViewJsDefault.default)._renderMarkup(_modelJs.state.locationResults.departureLocationResults, (0, _departureLocationSearchViewJsDefault.default)._transit);
     } catch (error) {
@@ -669,7 +669,7 @@ const controlArrivalSearchLocations = async function() {
         const query = (0, _arrivalLocationSearchViewJsDefault.default)._getQuery();
         if (!query) return;
         // Load search results
-        await _modelJs.loadSearchFlightsResults(query, (0, _arrivalLocationSearchViewJsDefault.default)._transit);
+        await _modelJs.loadSearchDestinationsResults(query, (0, _arrivalLocationSearchViewJsDefault.default)._transit);
         // Render results
         (0, _arrivalLocationSearchViewJsDefault.default)._renderMarkup(_modelJs.state.locationResults.arrivalLocationResults, (0, _arrivalLocationSearchViewJsDefault.default)._transit);
     } catch (error) {
@@ -706,7 +706,6 @@ const controlReverseInputValues = function() {
 };
 const controlReturnSearchQueries = function() {
     (0, _searchResultsBtnViewJsDefault.default)._assignQueryParameterValues();
-// searchResultsBtnView._resetQueryStringValues();
 };
 // The init function establishes the functionality for each user interaction as the page loads
 const init = function() {
@@ -737,7 +736,7 @@ init();
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "state", ()=>state);
-parcelHelpers.export(exports, "loadSearchFlightsResults", ()=>loadSearchFlightsResults);
+parcelHelpers.export(exports, "loadSearchDestinationsResults", ()=>loadSearchDestinationsResults);
 var _configJs = require("./config.js");
 const state = {
     locationResults: {
@@ -745,7 +744,7 @@ const state = {
         arrivalLocationResults: []
     }
 };
-const loadSearchFlightsResults = async function(query, transit) {
+const loadSearchDestinationsResults = async function(query, transit) {
     const url = `https://booking-com15.p.rapidapi.com/api/v1/flights/searchDestination?query=${query}`;
     try {
         const response = await fetch(url, (0, _configJs.OPTIONS));
@@ -3361,6 +3360,10 @@ class SearchResultsBtnView {
         if ((0, _datePickerViewDefault.default)._queryValues.returnDate) this._queryStringValues.returnDate = (0, _datePickerViewDefault.default)._queryValues.returnDate.formattedDate.split("/").join("-");
         // Set the href attribute dynamically while adding all the user's input data stored as query parameters
         this._searchBtn.setAttribute("href", this._generateQueryParametersMarkup(this._queryStringValues));
+        // Reload the page after 50ms
+        setTimeout(()=>{
+            this._reloadPage();
+        }, 50);
     }
     // A method to help with the form validation created in order to avoid repetitive code
     _formValidator(content, instanceEl, tippyOptions) {
@@ -3394,15 +3397,8 @@ class SearchResultsBtnView {
         const URL = `flights-results.html?adults=${adults}&children=${childrenAges}&flightClass=${flightClass}&departureLocationId=${departureLocationId}&arrivalLocationId=${arrivalLocationId}&departureDate=${departureDate}&returnDate=${returnDate}`;
         return URL;
     }
-    // This method resets the query string values from the object as soon as the user clicks the 'search' button
-    // _resetQueryStringValues() {
-    //   this._queryStringValues.persons.adults = 0;
-    //   this._queryStringValues.persons.children = [];
-    //   this._queryStringValues.departureLocationId = "";
-    //   this._queryStringValues.arrivalLocationId = "";
-    //   this._queryStringValues.departureDate = "";
-    //   this._queryStringValues.returnDate = "";
-    // }
+    // This method makes sure the page is completely reloaded after the user has introduced the relevant data and pressed the 'Search' button
+    // As the page reloads, all the input values are cleared, as well as the URL which is dynamically attached as a value for the 'href' attribute of the 'Search' button
     _reloadPage() {
         window.location.reload();
     }
@@ -7298,6 +7294,6 @@ var createPopper = /*#__PURE__*/ (0, _createPopperJs.popperGenerator)({
     defaultModifiers: defaultModifiers
 }); // eslint-disable-next-line import/no-unused-modules
 
-},{"./createPopper.js":"cHuNp","./modifiers/eventListeners.js":"hBKsL","./modifiers/popperOffsets.js":"6I679","./modifiers/computeStyles.js":"gDlm2","./modifiers/applyStyles.js":"4iMn4","./modifiers/offset.js":"3GKVY","./modifiers/flip.js":"fv5wq","./modifiers/preventOverflow.js":"1AMhb","./modifiers/arrow.js":"31HFW","./modifiers/hide.js":"2g4OF","./popper-lite.js":false,"./modifiers/index.js":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2hEyg":[function() {},{}]},["1Ha3s","evDea"], "evDea", "parcelRequire94c2")
+},{"./createPopper.js":"cHuNp","./modifiers/eventListeners.js":"hBKsL","./modifiers/popperOffsets.js":"6I679","./modifiers/computeStyles.js":"gDlm2","./modifiers/applyStyles.js":"4iMn4","./modifiers/offset.js":"3GKVY","./modifiers/flip.js":"fv5wq","./modifiers/preventOverflow.js":"1AMhb","./modifiers/arrow.js":"31HFW","./modifiers/hide.js":"2g4OF","./popper-lite.js":false,"./modifiers/index.js":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2hEyg":[function() {},{}]},["jcjZx","38TcD"], "38TcD", "parcelRequire94c2")
 
-//# sourceMappingURL=index.b682fa28.js.map
+//# sourceMappingURL=index.56bfde39.js.map
