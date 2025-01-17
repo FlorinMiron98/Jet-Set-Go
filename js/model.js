@@ -6,10 +6,16 @@ export const state = {
     departureLocationResults: [],
     arrivalLocationResults: [],
   },
+  flightsSearchResults: {
+    aggregation: {},
+    baggagePolicies: [],
+    flightDeals: [],
+    flightOffers: [],
+  },
 };
 
-// Import the data of the departure and arrival locations
-export const loadSearchDestinationsResults = async function (query, transit) {
+// Fetch the data of the departure and arrival locations
+export const loadDestinationsSearchResults = async function (query, transit) {
   const url = `https://booking-com15.p.rapidapi.com/api/v1/flights/searchDestination?query=${query}`;
   try {
     const response = await fetch(url, OPTIONS);
@@ -30,6 +36,54 @@ export const loadSearchDestinationsResults = async function (query, transit) {
     if (transit === "arrival") {
       state.locationResults.arrivalLocationResults = data.data;
     }
+  } catch (error) {
+    throw error;
+  }
+};
+
+// Fetch the flights data based on the user's search form
+// This function will take one argument which is the object returned by the getQueryParameters() method from flightResultsView
+export const loadFlightsSearchResults = async function (queryParams) {
+  // As the return date is optional, check if the value is empty
+  let returnDate = !queryParams.returnDate
+    ? ""
+    : `&returnDate=${queryParams.returnDate}`;
+
+  // Create the let variable to store the children search param based on the value stored in the object returned by getQueryParameters() method
+  let children;
+
+  // Chevk each possible outcome for the number of children selected by the user and assign the value to the children variable
+  if (queryParams.children.length === 1) {
+    children = `&children=${queryParams.children[0]}`;
+  }
+  if (queryParams.children.length > 1) {
+    children = `&children=${queryParams.children.join("%2C")}`;
+  }
+  if (!queryParams.children) {
+    children = "";
+  }
+
+  // Dynamically create the URL for the fetch request
+  const url = `https://booking-com15.p.rapidapi.com/api/v1/flights/searchFlights?fromId=${queryParams.departureLocationId}&toId=${queryParams.arrivalLocationId}&departDate=${queryParams.departureDate}${returnDate}&pageNo=${queryParams.pageNumber}&adults=${queryParams.adults}${children}&cabinClass=${queryParams.flightClass}&currency_code=GBP`;
+
+  console.log(url);
+
+  try {
+    const response = await fetch(url, OPTIONS);
+
+    if (!response.ok) {
+      throw new Error("Something went wrong. Please try again!");
+    }
+
+    const data = await response.json();
+    console.log(data);
+
+    // Assign the response to the 'state' object
+    state.flightsSearchResults.aggregation = data.data.aggregation;
+    state.flightsSearchResults.baggagePolicies = data.data.baggagePolicies;
+    state.flightsSearchResults.flightDeals = data.data.flightDeals;
+    state.flightsSearchResults.flightOffers = data.data.flightOffers;
+    console.log(state);
   } catch (error) {
     throw error;
   }
