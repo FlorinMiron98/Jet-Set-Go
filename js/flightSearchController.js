@@ -58,7 +58,7 @@ const controlDepartureSearchLocations = async function () {
     if (!query) return;
 
     // Load search results
-    await model.loadSearchDestinationsResults(
+    await model.loadDestinationsSearchResults(
       query,
       departureLocationSearchView._transit
     );
@@ -83,7 +83,7 @@ const controlArrivalSearchLocations = async function () {
     if (!query) return;
 
     // Load search results
-    await model.loadSearchDestinationsResults(
+    await model.loadDestinationsSearchResults(
       query,
       arrivalLocationSearchView._transit
     );
@@ -128,12 +128,10 @@ const controlReverseInputValues = function () {
   // Extract the query values and store them into variables
   const departureLocationId = departureLocationSearchView._departureLocationId;
   const arrivalLocationId = arrivalLocationSearchView._arrivalLocationId;
-  console.log(departureLocationId, arrivalLocationId);
 
   // Assign the new values for the query parameters
   departureLocationSearchView._departureLocationId = arrivalLocationId;
   arrivalLocationSearchView._arrivalLocationId = departureLocationId;
-  console.log(departureLocationId, arrivalLocationId);
 };
 
 const controlReturnSearchQueries = function () {

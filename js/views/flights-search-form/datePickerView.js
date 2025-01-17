@@ -40,7 +40,6 @@ class DatePickerView {
     // Assign the selected date to the query values object
     onSelect: (date) => {
       this._queryValues.returnDate = date;
-      console.log(this._queryValues.returnDate);
     },
   };
 

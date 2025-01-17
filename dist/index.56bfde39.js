@@ -654,7 +654,7 @@ const controlDepartureSearchLocations = async function() {
         const query = (0, _departureLocationSearchViewJsDefault.default)._getQuery();
         if (!query) return;
         // Load search results
-        await _modelJs.loadSearchDestinationsResults(query, (0, _departureLocationSearchViewJsDefault.default)._transit);
+        await _modelJs.loadDestinationsSearchResults(query, (0, _departureLocationSearchViewJsDefault.default)._transit);
         // Render results
         (0, _departureLocationSearchViewJsDefault.default)._renderMarkup(_modelJs.state.locationResults.departureLocationResults, (0, _departureLocationSearchViewJsDefault.default)._transit);
     } catch (error) {
@@ -669,7 +669,7 @@ const controlArrivalSearchLocations = async function() {
         const query = (0, _arrivalLocationSearchViewJsDefault.default)._getQuery();
         if (!query) return;
         // Load search results
-        await _modelJs.loadSearchDestinationsResults(query, (0, _arrivalLocationSearchViewJsDefault.default)._transit);
+        await _modelJs.loadDestinationsSearchResults(query, (0, _arrivalLocationSearchViewJsDefault.default)._transit);
         // Render results
         (0, _arrivalLocationSearchViewJsDefault.default)._renderMarkup(_modelJs.state.locationResults.arrivalLocationResults, (0, _arrivalLocationSearchViewJsDefault.default)._transit);
     } catch (error) {
@@ -698,11 +698,9 @@ const controlReverseInputValues = function() {
     // Extract the query values and store them into variables
     const departureLocationId = (0, _departureLocationSearchViewJsDefault.default)._departureLocationId;
     const arrivalLocationId = (0, _arrivalLocationSearchViewJsDefault.default)._arrivalLocationId;
-    console.log(departureLocationId, arrivalLocationId);
     // Assign the new values for the query parameters
     (0, _departureLocationSearchViewJsDefault.default)._departureLocationId = arrivalLocationId;
     (0, _arrivalLocationSearchViewJsDefault.default)._arrivalLocationId = departureLocationId;
-    console.log(departureLocationId, arrivalLocationId);
 };
 const controlReturnSearchQueries = function() {
     (0, _searchResultsBtnViewJsDefault.default)._assignQueryParameterValues();
@@ -736,15 +734,22 @@ init();
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "state", ()=>state);
-parcelHelpers.export(exports, "loadSearchDestinationsResults", ()=>loadSearchDestinationsResults);
+parcelHelpers.export(exports, "loadDestinationsSearchResults", ()=>loadDestinationsSearchResults);
+parcelHelpers.export(exports, "loadFlightsSearchResults", ()=>loadFlightsSearchResults);
 var _configJs = require("./config.js");
 const state = {
     locationResults: {
         departureLocationResults: [],
         arrivalLocationResults: []
+    },
+    flightsSearchResults: {
+        aggregation: {},
+        baggagePolicies: [],
+        flightDeals: [],
+        flightOffers: []
     }
 };
-const loadSearchDestinationsResults = async function(query, transit) {
+const loadDestinationsSearchResults = async function(query, transit) {
     const url = `https://booking-com15.p.rapidapi.com/api/v1/flights/searchDestination?query=${query}`;
     try {
         const response = await fetch(url, (0, _configJs.OPTIONS));
@@ -754,6 +759,33 @@ const loadSearchDestinationsResults = async function(query, transit) {
         // Dynamically display the search list based on the transit (departure locations/arrival locations)
         if (transit === "departure") state.locationResults.departureLocationResults = data.data;
         if (transit === "arrival") state.locationResults.arrivalLocationResults = data.data;
+    } catch (error) {
+        throw error;
+    }
+};
+const loadFlightsSearchResults = async function(queryParams) {
+    // As the return date is optional, check if the value is empty
+    let returnDate = !queryParams.returnDate ? "" : `&returnDate=${queryParams.returnDate}`;
+    // Create the let variable to store the children search param based on the value stored in the object returned by getQueryParameters() method
+    let children;
+    // Chevk each possible outcome for the number of children selected by the user and assign the value to the children variable
+    if (queryParams.children.length === 1) children = `&children=${queryParams.children[0]}`;
+    if (queryParams.children.length > 1) children = `&children=${queryParams.children.join("%2C")}`;
+    if (!queryParams.children) children = "";
+    // Dynamically create the URL for the fetch request
+    const url = `https://booking-com15.p.rapidapi.com/api/v1/flights/searchFlights?fromId=${queryParams.departureLocationId}&toId=${queryParams.arrivalLocationId}&departDate=${queryParams.departureDate}${returnDate}&pageNo=${queryParams.pageNumber}&adults=${queryParams.adults}${children}&cabinClass=${queryParams.flightClass}&currency_code=GBP`;
+    console.log(url);
+    try {
+        const response = await fetch(url, (0, _configJs.OPTIONS));
+        if (!response.ok) throw new Error("Something went wrong. Please try again!");
+        const data = await response.json();
+        console.log(data);
+        // Assign the response to the 'state' object
+        state.flightsSearchResults.aggregation = data.data.aggregation;
+        state.flightsSearchResults.baggagePolicies = data.data.baggagePolicies;
+        state.flightsSearchResults.flightDeals = data.data.flightDeals;
+        state.flightsSearchResults.flightOffers = data.data.flightOffers;
+        console.log(state);
     } catch (error) {
         throw error;
     }
@@ -1516,7 +1548,6 @@ class DatePickerView {
         // Assign the selected date to the query values object
         onSelect: (date)=>{
             this._queryValues.returnDate = date;
-            console.log(this._queryValues.returnDate);
         }
     };
     // Initialize the date picker library for the departure date and return date inputs
@@ -3354,10 +3385,10 @@ class SearchResultsBtnView {
             const instanceEl = (0, _datePickerViewDefault.default)._departureDateWrapper.querySelector(".input-wrapper");
             this._formValidator(content, instanceEl, tippyOptions);
             return;
-        } else // Assign the value of the departure date to the queryStringValues object
-        this._queryStringValues.departureDate = (0, _datePickerViewDefault.default)._queryValues.departureDate.formattedDate.split("/").join("-");
+        } else // Assign the value of the departure date to the queryStringValues object after formatting to the ISO
+        this._queryStringValues.departureDate = this._formatDateToISO((0, _datePickerViewDefault.default)._queryValues.departureDate.formattedDate.split("/").join("-"));
         // As the return date is optional, it doesn't need to be validated
-        if ((0, _datePickerViewDefault.default)._queryValues.returnDate) this._queryStringValues.returnDate = (0, _datePickerViewDefault.default)._queryValues.returnDate.formattedDate.split("/").join("-");
+        if ((0, _datePickerViewDefault.default)._queryValues.returnDate) this._queryStringValues.returnDate = this._formatDateToISO((0, _datePickerViewDefault.default)._queryValues.returnDate.formattedDate.split("/").join("-"));
         // Set the href attribute dynamically while adding all the user's input data stored as query parameters
         this._searchBtn.setAttribute("href", this._generateQueryParametersMarkup(this._queryStringValues));
         // Reload the page after 50ms
@@ -3377,14 +3408,14 @@ class SearchResultsBtnView {
     }
     _generateQueryParametersMarkup(queryValues) {
         // As the children ages will be stored in an array, we have to take into consideration the size of the array
-        let childrenAges;
-        // Set the childrenAges value based on the length of the children array
-        if (queryValues.persons.children.length === 1) childrenAges = queryValues.persons.children[0];
-        if (queryValues.persons.children.length === 0) childrenAges = "";
+        let children;
+        // Set the children query parameter values based on the length of the children array
+        if (queryValues.persons.children.length === 1) children = `&children=${queryValues.persons.children[0]}`;
+        if (queryValues.persons.children.length === 0) children = "";
         if (queryValues.persons.children.length > 1) {
             // '%2C' is the URL-encoded representation of a comma (,) character.
-            childrenAges = queryValues.persons.children.join("%2C");
-            console.log(childrenAges);
+            children = `&children=${queryValues.persons.children.join("%2C")}`;
+            console.log(children);
         }
         // Get rest of the query parameters values
         const adults = queryValues.persons.adults;
@@ -3393,14 +3424,23 @@ class SearchResultsBtnView {
         const arrivalLocationId = queryValues.arrivalLocationId;
         const departureDate = queryValues.departureDate;
         const returnDate = queryValues.returnDate;
-        // Dynamically generate the URL based on user's selections. The values will be extracted from the URL as the results.html page loads
-        const URL = `flights-results.html?adults=${adults}&children=${childrenAges}&flightClass=${flightClass}&departureLocationId=${departureLocationId}&arrivalLocationId=${arrivalLocationId}&departureDate=${departureDate}&returnDate=${returnDate}`;
+        // Dynamically generate the URL based on user's selections. The values will be extracted from the URL as the flights-results.html page loads
+        const URL = `flights-results.html?adults=${adults}${children}&flightClass=${flightClass}&departureLocationId=${departureLocationId}&arrivalLocationId=${arrivalLocationId}&departureDate=${departureDate}&returnDate=${returnDate}`;
         return URL;
     }
     // This method makes sure the page is completely reloaded after the user has introduced the relevant data and pressed the 'Search' button
     // As the page reloads, all the input values are cleared, as well as the URL which is dynamically attached as a value for the 'href' attribute of the 'Search' button
     _reloadPage() {
         window.location.reload();
+    }
+    // This is a method created to format the departure and return dates to ISO
+    _formatDateToISO(inputDate) {
+        const date = new Date(inputDate);
+        const year = date.getFullYear();
+        // getMonth() is zero-indexed
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const day = String(date.getDate()).padStart(2, "0");
+        return `${year}-${month}-${day}`;
     }
 }
 exports.default = new SearchResultsBtnView();

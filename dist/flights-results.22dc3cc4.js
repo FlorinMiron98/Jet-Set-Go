@@ -596,32 +596,49 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"eYIic":[function(require,module,exports,__globalThis) {
+// Import model
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _model = require("./model");
+// Import views
 var _flightResultsView = require("./views/flightResultsView");
 var _flightResultsViewDefault = parcelHelpers.interopDefault(_flightResultsView);
-const controlLoadURL = function() {
-    (0, _flightResultsViewDefault.default)._getQueryParameters();
+var _navbarView = require("./views/navbarView");
+var _navbarViewDefault = parcelHelpers.interopDefault(_navbarView);
+var _sideNavbarView = require("./views/sideNavbarView");
+var _sideNavbarViewDefault = parcelHelpers.interopDefault(_sideNavbarView);
+const controlOnLoadSearch = function() {
+    _model.loadFlightsSearchResults((0, _flightResultsViewDefault.default)._getQueryParameters());
 };
 const init = function() {
-    (0, _flightResultsViewDefault.default)._addHandlerLoad(controlLoadURL);
+    (0, _flightResultsViewDefault.default)._addHandlerRender(controlOnLoadSearch);
+    // Dynamic styling
+    (0, _navbarViewDefault.default).setDynamicStyling();
+    (0, _sideNavbarViewDefault.default).setDynamicStyling();
+    (0, _sideNavbarViewDefault.default).toggleSideNavbar();
 };
 init();
 
-},{"./model":"Py0LO","./views/flightResultsView":"cJKtZ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"Py0LO":[function(require,module,exports,__globalThis) {
+},{"./model":"Py0LO","./views/flightResultsView":"cJKtZ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./views/navbarView":"9sJsi","./views/sideNavbarView":"9BkUd"}],"Py0LO":[function(require,module,exports,__globalThis) {
 // Import the 'options' object which contains the method and the API key
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "state", ()=>state);
-parcelHelpers.export(exports, "loadSearchDestinationsResults", ()=>loadSearchDestinationsResults);
+parcelHelpers.export(exports, "loadDestinationsSearchResults", ()=>loadDestinationsSearchResults);
+parcelHelpers.export(exports, "loadFlightsSearchResults", ()=>loadFlightsSearchResults);
 var _configJs = require("./config.js");
 const state = {
     locationResults: {
         departureLocationResults: [],
         arrivalLocationResults: []
+    },
+    flightsSearchResults: {
+        aggregation: {},
+        baggagePolicies: [],
+        flightDeals: [],
+        flightOffers: []
     }
 };
-const loadSearchDestinationsResults = async function(query, transit) {
+const loadDestinationsSearchResults = async function(query, transit) {
     const url = `https://booking-com15.p.rapidapi.com/api/v1/flights/searchDestination?query=${query}`;
     try {
         const response = await fetch(url, (0, _configJs.OPTIONS));
@@ -631,6 +648,33 @@ const loadSearchDestinationsResults = async function(query, transit) {
         // Dynamically display the search list based on the transit (departure locations/arrival locations)
         if (transit === "departure") state.locationResults.departureLocationResults = data.data;
         if (transit === "arrival") state.locationResults.arrivalLocationResults = data.data;
+    } catch (error) {
+        throw error;
+    }
+};
+const loadFlightsSearchResults = async function(queryParams) {
+    // As the return date is optional, check if the value is empty
+    let returnDate = !queryParams.returnDate ? "" : `&returnDate=${queryParams.returnDate}`;
+    // Create the let variable to store the children search param based on the value stored in the object returned by getQueryParameters() method
+    let children;
+    // Chevk each possible outcome for the number of children selected by the user and assign the value to the children variable
+    if (queryParams.children.length === 1) children = `&children=${queryParams.children[0]}`;
+    if (queryParams.children.length > 1) children = `&children=${queryParams.children.join("%2C")}`;
+    if (!queryParams.children) children = "";
+    // Dynamically create the URL for the fetch request
+    const url = `https://booking-com15.p.rapidapi.com/api/v1/flights/searchFlights?fromId=${queryParams.departureLocationId}&toId=${queryParams.arrivalLocationId}&departDate=${queryParams.departureDate}${returnDate}&pageNo=${queryParams.pageNumber}&adults=${queryParams.adults}${children}&cabinClass=${queryParams.flightClass}&currency_code=GBP`;
+    console.log(url);
+    try {
+        const response = await fetch(url, (0, _configJs.OPTIONS));
+        if (!response.ok) throw new Error("Something went wrong. Please try again!");
+        const data = await response.json();
+        console.log(data);
+        // Assign the response to the 'state' object
+        state.flightsSearchResults.aggregation = data.data.aggregation;
+        state.flightsSearchResults.baggagePolicies = data.data.baggagePolicies;
+        state.flightsSearchResults.flightDeals = data.data.flightDeals;
+        state.flightsSearchResults.flightOffers = data.data.flightOffers;
+        console.log(state);
     } catch (error) {
         throw error;
     }
@@ -684,26 +728,111 @@ parcelHelpers.defineInteropFlag(exports);
 class FlightResultsView {
     // Global Variables
     _pageNumber = 1;
-    _addHandlerLoad(handler) {
+    // Create the handler render method and assign the handler parameter which will be passed as a function in flightResultsController.js
+    _addHandlerRender(handler) {
         window.addEventListener("load", ()=>{
             handler();
         });
     }
+    // This method will be responsible for returning an object which will contain all the query parameters necessary to perform the flights search
+    // It will be passed as an argument for the loadFlightsSearchResults function from model.js
+    // Each value of the object returned by this method will serve as a parameter for the URL where the API request will be made
     _getQueryParameters() {
+        // Return the query string from the URL
         const link = window.location.search;
+        // Extract the search params from the query string and store them into a constant variable
         const searchParams = new URLSearchParams(link);
+        // As the value for the dynamically added children query parameter depends on the user's selections, I stored the value of the params in a separate variable
+        const childrenSearchParam = searchParams.get("children");
+        console.log(childrenSearchParam);
+        // Create e let variable which will be the value of the children property in the returned object
+        let children;
+        // As one of the requested params for the URL is represented by each child's age, I use 3 different if statements to check the children's ages
+        if (!childrenSearchParam) children = "";
+        if (childrenSearchParam && childrenSearchParam.includes(",")) children = childrenSearchParam.split(",");
+        if (childrenSearchParam && !childrenSearchParam.includes(",")) children = [
+            childrenSearchParam
+        ];
+        // Return the object which contains the parameters for the API's URL
         return {
             adults: searchParams.get("adults"),
-            children: [
-                searchParams.get("children")
-            ],
+            children,
             flightClass: searchParams.get("flightClass"),
             departureLocationId: searchParams.get("departureLocationId"),
-            arrivalLocationId: searchParams.get("arrivalLocationId")
+            arrivalLocationId: searchParams.get("arrivalLocationId"),
+            departureDate: searchParams.get("departureDate"),
+            returnDate: searchParams.get("returnDate"),
+            pageNumber: this._pageNumber
         };
     }
 }
 exports.default = new FlightResultsView();
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9sJsi":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+class NavbarView {
+    // DOM elements
+    sideNavbar = document.querySelector(".sidebar-navigation");
+    navbar = document.getElementById("nav");
+    // Set the background styling for the navbar when the scrollY property is 1px or bigger or depending on the styling of the side navigation bar
+    setDynamicStyling() {
+        window.addEventListener("scroll", ()=>{
+            if (window.scrollY > 0) this.navbar.classList.add("navigation-highlight");
+            if (window.scrollY === 0 && !this.sideNavbar.classList.contains("sidebar-navigation-visible")) this.navbar.classList.remove("navigation-highlight");
+            if (window.scrollY === 0 && this.sideNavbar.classList.contains("sidebar-navigation-visible")) return;
+        });
+    }
+}
+exports.default = new NavbarView();
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9BkUd":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+class SideNavbarView {
+    // DOM elements
+    navbar = document.getElementById("nav");
+    sideNavbar = document.querySelector(".sidebar-navigation");
+    hamburgerBtn = document.getElementById("hamburger-btn");
+    overlay = document.querySelector(".overlay");
+    // Set the top positioning of the side navigation bar based on the height of the navigation bar when the page loads or when the user changes the screen size
+    setDynamicStyling() {
+        [
+            "load",
+            "resize"
+        ].forEach((e)=>{
+            window.addEventListener(e, ()=>{
+                const navbarSize = this.navbar.getBoundingClientRect();
+                this.sideNavbar.style.marginTop = `${navbarSize.height}px`;
+            });
+        });
+    }
+    toggleSideNavbar() {
+        // Add an event listener to the body element and hide the overlay if it is currently visible
+        document.body.addEventListener("click", (e)=>{
+            if (e.target.classList.contains("overlay")) {
+                this.sideNavbar.classList.remove("sidebar-navigation-visible");
+                e.target.classList.remove("overlay-visible");
+            }
+            // Adjust the styling of the navigation bar taking into consideration the scrollY property and the visibility of the overlay
+            if (e.target.classList.contains("overlay") && window.scrollY === 0) {
+                this.navbar.classList.remove("navigation-highlight");
+                this.sideNavbar.classList.remove("sidebar-navigation-visible");
+                e.target.classList.remove("overlay-visible");
+            }
+        });
+        // Set the behaviour of the navigation bar and overlay when clicking the hamburger button
+        this.hamburgerBtn.addEventListener("click", ()=>{
+            this.sideNavbar.classList.toggle("sidebar-navigation-visible");
+            this.overlay.classList.toggle("overlay-visible");
+            if (window.scrollY === 0) {
+                if (this.navbar.classList.contains("navigation-highlight")) this.navbar.classList.remove("navigation-highlight");
+                else this.navbar.classList.add("navigation-highlight");
+            }
+        });
+    }
+}
+exports.default = new SideNavbarView();
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["aBvyN","eYIic"], "eYIic", "parcelRequire94c2")
 
