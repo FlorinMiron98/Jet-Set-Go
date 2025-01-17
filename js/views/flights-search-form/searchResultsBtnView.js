@@ -105,19 +105,21 @@ class SearchResultsBtnView {
       this._formValidator(content, instanceEl, tippyOptions);
       return;
     } else {
-      // Assign the value of the departure date to the queryStringValues object
-      this._queryStringValues.departureDate =
+      // Assign the value of the departure date to the queryStringValues object after formatting to the ISO
+      this._queryStringValues.departureDate = this._formatDateToISO(
         datePickerView._queryValues.departureDate.formattedDate
           .split("/")
-          .join("-");
+          .join("-")
+      );
     }
 
     // As the return date is optional, it doesn't need to be validated
     if (datePickerView._queryValues.returnDate) {
-      this._queryStringValues.returnDate =
+      this._queryStringValues.returnDate = this._formatDateToISO(
         datePickerView._queryValues.returnDate.formattedDate
           .split("/")
-          .join("-");
+          .join("-")
+      );
     }
 
     // Set the href attribute dynamically while adding all the user's input data stored as query parameters
@@ -179,6 +181,18 @@ class SearchResultsBtnView {
   // As the page reloads, all the input values are cleared, as well as the URL which is dynamically attached as a value for the 'href' attribute of the 'Search' button
   _reloadPage() {
     window.location.reload();
+  }
+
+  // This is a method created to format the departure and return dates to ISO
+  _formatDateToISO(inputDate) {
+    const date = new Date(inputDate);
+
+    const year = date.getFullYear();
+    // getMonth() is zero-indexed
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+
+    return `${year}-${month}-${day}`;
   }
 }
 
