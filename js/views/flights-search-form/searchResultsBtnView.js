@@ -148,19 +148,19 @@ class SearchResultsBtnView {
 
   _generateQueryParametersMarkup(queryValues) {
     // As the children ages will be stored in an array, we have to take into consideration the size of the array
-    let childrenAges;
+    let children;
 
-    // Set the childrenAges value based on the length of the children array
+    // Set the children query parameter values based on the length of the children array
     if (queryValues.persons.children.length === 1) {
-      childrenAges = queryValues.persons.children[0];
+      children = `&children=${queryValues.persons.children[0]}`;
     }
     if (queryValues.persons.children.length === 0) {
-      childrenAges = "";
+      children = "";
     }
     if (queryValues.persons.children.length > 1) {
       // '%2C' is the URL-encoded representation of a comma (,) character.
-      childrenAges = queryValues.persons.children.join("%2C");
-      console.log(childrenAges);
+      children = `&children=${queryValues.persons.children.join("%2C")}`;
+      console.log(children);
     }
 
     // Get rest of the query parameters values
@@ -171,8 +171,8 @@ class SearchResultsBtnView {
     const departureDate = queryValues.departureDate;
     const returnDate = queryValues.returnDate;
 
-    // Dynamically generate the URL based on user's selections. The values will be extracted from the URL as the results.html page loads
-    const URL = `flights-results.html?adults=${adults}&children=${childrenAges}&flightClass=${flightClass}&departureLocationId=${departureLocationId}&arrivalLocationId=${arrivalLocationId}&departureDate=${departureDate}&returnDate=${returnDate}`;
+    // Dynamically generate the URL based on user's selections. The values will be extracted from the URL as the flights-results.html page loads
+    const URL = `flights-results.html?adults=${adults}${children}&flightClass=${flightClass}&departureLocationId=${departureLocationId}&arrivalLocationId=${arrivalLocationId}&departureDate=${departureDate}&returnDate=${returnDate}`;
 
     return URL;
   }
