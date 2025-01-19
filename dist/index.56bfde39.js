@@ -763,7 +763,7 @@ const loadDestinationsSearchResults = async function(query, transit) {
         throw error;
     }
 };
-const loadFlightsSearchResults = async function(queryParams) {
+const loadFlightsSearchResults = async function(queryParams, sort = "BEST") {
     // As the return date is optional, check if the value is empty
     let returnDate = !queryParams.returnDate ? "" : `&returnDate=${queryParams.returnDate}`;
     // Create the let variable to store the children search param based on the value stored in the object returned by getQueryParameters() method
@@ -773,7 +773,7 @@ const loadFlightsSearchResults = async function(queryParams) {
     if (queryParams.children.length > 1) children = `&children=${queryParams.children.join("%2C")}`;
     if (!queryParams.children) children = "";
     // Dynamically create the URL for the fetch request
-    const url = `https://booking-com15.p.rapidapi.com/api/v1/flights/searchFlights?fromId=${queryParams.departureLocationId}&toId=${queryParams.arrivalLocationId}&departDate=${queryParams.departureDate}${returnDate}&pageNo=${queryParams.pageNumber}&adults=${queryParams.adults}${children}&cabinClass=${queryParams.flightClass}&currency_code=GBP`;
+    const url = `https://booking-com15.p.rapidapi.com/api/v1/flights/searchFlights?fromId=${queryParams.departureLocationId}&toId=${queryParams.arrivalLocationId}&departDate=${queryParams.departureDate}${returnDate}&pageNo=${queryParams.pageNumber}&adults=${queryParams.adults}${children}&sort=${sort}&cabinClass=${queryParams.flightClass}&currency_code=GBP`;
     console.log(url);
     try {
         const response = await fetch(url, (0, _configJs.OPTIONS));
@@ -905,8 +905,8 @@ parcelHelpers.defineInteropFlag(exports);
 class HeaderContentView {
     // DOM elements
     navbar = document.getElementById("nav");
-    header = document.getElementById("flights-header");
-    // As the navigation bar has position:fixed which will get it out of the normal flow of the page, I had to dynamically set a margin top for the main content of the header element so the navigation bar will not overwrite it
+    header = document.querySelector(".header");
+    // As the navigation bar has position:fixed which will get it out of the normal flow of the page, I had to dynamically set a padding top for the main content of the header element so the navigation bar will not overwrite it
     setDynamicStyling() {
         [
             "load",

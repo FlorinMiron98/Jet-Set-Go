@@ -606,6 +606,8 @@ var _navbarView = require("./views/navbarView");
 var _navbarViewDefault = parcelHelpers.interopDefault(_navbarView);
 var _sideNavbarView = require("./views/sideNavbarView");
 var _sideNavbarViewDefault = parcelHelpers.interopDefault(_sideNavbarView);
+var _headerContentView = require("./views/headerContentView");
+var _headerContentViewDefault = parcelHelpers.interopDefault(_headerContentView);
 const controlOnLoadSearch = function() {
     _model.loadFlightsSearchResults((0, _flightResultsViewDefault.default)._getQueryParameters());
 };
@@ -615,10 +617,11 @@ const init = function() {
     (0, _navbarViewDefault.default).setDynamicStyling();
     (0, _sideNavbarViewDefault.default).setDynamicStyling();
     (0, _sideNavbarViewDefault.default).toggleSideNavbar();
+    (0, _headerContentViewDefault.default).setDynamicStyling();
 };
 init();
 
-},{"./model":"Py0LO","./views/flightResultsView":"cJKtZ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./views/navbarView":"9sJsi","./views/sideNavbarView":"9BkUd"}],"Py0LO":[function(require,module,exports,__globalThis) {
+},{"./model":"Py0LO","./views/flightResultsView":"cJKtZ","./views/navbarView":"9sJsi","./views/sideNavbarView":"9BkUd","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./views/headerContentView":"d8zti"}],"Py0LO":[function(require,module,exports,__globalThis) {
 // Import the 'options' object which contains the method and the API key
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -652,7 +655,7 @@ const loadDestinationsSearchResults = async function(query, transit) {
         throw error;
     }
 };
-const loadFlightsSearchResults = async function(queryParams) {
+const loadFlightsSearchResults = async function(queryParams, sort = "BEST") {
     // As the return date is optional, check if the value is empty
     let returnDate = !queryParams.returnDate ? "" : `&returnDate=${queryParams.returnDate}`;
     // Create the let variable to store the children search param based on the value stored in the object returned by getQueryParameters() method
@@ -662,7 +665,7 @@ const loadFlightsSearchResults = async function(queryParams) {
     if (queryParams.children.length > 1) children = `&children=${queryParams.children.join("%2C")}`;
     if (!queryParams.children) children = "";
     // Dynamically create the URL for the fetch request
-    const url = `https://booking-com15.p.rapidapi.com/api/v1/flights/searchFlights?fromId=${queryParams.departureLocationId}&toId=${queryParams.arrivalLocationId}&departDate=${queryParams.departureDate}${returnDate}&pageNo=${queryParams.pageNumber}&adults=${queryParams.adults}${children}&cabinClass=${queryParams.flightClass}&currency_code=GBP`;
+    const url = `https://booking-com15.p.rapidapi.com/api/v1/flights/searchFlights?fromId=${queryParams.departureLocationId}&toId=${queryParams.arrivalLocationId}&departDate=${queryParams.departureDate}${returnDate}&pageNo=${queryParams.pageNumber}&adults=${queryParams.adults}${children}&sort=${sort}&cabinClass=${queryParams.flightClass}&currency_code=GBP`;
     console.log(url);
     try {
         const response = await fetch(url, (0, _configJs.OPTIONS));
@@ -833,6 +836,29 @@ class SideNavbarView {
     }
 }
 exports.default = new SideNavbarView();
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"d8zti":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+class HeaderContentView {
+    // DOM elements
+    navbar = document.getElementById("nav");
+    header = document.querySelector(".header");
+    // As the navigation bar has position:fixed which will get it out of the normal flow of the page, I had to dynamically set a padding top for the main content of the header element so the navigation bar will not overwrite it
+    setDynamicStyling() {
+        [
+            "load",
+            "resize"
+        ].forEach((e)=>{
+            window.addEventListener(e, ()=>{
+                const navbarSizes = this.navbar.getBoundingClientRect();
+                this.header.style.paddingTop = `${navbarSizes.height}px`;
+                this.header.style.paddingBottom = `${navbarSizes.height}px`;
+            });
+        });
+    }
+}
+exports.default = new HeaderContentView();
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["aBvyN","eYIic"], "eYIic", "parcelRequire94c2")
 
