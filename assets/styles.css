@@ -212,10 +212,6 @@ h6 {
 /* ============ */
 /* Header */
 /* ============ */
-header {
-  min-height: 100vh;
-}
-
 header #nav {
   transition: background-color 0.25s ease-in-out;
 }
@@ -264,6 +260,7 @@ header #nav .right-navigation li i:hover {
   background-image: url("../assets/images/background-image-flights-large.jpg");
   background-size: cover;
   background-position: center;
+  min-height: 100vh;
 }
 
 #flights-header .header-main-content {
@@ -612,6 +609,46 @@ main #seasonal-destination-section .card .book-btn:active {
   color: var(--color-white);
 }
 
+/* =================================================================== */
+/* flights-results.html styling */
+/* =================================================================== */
+
+#flights-results-header .header-main-content {
+  background-color: var(--color-gray-light);
+}
+
+#flights-results-header .header-main-content .results-container {
+  gap: 2rem;
+}
+
+#flights-results-header .header-main-content .results-filters {
+  flex: 1 1 auto;
+}
+#flights-results-header .header-main-content .results-list {
+  flex: 3 1 auto;
+}
+
+#flights-results-header .sort-btns {
+  min-height: 4rem;
+  border: 1px solid var(--color-dark-2);
+}
+
+#flights-results-header .sort-btns button {
+  flex: 1 1 33.33333333333%;
+  border: none;
+  align-self: stretch;
+  transition: background-color 0.25s linear;
+  color: var(--flights-primary);
+}
+
+#flights-results-header .sort-btns button.active {
+  border-bottom: 2px solid var(--flights-primary);
+}
+
+#flights-results-header .sort-btns button:active,
+#flights-results-header .sort-btns button:hover {
+  background-color: var(--color-gray);
+}
 /* ============ */
 /* Footer */
 /* ============ */
