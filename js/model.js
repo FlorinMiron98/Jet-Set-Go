@@ -43,7 +43,10 @@ export const loadDestinationsSearchResults = async function (query, transit) {
 
 // Fetch the flights data based on the user's search form
 // This function will take one argument which is the object returned by the getQueryParameters() method from flightResultsView
-export const loadFlightsSearchResults = async function (queryParams) {
+export const loadFlightsSearchResults = async function (
+  queryParams,
+  sort = "BEST"
+) {
   // As the return date is optional, check if the value is empty
   let returnDate = !queryParams.returnDate
     ? ""
@@ -64,7 +67,7 @@ export const loadFlightsSearchResults = async function (queryParams) {
   }
 
   // Dynamically create the URL for the fetch request
-  const url = `https://booking-com15.p.rapidapi.com/api/v1/flights/searchFlights?fromId=${queryParams.departureLocationId}&toId=${queryParams.arrivalLocationId}&departDate=${queryParams.departureDate}${returnDate}&pageNo=${queryParams.pageNumber}&adults=${queryParams.adults}${children}&cabinClass=${queryParams.flightClass}&currency_code=GBP`;
+  const url = `https://booking-com15.p.rapidapi.com/api/v1/flights/searchFlights?fromId=${queryParams.departureLocationId}&toId=${queryParams.arrivalLocationId}&departDate=${queryParams.departureDate}${returnDate}&pageNo=${queryParams.pageNumber}&adults=${queryParams.adults}${children}&sort=${sort}&cabinClass=${queryParams.flightClass}&currency_code=GBP`;
 
   console.log(url);
 
