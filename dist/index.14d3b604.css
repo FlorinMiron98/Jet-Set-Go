@@ -512,6 +512,16 @@ main #seasonal-destination-section .card .book-btn:hover, main #seasonal-destina
   flex: 2 auto;
 }
 
+#flights-results-header .header-main-content .filters-btn {
+  background-color: var(--flights-primary);
+  border: none;
+  transition: background-color .25s linear;
+}
+
+#flights-results-header .header-main-content .filters-btn:active, #flights-results-header .header-main-content .filters-btn:hover {
+  background-color: var(--flights-secondary);
+}
+
 #flights-results-header .sort-btns {
   border: 1px solid var(--color-dark-2);
   min-height: 4rem;
@@ -633,6 +643,10 @@ footer .quick-links a:hover, footer .quick-links a:active, footer .social-media-
 
   #flights-header #flights-search-form .persons-selection {
     width: 50%;
+  }
+
+  #flights-results-header .header-main-content .results-container {
+    gap: .8rem;
   }
 }
 
