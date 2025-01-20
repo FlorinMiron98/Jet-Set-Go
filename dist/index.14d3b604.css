@@ -33,6 +33,7 @@
   --color-green: #19bf00;
   --color-red: red;
   --color-red-light: #fb4e4e;
+  --border-rounded: 50%;
   --darkening-bg-image: linear-gradient(#00000026, #00000026);
   --box-shadow-dark: 0px 9px 6px -4px #464646;
   --box-shadow-light: 0px 2px 8px 1px #afafaf;
@@ -62,7 +63,7 @@ h1, h2, h3, h4, h5, h6 {
 .loader {
   border: .5rem solid var(--color-gray-light);
   border-top: .5rem solid var(--flights-secondary);
-  border-radius: 50%;
+  border-radius: var(--border-rounded);
   width: 3rem;
   height: 3rem;
   animation: 2s linear infinite spin;
@@ -499,7 +500,7 @@ main #seasonal-destination-section .card .book-btn:hover, main #seasonal-destina
 }
 
 #flights-results-header .header-main-content .results-list {
-  flex: 3 auto;
+  flex: 2 auto;
 }
 
 #flights-results-header .sort-btns {
@@ -637,6 +638,22 @@ footer .quick-links a:hover, footer .quick-links a:active, footer .social-media-
   #flights-header #flights-search-form .persons-selection {
     width: 80%;
   }
+
+  #flights-results-header .flights-search-results .flight-item-btns {
+    gap: .8rem;
+  }
+
+  #flights-results-header .flights-search-results .flight-item-btns > * {
+    flex: 0 100%;
+  }
+
+  #flights-results-header .flight-item-btns .view-details-btn {
+    order: 1;
+  }
+
+  #flights-results-header .flight-item-btns .save-btn {
+    order: 2;
+  }
 }
 
 @media only screen and (width <= 576px) {
@@ -691,6 +708,18 @@ footer .quick-links a:hover, footer .quick-links a:active, footer .social-media-
   #flights-header #flights-search-form .input-wrapper .locations-reverse-button {
     right: 1rem;
     transform: none;
+  }
+
+  #flights-results-header .sort-btns {
+    min-height: 3.4rem;
+  }
+
+  #flights-results-header .flights-search-results .flight-hours {
+    gap: .7rem;
+  }
+
+  #flights-results-header .flight-destinations .flight-location-code, #flights-results-header .flight-destinations .flight-duration {
+    font-size: .8rem;
   }
 }
 /*# sourceMappingURL=index.14d3b604.css.map */

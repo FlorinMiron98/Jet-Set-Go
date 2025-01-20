@@ -172,7 +172,14 @@
       <section class="header-main-content py-5">
         <div class="results-container container d-flex flex-wrap">
           <!-- Filters -->
-          <div class="results-filters">
+          <div class="results-filters d-none d-lg-block">
+            <!-- Spinner Loader -->
+            <!-- <div
+              class="loader-container d-flex flex-column align-items-center justify-content-center mt-4"
+            >
+              <div class="loader"></div>
+              <p class="mt-2">Creating filters...</p>
+            </div> -->
             <h2 class="fw-bold m-0">Filters</h2>
             <p class="mb-4">
               Showing <span class="results-num">885</span> results
@@ -287,12 +294,21 @@
               <button class="fw-bold" data-sort="CHEAPEST">Cheapest</button>
               <button class="fw-bold" data-sort="FASTEST">Fastest</button>
             </div>
+            <!-- Spinner Loader -->
+            <!-- <div
+              class="loader-container d-flex flex-column align-items-center justify-content-center mt-4"
+            >
+              <div class="loader"></div>
+              <p class="mt-2">Searching for flights...</p>
+            </div> -->
             <!-- Search Results -->
             <div class="flights-search-results mt-3">
               <!-- Flight Item -->
-              <div class="flight-item px-5 py-3 border rounded-3">
+              <div class="flight-item px-3 px-md-5 py-3 border rounded-3">
                 <!-- Flight Details -->
-                <div class="flight-details d-flex justify-content-between mb-4">
+                <div
+                  class="flight-details d-flex flex-column flex-md-row justify-content-between mb-4"
+                >
                   <div class="airline-content-wrapper">
                     <div class="airline-content d-flex align-items-center mb-2">
                       <div class="airline-icon">
@@ -315,7 +331,7 @@
                     </p>
                   </div>
                   <div class="d-flex flex-column">
-                    <div class="flight-hours d-flex align-self-start">
+                    <div class="flight-hours d-flex justify-content-between">
                       <div class="flight-departure-hour fw-bold fs-3">
                         06:00
                       </div>
@@ -342,7 +358,9 @@
                   </div>
                 </div>
                 <!-- Flight Details -->
-                <div class="flight-details d-flex justify-content-between mb-4">
+                <div
+                  class="flight-details d-flex flex-column flex-md-row justify-content-between mb-4"
+                >
                   <div class="airline-content-wrapper">
                     <div class="airline-content d-flex align-items-center mb-2">
                       <div class="airline-icon">
@@ -365,7 +383,7 @@
                     </p>
                   </div>
                   <div class="d-flex flex-column">
-                    <div class="flight-hours d-flex align-self-start">
+                    <div class="flight-hours d-flex justify-content-between">
                       <div class="flight-departure-hour fw-bold fs-3">
                         06:00
                       </div>
@@ -391,10 +409,12 @@
                     </div>
                   </div>
                 </div>
-                <div class="flight-price text-end">
+                <div class="flight-price text-start text-md-end">
                   <p class="fs-2 fw-bold">£266</p>
                 </div>
-                <div class="flight-item-btns d-flex justify-content-between">
+                <div
+                  class="flight-item-btns d-flex flex-wrap justify-content-between"
+                >
                   <button
                     class="save-btn px-5 py-2 rounded-3 focus-ring text-white fw-bold"
                   >
