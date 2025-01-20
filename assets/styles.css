@@ -136,6 +136,7 @@ h6 {
   right: 0;
   bottom: 0;
   left: 0;
+  min-height: 100vh;
   background-color: var(--color-dark-transparent);
   transform: translate(-100%);
   transition: all 0.25s ease-in-out;
@@ -761,6 +762,39 @@ footer .social-media-links a:active {
   color: var(--color-gray);
 }
 
+/* ============= */
+/* Dialogs */
+/* ============= */
+.filters-dialog {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 70%;
+  border: none;
+}
+
+.filters-dialog::backdrop {
+  backdrop-filter: blur(5px);
+}
+
+.filters-dialog .filters-container-dialog {
+  display: grid;
+  grid-template-areas:
+    "airlines stops"
+    "airlines duration";
+  gap: 2rem;
+}
+
+.filters-dialog .airlines-filters {
+  grid-area: airlines;
+}
+.filters-dialog .stop-filters {
+  grid-area: stops;
+}
+.filters-dialog .duration-filters {
+  grid-area: duration;
+}
+
 /* =================== */
 /* Media Queries */
 /* =================== */
@@ -838,6 +872,13 @@ footer .social-media-links a:active {
   #flights-results-header .flight-item-btns .save-btn {
     order: 2;
   }
+
+  .filters-dialog .filters-container-dialog {
+    grid-template-areas:
+      "airlines"
+      "stops"
+      "duration";
+  }
 }
 
 /* Small screen sizes */
@@ -910,11 +951,15 @@ footer .social-media-links a:active {
   }
 
   #flights-results-header .flights-search-results .flight-hours {
-    gap: 0.7rem;
+    gap: 0.5rem;
   }
 
   #flights-results-header .flight-destinations .flight-location-code,
   #flights-results-header .flight-destinations .flight-duration {
     font-size: 0.8rem;
+  }
+
+  .filters-dialog {
+    min-width: 90%;
   }
 }
