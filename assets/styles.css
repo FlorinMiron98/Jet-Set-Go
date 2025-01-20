@@ -46,12 +46,16 @@
   --color-brown: #543d25;
   --color-gray: #c4c4c4;
   --color-gray-light: #f5f5f5;
+  --color-gray-dark: #9d9d9d;
   --color-highlight: #ffa200;
   --color-flights-highlight: #ffa200;
   --color-hightlight-transparent: rgba(255, 162, 0, 0.7);
   --color-gray-transparent: rgba(245, 245, 245, 0.25);
   --color-dark-transparent: rgba(32, 45, 61, 0.5);
   --color-warning: #ff4500;
+  --color-green: #19bf00;
+  --color-red: #ff0000;
+  --color-red-light: #fb4e4e;
 
   --darkening-bg-image: linear-gradient(
     rgba(0, 0, 0, 0.15),
@@ -649,6 +653,58 @@ main #seasonal-destination-section .card .book-btn:active {
 #flights-results-header .sort-btns button:hover {
   background-color: var(--color-gray);
 }
+
+#flights-results-header .flights-search-results .airline-icon {
+  height: 3.2rem;
+}
+
+#flights-results-header .flights-search-results .airline-content {
+  gap: 1rem;
+}
+
+#flights-results-header .flights-search-results .flight-class {
+  display: inline-block;
+  background-color: var(--color-green);
+}
+
+#flights-results-header .flights-search-results .flight-hours {
+  gap: 2.8rem;
+}
+
+#flights-results-header .flights-search-results .flight-hours .line {
+  border-top: 3px dotted var(--color-dark-2);
+  flex-grow: 1;
+  min-width: 3rem;
+}
+
+#flights-results-header .flights-search-results .flight-destinations {
+  color: var(--color-gray-dark);
+}
+
+/* Style the 'Save' and the 'View Details' buttons */
+#flights-results-header .flights-search-results .flight-item-btns > * {
+  border: none;
+  transition: background-color 0.25s linear;
+}
+
+#flights-results-header .flight-item-btns .save-btn {
+  background-color: var(--color-red);
+}
+
+#flights-results-header .flight-item-btns .view-details-btn {
+  background-color: var(--flights-primary);
+}
+
+#flights-results-header .flight-item-btns .save-btn:active,
+#flights-results-header .flight-item-btns .save-btn:hover {
+  background-color: var(--color-red-light);
+}
+
+#flights-results-header .flight-item-btns .view-details-btn:active,
+#flights-results-header .flight-item-btns .view-details-btn:hover {
+  background-color: var(--flights-secondary);
+}
+
 /* ============ */
 /* Footer */
 /* ============ */
