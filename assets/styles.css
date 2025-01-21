@@ -777,6 +777,15 @@ footer .social-media-links a:active {
   backdrop-filter: blur(5px);
 }
 
+.filters-dialog .close-dialog-btn {
+  background-color: var(--color-red);
+  border: none;
+  width: 2rem;
+  height: 2rem;
+  right: 1.5rem;
+  border-radius: 50%;
+}
+
 .filters-dialog .filters-container-dialog {
   display: grid;
   grid-template-areas:

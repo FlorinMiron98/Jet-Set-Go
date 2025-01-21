@@ -608,11 +608,21 @@ var _sideNavbarView = require("./views/sideNavbarView");
 var _sideNavbarViewDefault = parcelHelpers.interopDefault(_sideNavbarView);
 var _headerContentView = require("./views/headerContentView");
 var _headerContentViewDefault = parcelHelpers.interopDefault(_headerContentView);
+var _filtersBtnView = require("./views/flights-search-results/filtersBtnView");
+var _filtersBtnViewDefault = parcelHelpers.interopDefault(_filtersBtnView);
 const controlOnLoadSearch = function() {
     _model.loadFlightsSearchResults((0, _flightResultsViewDefault.default)._getQueryParameters());
 };
+const controlDisplayDialog = function() {
+    (0, _filtersBtnViewDefault.default)._displayDialog();
+};
+const controlHideDialog = function() {
+    (0, _filtersBtnViewDefault.default)._hideDialog();
+};
 const init = function() {
     (0, _flightResultsViewDefault.default)._addHandlerRender(controlOnLoadSearch);
+    (0, _filtersBtnViewDefault.default)._addHandlerDisplayDialog(controlDisplayDialog);
+    (0, _filtersBtnViewDefault.default)._addHandlerHideDialog(controlHideDialog);
     // Dynamic styling
     (0, _navbarViewDefault.default).setDynamicStyling();
     (0, _sideNavbarViewDefault.default).setDynamicStyling();
@@ -621,7 +631,7 @@ const init = function() {
 };
 init();
 
-},{"./model":"Py0LO","./views/flightResultsView":"cJKtZ","./views/navbarView":"9sJsi","./views/sideNavbarView":"9BkUd","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./views/headerContentView":"d8zti"}],"Py0LO":[function(require,module,exports,__globalThis) {
+},{"./model":"Py0LO","./views/flightResultsView":"cJKtZ","./views/navbarView":"9sJsi","./views/sideNavbarView":"9BkUd","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./views/headerContentView":"d8zti","./views/flights-search-results/filtersBtnView":"cN3nN"}],"Py0LO":[function(require,module,exports,__globalThis) {
 // Import the 'options' object which contains the method and the API key
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -859,6 +869,32 @@ class HeaderContentView {
     }
 }
 exports.default = new HeaderContentView();
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cN3nN":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+class FiltersBtnView {
+    _filtersBtn = document.querySelector(".filters-btn");
+    _filtersDialog = document.querySelector(".filters-dialog");
+    _closeDialogBtn = document.querySelector(".close-dialog-btn");
+    _addHandlerDisplayDialog(handler) {
+        this._filtersBtn.addEventListener("click", ()=>{
+            handler();
+        });
+    }
+    _addHandlerHideDialog(handler) {
+        this._closeDialogBtn.addEventListener("click", ()=>{
+            handler();
+        });
+    }
+    _displayDialog() {
+        this._filtersDialog.showModal();
+    }
+    _hideDialog() {
+        this._filtersDialog.close();
+    }
+}
+exports.default = new FiltersBtnView();
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["aBvyN","eYIic"], "eYIic", "parcelRequire94c2")
 

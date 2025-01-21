@@ -625,6 +625,15 @@ footer .quick-links a:hover, footer .quick-links a:active, footer .social-media-
   backdrop-filter: blur(5px);
 }
 
+.filters-dialog .close-dialog-btn {
+  background-color: var(--color-red);
+  border: none;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  right: 1.5rem;
+}
+
 .filters-dialog .filters-container-dialog {
   grid-template-areas: "airlines stops"
                        "airlines duration";
