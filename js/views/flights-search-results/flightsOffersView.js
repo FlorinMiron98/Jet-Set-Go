@@ -16,6 +16,14 @@ class FlightsOffersView {
     this._parentEl.insertAdjacentElement("afterbegin", markup);
   }
 
+  _renderError(message = this._errorMessage) {
+    const markup = `
+            <div class="text-center fs-4">${message}</div>
+    `;
+    this._clearMarkup();
+    this._parentEl.insertAdjacentElement("afterbegin", markup);
+  }
+
   _clearMarkup() {
     this._parentEl.innerHTML = "";
   }
