@@ -768,6 +768,28 @@ footer .social-media-links a:active {
 /* ============= */
 /* Dialogs */
 /* ============= */
+.details-dialog {
+  top: 50%;
+  left: 50%;
+  min-width: 70%;
+  transform: translate(-50%, -50%);
+  border: none;
+}
+
+.details-dialog::backdrop {
+  backdrop-filter: blur(10px);
+}
+
+.details-dialog .close-dialog-btn {
+  width: 2.4rem;
+  height: 2.4rem;
+  color: var(--color-white);
+  background-color: var(--color-red);
+  border-radius: 50%;
+  border: none;
+  right: 1rem;
+  top: 1rem;
+}
 
 /* =================== */
 /* Media Queries */
@@ -817,6 +839,15 @@ footer .social-media-links a:active {
 
   #flights-results-header .header-main-content .results-container {
     gap: 0.8rem;
+  }
+
+  .details-dialog {
+    min-width: 90%;
+  }
+
+  .details-dialog .close-dialog-btn {
+    width: 2rem;
+    height: 2rem;
   }
 }
 
