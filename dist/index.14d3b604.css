@@ -617,6 +617,29 @@ footer .quick-links a:hover, footer .quick-links a:active, footer .social-media-
   color: var(--color-gray);
 }
 
+.details-dialog {
+  border: none;
+  min-width: 70%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.details-dialog::backdrop {
+  backdrop-filter: blur(10px);
+}
+
+.details-dialog .close-dialog-btn {
+  width: 2.4rem;
+  height: 2.4rem;
+  color: var(--color-white);
+  background-color: var(--color-red);
+  border: none;
+  border-radius: 50%;
+  top: 1rem;
+  right: 1rem;
+}
+
 @media only screen and (width <= 1400px) {
   #flights-header #flights-search-form .inputs-container {
     gap: .8rem;
@@ -656,6 +679,15 @@ footer .quick-links a:hover, footer .quick-links a:active, footer .social-media-
 
   #flights-results-header .header-main-content .results-container {
     gap: .8rem;
+  }
+
+  .details-dialog {
+    min-width: 90%;
+  }
+
+  .details-dialog .close-dialog-btn {
+    width: 2rem;
+    height: 2rem;
   }
 }
 

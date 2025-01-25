@@ -610,6 +610,8 @@ var _headerContentView = require("./views/headerContentView");
 var _headerContentViewDefault = parcelHelpers.interopDefault(_headerContentView);
 var _flightsOffersView = require("./views/flights-search-results/flightsOffersView");
 var _flightsOffersViewDefault = parcelHelpers.interopDefault(_flightsOffersView);
+var _detailsDialogView = require("./views/flights-search-results/detailsDialogView");
+var _detailsDialogViewDefault = parcelHelpers.interopDefault(_detailsDialogView);
 const controlOnLoadSearch = function() {
     _model.loadFlightsSearchResults((0, _flightResultsViewDefault.default)._getQueryParameters());
 };
@@ -625,9 +627,17 @@ const controlDisplayFlightsOffers = async function() {
         (0, _flightsOffersViewDefault.default)._renderError();
     }
 };
+const controlDisplayDialog = function() {
+    (0, _detailsDialogViewDefault.default)._displayDialog();
+};
+const controlHideDialog = function() {
+    (0, _detailsDialogViewDefault.default)._hideDialog();
+};
 const init = function() {
     (0, _flightResultsViewDefault.default)._addHandlerRender(controlOnLoadSearch);
     (0, _flightsOffersViewDefault.default)._addHandlerLoadFlightsOffers(controlDisplayFlightsOffers);
+    (0, _detailsDialogViewDefault.default)._addHandlerDisplayDialog(controlDisplayDialog);
+    (0, _detailsDialogViewDefault.default)._addHandlerHideDialog(controlHideDialog);
     // Dynamic styling
     (0, _navbarViewDefault.default).setDynamicStyling();
     (0, _sideNavbarViewDefault.default).setDynamicStyling();
@@ -636,7 +646,7 @@ const init = function() {
 };
 init();
 
-},{"./model":"Py0LO","./views/flightResultsView":"cJKtZ","./views/navbarView":"9sJsi","./views/sideNavbarView":"9BkUd","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./views/headerContentView":"d8zti","./views/flights-search-results/flightsOffersView":"j6LfF"}],"Py0LO":[function(require,module,exports,__globalThis) {
+},{"./model":"Py0LO","./views/flightResultsView":"cJKtZ","./views/navbarView":"9sJsi","./views/sideNavbarView":"9BkUd","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./views/headerContentView":"d8zti","./views/flights-search-results/flightsOffersView":"j6LfF","./views/flights-search-results/detailsDialogView":"9Vs0d"}],"Py0LO":[function(require,module,exports,__globalThis) {
 // Import the 'options' object which contains the method and the API key
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -1044,6 +1054,32 @@ class FlightsOffersView {
     }
 }
 exports.default = new FlightsOffersView();
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9Vs0d":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+class DetailsDialogView {
+    _detailsDialog = document.querySelector(".details-dialog");
+    _resultsList = document.querySelector(".results-list");
+    _closeDialogBtn = document.querySelector(".close-dialog-btn");
+    _addHandlerDisplayDialog(handler) {
+        this._resultsList.addEventListener("click", (e)=>{
+            if (e.target.closest(".view-details-btn")) handler();
+        });
+    }
+    _addHandlerHideDialog(handler) {
+        this._closeDialogBtn.addEventListener("click", ()=>{
+            handler();
+        });
+    }
+    _displayDialog() {
+        this._detailsDialog.showModal();
+    }
+    _hideDialog() {
+        this._detailsDialog.close();
+    }
+}
+exports.default = new DetailsDialogView();
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["aBvyN","eYIic"], "eYIic", "parcelRequire94c2")
 
