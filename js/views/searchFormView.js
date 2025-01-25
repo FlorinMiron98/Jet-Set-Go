@@ -61,6 +61,19 @@ class SearchFormView {
 
   // Hide the dropdown when the user clicks the 'Done' button
   _hideSelectionDropdown() {
+    // Add a click event listener to the body event
+    // Use event delegation to check for the possible outcomes of clicking outside the body that impact the removals of dropdown container visibility
+    document.body.addEventListener("click", (e) => {
+      if (
+        e.target.closest(".selection-number") ||
+        e.target.closest(".dropdown-visible") ||
+        e.target.closest(".dropdown-btn")
+      )
+        return;
+      const visibleDropdowns = document.querySelectorAll(".dropdown-visible");
+      visibleDropdowns.forEach((e) => e.classList.remove("dropdown-visible"));
+    });
+
     this._selectionDoneBtns.forEach((btn) => {
       btn.addEventListener("click", (e) => {
         e.target
