@@ -141,7 +141,7 @@ export default class LocationSearchView {
                     >
                       <div class="result-icon">
                         <img
-                          src="/plane-icon.d3f3c76d.png"
+                          src="/assets/images/plane-icon.png"
                           class="w-100 h-100"
                           alt="Plane icon"
                         />
@@ -175,14 +175,16 @@ export default class LocationSearchView {
                     >
                       <div class="result-icon">
                         <img
-                          src="/plane-icon.d3f3c76d.png"
+                          src="/assets/images/plane-icon.png"
                           class="w-100 h-100"
                           alt="Plane icon"
                         />
                       </div>
                       <div class="result-content">
                         <p class="fw-bold mb-1">${item.code} ${item.name}</p>
-                        <p class="m-0">${item.cityName}, ${item.regionName}, ${item.countryName}</p>
+                        <p class="m-0">${item.cityName}${
+              !item.regionName ? "" : ", " + item.regionName
+            }, ${item.countryName}</p>
                       </div>
                     </a>
            </li>
