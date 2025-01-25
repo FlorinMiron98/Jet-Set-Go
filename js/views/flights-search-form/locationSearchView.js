@@ -209,7 +209,13 @@ export default class LocationSearchView {
 
       // Assign the query parameter values based on the transit (departure or arrival) and the id
       this._updateQueryValues(this._transit, id);
+      this._searchLocationInput.setAttribute("disabled", true);
+      this._displayDeleteInputButton();
     });
+  }
+
+  _displayDeleteInputButton() {
+    this._searchLocationInput.nextElementSibling.classList.remove("d-none");
   }
 
   // This method updates the query paramaters values (departureLocationId and arrivalLocationId are stored in their respective classes)

@@ -27,7 +27,11 @@ class DatePickerView {
     locale: localeEn,
     minDate: this._today,
     // Assign the selected date to the query values object
-    onSelect: (date) => (this._queryValues.departureDate = date),
+    onSelect: (date) => {
+      this._queryValues.departureDate = date;
+      this._departureDate.setAttribute("disabled", true);
+      this._displayDeleteInputButton(this._departureDate);
+    },
   };
 
   // AirDatepicker options for the return date
@@ -40,6 +44,8 @@ class DatePickerView {
     // Assign the selected date to the query values object
     onSelect: (date) => {
       this._queryValues.returnDate = date;
+      this._returnDate.setAttribute("disabled", true);
+      this._displayDeleteInputButton(this._returnDate);
     },
   };
 
@@ -48,6 +54,10 @@ class DatePickerView {
   _setDatePicker() {
     new AirDatepicker(this._departureDate, this._departureOptions);
     new AirDatepicker(this._returnDate, this._returnOptions);
+  }
+
+  _displayDeleteInputButton(input) {
+    input.nextElementSibling.classList.remove("d-none");
   }
 }
 
