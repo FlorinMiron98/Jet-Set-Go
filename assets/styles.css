@@ -654,25 +654,6 @@ main #seasonal-destination-section .card .book-btn:active {
   gap: 2rem;
 }
 
-#flights-results-header .header-main-content .results-filters {
-  flex: 1 1 auto;
-}
-#flights-results-header .header-main-content .results-list {
-  flex: 2 1 auto;
-}
-
-/* Style the filters button */
-#flights-results-header .header-main-content .filters-btn {
-  background-color: var(--flights-primary);
-  border: none;
-  transition: background-color 0.25s linear;
-}
-
-#flights-results-header .header-main-content .filters-btn:active,
-#flights-results-header .header-main-content .filters-btn:hover {
-  background-color: var(--flights-secondary);
-}
-
 #flights-results-header .sort-btns {
   min-height: 4rem;
   border: 1px solid var(--color-dark-2);
@@ -783,44 +764,6 @@ footer .social-media-links a:active {
 /* ============= */
 /* Dialogs */
 /* ============= */
-.filters-dialog {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  min-width: 70%;
-  border: none;
-}
-
-.filters-dialog::backdrop {
-  backdrop-filter: blur(5px);
-}
-
-.filters-dialog .close-dialog-btn {
-  background-color: var(--color-red);
-  border: none;
-  width: 2rem;
-  height: 2rem;
-  right: 1.5rem;
-  border-radius: 50%;
-}
-
-.filters-dialog .filters-container-dialog {
-  display: grid;
-  grid-template-areas:
-    "airlines stops"
-    "airlines duration";
-  gap: 2rem;
-}
-
-.filters-dialog .airlines-filters {
-  grid-area: airlines;
-}
-.filters-dialog .stop-filters {
-  grid-area: stops;
-}
-.filters-dialog .duration-filters {
-  grid-area: duration;
-}
 
 /* =================== */
 /* Media Queries */
@@ -898,13 +841,6 @@ footer .social-media-links a:active {
 
   #flights-results-header .flight-item-btns .save-btn {
     order: 2;
-  }
-
-  .filters-dialog .filters-container-dialog {
-    grid-template-areas:
-      "airlines"
-      "stops"
-      "duration";
   }
 }
 
@@ -988,9 +924,5 @@ footer .social-media-links a:active {
   #flights-results-header .flight-destinations .flight-location-code,
   #flights-results-header .flight-destinations .flight-duration {
     font-size: 0.8rem;
-  }
-
-  .filters-dialog {
-    min-width: 90%;
   }
 }

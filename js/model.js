@@ -11,6 +11,7 @@ export const state = {
     baggagePolicies: [],
     flightDeals: [],
     flightOffers: [],
+    cabinClass: "",
   },
 };
 
@@ -55,7 +56,7 @@ export const loadFlightsSearchResults = async function (
   // Create the let variable to store the children search param based on the value stored in the object returned by getQueryParameters() method
   let children;
 
-  // Chevk each possible outcome for the number of children selected by the user and assign the value to the children variable
+  // Check each possible outcome for the number of children selected by the user and assign the value to the children variable
   if (queryParams.children.length === 1) {
     children = `&children=${queryParams.children[0]}`;
   }
@@ -86,6 +87,7 @@ export const loadFlightsSearchResults = async function (
     state.flightsSearchResults.baggagePolicies = data.data.baggagePolicies;
     state.flightsSearchResults.flightDeals = data.data.flightDeals;
     state.flightsSearchResults.flightOffers = data.data.flightOffers;
+    state.flightsSearchResults.cabinClass = data.data.searchCriteria.cabinClass;
     console.log(state);
   } catch (error) {
     throw error;

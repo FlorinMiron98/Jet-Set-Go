@@ -417,6 +417,10 @@ header #nav .right-navigation li i:hover {
   background-color: #0000;
 }
 
+#flights-header #flights-search-form .input-wrapper input:disabled {
+  color: var(--color-gray-dark);
+}
+
 #flights-header #flights-search-form .input-wrapper input:focus {
   outline: none;
 }
@@ -424,6 +428,19 @@ header #nav .right-navigation li i:hover {
 #flights-header #flights-search-form .input-wrapper input::placeholder {
   color: var(--flights-secondary);
   font-size: .9rem;
+}
+
+#flights-header #flights-search-form .input-wrapper .clear-input-btn {
+  background-color: var(--color-red-light);
+  border: none;
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  right: 1.25rem;
+}
+
+#flights-header #flights-search-form .input-wrapper .clear-input-btn i {
+  color: var(--color-white);
 }
 
 #flights-header #flights-search-form .input-wrapper .locations-reverse-button {
@@ -505,24 +522,6 @@ main #seasonal-destination-section .card .book-btn:hover, main #seasonal-destina
   gap: 2rem;
 }
 
-#flights-results-header .header-main-content .results-filters {
-  flex: auto;
-}
-
-#flights-results-header .header-main-content .results-list {
-  flex: 2 auto;
-}
-
-#flights-results-header .header-main-content .filters-btn {
-  background-color: var(--flights-primary);
-  border: none;
-  transition: background-color .25s linear;
-}
-
-#flights-results-header .header-main-content .filters-btn:active, #flights-results-header .header-main-content .filters-btn:hover {
-  background-color: var(--flights-secondary);
-}
-
 #flights-results-header .sort-btns {
   border: 1px solid var(--color-dark-2);
   min-height: 4rem;
@@ -545,7 +544,8 @@ main #seasonal-destination-section .card .book-btn:hover, main #seasonal-destina
 }
 
 #flights-results-header .flights-search-results .airline-icon {
-  height: 3.2rem;
+  gap: .3rem;
+  height: 1.8rem;
 }
 
 #flights-results-header .flights-search-results .airline-content {
@@ -613,46 +613,6 @@ footer .quick-links a:hover, footer .quick-links a:active, footer .social-media-
   color: var(--color-gray);
 }
 
-.filters-dialog {
-  border: none;
-  min-width: 70%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.filters-dialog::backdrop {
-  backdrop-filter: blur(5px);
-}
-
-.filters-dialog .close-dialog-btn {
-  background-color: var(--color-red);
-  border: none;
-  border-radius: 50%;
-  width: 2rem;
-  height: 2rem;
-  right: 1.5rem;
-}
-
-.filters-dialog .filters-container-dialog {
-  grid-template-areas: "airlines stops"
-                       "airlines duration";
-  gap: 2rem;
-  display: grid;
-}
-
-.filters-dialog .airlines-filters {
-  grid-area: airlines;
-}
-
-.filters-dialog .stop-filters {
-  grid-area: stops;
-}
-
-.filters-dialog .duration-filters {
-  grid-area: duration;
-}
-
 @media only screen and (width <= 1400px) {
   #flights-header #flights-search-form .inputs-container {
     gap: .8rem;
@@ -718,12 +678,6 @@ footer .quick-links a:hover, footer .quick-links a:active, footer .social-media-
   #flights-results-header .flight-item-btns .save-btn {
     order: 2;
   }
-
-  .filters-dialog .filters-container-dialog {
-    grid-template-areas: "airlines"
-                         "stops"
-                         "duration";
-  }
 }
 
 @media only screen and (width <= 576px) {
@@ -760,6 +714,10 @@ footer .quick-links a:hover, footer .quick-links a:active, footer .social-media-
     min-height: 2.6rem;
   }
 
+  #flights-header #flights-search-form .input-wrapper .clear-input-btn {
+    right: 3.2rem;
+  }
+
   #flights-header #flights-search-form .location-inputs-wrapper, #flights-header #flights-search-form .dates-wrapper {
     flex-direction: column;
     gap: .6rem;
@@ -776,7 +734,7 @@ footer .quick-links a:hover, footer .quick-links a:active, footer .social-media-
   }
 
   #flights-header #flights-search-form .input-wrapper .locations-reverse-button {
-    right: 1rem;
+    right: .8rem;
     transform: none;
   }
 
@@ -790,10 +748,6 @@ footer .quick-links a:hover, footer .quick-links a:active, footer .social-media-
 
   #flights-results-header .flight-destinations .flight-location-code, #flights-results-header .flight-destinations .flight-duration {
     font-size: .8rem;
-  }
-
-  .filters-dialog {
-    min-width: 90%;
   }
 }
 /*# sourceMappingURL=index.14d3b604.css.map */

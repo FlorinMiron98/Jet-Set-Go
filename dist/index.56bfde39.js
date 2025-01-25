@@ -626,6 +626,8 @@ var _datePickerViewJs = require("./views/flights-search-form/datePickerView.js")
 var _datePickerViewJsDefault = parcelHelpers.interopDefault(_datePickerViewJs);
 var _searchResultsBtnViewJs = require("./views/flights-search-form/searchResultsBtnView.js");
 var _searchResultsBtnViewJsDefault = parcelHelpers.interopDefault(_searchResultsBtnViewJs);
+var _clearInputBtnViewJs = require("./views/flights-search-form/clearInputBtnView.js");
+var _clearInputBtnViewJsDefault = parcelHelpers.interopDefault(_clearInputBtnViewJs);
 const controlSelectPersons = function() {
     // Generate persons selection markup
     (0, _personsSelectionViewJsDefault.default)._generateAdultsMarkup();
@@ -718,6 +720,7 @@ const init = function() {
     (0, _reverseInputValuesViewJsDefault.default)._addHandlerReverseValues(controlReverseInputValues);
     (0, _datePickerViewJsDefault.default)._setDatePicker();
     (0, _searchResultsBtnViewJsDefault.default)._addHandlerCreateQueries(controlReturnSearchQueries);
+    (0, _clearInputBtnViewJsDefault.default)._clearInput();
     // Dynamic styling
     (0, _navbarViewJsDefault.default).setDynamicStyling();
     (0, _sideNavbarViewJsDefault.default).setDynamicStyling();
@@ -729,7 +732,7 @@ const init = function() {
 };
 init();
 
-},{"./model.js":"Py0LO","./views/navbarView.js":"9sJsi","./views/sideNavbarView.js":"9BkUd","./views/headerContentView.js":"d8zti","./views/searchFormView.js":"gHYzF","./views/flights-search-form/personsSelectionView.js":"dn95k","./views/flights-search-form/personsSelectionBtnView.js":"hLXZN","./views/flights-search-form/flightClassSelectionView.js":"bMDTa","./views/flights-search-form/flightClassSelectionBtnView.js":"5GwaT","./views/flights-search-form/departureLocationSearchView.js":"7D4AX","./views/flights-search-form/arrivalLocationSearchView.js":"gjx8h","./views/flights-search-form/reverseInputValuesView.js":"l8EtC","./views/flights-search-form/datePickerView.js":"8Mc3D","./views/flights-search-form/searchResultsBtnView.js":"cYGc2","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"Py0LO":[function(require,module,exports,__globalThis) {
+},{"./model.js":"Py0LO","./views/navbarView.js":"9sJsi","./views/sideNavbarView.js":"9BkUd","./views/headerContentView.js":"d8zti","./views/searchFormView.js":"gHYzF","./views/flights-search-form/personsSelectionView.js":"dn95k","./views/flights-search-form/personsSelectionBtnView.js":"hLXZN","./views/flights-search-form/flightClassSelectionView.js":"bMDTa","./views/flights-search-form/flightClassSelectionBtnView.js":"5GwaT","./views/flights-search-form/departureLocationSearchView.js":"7D4AX","./views/flights-search-form/arrivalLocationSearchView.js":"gjx8h","./views/flights-search-form/reverseInputValuesView.js":"l8EtC","./views/flights-search-form/datePickerView.js":"8Mc3D","./views/flights-search-form/searchResultsBtnView.js":"cYGc2","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./views/flights-search-form/clearInputBtnView.js":"5lkRv"}],"Py0LO":[function(require,module,exports,__globalThis) {
 // Import the 'options' object which contains the method and the API key
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -746,7 +749,8 @@ const state = {
         aggregation: {},
         baggagePolicies: [],
         flightDeals: [],
-        flightOffers: []
+        flightOffers: [],
+        cabinClass: ""
     }
 };
 const loadDestinationsSearchResults = async function(query, transit) {
@@ -768,7 +772,7 @@ const loadFlightsSearchResults = async function(queryParams, sort = "BEST") {
     let returnDate = !queryParams.returnDate ? "" : `&returnDate=${queryParams.returnDate}`;
     // Create the let variable to store the children search param based on the value stored in the object returned by getQueryParameters() method
     let children;
-    // Chevk each possible outcome for the number of children selected by the user and assign the value to the children variable
+    // Check each possible outcome for the number of children selected by the user and assign the value to the children variable
     if (queryParams.children.length === 1) children = `&children=${queryParams.children[0]}`;
     if (queryParams.children.length > 1) children = `&children=${queryParams.children.join("%2C")}`;
     if (!queryParams.children) children = "";
@@ -785,6 +789,7 @@ const loadFlightsSearchResults = async function(queryParams, sort = "BEST") {
         state.flightsSearchResults.baggagePolicies = data.data.baggagePolicies;
         state.flightsSearchResults.flightDeals = data.data.flightDeals;
         state.flightsSearchResults.flightOffers = data.data.flightOffers;
+        state.flightsSearchResults.cabinClass = data.data.searchCriteria.cabinClass;
         console.log(state);
     } catch (error) {
         throw error;
@@ -972,6 +977,13 @@ class SearchFormView {
     }
     // Hide the dropdown when the user clicks the 'Done' button
     _hideSelectionDropdown() {
+        // Add a click event listener to the body event
+        // Use event delegation to check for the possible outcomes of clicking outside the body that impact the removals of dropdown container visibility
+        document.body.addEventListener("click", (e)=>{
+            if (e.target.closest(".selection-number") || e.target.closest(".dropdown-visible") || e.target.closest(".dropdown-btn")) return;
+            const visibleDropdowns = document.querySelectorAll(".dropdown-visible");
+            visibleDropdowns.forEach((e)=>e.classList.remove("dropdown-visible"));
+        });
         this._selectionDoneBtns.forEach((btn)=>{
             btn.addEventListener("click", (e)=>{
                 e.target.closest(".dropdown-visible").classList.remove("dropdown-visible");
@@ -1406,7 +1418,7 @@ class LocationSearchView {
                     >
                       <div class="result-icon">
                         <img
-                          src="/plane-icon.d3f3c76d.png"
+                          src="/assets/images/plane-icon.png"
                           class="w-100 h-100"
                           alt="Plane icon"
                         />
@@ -1431,14 +1443,14 @@ class LocationSearchView {
                     >
                       <div class="result-icon">
                         <img
-                          src="/plane-icon.d3f3c76d.png"
+                          src="/assets/images/plane-icon.png"
                           class="w-100 h-100"
                           alt="Plane icon"
                         />
                       </div>
                       <div class="result-content">
                         <p class="fw-bold mb-1">${item.code} ${item.name}</p>
-                        <p class="m-0">${item.cityName}, ${item.regionName}, ${item.countryName}</p>
+                        <p class="m-0">${item.cityName}${!item.regionName ? "" : ", " + item.regionName}, ${item.countryName}</p>
                       </div>
                     </a>
            </li>
@@ -1459,7 +1471,12 @@ class LocationSearchView {
             this._searchLocationInput.value = assignedValue;
             // Assign the query parameter values based on the transit (departure or arrival) and the id
             this._updateQueryValues(this._transit, id);
+            this._searchLocationInput.setAttribute("disabled", true);
+            this._displayDeleteInputButton();
         });
+    }
+    _displayDeleteInputButton() {
+        this._searchLocationInput.nextElementSibling.classList.remove("d-none");
     }
     // This method updates the query paramaters values (departureLocationId and arrivalLocationId are stored in their respective classes)
     _updateQueryValues(transit, idValue) {
@@ -1534,7 +1551,11 @@ class DatePickerView {
         locale: (0, _enDefault.default),
         minDate: this._today,
         // Assign the selected date to the query values object
-        onSelect: (date)=>this._queryValues.departureDate = date
+        onSelect: (date)=>{
+            this._queryValues.departureDate = date;
+            this._departureDate.setAttribute("disabled", true);
+            this._displayDeleteInputButton(this._departureDate);
+        }
     };
     // AirDatepicker options for the return date
     // The code for the options was taken from https://air-datepicker.com/examples
@@ -1548,6 +1569,8 @@ class DatePickerView {
         // Assign the selected date to the query values object
         onSelect: (date)=>{
             this._queryValues.returnDate = date;
+            this._returnDate.setAttribute("disabled", true);
+            this._displayDeleteInputButton(this._returnDate);
         }
     };
     // Initialize the date picker library for the departure date and return date inputs
@@ -1555,6 +1578,9 @@ class DatePickerView {
     _setDatePicker() {
         new (0, _airDatepickerDefault.default)(this._departureDate, this._departureOptions);
         new (0, _airDatepickerDefault.default)(this._returnDate, this._returnOptions);
+    }
+    _displayDeleteInputButton(input) {
+        input.nextElementSibling.classList.remove("d-none");
     }
 }
 exports.default = new DatePickerView();
@@ -3391,10 +3417,6 @@ class SearchResultsBtnView {
         if ((0, _datePickerViewDefault.default)._queryValues.returnDate) this._queryStringValues.returnDate = this._formatDateToISO((0, _datePickerViewDefault.default)._queryValues.returnDate.formattedDate.split("/").join("-"));
         // Set the href attribute dynamically while adding all the user's input data stored as query parameters
         this._searchBtn.setAttribute("href", this._generateQueryParametersMarkup(this._queryStringValues));
-        // Reload the page after 50ms
-        setTimeout(()=>{
-            this._reloadPage();
-        }, 50);
     }
     // A method to help with the form validation created in order to avoid repetitive code
     _formValidator(content, instanceEl, tippyOptions) {
@@ -3427,11 +3449,6 @@ class SearchResultsBtnView {
         // Dynamically generate the URL based on user's selections. The values will be extracted from the URL as the flights-results.html page loads
         const URL = `flights-results.html?adults=${adults}${children}&flightClass=${flightClass}&departureLocationId=${departureLocationId}&arrivalLocationId=${arrivalLocationId}&departureDate=${departureDate}&returnDate=${returnDate}`;
         return URL;
-    }
-    // This method makes sure the page is completely reloaded after the user has introduced the relevant data and pressed the 'Search' button
-    // As the page reloads, all the input values are cleared, as well as the URL which is dynamically attached as a value for the 'href' attribute of the 'Search' button
-    _reloadPage() {
-        window.location.reload();
     }
     // This is a method created to format the departure and return dates to ISO
     _formatDateToISO(inputDate) {
@@ -7334,6 +7351,63 @@ var createPopper = /*#__PURE__*/ (0, _createPopperJs.popperGenerator)({
     defaultModifiers: defaultModifiers
 }); // eslint-disable-next-line import/no-unused-modules
 
-},{"./createPopper.js":"cHuNp","./modifiers/eventListeners.js":"hBKsL","./modifiers/popperOffsets.js":"6I679","./modifiers/computeStyles.js":"gDlm2","./modifiers/applyStyles.js":"4iMn4","./modifiers/offset.js":"3GKVY","./modifiers/flip.js":"fv5wq","./modifiers/preventOverflow.js":"1AMhb","./modifiers/arrow.js":"31HFW","./modifiers/hide.js":"2g4OF","./popper-lite.js":false,"./modifiers/index.js":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2hEyg":[function() {},{}]},["jcjZx","38TcD"], "38TcD", "parcelRequire94c2")
+},{"./createPopper.js":"cHuNp","./modifiers/eventListeners.js":"hBKsL","./modifiers/popperOffsets.js":"6I679","./modifiers/computeStyles.js":"gDlm2","./modifiers/applyStyles.js":"4iMn4","./modifiers/offset.js":"3GKVY","./modifiers/flip.js":"fv5wq","./modifiers/preventOverflow.js":"1AMhb","./modifiers/arrow.js":"31HFW","./modifiers/hide.js":"2g4OF","./popper-lite.js":false,"./modifiers/index.js":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2hEyg":[function() {},{}],"5lkRv":[function(require,module,exports,__globalThis) {
+// Imports
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _departureLocationSearchView = require("./departureLocationSearchView");
+var _departureLocationSearchViewDefault = parcelHelpers.interopDefault(_departureLocationSearchView);
+var _arrivalLocationSearchView = require("./arrivalLocationSearchView");
+var _arrivalLocationSearchViewDefault = parcelHelpers.interopDefault(_arrivalLocationSearchView);
+var _datePickerView = require("./datePickerView");
+var _datePickerViewDefault = parcelHelpers.interopDefault(_datePickerView);
+var _searchResultsBtnView = require("./searchResultsBtnView");
+var _searchResultsBtnViewDefault = parcelHelpers.interopDefault(_searchResultsBtnView);
+class ClearInputBtn {
+    // DOM Elements
+    _inputWrappers = document.querySelectorAll(".input-wrapper");
+    // This method will remove the input values of the container which it belongs to
+    _clearInput() {
+        // Loop through each input wrapper
+        this._inputWrappers.forEach((wrapper)=>{
+            wrapper.addEventListener("click", (e)=>{
+                // Use event delegation to target the clear button
+                if (e.target.closest(".clear-input-btn")) {
+                    // Store the clear button in a variable
+                    const clearBtn = e.target.closest(".clear-input-btn");
+                    // Use the querySelector() method to extract the specific input and store it into a variable
+                    const inputEl = wrapper.querySelector("input");
+                    // Check for each input id and remove the value
+                    switch(inputEl.id){
+                        case "departure-location":
+                            (0, _departureLocationSearchViewDefault.default)._departureLocationId = "";
+                            break;
+                        case "arrival-location":
+                            (0, _arrivalLocationSearchViewDefault.default)._arrivalLocationId = "";
+                            break;
+                        case "departure-date":
+                            (0, _datePickerViewDefault.default)._queryValues.departureDate = "";
+                            break;
+                        case "return-date":
+                            (0, _datePickerViewDefault.default)._queryValues.returnDate = "";
+                            // As the return date is optional and doesn't need to be validated, I had to remove it manually from the queryStringValues
+                            (0, _searchResultsBtnViewDefault.default)._queryStringValues.returnDate = "";
+                            break;
+                    }
+                    // Remove the attribute so that the validator will work properly again if the user comes back to make input changes
+                    (0, _searchResultsBtnViewDefault.default)._searchBtn.removeAttribute("href");
+                    // Hide the clear button
+                    clearBtn.classList.add("d-none");
+                    // Enable the input
+                    inputEl.removeAttribute("disabled");
+                    inputEl.value = "";
+                }
+            });
+        });
+    }
+}
+exports.default = new ClearInputBtn();
+
+},{"./departureLocationSearchView":"7D4AX","./arrivalLocationSearchView":"gjx8h","./datePickerView":"8Mc3D","./searchResultsBtnView":"cYGc2","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["jcjZx","38TcD"], "38TcD", "parcelRequire94c2")
 
 //# sourceMappingURL=index.56bfde39.js.map
