@@ -15,6 +15,7 @@ import arrivalLocationSearchView from "./views/flights-search-form/arrivalLocati
 import reverseInputValuesView from "./views/flights-search-form/reverseInputValuesView.js";
 import datePickerView from "./views/flights-search-form/datePickerView.js";
 import searchResultsBtnView from "./views/flights-search-form/searchResultsBtnView.js";
+import clearInputBtnView from "./views/flights-search-form/clearInputBtnView.js";
 
 const controlSelectPersons = function () {
   // Generate persons selection markup
@@ -157,6 +158,8 @@ const init = function () {
   datePickerView._setDatePicker();
 
   searchResultsBtnView._addHandlerCreateQueries(controlReturnSearchQueries);
+
+  clearInputBtnView._clearInput();
 
   // Dynamic styling
   navbarView.setDynamicStyling();
