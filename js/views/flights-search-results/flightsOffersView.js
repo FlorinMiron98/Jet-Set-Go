@@ -95,8 +95,8 @@ class FlightsOffersView {
 
               return `
             <figure class="airline-icon d-flex mb-2">
-                ${airlineIcon}
-                ${airlineName}
+                ${airlineIcon || ""}
+                ${airlineName || ""}
             </figure>
             `;
             })
