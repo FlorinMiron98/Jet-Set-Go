@@ -858,19 +858,19 @@ footer .social-media-links a:active {
   background-color: var(--color-green);
 }
 
-.details-dialog footer {
+.details-dialog .price-container {
   background-color: var(--color-white);
 }
 
-.details-dialog footer .dialog-select-btn {
+.details-dialog .price-container .dialog-select-btn {
   background-color: var(--flights-primary);
   border: none;
   min-width: 5rem;
   transition: background-color 0.25s linear;
 }
 
-.details-dialog footer .dialog-select-btn:active,
-.details-dialog footer .dialog-select-btn:hover {
+.details-dialog .price-container .dialog-select-btn:active,
+.details-dialog .price-container .dialog-select-btn:hover {
   background-color: var(--flights-secondary);
 }
 
