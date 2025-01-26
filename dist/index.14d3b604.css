@@ -24,6 +24,7 @@
   --color-gray: #c4c4c4;
   --color-gray-light: #f5f5f5;
   --color-gray-dark: #9d9d9d;
+  --color-gray-dark-2: #787878;
   --color-highlight: #ffa200;
   --color-flights-highlight: #ffa200;
   --color-hightlight-transparent: #ffa200b3;
@@ -58,6 +59,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .section {
   margin-top: 6rem;
+}
+
+.no-scroll {
+  height: 100%;
+  overflow: hidden;
 }
 
 .loader {
@@ -640,6 +646,34 @@ footer .quick-links a:hover, footer .quick-links a:active, footer .social-media-
   right: 1rem;
 }
 
+.details-dialog .flight-details {
+  grid-template-areas: "departure airline"
+                       "arrival airline";
+  display: grid;
+}
+
+.details-dialog .flight-details .departure-details {
+  grid-area: departure;
+}
+
+.details-dialog .flight-details .arrival-details {
+  grid-area: arrival;
+}
+
+.details-dialog .flight-details .airline-details {
+  grid-area: airline;
+  gap: 1rem;
+}
+
+.details-dialog .flight-details .airline-icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.details-dialog .flight-summary-dialog p {
+  color: var(--color-gray-dark-2);
+}
+
 @media only screen and (width <= 1400px) {
   #flights-header #flights-search-form .inputs-container {
     gap: .8rem;
@@ -717,6 +751,12 @@ footer .quick-links a:hover, footer .quick-links a:active, footer .social-media-
 
   #flights-results-header .flight-item-btns .save-btn {
     order: 2;
+  }
+
+  .details-dialog .flight-details {
+    grid-template-areas: "departure"
+                         "arrival"
+                         "airline";
   }
 }
 

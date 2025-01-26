@@ -1074,9 +1074,11 @@ class DetailsDialogView {
     }
     _displayDialog() {
         this._detailsDialog.showModal();
+        document.body.classList.add("no-scroll");
     }
     _hideDialog() {
         this._detailsDialog.close();
+        document.body.classList.remove("no-scroll");
     }
 }
 exports.default = new DetailsDialogView();
