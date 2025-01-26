@@ -57,6 +57,7 @@
   --color-green: #19bf00;
   --color-red: #ff0000;
   --color-red-light: #fb4e4e;
+  --color-blue-light: #73a6e1;
 
   --border-rounded: 50%;
 
@@ -88,6 +89,23 @@ h4,
 h5,
 h6 {
   font-family: var(--font-primary);
+}
+
+/* ================ */
+/* Scroll Bar */
+/* ================ */
+::-webkit-scrollbar {
+  box-shadow: inset 0 0 5px var(--flights-secondary);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--flights-secondary);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-blue-light);
 }
 
 /* ===================== */
@@ -820,7 +838,8 @@ footer .social-media-links a:active {
   height: 2rem;
 }
 
-.details-dialog .flight-summary-dialog p {
+.details-dialog .flight-summary-dialog p,
+.details-dialog .dialog-layover {
   color: var(--color-gray-dark-2);
 }
 
