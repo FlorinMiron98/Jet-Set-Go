@@ -13,6 +13,11 @@ export const state = {
     flightOffers: [],
     cabinClass: "",
   },
+  flightDetails: {
+    features: [],
+    segments: [],
+    price: 0,
+  },
 };
 
 // Fetch the data of the departure and arrival locations
@@ -90,6 +95,28 @@ export const loadFlightsSearchResults = async function (
     state.flightsSearchResults.cabinClass = data.data.searchCriteria.cabinClass;
     console.log(state);
   } catch (error) {
+    throw error;
+  }
+};
+
+// Fetch the flight details
+export const loadFlightDetails = async function (token) {
+  const url = `https://booking-com15.p.rapidapi.com/api/v1/flights/getFlightDetails?token=${token}&currency_code=GBP`;
+
+  try {
+    const response = await fetch(url, OPTIONS);
+
+    if (!response.ok) {
+      throw new Error("Something went wrong. Please try again!");
+    }
+
+    const data = await response.json();
+
+    state.flightDetails.features = data.data.brandedFareInfo.features;
+    state.flightDetails.segments = data.data.segments;
+    state.flightDetails.price = data.data.priceBreakdown.total.units;
+  } catch (error) {
+    console.log(error);
     throw error;
   }
 };
