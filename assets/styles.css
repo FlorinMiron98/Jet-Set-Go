@@ -97,6 +97,7 @@ h6 {
 ::-webkit-scrollbar {
   box-shadow: inset 0 0 5px var(--flights-secondary);
   border-radius: 10px;
+  width: 0.6rem;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -839,8 +840,38 @@ footer .social-media-links a:active {
 }
 
 .details-dialog .flight-summary-dialog p,
-.details-dialog .dialog-layover {
+.details-dialog .dialog-layover,
+.details-dialog .included-baggage p {
   color: var(--color-gray-dark-2);
+}
+
+.details-dialog .included-baggage,
+.details-dialog .included-baggage main li {
+  gap: 1.6rem;
+}
+
+.details-dialog .included-baggage main {
+  flex-grow: 1;
+}
+
+.details-dialog .included-baggage main li .badge {
+  background-color: var(--color-green);
+}
+
+.details-dialog footer {
+  background-color: var(--color-white);
+}
+
+.details-dialog footer .dialog-select-btn {
+  background-color: var(--flights-primary);
+  border: none;
+  min-width: 5rem;
+  transition: background-color 0.25s linear;
+}
+
+.details-dialog footer .dialog-select-btn:active,
+.details-dialog footer .dialog-select-btn:hover {
+  background-color: var(--flights-secondary);
 }
 
 /* =================== */
@@ -939,6 +970,11 @@ footer .social-media-links a:active {
       "departure"
       "arrival"
       "airline";
+  }
+
+  .details-dialog .included-baggage,
+  .details-dialog .included-baggage main li {
+    gap: 0.7rem;
   }
 }
 
