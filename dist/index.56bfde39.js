@@ -739,6 +739,7 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "state", ()=>state);
 parcelHelpers.export(exports, "loadDestinationsSearchResults", ()=>loadDestinationsSearchResults);
 parcelHelpers.export(exports, "loadFlightsSearchResults", ()=>loadFlightsSearchResults);
+parcelHelpers.export(exports, "loadFlightDetails", ()=>loadFlightDetails);
 var _configJs = require("./config.js");
 const state = {
     locationResults: {
@@ -751,6 +752,11 @@ const state = {
         flightDeals: [],
         flightOffers: [],
         cabinClass: ""
+    },
+    flightDetails: {
+        features: [],
+        segments: [],
+        price: 0
     }
 };
 const loadDestinationsSearchResults = async function(query, transit) {
@@ -792,6 +798,20 @@ const loadFlightsSearchResults = async function(queryParams, sort = "BEST") {
         state.flightsSearchResults.cabinClass = data.data.searchCriteria.cabinClass;
         console.log(state);
     } catch (error) {
+        throw error;
+    }
+};
+const loadFlightDetails = async function(token) {
+    const url = `https://booking-com15.p.rapidapi.com/api/v1/flights/getFlightDetails?token=${token}&currency_code=GBP`;
+    try {
+        const response = await fetch(url, (0, _configJs.OPTIONS));
+        if (!response.ok) throw new Error("Something went wrong. Please try again!");
+        const data = await response.json();
+        state.flightDetails.features = data.data.brandedFareInfo.features;
+        state.flightDetails.segments = data.data.segments;
+        state.flightDetails.price = data.data.priceBreakdown.total.units;
+    } catch (error) {
+        console.log(error);
         throw error;
     }
 };

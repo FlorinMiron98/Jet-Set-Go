@@ -847,20 +847,20 @@ footer .social-media-links a:active {
 
 .details-dialog .flight-summary-dialog p,
 .details-dialog .dialog-layover,
-.details-dialog .included-baggage p {
+.details-dialog .included-features p {
   color: var(--color-gray-dark-2);
 }
 
-.details-dialog .included-baggage,
-.details-dialog .included-baggage main li {
+.details-dialog .included-features,
+.details-dialog .included-features main li {
   gap: 1.6rem;
 }
 
-.details-dialog .included-baggage main {
+.details-dialog .included-features main {
   flex-grow: 1;
 }
 
-.details-dialog .included-baggage main li .badge {
+.details-dialog .included-features main li .badge {
   background-color: var(--color-green);
 }
 
@@ -982,8 +982,8 @@ footer .social-media-links a:active {
     justify-content: flex-start;
   }
 
-  .details-dialog .included-baggage,
-  .details-dialog .included-baggage main li {
+  .details-dialog .included-features,
+  .details-dialog .included-features main li {
     gap: 0.7rem;
   }
 }

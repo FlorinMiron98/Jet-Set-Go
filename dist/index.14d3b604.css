@@ -545,7 +545,7 @@ main #seasonal-destination-section .card .book-btn:hover, main #seasonal-destina
 }
 
 #flights-results-header .header-main-content .results-list {
-  width: 75%;
+  width: 80%;
 }
 
 #flights-results-header .sort-btns {
@@ -567,6 +567,10 @@ main #seasonal-destination-section .card .book-btn:hover, main #seasonal-destina
 
 #flights-results-header .sort-btns button:active, #flights-results-header .sort-btns button:hover {
   background-color: var(--color-gray);
+}
+
+#flights-results-header .flights-search-results .flight-details {
+  column-gap: .6rem;
 }
 
 #flights-results-header .flights-search-results .airline-icon {
@@ -665,6 +669,7 @@ footer .quick-links a:hover, footer .quick-links a:active, footer .social-media-
 .details-dialog .flight-details {
   grid-template-areas: "departure airline"
                        "arrival airline";
+  column-gap: 2rem;
   display: grid;
 }
 
@@ -678,6 +683,7 @@ footer .quick-links a:hover, footer .quick-links a:active, footer .social-media-
 
 .details-dialog .flight-details .airline-details {
   grid-area: airline;
+  justify-content: flex-end;
   gap: 1rem;
 }
 
@@ -686,19 +692,19 @@ footer .quick-links a:hover, footer .quick-links a:active, footer .social-media-
   height: 2rem;
 }
 
-.details-dialog .flight-summary-dialog p, .details-dialog .dialog-layover, .details-dialog .included-baggage p {
+.details-dialog .flight-summary-dialog p, .details-dialog .dialog-layover, .details-dialog .included-features p {
   color: var(--color-gray-dark-2);
 }
 
-.details-dialog .included-baggage, .details-dialog .included-baggage main li {
+.details-dialog .included-features, .details-dialog .included-features main li {
   gap: 1.6rem;
 }
 
-.details-dialog .included-baggage main {
+.details-dialog .included-features main {
   flex-grow: 1;
 }
 
-.details-dialog .included-baggage main li .badge {
+.details-dialog .included-features main li .badge {
   background-color: var(--color-green);
 }
 
@@ -802,7 +808,11 @@ footer .quick-links a:hover, footer .quick-links a:active, footer .social-media-
                          "airline";
   }
 
-  .details-dialog .included-baggage, .details-dialog .included-baggage main li {
+  .details-dialog .flight-details .airline-details {
+    justify-content: flex-start;
+  }
+
+  .details-dialog .included-features, .details-dialog .included-features main li {
     gap: .7rem;
   }
 }
@@ -875,6 +885,10 @@ footer .quick-links a:hover, footer .quick-links a:active, footer .social-media-
 
   #flights-results-header .flight-destinations .flight-location-code, #flights-results-header .flight-destinations .flight-duration {
     font-size: .8rem;
+  }
+
+  .details-dialog {
+    min-width: 95%;
   }
 }
 /*# sourceMappingURL=index.14d3b604.css.map */
