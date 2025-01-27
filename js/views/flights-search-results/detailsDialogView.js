@@ -53,94 +53,124 @@ class DetailsDialogView {
   _renderMarkup(data) {
     this._clearMarkup();
 
+    // Create thee date/time formatter
+    const dateFormatter = new Intl.DateTimeFormat("en-GB", {
+      day: "2-digit",
+      month: "short",
+    });
+
+    // Create the variables that will handle the markup
+    // Flight
+    let flightSummary;
+    let flightDetails;
+
+    // Layover
+    let layoverMarkup;
+    let layover;
+    let departureTimeLayover;
+    let arrivalTimeLayover;
+
+    flightSummary = data.flightDetails.segments
+      .map((segment) => {
+        // Extract the arrival time and departure time to make the calculations for the layover
+        // Use e separate loop to avoing the conflict between omitting the first item in the legs array and rendering the markup
+        layover = segment.legs
+          .map((_, index, arr) => {
+            // This if statement makes sure the first leg is omitted
+            // The layover is calculated by subtracting the first's leg arrival value of the next leg's departure value
+            if (index > 0) {
+              departureTimeLayover = arr[index - 1].arrivalTime;
+              arrivalTimeLayover = arr[index].departureTime;
+            }
+            // Use the calculateLayover method to display the layover hours in a proper format. Check the method in this class for more details
+            return this._calculateLayover(
+              departureTimeLayover,
+              arrivalTimeLayover
+            );
+            // As we are omitting the first item in the array, when the 'map()' method returns the newly created array, that first item will be 'undefined'
+            // We use the 'slice()' method to remove the 'undefined' item
+          })
+          .slice(1);
+
+        flightDetails = segment.legs
+          .map((leg, index, arr) => {
+            // Extract the time and hours from each leg into separate variables for a more readable code
+            const departureTime = leg.departureTime.split("T")[0];
+            const arrivalTime = leg.arrivalTime.split("T")[0];
+            const departureHours = leg.departureTime.split("T")[1];
+            const arrivalHours = leg.arrivalTime.split("T")[1];
+
+            // Dynamically create the markup of the layover based on the length of the legs array
+            // As the length of the layover array is equal to the length of flight details array - 1, I am rendering the layover using the index value of the flight details array for a proper rendering
+            layoverMarkup = `
+        <div class="dialog-layover py-5 fs-5 fw-bold">Layover - ${layover[index]}</div>
+        `;
+
+            return `
+          <div class="flight-details">
+            <div class="departure-details">
+              <h3 class="fs-5 mb-0">${leg.departureAirport.code} • ${
+              leg.departureAirport.name
+            }</h3>
+              <p>${dateFormatter.format(
+                new Date(departureTime)
+              )} • ${this._extractHoursAndMinutes(departureHours)}</p>
+            </div>
+            <div class="arrival-details">
+              <h3 class="fs-5 mb-0">${leg.arrivalAirport.code} • ${
+              leg.arrivalAirport.name
+            }</h3>
+              <p class="mb-0">${dateFormatter.format(
+                new Date(arrivalTime)
+              )} • ${this._extractHoursAndMinutes(arrivalHours)}</p>
+            </div>
+            <div class="airline-details d-flex mt-3">
+              <div class="airline-icon">
+                <img
+                  src="https://r-xx.bstatic.com/data/airlines_logo/AA.png"
+                  alt="Airline Icon"
+                  class="w-100 h-100"
+                />
+              </div>
+              <div>
+                <p class="airline-name mb-0">Wizz Air</p>
+                <p class="flight-duration mb-0">Flight-duration: ${this._calculateFlightHours(
+                  leg.totalTime
+                )}</p>
+                <p class="flight-class mb-0">Economy</p>
+              </div>
+            </div>
+          </div>
+
+          
+          ${
+            // The layover markup is dynamically displayed, as there can be no layover after the last leg of each segment
+            arr.length === 1 || index === arr.length - 1
+              ? (layoverMarkup = "")
+              : layoverMarkup
+          }
+        `;
+          })
+          .join("");
+
+        return `
+          <section class="flight-summary-dialog mb-5">
+            <h2 class="fw-bold fs-3 mb-1">Flight to ${
+              segment.arrivalAirport.cityName
+            }</h2>
+            <p class="fs-6">${
+              segment.legs.length - 1 === 0
+                ? "Direct"
+                : segment.legs.length - 1 + " stops"
+            } • ${this._calculateFlightHours(segment.totalTime)}</p>
+            ${flightDetails}
+          </section>
+      `;
+      })
+      .join("");
+
     const markup = `
-      <!-- Flight Summary Section -->
-        <section class="flight-summary-dialog mb-5">
-          <h2 class="fw-bold fs-3 mb-1">Flight to London</h2>
-          <p class="fs-6">Direct • 3h 30min</p>
-          <div class="flight-details">
-            <div class="departure-details">
-              <h3 class="fs-5 mb-0">LGW • London Gatwick Airport</h3>
-              <p>Fri 31 Jan • 13:55</p>
-            </div>
-            <div class="arrival-details">
-              <h3 class="fs-5 mb-0">LGW • London Gatwick Airport</h3>
-              <p class="mb-0">Fri 31 Jan • 13:55</p>
-            </div>
-            <div class="airline-details d-flex mt-3">
-              <div class="airline-icon">
-                <img
-                  src="https://r-xx.bstatic.com/data/airlines_logo/AA.png"
-                  alt="Airline Icon"
-                  class="w-100 h-100"
-                />
-              </div>
-              <div>
-                <p class="airline-name mb-0">Wizz Air</p>
-                <p class="flight-duration mb-0">Flight-duration: 3h</p>
-                <p class="flight-class mb-0">Economy</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Layover -->
-          <div class="dialog-layover py-5 fs-5 fw-bold">Layover - 1h 50m</div>
-
-          <div class="flight-details">
-            <div class="departure-details">
-              <h3 class="fs-5 mb-0">LGW • London Gatwick Airport</h3>
-              <p>Fri 31 Jan • 13:55</p>
-            </div>
-            <div class="arrival-details">
-              <h3 class="fs-5 mb-0">LGW • London Gatwick Airport</h3>
-              <p class="mb-0">Fri 31 Jan • 13:55</p>
-            </div>
-            <div class="airline-details d-flex mt-3">
-              <div class="airline-icon">
-                <img
-                  src="https://r-xx.bstatic.com/data/airlines_logo/AA.png"
-                  alt="Airline Icon"
-                  class="w-100 h-100"
-                />
-              </div>
-              <div>
-                <p class="airline-name mb-0">Wizz Air</p>
-                <p class="flight-duration mb-0">Flight-duration: 3h</p>
-                <p class="flight-class mb-0">Economy</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Flight Summary Section -->
-        <section class="flight-summary-dialog mb-5">
-          <h2 class="fw-bold fs-3 mb-1">Flight to Bucharest</h2>
-          <p class="fs-6">Direct • 3h 30min</p>
-          <div class="flight-details">
-            <div class="departure-details">
-              <h3 class="fs-5 mb-0">LGW • London Gatwick Airport</h3>
-              <p>Fri 31 Jan • 13:55</p>
-            </div>
-            <div class="arrival-details">
-              <h3 class="fs-5 mb-0">LGW • London Gatwick Airport</h3>
-              <p class="mb-0">Fri 31 Jan • 13:55</p>
-            </div>
-            <div class="airline-details d-flex mt-3">
-              <div class="airline-icon">
-                <img
-                  src="https://r-xx.bstatic.com/data/airlines_logo/AA.png"
-                  alt="Airline Icon"
-                  class="w-100 h-100"
-                />
-              </div>
-              <div>
-                <p class="airline-name mb-0">Wizz Air</p>
-                <p class="flight-duration mb-0">Flight-duration: 3h</p>
-                <p class="flight-class mb-0">Economy</p>
-              </div>
-            </div>
-          </div>
-        </section>
+        ${flightSummary}
 
         <!-- Included Baggage -->
         <section class="included-baggage d-flex flex-wrap">
@@ -149,7 +179,6 @@ class DetailsDialogView {
             <p class="fs-6 mb-0">The total baggage included in the price</p>
           </header>
           <main>
-            <!-- The code for the ordered list is taken from https://getbootstrap.com/docs/5.3/components/list-group/#basic-example -->
             <ol class="included-baggage-offers list-group list-group-numbered">
               <li
                 class="list-group-item d-flex justify-content-between align-items-start"
@@ -198,6 +227,49 @@ class DetailsDialogView {
           </button>
         </section>
       `;
+
+    this._parentEl.insertAdjacentHTML("afterbegin", markup);
+  }
+
+  //   This method will return flight duration displayed as hours and minutes
+  _calculateFlightHours(seconds) {
+    let flightHoursString = "";
+
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+
+    flightHoursString = `${hours.toFixed(0)}h ${
+      minutes === 0 ? "" : minutes.toFixed(0) + "m"
+    }`;
+
+    return flightHoursString;
+  }
+
+  // This method extract the hours a minutes for the departure and arrival times from each segments
+  _extractHoursAndMinutes(timeString) {
+    const [hours, minutes] = timeString.split(":");
+    return `${hours}:${minutes}`;
+  }
+
+  _calculateLayover(arrival, departure) {
+    const arrivalDate = new Date(arrival);
+    const departureDate = new Date(departure);
+
+    // Calculate the difference in milliseconds
+    const milliseconds = departureDate - arrivalDate;
+
+    // Calculate the difference in minutes
+    const diffInMinutes = Math.floor(milliseconds / 60000);
+
+    // Calulcate the number of hours
+    const hours = Math.floor(diffInMinutes / 60);
+    // Calculate the number of minutes
+    const minutes = diffInMinutes % 60;
+
+    // Display the number of hours and minutes in a proper format
+    return `${hours === 0 ? "" : hours + "h"} ${
+      minutes === 0 ? "" : minutes + "m"
+    }`;
   }
 }
 
