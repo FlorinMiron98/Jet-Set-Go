@@ -70,6 +70,9 @@ class DetailsDialogView {
     let departureTimeLayover;
     let arrivalTimeLayover;
 
+    // Included Features
+    let includedFeatures;
+
     flightSummary = data.flightDetails.segments
       .map((segment) => {
         // Extract the arrival time and departure time to make the calculations for the layover
@@ -169,50 +172,42 @@ class DetailsDialogView {
       })
       .join("");
 
+    includedFeatures = data.flightDetails.features
+      .map((feature) => {
+        return `
+        <li
+          class="list-group-item d-flex justify-content-between align-items-start"
+        >
+          <div class="me-auto">
+            <div class="fw-bold">
+              ${this._capitalizeString(
+                feature.featureName.split("_").join(" ").toLowerCase()
+              )}
+            </div>
+            <p class="mb-0">${feature.label}</p>
+          </div>
+          <span class="badge rounded-pill">${
+            feature.availability.includes("_")
+              ? feature.availability.split("_").join(" ")
+              : feature.availability
+          }</span>
+        </li>
+      `;
+      })
+      .join("");
+
     const markup = `
         ${flightSummary}
 
-        <!-- Included Baggage -->
-        <section class="included-baggage d-flex flex-wrap">
+        <!-- Included Features -->
+        <section class="included-features d-flex flex-wrap">
           <header>
-            <h2 class="fw-bold fs-3 mb-1">Included Baggage</h2>
-            <p class="fs-6 mb-0">The total baggage included in the price</p>
+            <h2 class="fw-bold fs-3 mb-1">Included Features</h2>
+            <p class="fs-6 mb-0">The total features included in the price</p>
           </header>
           <main>
-            <ol class="included-baggage-offers list-group list-group-numbered">
-              <li
-                class="list-group-item d-flex justify-content-between align-items-start"
-              >
-                <div class="me-auto">
-                  <div class="fw-bold">
-                    <i class="fa-solid fa-suitcase-rolling"></i> Subheading
-                  </div>
-                  <p class="mb-0">Content for list item</p>
-                </div>
-                <span class="badge rounded-pill">Included</span>
-              </li>
-              <li
-                class="list-group-item d-flex justify-content-between align-items-start"
-              >
-                <div class="me-auto">
-                  <div class="fw-bold">
-                    <i class="fa-solid fa-suitcase-rolling"></i> Subheading
-                  </div>
-                  <p class="mb-0">Content for list item</p>
-                </div>
-                <span class="badge rounded-pill">Included</span>
-              </li>
-              <li
-                class="list-group-item d-flex justify-content-between align-items-start"
-              >
-                <div class="me-auto">
-                  <div class="fw-bold">
-                    <i class="fa-solid fa-suitcase-rolling"></i> Subheading
-                  </div>
-                  <p class="mb-0">Content for list item</p>
-                </div>
-                <span class="badge rounded-pill">Included</span>
-              </li>
+            <ol class="included-features-offers list-group list-group-numbered">
+              ${includedFeatures}
             </ol>
           </main>
         </section>
@@ -270,6 +265,11 @@ class DetailsDialogView {
     return `${hours === 0 ? "" : hours + "h"} ${
       minutes === 0 ? "" : minutes + "m"
     }`;
+  }
+
+  // This method takes a string and capitalize the first letter
+  _capitalizeString(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
   }
 }
 
