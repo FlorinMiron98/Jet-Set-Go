@@ -1,9 +1,34 @@
 class FlightsOffersView {
   // DOM Elements
   _parentEl = document.querySelector(".flights-search-results");
+  _sortBtns = document.querySelectorAll(".sort-btn");
 
   // Global variables
   _errorMessage = "No flight offers matching your request. Please try again!";
+  _sortValue = "BEST";
+
+  // Create the handler select sort method which will sort the results based on the user's selection (best, cheapest, fastest)
+  _addHandlerSelectSort(handler) {
+    // Loop through each sort button
+    this._sortBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        this._sortBtns.forEach((btn) => {
+          // Remove the 'active' class list from each button
+          btn.classList.remove("active");
+        });
+
+        // Add the 'active' class list on the clicked button
+        btn.classList.add("active");
+
+        // Extract the sort value from the data attribute and assign it to the _sortValue variable
+        const sortValue = btn.dataset.sort;
+        this._sortValue = sortValue;
+
+        // Call the handler in the flightResultsController.js
+        handler();
+      });
+    });
+  }
 
   _addHandlerLoadFlightsOffers(handler) {
     window.addEventListener("load", () => {
