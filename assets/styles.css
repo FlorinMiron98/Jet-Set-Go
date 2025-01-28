@@ -675,10 +675,6 @@ main #seasonal-destination-section .card .book-btn:active {
   background-color: var(--color-gray-light);
 }
 
-#flights-results-header .header-main-content .results-container {
-  gap: 2rem;
-}
-
 #flights-results-header .header-main-content .results-list {
   width: 80%;
 }
@@ -924,10 +920,6 @@ footer .social-media-links a:active {
 
   #flights-header #flights-search-form .persons-selection {
     width: 50%;
-  }
-
-  #flights-results-header .header-main-content .results-container {
-    gap: 0.8rem;
   }
 
   .details-dialog {
