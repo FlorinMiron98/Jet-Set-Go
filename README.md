@@ -111,3 +111,21 @@ For this project, I decided to create high-fidelity wireframes to better visuali
 8. **Babel** (included in Parcel.js by default) - Babel is a JavaScript compiler that allows developers to use the latest ECMAScript features by converting modern JavaScript (ES6) into a version compatible with older browsers and environments. Babel can only transpile ES6 syntax(e.g. arrow functions, classes, const). The same is not true for new features like new array methods (e.g. find) or promises, but here is where polyfilling comes into play. More about Babel on the [official website](https://babeljs.io/).
 9. **Core.js** (integrated with Babel) - Core.js is a powerful JavaScript library that provides polyfills for ECMAScript features, ensuring compatibility across different browsers and environments. More about Core.js on this [GitHub repository](https://github.com/zloirock/core-js).
 10. **Regenerator-runtime** - The Regenerator-runtime library provides a runtime for generators and async functions, enabling the use of modern asynchronous JavaScript syntax (like async/await) in environments that do not natively support it. More about the Regenerator-runtime [here](https://www.npmjs.com/package/regenerator-runtime).
+### Deployment
+This project was created using [Visual Studio Code], committed to [Git] and pushed to [GitHub] using Git's built-in function `git push`.
+As this project was created using the development environment provided by [Parcel.js](https://parceljs.org/), I decided to deploy it on [Netlify](https://www.netlify.com/) as the deployment process was much easier. The next steps were followed:
+1. Build the Project
+- After the development process, I made sure the project is built for production by running the following command in the terminal: `npm run build`
+- This whill generate the production-ready files inside the `dist/` folder (or the configured output folder).
+2. Create a Netlify Account
+- If you dont't have a Netflify account, sign-up at [Netlify](https://www.netlify.com/).
+3. Log In to Netlify
+- Once your account is created, log in to the **Netlify Dashboard**.
+4. Deploy the Project Manually
+- In the Netlify Dashboard, look for the "Deploy manually" option on the next screen.
+- Drag and drop your entire `dist/` folder (the output folder from Parcel) into the provided area on the Netlify interface.
+- Netlify will automatically upload and deploy your site.
+5. Access the Live Website
+- After deployment is complete, Netlify will provide with a unique URL for the website.
+6. Optional: Set Up a Custom Domain
+- I created a custom domain by going to Domain Settings in the Netlify site dashboard.
