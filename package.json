@@ -2,7 +2,7 @@
   "name": "milestone-2",
   "description": "",
   "version": "1.0.0",
-  "main": "index.js",
+  "default": "index.html",
   "dependencies": {
     "air-datepicker": "^3.5.3",
     "ansi-styles": "^4.3.0",
@@ -104,6 +104,6 @@
   },
   "scripts": {
     "start": "parcel index.html flights-results.html booking-confirmation.html",
-    "build": "parcel build index.html flights-results.html booking-confirmation.html"
+    "build": "parcel build index.html flights-results.html booking-confirmation.html --dist-dir ./dist"
   }
 }
