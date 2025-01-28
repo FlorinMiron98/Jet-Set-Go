@@ -11,7 +11,7 @@ This is a flights tickets booking website designed to facilitate seamless flight
 1. UX
     - [Project Goals](#project-goals)
     - [Business Goals](#business-goals)
-    - User Stories
+    - [User Stories](#user-stories)
     - Design Choices
     - Wireframes
 2. Features
@@ -85,3 +85,9 @@ The user experience (UX) of Jet-Set-Go website has been carefully designed to en
 
 5. Optimize for Speed and Performance
    Ensure that your website is fast and responsive to improve user experience
+#### User Stories
+1. As a customer, I want to search for available flights by entering my departure and arrival cities, travel dates, and number of passengers so that I can find flights that meet my needs.
+2. As a customer, I want to be able to sort flight search results by best, cheapest, and fastest, so that I can easily find the option that best fits my travel needs based on price, duration, or overall quality.
+3. As a customer, I want to select a flight from the search results, view flight details, and proceed to booking so that I can finalize my flight purchase.
+4. As a customer, I want to see recommended flight destinations so that I can discover new places to visit and book flights easily.
+5. As a customer, I want to be able to load more flight search results, so that I can view additional options beyond the initial set without having to perform a new search.
