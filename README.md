@@ -137,6 +137,7 @@ To clone this project from GitHub into a local IDE such as Visual Studio Code, f
 3. Copy the clone URL for the repository.
 
 ![clone-URL](https://github.com/user-attachments/assets/3995b2ae-86d3-452d-a46c-0d927313f9bd)
+
 4. Navigate to the Project Directory
    - Once the repository is cloned, navigate to the location where you want the cloned directory to be created using this command: `cd your-repository`.
 5. Clone the Repository
