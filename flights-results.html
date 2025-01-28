@@ -170,7 +170,9 @@
       </nav>
 
       <section class="header-main-content py-5">
-        <div class="results-container container d-flex justify-content-center">
+        <div
+          class="results-container container d-flex flex-column align-items-center justify-content-center"
+        >
           <!-- Results List -->
           <div class="results-list">
             <!-- Sort Buttons -->
@@ -197,6 +199,12 @@
               <!-- Flight Item -->
               <div class="flight-item px-2 px-md-4 py-3 border rounded-3"></div>
             </div>
+          </div>
+          <div
+            class="loader-container intersection-observer-loader d-none flex-column align-items-center justify-content-center mt-1"
+          >
+            <div class="loader"></div>
+            <p class="mt-2">Searching for more flights offers...</p>
           </div>
         </div>
       </section>
