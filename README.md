@@ -93,3 +93,9 @@ The user experience (UX) of Jet-Set-Go website has been carefully designed to en
 5. As a customer, I want to be able to load more flight search results, so that I can view additional options beyond the initial set without having to perform a new search.
 #### Wireframes
 For this project, I decided to create high-fidelity wireframes to better visualize the final product. High-fidelity wireframes provide a more detailed representation of the design compared to low-fidelity wireframes.
+1. [Homepage - Desktop](https://postimg.cc/CnTjwvvz)
+2. [Homepage - Tablet](https://postimg.cc/SYfzkm2v)
+3. [Homepage - Mobile](https://postimg.cc/bG4nRCf3)
+4. [Results Page - Desktop](https://postimg.cc/BX3xyVLz)
+5. [Results Page - Tablet](https://postimg.cc/BX3xyVLz)
+6. [Results Page - Mobile](https://postimg.cc/7b03Kk67)
