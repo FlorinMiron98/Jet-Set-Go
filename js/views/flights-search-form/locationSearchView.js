@@ -139,12 +139,8 @@ export default class LocationSearchView {
                       data-name="${item.cityName}"
                       data-type="${item.type}"
                     >
-                      <div class="result-icon">
-                        <img
-                          src="/assets/images/plane-icon.png"
-                          class="w-100 h-100"
-                          alt="Plane icon"
-                        />
+                      <div class="result-icon fs-2">
+                        <i class="fa-solid fa-plane-up"></i>
                       </div>
                       <div class="result-content">
                         <p class="fw-bold mb-1">${item.code} ${item.name}</p>
@@ -173,12 +169,8 @@ export default class LocationSearchView {
                       data-name="${item.cityName}"
                       data-type="${item.type}"
                     >
-                      <div class="result-icon">
-                        <img
-                          src="/assets/images/plane-icon.png"
-                          class="w-100 h-100"
-                          alt="Plane icon"
-                        />
+                      <div class="result-icon fs-2">
+                        <i class="fa-solid fa-plane-up"></i>
                       </div>
                       <div class="result-content">
                         <p class="fw-bold mb-1">${item.code} ${item.name}</p>
