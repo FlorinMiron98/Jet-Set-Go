@@ -5,38 +5,48 @@ class DetailsDialogView {
   _closeDialogBtn = document.querySelector(".close-dialog-btn");
   _parentEl = document.querySelector(".details-dialog main");
 
+  // Create the handler display dialog method for each of the view details buttons
   _addHandlerDisplayDialog(handler) {
+    // Use event delegation to check for the closest parent element with the class of the details button
     this._resultsList.addEventListener("click", (e) => {
       if (e.target.closest(".view-details-btn")) {
         const detailsBtn = e.target;
+
+        // Extract the data token from each parent div of the details button
         const flightItem = detailsBtn.closest(".flight-item");
         const token = flightItem.dataset.token;
 
+        // Use the Pub/Sub pattern to assign the token to the handler function which will be called in the flightResultsController.js
         handler(token);
       }
     });
   }
 
+  // Create the handler hide dialog method which will be passed as a function in the flightResultsController.js
   _addHandlerHideDialog(handler) {
     this._closeDialogBtn.addEventListener("click", () => {
       handler();
     });
   }
 
+  // Display dialog method
   _displayDialog() {
     this._detailsDialog.showModal();
     document.body.classList.add("no-scroll");
   }
 
+  // Hide dialog method
   _hideDialog() {
     this._detailsDialog.close();
     document.body.classList.remove("no-scroll");
   }
 
+  // Clear markup method
   _clearMarkup() {
     this._parentEl.innerHTML = "";
   }
 
+  // Render spinner method
   _renderSpinner() {
     const markup = `
           <div
@@ -46,14 +56,16 @@ class DetailsDialogView {
             <p class="mt-2">Fetching flight details...</p>
           </div>
     `;
+    // Make sure to clear the markup inside the parent element before displaying the spinner
     this._clearMarkup();
     this._parentEl.insertAdjacentHTML("afterbegin", markup);
   }
 
+  // Render markup data (where all the magic happens)
   _renderMarkup(data) {
     this._clearMarkup();
 
-    // Create thee date/time formatter
+    // Create the date/time formatter
     const dateFormatter = new Intl.DateTimeFormat("en-GB", {
       day: "2-digit",
       month: "short",
@@ -196,6 +208,7 @@ class DetailsDialogView {
       })
       .join("");
 
+    // Include all the markup created above and insert it in the parent element
     const markup = `
         ${flightSummary}
 
