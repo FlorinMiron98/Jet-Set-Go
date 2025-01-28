@@ -17,6 +17,10 @@ import datePickerView from "./views/flights-search-form/datePickerView.js";
 import searchResultsBtnView from "./views/flights-search-form/searchResultsBtnView.js";
 import clearInputBtnView from "./views/flights-search-form/clearInputBtnView.js";
 
+// Include polyfilling for ES6 code and asynchronous code
+import "core-js/stable";
+import "regenerator-runtime/runtime.js";
+
 const controlSelectPersons = function () {
   // Generate persons selection markup
   personsSelectionView._generateAdultsMarkup();

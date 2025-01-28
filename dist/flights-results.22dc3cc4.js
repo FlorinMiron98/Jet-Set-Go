@@ -598,6 +598,7 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 },{}],"eYIic":[function(require,module,exports,__globalThis) {
 // Import model
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+var _webImmediateJs = require("core-js/modules/web.immediate.js");
 var _model = require("./model");
 // Import views
 var _flightResultsView = require("./views/flightResultsView");
@@ -679,138 +680,7 @@ const init = function() {
 };
 init();
 
-},{"./model":"Py0LO","./views/flightResultsView":"cJKtZ","./views/navbarView":"9sJsi","./views/sideNavbarView":"9BkUd","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./views/headerContentView":"d8zti","./views/flights-search-results/flightsOffersView":"j6LfF","./views/flights-search-results/detailsDialogView":"9Vs0d","./views/flights-search-results/formSubmissionDialogView":"3ZlTR"}],"Py0LO":[function(require,module,exports,__globalThis) {
-// Import the 'options' object which contains the method and the API key
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "state", ()=>state);
-parcelHelpers.export(exports, "loadDestinationsSearchResults", ()=>loadDestinationsSearchResults);
-parcelHelpers.export(exports, "loadFlightsSearchResults", ()=>loadFlightsSearchResults);
-parcelHelpers.export(exports, "loadFlightDetails", ()=>loadFlightDetails);
-var _configJs = require("./config.js");
-const state = {
-    locationResults: {
-        departureLocationResults: [],
-        arrivalLocationResults: []
-    },
-    flightsSearchResults: {
-        aggregation: {},
-        baggagePolicies: [],
-        flightDeals: [],
-        flightOffers: [],
-        cabinClass: ""
-    },
-    flightDetails: {
-        features: [],
-        segments: [],
-        price: 0,
-        tripType: "",
-        token: ""
-    }
-};
-const loadDestinationsSearchResults = async function(query, transit) {
-    const url = `https://booking-com15.p.rapidapi.com/api/v1/flights/searchDestination?query=${query}`;
-    try {
-        const response = await fetch(url, (0, _configJs.OPTIONS));
-        if (!response.ok) throw new Error("Something went wrong. Please try again!");
-        const data = await response.json();
-        if (data.data.length === 0) throw new Error("No results found for your query. Please try again!");
-        // Dynamically display the search list based on the transit (departure locations/arrival locations)
-        if (transit === "departure") state.locationResults.departureLocationResults = data.data;
-        if (transit === "arrival") state.locationResults.arrivalLocationResults = data.data;
-    } catch (error) {
-        throw error;
-    }
-};
-const loadFlightsSearchResults = async function(queryParams, sort = "BEST") {
-    // As the return date is optional, check if the value is empty
-    let returnDate = !queryParams.returnDate ? "" : `&returnDate=${queryParams.returnDate}`;
-    // Create the let variable to store the children search param based on the value stored in the object returned by getQueryParameters() method
-    let children;
-    // Check each possible outcome for the number of children selected by the user and assign the value to the children variable
-    if (queryParams.children.length === 1) children = `&children=${queryParams.children[0]}`;
-    if (queryParams.children.length > 1) children = `&children=${queryParams.children.join("%2C")}`;
-    if (!queryParams.children) children = "";
-    // Dynamically create the URL for the fetch request
-    const url = `https://booking-com15.p.rapidapi.com/api/v1/flights/searchFlights?fromId=${queryParams.departureLocationId}&toId=${queryParams.arrivalLocationId}&departDate=${queryParams.departureDate}${returnDate}&pageNo=${queryParams.pageNumber}&adults=${queryParams.adults}${children}&sort=${sort}&cabinClass=${queryParams.flightClass}&currency_code=GBP`;
-    console.log(url);
-    try {
-        const response = await fetch(url, (0, _configJs.OPTIONS));
-        if (!response.ok) throw new Error("Something went wrong. Please try again!");
-        const data = await response.json();
-        console.log(data);
-        // Assign the response to the 'state' object
-        state.flightsSearchResults.aggregation = data.data.aggregation;
-        state.flightsSearchResults.baggagePolicies = data.data.baggagePolicies;
-        state.flightsSearchResults.flightDeals = data.data.flightDeals;
-        state.flightsSearchResults.flightOffers = data.data.flightOffers;
-        state.flightsSearchResults.cabinClass = data.data.searchCriteria.cabinClass;
-        console.log(state);
-    } catch (error) {
-        throw error;
-    }
-};
-const loadFlightDetails = async function(token) {
-    const url = `https://booking-com15.p.rapidapi.com/api/v1/flights/getFlightDetails?token=${token}&currency_code=GBP`;
-    try {
-        const response = await fetch(url, (0, _configJs.OPTIONS));
-        if (!response.ok) throw new Error("Something went wrong. Please try again!");
-        const data = await response.json();
-        // Assign the response to the 'state' object
-        state.flightDetails.features = data.data.brandedFareInfo.features;
-        state.flightDetails.segments = data.data.segments;
-        state.flightDetails.price = data.data.priceBreakdown.total.units;
-        state.flightDetails.tripType = data.data.tripType;
-        state.flightDetails.token = data.data.token;
-    } catch (error) {
-        console.log(error);
-        throw error;
-    }
-};
-
-},{"./config.js":"4Wc5b","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4Wc5b":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "OPTIONS", ()=>OPTIONS);
-const OPTIONS = {
-    method: "GET",
-    headers: {
-        "x-rapidapi-key": "3728498269msh3cdb30e7c87b59bp10ba56jsn2d4cff454307",
-        "x-rapidapi-host": "booking-com15.p.rapidapi.com"
-    }
-};
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports,__globalThis) {
-exports.interopDefault = function(a) {
-    return a && a.__esModule ? a : {
-        default: a
-    };
-};
-exports.defineInteropFlag = function(a) {
-    Object.defineProperty(a, '__esModule', {
-        value: true
-    });
-};
-exports.exportAll = function(source, dest) {
-    Object.keys(source).forEach(function(key) {
-        if (key === 'default' || key === '__esModule' || Object.prototype.hasOwnProperty.call(dest, key)) return;
-        Object.defineProperty(dest, key, {
-            enumerable: true,
-            get: function() {
-                return source[key];
-            }
-        });
-    });
-    return dest;
-};
-exports.export = function(dest, destName, get) {
-    Object.defineProperty(dest, destName, {
-        enumerable: true,
-        get: get
-    });
-};
-
-},{}],"cJKtZ":[function(require,module,exports,__globalThis) {
+},{"./model":"Py0LO","./views/flightResultsView":"cJKtZ","./views/navbarView":"9sJsi","./views/sideNavbarView":"9BkUd","./views/headerContentView":"d8zti","./views/flights-search-results/flightsOffersView":"j6LfF","./views/flights-search-results/detailsDialogView":"9Vs0d","./views/flights-search-results/formSubmissionDialogView":"3ZlTR","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","core-js/modules/web.immediate.js":"49tUX"}],"cJKtZ":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 class FlightResultsView {
@@ -854,95 +724,6 @@ class FlightResultsView {
     }
 }
 exports.default = new FlightResultsView();
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9sJsi":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-class NavbarView {
-    // DOM elements
-    sideNavbar = document.querySelector(".sidebar-navigation");
-    navbar = document.getElementById("nav");
-    // Set the background styling for the navbar when the scrollY property is 1px or bigger or depending on the styling of the side navigation bar
-    setDynamicStyling() {
-        window.addEventListener("scroll", ()=>{
-            if (window.scrollY > 0) this.navbar.classList.add("navigation-highlight");
-            if (window.scrollY === 0 && !this.sideNavbar.classList.contains("sidebar-navigation-visible")) this.navbar.classList.remove("navigation-highlight");
-            if (window.scrollY === 0 && this.sideNavbar.classList.contains("sidebar-navigation-visible")) return;
-        });
-    }
-}
-exports.default = new NavbarView();
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9BkUd":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-class SideNavbarView {
-    // DOM elements
-    navbar = document.getElementById("nav");
-    sideNavbar = document.querySelector(".sidebar-navigation");
-    hamburgerBtn = document.getElementById("hamburger-btn");
-    overlay = document.querySelector(".overlay");
-    // Set the top positioning of the side navigation bar based on the height of the navigation bar when the page loads or when the user changes the screen size
-    setDynamicStyling() {
-        [
-            "load",
-            "resize"
-        ].forEach((e)=>{
-            window.addEventListener(e, ()=>{
-                const navbarSize = this.navbar.getBoundingClientRect();
-                this.sideNavbar.style.marginTop = `${navbarSize.height}px`;
-            });
-        });
-    }
-    toggleSideNavbar() {
-        // Add an event listener to the body element and hide the overlay if it is currently visible
-        document.body.addEventListener("click", (e)=>{
-            if (e.target.classList.contains("overlay")) {
-                this.sideNavbar.classList.remove("sidebar-navigation-visible");
-                e.target.classList.remove("overlay-visible");
-            }
-            // Adjust the styling of the navigation bar taking into consideration the scrollY property and the visibility of the overlay
-            if (e.target.classList.contains("overlay") && window.scrollY === 0) {
-                this.navbar.classList.remove("navigation-highlight");
-                this.sideNavbar.classList.remove("sidebar-navigation-visible");
-                e.target.classList.remove("overlay-visible");
-            }
-        });
-        // Set the behaviour of the navigation bar and overlay when clicking the hamburger button
-        this.hamburgerBtn.addEventListener("click", ()=>{
-            this.sideNavbar.classList.toggle("sidebar-navigation-visible");
-            this.overlay.classList.toggle("overlay-visible");
-            if (window.scrollY === 0) {
-                if (this.navbar.classList.contains("navigation-highlight")) this.navbar.classList.remove("navigation-highlight");
-                else this.navbar.classList.add("navigation-highlight");
-            }
-        });
-    }
-}
-exports.default = new SideNavbarView();
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"d8zti":[function(require,module,exports,__globalThis) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-class HeaderContentView {
-    // DOM elements
-    navbar = document.getElementById("nav");
-    header = document.querySelector(".header");
-    // As the navigation bar has position:fixed which will get it out of the normal flow of the page, I had to dynamically set a padding top for the main content of the header element so the navigation bar will not overwrite it
-    setDynamicStyling() {
-        [
-            "load",
-            "resize"
-        ].forEach((e)=>{
-            window.addEventListener(e, ()=>{
-                const navbarSizes = this.navbar.getBoundingClientRect();
-                this.header.style.paddingTop = `${navbarSizes.height}px`;
-                this.header.style.paddingBottom = `${navbarSizes.height}px`;
-            });
-        });
-    }
-}
-exports.default = new HeaderContentView();
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"j6LfF":[function(require,module,exports,__globalThis) {
 // Import this component so we can increase the page number value when using the Intersection Observer API
@@ -1190,7 +971,7 @@ class FlightsOffersView {
 }
 exports.default = new FlightsOffersView();
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../flightResultsView":"cJKtZ"}],"9Vs0d":[function(require,module,exports,__globalThis) {
+},{"../flightResultsView":"cJKtZ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9Vs0d":[function(require,module,exports,__globalThis) {
 // Import flightResultsView to extract the query parameter for the cabin class
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -1436,7 +1217,7 @@ class DetailsDialogView {
 }
 exports.default = new DetailsDialogView();
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../flightResultsView":"cJKtZ"}],"3ZlTR":[function(require,module,exports,__globalThis) {
+},{"../flightResultsView":"cJKtZ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3ZlTR":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 class FormSubmissionDialogView {

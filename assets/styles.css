@@ -65,6 +65,10 @@
     rgba(0, 0, 0, 0.15),
     rgba(0, 0, 0, 0.15)
   );
+  --darkening-bg-image-2: linear-gradient(
+    rgba(0, 0, 0, 0.45),
+    rgba(0, 0, 0, 0.45)
+  );
 
   --box-shadow-dark: 0px 9px 6px -4px rgb(70, 70, 70);
   --box-shadow-light: 0px 2px 8px 1px rgb(175, 175, 175);
@@ -788,6 +792,26 @@ footer .quick-links a:active,
 footer .social-media-links a:hover,
 footer .social-media-links a:active {
   color: var(--color-gray);
+}
+
+/* =================================================== */
+/* booking-confirmation.html */
+/* =================================================== */
+#booking-confirmation-header {
+  min-height: 100vh;
+  background-image: var(--darkening-bg-image-2),
+    url("./images/booking-confirmation-bg.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+#booking-confirmation-header a {
+  background-color: var(--flights-secondary);
+}
+
+#booking-confirmation-header a:active,
+#booking-confirmation-header a:hover {
+  background-color: var(--color-blue-light);
 }
 
 /* ============= */

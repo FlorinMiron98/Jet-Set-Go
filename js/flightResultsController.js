@@ -10,6 +10,10 @@ import flightsOffersView from "./views/flights-search-results/flightsOffersView"
 import detailsDialogView from "./views/flights-search-results/detailsDialogView";
 import formSubmissionDialogView from "./views/flights-search-results/formSubmissionDialogView";
 
+// Include polyfilling for ES6 code and asynchronous code
+import "core-js/stable";
+import "regenerator-runtime/runtime.js";
+
 const controlOnLoadSearch = function () {
   model.loadFlightsSearchResults(flightResultsView._getQueryParameters());
 };
