@@ -91,3 +91,5 @@ The user experience (UX) of Jet-Set-Go website has been carefully designed to en
 3. As a customer, I want to select a flight from the search results, view flight details, and proceed to booking so that I can finalize my flight purchase.
 4. As a customer, I want to see recommended flight destinations so that I can discover new places to visit and book flights easily.
 5. As a customer, I want to be able to load more flight search results, so that I can view additional options beyond the initial set without having to perform a new search.
+#### Wireframes
+For this project, I decided to create high-fidelity wireframes to better visualize the final product. High-fidelity wireframes provide a more detailed representation of the design compared to low-fidelity wireframes.
