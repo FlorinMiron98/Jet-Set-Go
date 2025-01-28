@@ -155,7 +155,6 @@ class SearchResultsBtnView {
     if (queryValues.persons.children.length > 1) {
       // '%2C' is the URL-encoded representation of a comma (,) character.
       children = `&children=${queryValues.persons.children.join("%2C")}`;
-      console.log(children);
     }
 
     // Get rest of the query parameters values

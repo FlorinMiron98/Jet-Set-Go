@@ -673,10 +673,10 @@ const init = function() {
     (0, _detailsDialogViewDefault.default)._addHandlerDisplayDialog(controlDisplayDialog);
     (0, _detailsDialogViewDefault.default)._addHandlerHideDialog(controlHideDialog);
     // Dynamic styling
-    (0, _navbarViewDefault.default).setDynamicStyling();
-    (0, _sideNavbarViewDefault.default).setDynamicStyling();
-    (0, _sideNavbarViewDefault.default).toggleSideNavbar();
-    (0, _headerContentViewDefault.default).setDynamicStyling();
+    (0, _navbarViewDefault.default)._setDynamicStyling();
+    (0, _sideNavbarViewDefault.default)._setDynamicStyling();
+    (0, _sideNavbarViewDefault.default)._toggleSideNavbar();
+    (0, _headerContentViewDefault.default)._setDynamicStyling();
 };
 init();
 

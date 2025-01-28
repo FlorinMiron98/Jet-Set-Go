@@ -78,8 +78,6 @@ export const loadFlightsSearchResults = async function (
   // Dynamically create the URL for the fetch request
   const url = `https://booking-com15.p.rapidapi.com/api/v1/flights/searchFlights?fromId=${queryParams.departureLocationId}&toId=${queryParams.arrivalLocationId}&departDate=${queryParams.departureDate}${returnDate}&pageNo=${queryParams.pageNumber}&adults=${queryParams.adults}${children}&sort=${sort}&cabinClass=${queryParams.flightClass}&currency_code=GBP`;
 
-  console.log(url);
-
   try {
     const response = await fetch(url, OPTIONS);
 
@@ -88,7 +86,6 @@ export const loadFlightsSearchResults = async function (
     }
 
     const data = await response.json();
-    console.log(data);
 
     // Assign the response to the 'state' object
     state.flightsSearchResults.aggregation = data.data.aggregation;
@@ -96,7 +93,6 @@ export const loadFlightsSearchResults = async function (
     state.flightsSearchResults.flightDeals = data.data.flightDeals;
     state.flightsSearchResults.flightOffers = data.data.flightOffers;
     state.flightsSearchResults.cabinClass = data.data.searchCriteria.cabinClass;
-    console.log(state);
   } catch (error) {
     throw error;
   }
@@ -122,7 +118,6 @@ export const loadFlightDetails = async function (token) {
     state.flightDetails.tripType = data.data.tripType;
     state.flightDetails.token = data.data.token;
   } catch (error) {
-    console.log(error);
     throw error;
   }
 };

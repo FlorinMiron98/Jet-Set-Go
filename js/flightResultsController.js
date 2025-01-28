@@ -98,10 +98,10 @@ const init = function () {
   detailsDialogView._addHandlerHideDialog(controlHideDialog);
 
   // Dynamic styling
-  navbarView.setDynamicStyling();
-  sideNavbarView.setDynamicStyling();
-  sideNavbarView.toggleSideNavbar();
-  headerContentView.setDynamicStyling();
+  navbarView._setDynamicStyling();
+  sideNavbarView._setDynamicStyling();
+  sideNavbarView._toggleSideNavbar();
+  headerContentView._setDynamicStyling();
 };
 
 init();

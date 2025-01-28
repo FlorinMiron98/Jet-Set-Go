@@ -713,8 +713,8 @@ const init = function() {
     (0, _personsSelectionViewJsDefault.default)._addHandlerRender(controlSelectPersons);
     (0, _flightClassSelectionViewJsDefault.default)._addHandlerRender(controlSelectFlightClass);
     (0, _departureLocationSearchViewJsDefault.default)._addHandlerSearch(controlDepartureSearchLocations);
-    (0, _arrivalLocationSearchViewJsDefault.default)._addHandlerSearch(controlArrivalSearchLocations);
     (0, _departureLocationSearchViewJsDefault.default)._addHandlerLoseFocus(controlDepartureSearchLoseFocus);
+    (0, _arrivalLocationSearchViewJsDefault.default)._addHandlerSearch(controlArrivalSearchLocations);
     (0, _arrivalLocationSearchViewJsDefault.default)._addHandlerLoseFocus(controlArrivalSearchLoseFocus);
     (0, _departureLocationSearchViewJsDefault.default)._assignInputValue();
     (0, _arrivalLocationSearchViewJsDefault.default)._assignInputValue();
@@ -723,13 +723,13 @@ const init = function() {
     (0, _searchResultsBtnViewJsDefault.default)._addHandlerCreateQueries(controlReturnSearchQueries);
     (0, _clearInputBtnViewJsDefault.default)._clearInput();
     // Dynamic styling
-    (0, _navbarViewJsDefault.default).setDynamicStyling();
-    (0, _sideNavbarViewJsDefault.default).setDynamicStyling();
-    (0, _sideNavbarViewJsDefault.default).toggleSideNavbar();
+    (0, _navbarViewJsDefault.default)._setDynamicStyling();
+    (0, _sideNavbarViewJsDefault.default)._setDynamicStyling();
+    (0, _sideNavbarViewJsDefault.default)._toggleSideNavbar();
     (0, _searchFormViewJsDefault.default)._setDropdownDynamicStyling();
     (0, _searchFormViewJsDefault.default)._showSelectionDropdown();
-    (0, _headerContentViewJsDefault.default).setDynamicStyling();
-    (0, _departureLocationSearchViewJsDefault.default).setDynamicStyling();
+    (0, _headerContentViewJsDefault.default)._setDynamicStyling();
+    (0, _departureLocationSearchViewJsDefault.default)._setDynamicStyling();
 };
 init();
 
@@ -1094,7 +1094,7 @@ class DepartureLocationSearchView extends (0, _locationSearchViewJsDefault.defau
     _departureLocationId = "";
     _transit = "departure";
     // Set the top position dynamically so the dropdown results list is displayed properly on small screen sizes
-    setDynamicStyling() {
+    _setDynamicStyling() {
         [
             "load",
             "resize"
@@ -3232,11 +3232,8 @@ class SearchResultsBtnView {
         // Set the children query parameter values based on the length of the children array
         if (queryValues.persons.children.length === 1) children = `&children=${queryValues.persons.children[0]}`;
         if (queryValues.persons.children.length === 0) children = "";
-        if (queryValues.persons.children.length > 1) {
-            // '%2C' is the URL-encoded representation of a comma (,) character.
-            children = `&children=${queryValues.persons.children.join("%2C")}`;
-            console.log(children);
-        }
+        if (queryValues.persons.children.length > 1) // '%2C' is the URL-encoded representation of a comma (,) character.
+        children = `&children=${queryValues.persons.children.join("%2C")}`;
         // Get rest of the query parameters values
         const adults = queryValues.persons.adults;
         const flightClass = queryValues.flightClass;

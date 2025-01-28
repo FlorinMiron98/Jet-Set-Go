@@ -17,7 +17,7 @@ class DepartureLocationSearchView extends searchLocationView {
   _transit = "departure";
 
   // Set the top position dynamically so the dropdown results list is displayed properly on small screen sizes
-  setDynamicStyling() {
+  _setDynamicStyling() {
     ["load", "resize"].forEach((e) => {
       window.addEventListener(e, () => {
         const sizes = this._searchLocationWrapper.getBoundingClientRect();

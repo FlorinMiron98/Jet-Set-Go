@@ -150,14 +150,16 @@ const init = function () {
   departureLocationSearchView._addHandlerSearch(
     controlDepartureSearchLocations
   );
-  arrivalLocationSearchView._addHandlerSearch(controlArrivalSearchLocations);
-
   departureLocationSearchView._addHandlerLoseFocus(
     controlDepartureSearchLoseFocus
   );
+
+  arrivalLocationSearchView._addHandlerSearch(controlArrivalSearchLocations);
   arrivalLocationSearchView._addHandlerLoseFocus(controlArrivalSearchLoseFocus);
+
   departureLocationSearchView._assignInputValue();
   arrivalLocationSearchView._assignInputValue();
+
   reverseInputValuesView._addHandlerReverseValues(controlReverseInputValues);
   datePickerView._setDatePicker();
 
@@ -166,13 +168,13 @@ const init = function () {
   clearInputBtnView._clearInput();
 
   // Dynamic styling
-  navbarView.setDynamicStyling();
-  sideNavbarView.setDynamicStyling();
-  sideNavbarView.toggleSideNavbar();
+  navbarView._setDynamicStyling();
+  sideNavbarView._setDynamicStyling();
+  sideNavbarView._toggleSideNavbar();
   searchFormView._setDropdownDynamicStyling();
   searchFormView._showSelectionDropdown();
-  headerContentView.setDynamicStyling();
-  departureLocationSearchView.setDynamicStyling();
+  headerContentView._setDynamicStyling();
+  departureLocationSearchView._setDynamicStyling();
 };
 
 init();
