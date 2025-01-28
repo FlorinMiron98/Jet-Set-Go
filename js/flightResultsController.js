@@ -8,6 +8,7 @@ import sideNavbarView from "./views/sideNavbarView";
 import headerContentView from "./views/headerContentView";
 import flightsOffersView from "./views/flights-search-results/flightsOffersView";
 import detailsDialogView from "./views/flights-search-results/detailsDialogView";
+import formSubmissionDialogView from "./views/flights-search-results/formSubmissionDialogView";
 
 const controlOnLoadSearch = function () {
   model.loadFlightsSearchResults(flightResultsView._getQueryParameters());
@@ -68,11 +69,26 @@ const controlHideDialog = function () {
   detailsDialogView._hideDialog();
 };
 
+const controlDisplayFormSubmissionDialog = function () {
+  formSubmissionDialogView._displayFormSubmissionDialog();
+};
+
+const controlHideFormSubmissionDialog = function () {
+  formSubmissionDialogView._hideFormSubmissionDialog();
+};
+
 const init = function () {
   flightResultsView._addHandlerRender(controlOnLoadSearch);
   flightsOffersView._addHandlerLoadFlightsOffers(controlDisplayFlightsOffers);
   flightsOffersView._addHandlerSelectSort(controlDisplayFlightsOffers);
   flightsOffersView._loadMoreFlightsResults(controlDisplayMoreFlightsOffers);
+
+  formSubmissionDialogView._addHandlerDisplayFormSubmissionDialog(
+    controlDisplayFormSubmissionDialog
+  );
+  formSubmissionDialogView._addHandlerHideFormSubmissionDialog(
+    controlHideFormSubmissionDialog
+  );
 
   detailsDialogView._addHandlerDisplayDialog(controlDisplayDialog);
   detailsDialogView._addHandlerHideDialog(controlHideDialog);
