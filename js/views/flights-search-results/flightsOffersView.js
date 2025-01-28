@@ -1,7 +1,13 @@
+// Import this component so we can increase the page number value when using the Intersection Observer API
+import flightResultsView from "../flightResultsView";
+
 class FlightsOffersView {
   // DOM Elements
   _parentEl = document.querySelector(".flights-search-results");
   _sortBtns = document.querySelectorAll(".sort-btn");
+  _intersectionObserverSpinner = document.querySelector(
+    ".intersection-observer-loader"
+  );
 
   // Global variables
   _errorMessage = "No flight offers matching your request. Please try again!";
@@ -57,12 +63,19 @@ class FlightsOffersView {
     this._parentEl.insertAdjacentHTML("afterbegin", markup);
   }
 
+  // Clear markup method
   _clearMarkup() {
     this._parentEl.innerHTML = "";
   }
 
-  _renderMarkup(data) {
-    this._clearMarkup();
+  // Add a second parameter of type boolean so we can separate the initial load of the Intersection Observer API loads
+  _renderMarkup(data, isInitialLoad = true) {
+    // Clear the markup on the inital load
+    if (isInitialLoad) {
+      this._clearMarkup();
+    }
+
+    // Loop through the flight offers
     const markup = data.flightsSearchResults.flightOffers
       .map((item) => {
         // Create the date formatter
@@ -216,7 +229,21 @@ class FlightsOffersView {
       })
       .join("");
 
-    this._parentEl.insertAdjacentHTML("afterbegin", markup);
+    // Insert the markup depending if the request belongs to the initial load or to the Intersection Observer API load
+    if (isInitialLoad) {
+      this._parentEl.insertAdjacentHTML("afterbegin", markup);
+    }
+    if (!isInitialLoad) {
+      this._parentEl.insertAdjacentHTML("beforeend", markup);
+    }
+
+    // Display the intersection observer spinner after the results were added to the container
+    this._intersectionObserverSpinner.classList.remove("d-none");
+    this._intersectionObserverSpinner.classList.add("d-flex");
+
+    if (data.flightsSearchResults.flightOffers.length === 0) {
+      this._renderEndOfResults();
+    }
   }
 
   //   This method will return flight duration displayed as hours and minutes
@@ -236,6 +263,47 @@ class FlightsOffersView {
   _extractHoursAndMinutes(timeString) {
     const [hours, minutes] = timeString.split(":");
     return `${hours}:${minutes}`;
+  }
+
+  // Intersection Observer API method
+  _loadMoreFlightsResults(handler) {
+    // Create the options for the Intersection Observer API
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0,
+    };
+
+    // Loop through the callback entries, increase the page and assign the handler function which will be called in the flightResultsController.js
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          flightResultsView._pageNumber += 1;
+          handler();
+        }
+      });
+    };
+
+    // Initiate the Intersection Observer API
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions
+    );
+    // Observe the intersection observer spinner
+    observer.observe(this._intersectionObserverSpinner);
+  }
+
+  // This method will let the user know when there are no more results to fetch
+  _renderEndOfResults() {
+    // Hide the intersection observer spinner
+    this._intersectionObserverSpinner.classList.add("d-none");
+
+    const markup = `
+        <div class="d-block text-center mt-1">
+            <p class="mt-2 mb-0 fs-3 fw-bold">End of results</p>
+        </div>
+    `;
+    this._parentEl.insertAdjacentHTML("beforeend", markup);
   }
 }
 
