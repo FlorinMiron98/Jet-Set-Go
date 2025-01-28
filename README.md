@@ -13,7 +13,7 @@ This is a flights tickets booking website designed to facilitate seamless flight
     - [Business Goals](#business-goals)
     - [User Stories](#user-stories)
     - Design Choices
-    - Wireframes
+    - [Wireframes](#wireframes)
 2. Features
     - Homepage
       - Hero
@@ -84,6 +84,7 @@ The user experience (UX) of Jet-Set-Go website has been carefully designed to en
    Allow users to easily cancel their bookings.
 
 5. Optimize for Speed and Performance
+
    Ensure that your website is fast and responsive to improve user experience
 #### User Stories
 1. As a customer, I want to search for available flights by entering my departure and arrival cities, travel dates, and number of passengers so that I can find flights that meet my needs.
@@ -99,3 +100,13 @@ For this project, I decided to create high-fidelity wireframes to better visuali
 4. [Results Page - Desktop](https://postimg.cc/BX3xyVLz)
 5. [Results Page - Tablet](https://postimg.cc/BX3xyVLz)
 6. [Results Page - Mobile](https://postimg.cc/7b03Kk67)
+### Technologies Used
+1. **HTML5** - The foundational markup language for structuring web content.
+2. **CSS3** - Used for styling and layout, enhancing the visual appearance of the project.
+3. **Bootstrap 5** - Used for creating responsiveness across all screen sizes, pre-designed components and utility classes. More about Bootstrap on the [official Bootstrap website](https://getbootstrap.com/)
+4. **JavaScript** - It is used to handle user interactions, manipulate the DOM, and manage application logic.
+5. **Tippy.js** - Tippy.js is a lightweight and highly customizable library for creating tooltips and popovers in web applications. More about Tippy.js on the [official website](https://atomiks.github.io/tippyjs/).
+6. **Air-datepicker** - Air-datepicker is a simple and flexible date-picker library that makes it easy for users to select dates. More about Air-datepicker on the [official website](https://air-datepicker.com/)
+7. **Parcel.js** - Parcel.js is a fast, zero-config web application bundler. It simplifies the development process by automatically handling tasks such as bundling JavaScript, CSS and assets. More about Parcel.js on the [official website](https://parceljs.org/)
+8. **Core.js** - Core.js is a powerful JavaScript library that provides polyfills for ECMAScript features, ensuring compatibility across different browsers and environments. More about Core.js on this [GitHub repository](https://github.com/zloirock/core-js).
+9. **Regenerator-runtime** - The Regenerator-runtime library provides a runtime for generators and async functions, enabling the use of modern asynchronous JavaScript syntax (like async/await) in environments that do not natively support it. More about the Regenerator-runtime [here](https://www.npmjs.com/package/regenerator-runtime)
