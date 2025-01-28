@@ -87,6 +87,21 @@ export default class LocationSearchView {
         // Each item has other relevant properties which will be stored in data attributes and will later be assigned in an object as query parameter values
         // type = CITY
         if (currentItem.type === "CITY") {
+          let cityIcon;
+
+          if (!item.photoUri) {
+            cityIcon = '<i class="fa-solid fa-city fs-2"></i>';
+          }
+          if (item.photoUri) {
+            cityIcon = `
+                <img
+                  src=${item.photoUri}
+                  alt="City Image"
+                  class="w-100 h-100 rounded-3"
+                />
+            `;
+          }
+
           return `
         <li class="result-list-item">
         <a
@@ -98,15 +113,7 @@ export default class LocationSearchView {
             data-type="${item.type}"
             >
                   <div class="city-image">
-                    <img
-                      src=${
-                        !item.photoUri
-                          ? "./assets/images/plane-icon.png"
-                          : item.photoUri
-                      }
-                      alt="City Image"
-                      class="w-100 h-100 rounded-3"
-                    />
+                    ${cityIcon}
                   </div>
                   <div class="city-details">
                     <h3 class="fs-5 fw-bold">
