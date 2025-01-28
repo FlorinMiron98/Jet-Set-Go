@@ -809,6 +809,7 @@ const loadFlightDetails = async function(token) {
         const response = await fetch(url, (0, _configJs.OPTIONS));
         if (!response.ok) throw new Error("Something went wrong. Please try again!");
         const data = await response.json();
+        // Assign the response to the 'state' object
         state.flightDetails.features = data.data.brandedFareInfo.features;
         state.flightDetails.segments = data.data.segments;
         state.flightDetails.price = data.data.priceBreakdown.total.units;
