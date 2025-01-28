@@ -540,10 +540,6 @@ main #seasonal-destination-section .card .book-btn:hover, main #seasonal-destina
   background-color: var(--color-gray-light);
 }
 
-#flights-results-header .header-main-content .results-container {
-  gap: 2rem;
-}
-
 #flights-results-header .header-main-content .results-list {
   width: 80%;
 }
@@ -643,7 +639,7 @@ footer .quick-links a:hover, footer .quick-links a:active, footer .social-media-
   color: var(--color-gray);
 }
 
-.details-dialog {
+.details-dialog, .form-submission-dialog {
   border: none;
   min-width: 70%;
   top: 50%;
@@ -651,11 +647,11 @@ footer .quick-links a:hover, footer .quick-links a:active, footer .social-media-
   transform: translate(-50%, -50%);
 }
 
-.details-dialog::backdrop {
+.details-dialog::backdrop, .form-submission-dialog::backdrop {
   backdrop-filter: blur(10px);
 }
 
-.details-dialog .close-dialog-btn {
+.close-dialog-btn {
   width: 2.4rem;
   height: 2.4rem;
   color: var(--color-white);
@@ -723,6 +719,20 @@ footer .quick-links a:hover, footer .quick-links a:active, footer .social-media-
   background-color: var(--flights-secondary);
 }
 
+.form-submission-dialog textarea {
+  resize: none;
+}
+
+.form-submission-dialog button[type="submit"] {
+  background-color: var(--flights-primary);
+  color: var(--color-white);
+  transition: background-color .25s linear;
+}
+
+.form-submission-dialog button[type="submit"]:hover {
+  background-color: var(--flights-secondary);
+}
+
 @media only screen and (width <= 1400px) {
   #flights-header #flights-search-form .inputs-container {
     gap: .8rem;
@@ -758,10 +768,6 @@ footer .quick-links a:hover, footer .quick-links a:active, footer .social-media-
 
   #flights-header #flights-search-form .persons-selection {
     width: 50%;
-  }
-
-  #flights-results-header .header-main-content .results-container {
-    gap: .8rem;
   }
 
   .details-dialog {
@@ -887,7 +893,7 @@ footer .quick-links a:hover, footer .quick-links a:active, footer .social-media-
     font-size: .8rem;
   }
 
-  .details-dialog {
+  .details-dialog, .form-submission-dialog {
     min-width: 95%;
   }
 }

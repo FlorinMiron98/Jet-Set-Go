@@ -756,7 +756,9 @@ const state = {
     flightDetails: {
         features: [],
         segments: [],
-        price: 0
+        price: 0,
+        tripType: "",
+        token: ""
     }
 };
 const loadDestinationsSearchResults = async function(query, transit) {
@@ -810,6 +812,8 @@ const loadFlightDetails = async function(token) {
         state.flightDetails.features = data.data.brandedFareInfo.features;
         state.flightDetails.segments = data.data.segments;
         state.flightDetails.price = data.data.priceBreakdown.total.units;
+        state.flightDetails.tripType = data.data.tripType;
+        state.flightDetails.token = data.data.token;
     } catch (error) {
         console.log(error);
         throw error;
@@ -1436,12 +1440,8 @@ class LocationSearchView {
                       data-name="${item.cityName}"
                       data-type="${item.type}"
                     >
-                      <div class="result-icon">
-                        <img
-                          src="/assets/images/plane-icon.png"
-                          class="w-100 h-100"
-                          alt="Plane icon"
-                        />
+                      <div class="result-icon fs-2">
+                        <i class="fa-solid fa-plane-up"></i>
                       </div>
                       <div class="result-content">
                         <p class="fw-bold mb-1">${item.code} ${item.name}</p>
@@ -1461,12 +1461,8 @@ class LocationSearchView {
                       data-name="${item.cityName}"
                       data-type="${item.type}"
                     >
-                      <div class="result-icon">
-                        <img
-                          src="/assets/images/plane-icon.png"
-                          class="w-100 h-100"
-                          alt="Plane icon"
-                        />
+                      <div class="result-icon fs-2">
+                        <i class="fa-solid fa-plane-up"></i>
                       </div>
                       <div class="result-content">
                         <p class="fw-bold mb-1">${item.code} ${item.name}</p>

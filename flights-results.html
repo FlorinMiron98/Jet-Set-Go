@@ -155,12 +155,20 @@
           <div class="right-navigation">
             <ul class="d-flex align-items-center list-unstyled m-0 fs-3">
               <li>
-                <a href="#" class="text-white" aria-label="Currency symbol"
-                  ><i class="fa-solid fa-sterling-sign"></i
+                <a
+                  href="#"
+                  class="text-white"
+                  title="My Bookings"
+                  aria-label="My Bookings"
+                  ><i class="fa-solid fa-bookmark"></i
                 ></a>
               </li>
               <li>
-                <a href="#" class="text-white" aria-label="Favourites"
+                <a
+                  href="#"
+                  class="text-white"
+                  title="Favourite Flights"
+                  aria-label="Favourite Flights"
                   ><i class="fa-solid fa-heart"></i
                 ></a>
               </li>
@@ -211,6 +219,7 @@
     </header>
 
     <!-- Dialogs -->
+    <!-- Flight Details Dialog -->
     <dialog
       class="details-dialog position-fixed max-h-100 rounded-3 p-3 z-3 overflow-auto"
     >
@@ -369,6 +378,136 @@
           </button>
         </section>
       </main>
+    </dialog>
+
+    <!-- Flight Selection Submission Form Dialog -->
+    <dialog
+      class="form-submission-dialog position-fixed rounded-3 pt-5 pb-3 px-3 z-3"
+    >
+      <!-- Close Dialog Button -->
+      <button class="close-dialog-btn position-absolute focus-ring">
+        <i class="fa-solid fa-xmark fw-bold"></i>
+      </button>
+      <form action="booking-confirmation.html">
+        <div class="row">
+          <!-- First Name Input -->
+          <div class="col-12 col-md-6">
+            <div class="mb-3">
+              <!-- The regex value of the pattern attribute makes sure the user doesn't introduce numbers -->
+              <label for="fname" class="form-label">First Name</label>
+              <input
+                type="text"
+                id="fname"
+                class="form-control"
+                name="fname"
+                pattern="^[A-Za-z\s]+$"
+                placeholder="Enter your first name"
+                required
+              />
+            </div>
+          </div>
+          <!-- Last Name Input -->
+          <div class="col-12 col-md-6">
+            <div class="mb-3">
+              <!-- The regex value of the pattern attribute makes sure the user doesn't introduce numbers -->
+              <label for="lname" class="form-label">Last Name</label>
+              <input
+                type="text"
+                id="lname"
+                class="form-control"
+                name="lname"
+                pattern="^[A-Za-z\s]+$"
+                placeholder="Enter your Last name"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <!-- Email Input -->
+            <div class="mb-3">
+              <label for="email" class="form-label">Email Address</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                placeholder="YourEmailAddress@mail.com"
+                required
+              />
+            </div>
+          </div>
+          <!-- Phone Number Input -->
+          <div class="col-12 col-md-6">
+            <div class="mb-3">
+              <!-- The regex value of the pattern attribute will accept international phone number format -->
+              <label for="phone" class="form-label">Phone Number</label>
+              <input
+                type="text"
+                class="form-control card-number"
+                id="phone"
+                placeholder="+1 555-555-5555"
+                pattern="^(\+?(\d{1,4}))\s?(\d{1,15})$"
+                required
+              />
+            </div>
+          </div>
+          <!-- Card Number -->
+          <div class="col-12 col-md-9">
+            <div class="mb-3">
+              <!-- The regex value of the pattern attribute will not allow users to introduce letters -->
+              <label for="card" class="form-label">Card Number</label>
+              <input
+                type="text"
+                class="form-control"
+                id="card"
+                name="card"
+                pattern="^\d+$"
+                placeholder="Any numbers: 0000 0000 0000 0000"
+                maxlength="16"
+                required
+              />
+            </div>
+          </div>
+          <!-- Card CVV -->
+          <div class="col-12 col-md-3">
+            <div class="mb-3">
+              <!-- The regex value of the pattern attribute will not allow users to introduce letters -->
+              <label for="cardCVV" class="form-label">Card CVV</label>
+              <input
+                type="text"
+                class="form-control"
+                id="cardCVV"
+                name="cardCVV"
+                pattern="^\d+$"
+                maxlength="3"
+                placeholder="333"
+                required
+              />
+            </div>
+          </div>
+          <!-- Additional Requests -->
+          <div class="col-12">
+            <div class="mb-3">
+              <label for="message" class="form-label"
+                >Additional Requests (Optional)</label
+              >
+              <textarea
+                name="message"
+                class="form-control"
+                id="message"
+                placeholder="Enter your message here"
+                rows="10"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+        <!-- Submit Button -->
+        <div class="text-end mb-1">
+          <button type="submit" class="btn px-4 py-2 fs-5 fs-bold">
+            Submit
+          </button>
+        </div>
+      </form>
     </dialog>
 
     <!-- Bootstrap Compiled Javascript -->

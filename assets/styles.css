@@ -793,7 +793,10 @@ footer .social-media-links a:active {
 /* ============= */
 /* Dialogs */
 /* ============= */
-.details-dialog {
+
+/* Flight Details Dialog and Form Submission Dialog */
+.details-dialog,
+.form-submission-dialog {
   top: 50%;
   left: 50%;
   min-width: 70%;
@@ -801,11 +804,12 @@ footer .social-media-links a:active {
   border: none;
 }
 
-.details-dialog::backdrop {
+.details-dialog::backdrop,
+.form-submission-dialog::backdrop {
   backdrop-filter: blur(10px);
 }
 
-.details-dialog .close-dialog-btn {
+.close-dialog-btn {
   width: 2.4rem;
   height: 2.4rem;
   color: var(--color-white);
@@ -873,6 +877,21 @@ footer .social-media-links a:active {
 
 .details-dialog .price-container .dialog-select-btn:active,
 .details-dialog .price-container .dialog-select-btn:hover {
+  background-color: var(--flights-secondary);
+}
+
+/* Form Submission Dialog */
+.form-submission-dialog textarea {
+  resize: none;
+}
+
+.form-submission-dialog button[type="submit"] {
+  background-color: var(--flights-primary);
+  color: var(--color-white);
+  transition: background-color 0.25s linear;
+}
+
+.form-submission-dialog button[type="submit"]:hover {
   background-color: var(--flights-secondary);
 }
 
@@ -1062,7 +1081,9 @@ footer .social-media-links a:active {
     font-size: 0.8rem;
   }
 
-  .details-dialog {
+  /* Increase the size of the dialogs for small screen sizes */
+  .details-dialog,
+  .form-submission-dialog {
     min-width: 95%;
   }
 }

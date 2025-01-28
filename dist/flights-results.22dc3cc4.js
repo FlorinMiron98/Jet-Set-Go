@@ -612,6 +612,8 @@ var _flightsOffersView = require("./views/flights-search-results/flightsOffersVi
 var _flightsOffersViewDefault = parcelHelpers.interopDefault(_flightsOffersView);
 var _detailsDialogView = require("./views/flights-search-results/detailsDialogView");
 var _detailsDialogViewDefault = parcelHelpers.interopDefault(_detailsDialogView);
+var _formSubmissionDialogView = require("./views/flights-search-results/formSubmissionDialogView");
+var _formSubmissionDialogViewDefault = parcelHelpers.interopDefault(_formSubmissionDialogView);
 const controlOnLoadSearch = function() {
     _model.loadFlightsSearchResults((0, _flightResultsViewDefault.default)._getQueryParameters());
 };
@@ -623,6 +625,16 @@ const controlDisplayFlightsOffers = async function() {
         await _model.loadFlightsSearchResults((0, _flightResultsViewDefault.default)._getQueryParameters(), (0, _flightsOffersViewDefault.default)._sortValue);
         // Render markup
         (0, _flightsOffersViewDefault.default)._renderMarkup(_model.state);
+    } catch (error) {
+        (0, _flightsOffersViewDefault.default)._renderError();
+    }
+};
+const controlDisplayMoreFlightsOffers = async function() {
+    try {
+        // Fetch the flights offers
+        await _model.loadFlightsSearchResults((0, _flightResultsViewDefault.default)._getQueryParameters(), (0, _flightsOffersViewDefault.default)._sortValue);
+        // Render markup
+        (0, _flightsOffersViewDefault.default)._renderMarkup(_model.state, false);
     } catch (error) {
         (0, _flightsOffersViewDefault.default)._renderError();
     }
@@ -644,10 +656,19 @@ const controlDisplayDialog = async function(token) {
 const controlHideDialog = function() {
     (0, _detailsDialogViewDefault.default)._hideDialog();
 };
+const controlDisplayFormSubmissionDialog = function() {
+    (0, _formSubmissionDialogViewDefault.default)._displayFormSubmissionDialog();
+};
+const controlHideFormSubmissionDialog = function() {
+    (0, _formSubmissionDialogViewDefault.default)._hideFormSubmissionDialog();
+};
 const init = function() {
     (0, _flightResultsViewDefault.default)._addHandlerRender(controlOnLoadSearch);
     (0, _flightsOffersViewDefault.default)._addHandlerLoadFlightsOffers(controlDisplayFlightsOffers);
     (0, _flightsOffersViewDefault.default)._addHandlerSelectSort(controlDisplayFlightsOffers);
+    (0, _flightsOffersViewDefault.default)._loadMoreFlightsResults(controlDisplayMoreFlightsOffers);
+    (0, _formSubmissionDialogViewDefault.default)._addHandlerDisplayFormSubmissionDialog(controlDisplayFormSubmissionDialog);
+    (0, _formSubmissionDialogViewDefault.default)._addHandlerHideFormSubmissionDialog(controlHideFormSubmissionDialog);
     (0, _detailsDialogViewDefault.default)._addHandlerDisplayDialog(controlDisplayDialog);
     (0, _detailsDialogViewDefault.default)._addHandlerHideDialog(controlHideDialog);
     // Dynamic styling
@@ -658,7 +679,7 @@ const init = function() {
 };
 init();
 
-},{"./model":"Py0LO","./views/flightResultsView":"cJKtZ","./views/navbarView":"9sJsi","./views/sideNavbarView":"9BkUd","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./views/headerContentView":"d8zti","./views/flights-search-results/flightsOffersView":"j6LfF","./views/flights-search-results/detailsDialogView":"9Vs0d"}],"Py0LO":[function(require,module,exports,__globalThis) {
+},{"./model":"Py0LO","./views/flightResultsView":"cJKtZ","./views/navbarView":"9sJsi","./views/sideNavbarView":"9BkUd","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./views/headerContentView":"d8zti","./views/flights-search-results/flightsOffersView":"j6LfF","./views/flights-search-results/detailsDialogView":"9Vs0d","./views/flights-search-results/formSubmissionDialogView":"3ZlTR"}],"Py0LO":[function(require,module,exports,__globalThis) {
 // Import the 'options' object which contains the method and the API key
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -682,7 +703,9 @@ const state = {
     flightDetails: {
         features: [],
         segments: [],
-        price: 0
+        price: 0,
+        tripType: "",
+        token: ""
     }
 };
 const loadDestinationsSearchResults = async function(query, transit) {
@@ -736,6 +759,8 @@ const loadFlightDetails = async function(token) {
         state.flightDetails.features = data.data.brandedFareInfo.features;
         state.flightDetails.segments = data.data.segments;
         state.flightDetails.price = data.data.priceBreakdown.total.units;
+        state.flightDetails.tripType = data.data.tripType;
+        state.flightDetails.token = data.data.token;
     } catch (error) {
         console.log(error);
         throw error;
@@ -806,7 +831,6 @@ class FlightResultsView {
         const searchParams = new URLSearchParams(link);
         // As the value for the dynamically added children query parameter depends on the user's selections, I stored the value of the params in a separate variable
         const childrenSearchParam = searchParams.get("children");
-        console.log(childrenSearchParam);
         // Create e let variable which will be the value of the children property in the returned object
         let children;
         // As one of the requested params for the URL is represented by each child's age, I use 3 different if statements to check the children's ages
@@ -920,12 +944,16 @@ class HeaderContentView {
 exports.default = new HeaderContentView();
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"j6LfF":[function(require,module,exports,__globalThis) {
+// Import this component so we can increase the page number value when using the Intersection Observer API
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
+var _flightResultsView = require("../flightResultsView");
+var _flightResultsViewDefault = parcelHelpers.interopDefault(_flightResultsView);
 class FlightsOffersView {
     // DOM Elements
     _parentEl = document.querySelector(".flights-search-results");
     _sortBtns = document.querySelectorAll(".sort-btn");
+    _intersectionObserverSpinner = document.querySelector(".intersection-observer-loader");
     // Global variables
     _errorMessage = "No flight offers matching your request. Please try again!";
     _sortValue = "BEST";
@@ -943,6 +971,8 @@ class FlightsOffersView {
                 // Extract the sort value from the data attribute and assign it to the _sortValue variable
                 const sortValue = btn.dataset.sort;
                 this._sortValue = sortValue;
+                // Hide the intersection observer spinner while loading the flights for the selected sort value
+                this._intersectionObserverSpinner.classList.add("d-none");
                 // Call the handler in the flightResultsController.js
                 handler();
             });
@@ -972,18 +1002,25 @@ class FlightsOffersView {
         this._clearMarkup();
         this._parentEl.insertAdjacentHTML("afterbegin", markup);
     }
+    // Clear markup method
     _clearMarkup() {
         this._parentEl.innerHTML = "";
     }
-    _renderMarkup(data) {
-        this._clearMarkup();
+    // Add a second parameter of type boolean so we can separate the initial load of the Intersection Observer API loads
+    _renderMarkup(data, isInitialLoad = true) {
+        // Clear the markup on the inital load
+        if (isInitialLoad) this._clearMarkup();
+        // Loop through the flight offers
         const markup = data.flightsSearchResults.flightOffers.map((item)=>{
             // Create the date formatter
             const dateFormatter = new Intl.DateTimeFormat("en-GB", {
                 day: "2-digit",
                 month: "short"
             });
-            const cabinClass = data.flightsSearchResults.cabinClass;
+            let cabinClass;
+            // Extract the query parameter, format the scring and assign the value to the 'cabinClass' variable;
+            const cabinClassQueryParameter = (0, _flightResultsViewDefault.default)._getQueryParameters().flightClass;
+            cabinClass = cabinClassQueryParameter.includes("_") ? cabinClassQueryParameter.split("_").join(" ") : cabinClassQueryParameter;
             // The flightDetails variable will handle the markup for the flight details
             let flightDetails;
             let operatingAirline;
@@ -1021,6 +1058,10 @@ class FlightsOffersView {
             }).join("");
             // If the segments length === 1, then the flight type is one-way
             flightDetails = item.segments.map((segment)=>{
+                const departureTime = segment.departureTime.split("T")[1];
+                const arrivalTime = segment.arrivalTime.split("T")[1];
+                const departureDate = segment.departureTime.split("T")[0];
+                const arrivalDate = segment.arrivalTime.split("T")[0];
                 return `
                   <div
                     class="flight-details d-flex flex-column flex-md-row justify-content-between mb-3"
@@ -1037,7 +1078,7 @@ class FlightsOffersView {
                     <div class="d-flex flex-column">
                       <div class="flight-hours d-flex justify-content-between">
                         <div class="flight-departure-hour fw-bold fs-3">
-                          ${this._extractHoursAndMinutes(segment.departureTime.split("T")[1])}
+                          ${this._extractHoursAndMinutes(departureTime)}
                         </div>
                         <div
                           class="flight-line d-flex align-self-center align-items-center"
@@ -1047,20 +1088,20 @@ class FlightsOffersView {
                           <div class="line"></div>
                         </div>
                         <div class="flight-arrival-hour fw-bold fs-3">
-                           ${this._extractHoursAndMinutes(segment.arrivalTime.split("T")[1])}
+                           ${this._extractHoursAndMinutes(arrivalTime)}
                         </div>
                       </div>
                       <div
                         class="flight-destinations d-flex justify-content-between"
                       >
                         <div class="flight-location-code fw-bold">
-                          ${segment.departureAirport.code} \u{2022} ${dateFormatter.format(new Date(segment.departureTime.split("T")[0]))}
+                          ${segment.departureAirport.code} \u{2022} ${dateFormatter.format(new Date(departureDate))}
                         </div>
                         <div class="flight-duration fw-bold">
                           ${this._calculateFlightHours(segment.totalTime)} \u{2022} ${segment.legs.length - 1 === 0 ? "Direct" : segment.legs.length - 1 + " stops"}
                         </div>
                         <div class="flight-location-code fw-bold">
-                        ${segment.arrivalAirport.code} \u{2022} ${dateFormatter.format(new Date(segment.arrivalTime.split("T")[0]))}
+                        ${segment.arrivalAirport.code} \u{2022} ${dateFormatter.format(new Date(arrivalDate))}
                         </div>
                       </div>
                     </div>
@@ -1091,7 +1132,14 @@ class FlightsOffersView {
       </div>
       `;
         }).join("");
-        this._parentEl.insertAdjacentHTML("afterbegin", markup);
+        // Insert the markup depending if the request belongs to the initial load or to the Intersection Observer API load
+        if (isInitialLoad) this._parentEl.insertAdjacentHTML("afterbegin", markup);
+        if (!isInitialLoad) this._parentEl.insertAdjacentHTML("beforeend", markup);
+        // Display the intersection observer spinner after the results were added to the container
+        this._intersectionObserverSpinner.classList.remove("d-none");
+        this._intersectionObserverSpinner.classList.add("d-flex");
+        // Render the markup which informs the user that there are no more flights to be loaded when scrolling
+        if (data.flightsSearchResults.flightOffers.length === 0) this._renderEndOfResults();
     }
     //   This method will return flight duration displayed as hours and minutes
     _calculateFlightHours(seconds) {
@@ -1105,12 +1153,48 @@ class FlightsOffersView {
         const [hours, minutes] = timeString.split(":");
         return `${hours}:${minutes}`;
     }
+    // Intersection Observer API method
+    _loadMoreFlightsResults(handler) {
+        // Create the options for the Intersection Observer API
+        const observerOptions = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0
+        };
+        // Loop through the callback entries, increase the page and assign the handler function which will be called in the flightResultsController.js
+        const observerCallback = (entries)=>{
+            entries.forEach((entry)=>{
+                if (entry.isIntersecting) {
+                    (0, _flightResultsViewDefault.default)._pageNumber += 1;
+                    handler();
+                }
+            });
+        };
+        // Initiate the Intersection Observer API
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+        // Observe the intersection observer spinner
+        observer.observe(this._intersectionObserverSpinner);
+    }
+    // This method will let the user know when there are no more results to fetch
+    _renderEndOfResults() {
+        // Hide the intersection observer spinner
+        this._intersectionObserverSpinner.classList.add("d-none");
+        const markup = `
+        <div class="d-block text-center mt-1">
+            <p class="mt-2 mb-0 fs-3 fw-bold">End of results</p>
+        </div>
+    `;
+        this._parentEl.insertAdjacentHTML("beforeend", markup);
+    }
 }
 exports.default = new FlightsOffersView();
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9Vs0d":[function(require,module,exports,__globalThis) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../flightResultsView":"cJKtZ"}],"9Vs0d":[function(require,module,exports,__globalThis) {
+// Import flightResultsView to extract the query parameter for the cabin class
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
+var _flightResultsView = require("../flightResultsView");
+var _flightResultsViewDefault = parcelHelpers.interopDefault(_flightResultsView);
 class DetailsDialogView {
     // DOM Elements
     _detailsDialog = document.querySelector(".details-dialog");
@@ -1216,6 +1300,11 @@ class DetailsDialogView {
                 // Create global variables for the airline name and the airline logo URL
                 let airlineName;
                 let airlineIcon;
+                // Create a global variable for the cabin class
+                let cabinClass;
+                // Extract the query parameter, format the scring and assign the value to the 'cabinClass' variable;
+                const cabinClassQueryParameter = (0, _flightResultsViewDefault.default)._getQueryParameters().flightClass;
+                cabinClass = cabinClassQueryParameter.includes("_") ? cabinClassQueryParameter.split("_").join(" ") : cabinClassQueryParameter;
                 // Extract the iata code and the airlines from the flight offers search results to extract the airline name and the airline logo URL
                 const iataCode = leg.flightInfo.carrierInfo.operatingCarrier;
                 const airlines = data.flightsSearchResults.aggregation.airlines;
@@ -1250,7 +1339,7 @@ class DetailsDialogView {
               <div>
                 <p class="airline-name mb-0">${airlineName || "Wizz Air"}</p>
                 <p class="flight-duration mb-0">Flight-duration: ${this._calculateFlightHours(leg.totalTime)}</p>
-                <p class="flight-class mb-0">Economy</p>
+                <p class="flight-class mb-0">${cabinClass}</p>
               </div>
             </div>
           </div>
@@ -1345,6 +1434,41 @@ class DetailsDialogView {
     }
 }
 exports.default = new DetailsDialogView();
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../flightResultsView":"cJKtZ"}],"3ZlTR":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+class FormSubmissionDialogView {
+    // DOM Elements
+    _formSubmissionDialog = document.querySelector(".form-submission-dialog");
+    _detailsDialog = document.querySelector(".details-dialog");
+    _closeDialogBtn = document.querySelector(".form-submission-dialog .close-dialog-btn");
+    // Create the handler display form submission dialog which will be handle the functionality in flightResultsController.js
+    _addHandlerDisplayFormSubmissionDialog(handler) {
+        document.body.addEventListener("click", (e)=>{
+            if (e.target.classList.contains("dialog-select-btn")) handler();
+        });
+    }
+    // Create the handler hide form submission dialog which will be handle the functionality in flightResultsController.js
+    _addHandlerHideFormSubmissionDialog(handler) {
+        this._closeDialogBtn.addEventListener("click", ()=>{
+            handler();
+        });
+    }
+    // Display form submission dialog
+    _displayFormSubmissionDialog() {
+        this._formSubmissionDialog.showModal();
+        // Make sure we close the details dialog
+        this._detailsDialog.close();
+    }
+    // Hide the form submission dialog
+    _hideFormSubmissionDialog() {
+        this._formSubmissionDialog.close();
+        // Remove the no-scroll property of the document so the window becomes scrollable again
+        document.body.classList.remove("no-scroll");
+    }
+}
+exports.default = new FormSubmissionDialogView();
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["aBvyN","eYIic"], "eYIic", "parcelRequire94c2")
 
