@@ -9,8 +9,8 @@ This is a flights tickets booking website designed to facilitate seamless flight
 ## [Live Website](https://jet-set-go-florin-miron.netlify.app/)
 ## Table of Contents
 1. UX
-    - Project Goals
-    - Business Goals
+    - [Project Goals](#project-goals)
+    - [Business Goals](#business-goals)
     - User Stories
     - Design Choices
     - Wireframes
@@ -68,4 +68,20 @@ The user experience (UX) of Jet-Set-Go website has been carefully designed to en
 8. SEO Optimisation and Performance
 
    Implement the best SEO practices ro tank well for relevant keywords inside the user's browser. Optimize website performance to ensure fast loading times.
-   
+#### Business Goals
+1. Provide a Seamless User Experience(UX)
+
+   Create a website that is intuitive, easy to navigate and allows users to easily book flights.
+
+2. Enhance Customer Satisfaction
+
+   Offer competitive prices, easy booking processes, and prompt customer service to ensure high customer satisfaction and repeat business.
+3. Increase Traffic Website
+
+   Drive traffic to the website using the best SEO practices to increase the ranking in the users' search results.
+4. Improve Booking Flexibility
+
+   Allow users to easily cancel their bookings.
+
+5. Optimize for Speed and Performance
+   Ensure that your website is fast and responsive to improve user experience
