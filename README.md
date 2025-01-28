@@ -115,20 +115,20 @@ For this project, I decided to create high-fidelity wireframes to better visuali
 This project was created using [Visual Studio Code], committed to [Git] and pushed to [GitHub] using Git's built-in function `git push`.
 As this project was created using the development environment provided by [Parcel.js](https://parceljs.org/), I decided to deploy it on [Netlify](https://www.netlify.com/) as the deployment process was much easier. The next steps were followed:
 1. **Build the Project**
-- After the development process, I made sure the project is built for production by running the following command in the terminal: `npm run build`
-- This whill generate the production-ready files inside the `dist/` folder (or the configured output folder).
+   - After the development process, I made sure the project is built for production by running the following command in the terminal: `npm run build`
+   - This whill generate the production-ready files inside the `dist/` folder (or the configured output folder).
 2. **Create a Netlify Account**
-- If you dont't have a Netflify account, sign-up at [Netlify](https://www.netlify.com/).
+   - If you dont't have a Netflify account, sign-up at [Netlify](https://www.netlify.com/).
 3. **Log In to Netlify**
-- Once your account is created, log in to the **Netlify Dashboard**.
+   - Once your account is created, log in to the **Netlify Dashboard**.
 4. **Deploy the Project Manually**
-- In the Netlify Dashboard, look for the "Deploy manually" option on the next screen.
-- Drag and drop your entire `dist/` folder (the output folder from Parcel) into the provided area on the Netlify interface.
-- Netlify will automatically upload and deploy your site.
+   - In the Netlify Dashboard, look for the "Deploy manually" option on the next screen.
+   - Drag and drop your entire `dist/` folder (the output folder from Parcel) into the provided area on the Netlify interface.
+   - Netlify will automatically upload and deploy your site.
 5. **Access the Live Website**
-- After deployment is complete, Netlify will provide with a unique URL for the website.
+   - After deployment is complete, Netlify will provide with a unique URL for the website.
 6. **Optional: Set Up a Custom Domain**
-- I created a custom domain by going to Domain Settings in the Netlify site dashboard.
+   - I created a custom domain by going to Domain Settings in the Netlify site dashboard.
 #### Run the Project Locally
 To clone this project from GitHub into a local IDE such as Visual Studio Code, follow the next steps:
 1. Follow this link to the [GitHub Project Repository](https://github.com/FlorinMiron98/Jet-Set-Go)
