@@ -153,4 +153,4 @@ To clone this project from GitHub into a local IDE such as Visual Studio Code, f
 9. Make Changes and See Live Updates
    - While the development server is running, any changes you make to the project’s source files will automatically reload in the browser, providing a live preview of your changes.
 10. Stop the Development Server
-   - When you’re done, you can stop the Parcel development server by pressing `Ctrl + C` in the terminal.
+    - When you’re done, you can stop the Parcel development server by pressing `Ctrl + C` in the terminal.
