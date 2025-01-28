@@ -115,11 +115,27 @@ class DetailsDialogView {
             const departureHours = leg.departureTime.split("T")[1];
             const arrivalHours = leg.arrivalTime.split("T")[1];
 
+            // Create global variables for the airline name and the airline logo URL
+            let airlineName;
+            let airlineIcon;
+
+            // Extract the iata code and the airlines from the flight offers search results to extract the airline name and the airline logo URL
+            const iataCode = leg.flightInfo.carrierInfo.operatingCarrier;
+            const airlines = data.flightsSearchResults.aggregation.airlines;
+
+            // Loop through the airlines array and assign values for the global variables
+            for (const airline of airlines) {
+              if (airline.iataCode === iataCode) {
+                airlineName = airline.name;
+                airlineIcon = airline.logoUrl;
+              }
+            }
+
             // Dynamically create the markup of the layover based on the length of the legs array
             // As the length of the layover array is equal to the length of flight details array - 1, I am rendering the layover using the index value of the flight details array for a proper rendering
             layoverMarkup = `
-        <div class="dialog-layover py-5 fs-5 fw-bold">Layover - ${layover[index]}</div>
-        `;
+              <div class="dialog-layover py-5 fs-5 fw-bold">Layover - ${layover[index]}</div>
+              `;
 
             return `
           <div class="flight-details">
@@ -142,13 +158,16 @@ class DetailsDialogView {
             <div class="airline-details d-flex mt-3">
               <div class="airline-icon">
                 <img
-                  src="https://r-xx.bstatic.com/data/airlines_logo/AA.png"
-                  alt="Airline Icon"
+                  src="${
+                    airlineIcon ||
+                    "https://r-xx.bstatic.com/data/airlines_logo/AA.png"
+                  }"
+                  alt="${airlineIcon} Icon"
                   class="w-100 h-100"
                 />
               </div>
               <div>
-                <p class="airline-name mb-0">Wizz Air</p>
+                <p class="airline-name mb-0">${airlineName || "Wizz Air"}</p>
                 <p class="flight-duration mb-0">Flight-duration: ${this._calculateFlightHours(
                   leg.totalTime
                 )}</p>
