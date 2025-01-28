@@ -8,13 +8,13 @@ This is a flights tickets booking website designed to facilitate seamless flight
 
 ## [Live Website](https://jet-set-go-florin-miron.netlify.app/)
 ## Table of Contents
-### 1. UX
+1. UX
     - Project Goals
     - Business Goals
     - User Stories
     - Design Choices
     - Wireframes
-### 2. Features
+2. Features
     - Homepage
       - Hero
       - Services
@@ -26,17 +26,17 @@ This is a flights tickets booking website designed to facilitate seamless flight
       - Flight Details Dialog
       - Submit Dialog
     - Booking Confirmation Page
-### 3. Technologies Used
-### 4. Testing
+3. Technologies Used
+4. Testing
     - Validator Testing
     - Performance, Accessibility and Best Practices
     - Manual Testing
     - Testing Client Stories From UX
     - Functional Testing
     - Bugs
-### 5. Deployment
+5. Deployment
     - Run This Project Locally
-### 6. Credits
+6. Credits
     - Content
     - Media
     - Code
