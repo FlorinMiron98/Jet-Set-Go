@@ -20,7 +20,6 @@ class FlightResultsView {
 
     // As the value for the dynamically added children query parameter depends on the user's selections, I stored the value of the params in a separate variable
     const childrenSearchParam = searchParams.get("children");
-    console.log(childrenSearchParam);
 
     // Create e let variable which will be the value of the children property in the returned object
     let children;
