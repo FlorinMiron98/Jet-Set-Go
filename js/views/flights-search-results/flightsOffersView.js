@@ -104,7 +104,7 @@ class FlightsOffersView {
                   <img
                       src=${airline.logoUrl}
                       class="h-100"
-                      alt=""
+                      alt="${airline.name} Icon"
                   />`;
                 airlineName = `
                   <figcaption
