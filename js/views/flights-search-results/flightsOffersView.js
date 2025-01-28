@@ -141,6 +141,11 @@ class FlightsOffersView {
         // If the segments length === 1, then the flight type is one-way
         flightDetails = item.segments
           .map((segment) => {
+            const departureTime = segment.departureTime.split("T")[1];
+            const arrivalTime = segment.arrivalTime.split("T")[1];
+            const departureDate = segment.departureTime.split("T")[0];
+            const arrivalDate = segment.arrivalTime.split("T")[0];
+
             return `
                   <div
                     class="flight-details d-flex flex-column flex-md-row justify-content-between mb-3"
@@ -157,9 +162,7 @@ class FlightsOffersView {
                     <div class="d-flex flex-column">
                       <div class="flight-hours d-flex justify-content-between">
                         <div class="flight-departure-hour fw-bold fs-3">
-                          ${this._extractHoursAndMinutes(
-                            segment.departureTime.split("T")[1]
-                          )}
+                          ${this._extractHoursAndMinutes(departureTime)}
                         </div>
                         <div
                           class="flight-line d-flex align-self-center align-items-center"
@@ -169,9 +172,7 @@ class FlightsOffersView {
                           <div class="line"></div>
                         </div>
                         <div class="flight-arrival-hour fw-bold fs-3">
-                           ${this._extractHoursAndMinutes(
-                             segment.arrivalTime.split("T")[1]
-                           )}
+                           ${this._extractHoursAndMinutes(arrivalTime)}
                         </div>
                       </div>
                       <div
@@ -180,9 +181,7 @@ class FlightsOffersView {
                         <div class="flight-location-code fw-bold">
                           ${
                             segment.departureAirport.code
-                          } • ${dateFormatter.format(
-              new Date(segment.departureTime.split("T")[0])
-            )}
+                          } • ${dateFormatter.format(new Date(departureDate))}
                         </div>
                         <div class="flight-duration fw-bold">
                           ${this._calculateFlightHours(segment.totalTime)} • ${
@@ -193,7 +192,7 @@ class FlightsOffersView {
                         </div>
                         <div class="flight-location-code fw-bold">
                         ${segment.arrivalAirport.code} • ${dateFormatter.format(
-              new Date(segment.arrivalTime.split("T")[0])
+              new Date(arrivalDate)
             )}
                         </div>
                       </div>
