@@ -5,6 +5,9 @@ class DetailsDialogView {
   _closeDialogBtn = document.querySelector(".close-dialog-btn");
   _parentEl = document.querySelector(".details-dialog main");
 
+  _errorMessage =
+    "Something went wrong while fetching flight details. Please try again";
+
   // Create the handler display dialog method for each of the view details buttons
   _addHandlerDisplayDialog(handler) {
     // Use event delegation to check for the closest parent element with the class of the details button
@@ -57,6 +60,14 @@ class DetailsDialogView {
           </div>
     `;
     // Make sure to clear the markup inside the parent element before displaying the spinner
+    this._clearMarkup();
+    this._parentEl.insertAdjacentHTML("afterbegin", markup);
+  }
+
+  _renderError(message = this._errorMessage) {
+    const markup = `
+            <div class="text-center fs-4">${message}</div>
+    `;
     this._clearMarkup();
     this._parentEl.insertAdjacentHTML("afterbegin", markup);
   }

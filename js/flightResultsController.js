@@ -32,17 +32,21 @@ const controlDisplayFlightsOffers = async function () {
 };
 
 const controlDisplayDialog = async function (token) {
-  // Display dialog
-  detailsDialogView._displayDialog();
+  try {
+    // Display dialog
+    detailsDialogView._displayDialog();
 
-  // Render spinner
-  detailsDialogView._renderSpinner();
+    // Render spinner
+    detailsDialogView._renderSpinner();
 
-  // Fetch flight details
-  await model.loadFlightDetails(token);
+    // Fetch flight details
+    await model.loadFlightDetails(token);
 
-  // Render markup
-  detailsDialogView._renderMarkup(model.state);
+    // Render markup
+    detailsDialogView._renderMarkup(model.state);
+  } catch (error) {
+    detailsDialogView._renderError();
+  }
 };
 
 const controlHideDialog = function () {
