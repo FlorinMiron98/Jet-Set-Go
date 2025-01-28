@@ -1,3 +1,6 @@
+// Import flightResultsView to extract the query parameter for the cabin class
+import flightResultsView from "../flightResultsView";
+
 class DetailsDialogView {
   // DOM Elements
   _detailsDialog = document.querySelector(".details-dialog");
@@ -130,6 +133,17 @@ class DetailsDialogView {
             let airlineName;
             let airlineIcon;
 
+            // Create a global variable for the cabin class
+            let cabinClass;
+
+            // Extract the query parameter, format the scring and assign the value to the 'cabinClass' variable;
+            const cabinClassQueryParameter =
+              flightResultsView._getQueryParameters().flightClass;
+
+            cabinClass = cabinClassQueryParameter.includes("_")
+              ? cabinClassQueryParameter.split("_").join(" ")
+              : cabinClassQueryParameter;
+
             // Extract the iata code and the airlines from the flight offers search results to extract the airline name and the airline logo URL
             const iataCode = leg.flightInfo.carrierInfo.operatingCarrier;
             const airlines = data.flightsSearchResults.aggregation.airlines;
@@ -182,7 +196,7 @@ class DetailsDialogView {
                 <p class="flight-duration mb-0">Flight-duration: ${this._calculateFlightHours(
                   leg.totalTime
                 )}</p>
-                <p class="flight-class mb-0">Economy</p>
+                <p class="flight-class mb-0">${cabinClass}</p>
               </div>
             </div>
           </div>
