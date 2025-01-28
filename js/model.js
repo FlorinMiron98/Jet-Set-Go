@@ -1,6 +1,7 @@
 // Import the 'options' object which contains the method and the API key
 import { OPTIONS } from "./config.js";
 
+// The 'state object will store all the relevant data to be displayed for the user'
 export const state = {
   locationResults: {
     departureLocationResults: [],
@@ -114,6 +115,7 @@ export const loadFlightDetails = async function (token) {
 
     const data = await response.json();
 
+    // Assign the response to the 'state' object
     state.flightDetails.features = data.data.brandedFareInfo.features;
     state.flightDetails.segments = data.data.segments;
     state.flightDetails.price = data.data.priceBreakdown.total.units;
