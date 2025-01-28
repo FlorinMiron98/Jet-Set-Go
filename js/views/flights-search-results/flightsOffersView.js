@@ -30,6 +30,9 @@ class FlightsOffersView {
         const sortValue = btn.dataset.sort;
         this._sortValue = sortValue;
 
+        // Hide the intersection observer spinner while loading the flights for the selected sort value
+        this._intersectionObserverSpinner.classList.add("d-none");
+
         // Call the handler in the flightResultsController.js
         handler();
       });
@@ -83,7 +86,16 @@ class FlightsOffersView {
           day: "2-digit",
           month: "short",
         });
-        const cabinClass = data.flightsSearchResults.cabinClass;
+
+        let cabinClass;
+
+        // Extract the query parameter, format the scring and assign the value to the 'cabinClass' variable;
+        const cabinClassQueryParameter =
+          flightResultsView._getQueryParameters().flightClass;
+
+        cabinClass = cabinClassQueryParameter.includes("_")
+          ? cabinClassQueryParameter.split("_").join(" ")
+          : cabinClassQueryParameter;
 
         // The flightDetails variable will handle the markup for the flight details
         let flightDetails;
@@ -240,6 +252,7 @@ class FlightsOffersView {
     this._intersectionObserverSpinner.classList.remove("d-none");
     this._intersectionObserverSpinner.classList.add("d-flex");
 
+    // Render the markup which informs the user that there are no more flights to be loaded when scrolling
     if (data.flightsSearchResults.flightOffers.length === 0) {
       this._renderEndOfResults();
     }
