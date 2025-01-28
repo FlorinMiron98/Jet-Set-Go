@@ -17,6 +17,8 @@ export const state = {
     features: [],
     segments: [],
     price: 0,
+    tripType: "",
+    token: "",
   },
 };
 
@@ -115,6 +117,8 @@ export const loadFlightDetails = async function (token) {
     state.flightDetails.features = data.data.brandedFareInfo.features;
     state.flightDetails.segments = data.data.segments;
     state.flightDetails.price = data.data.priceBreakdown.total.units;
+    state.flightDetails.tripType = data.data.tripType;
+    state.flightDetails.token = data.data.token;
   } catch (error) {
     console.log(error);
     throw error;
