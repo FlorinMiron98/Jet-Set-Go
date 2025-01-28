@@ -31,6 +31,21 @@ const controlDisplayFlightsOffers = async function () {
   }
 };
 
+const controlDisplayMoreFlightsOffers = async function () {
+  try {
+    // Fetch the flights offers
+    await model.loadFlightsSearchResults(
+      flightResultsView._getQueryParameters(),
+      flightsOffersView._sortValue
+    );
+
+    // Render markup
+    flightsOffersView._renderMarkup(model.state, false);
+  } catch (error) {
+    flightsOffersView._renderError();
+  }
+};
+
 const controlDisplayDialog = async function (token) {
   try {
     // Display dialog
@@ -57,6 +72,7 @@ const init = function () {
   flightResultsView._addHandlerRender(controlOnLoadSearch);
   flightsOffersView._addHandlerLoadFlightsOffers(controlDisplayFlightsOffers);
   flightsOffersView._addHandlerSelectSort(controlDisplayFlightsOffers);
+  flightsOffersView._loadMoreFlightsResults(controlDisplayMoreFlightsOffers);
 
   detailsDialogView._addHandlerDisplayDialog(controlDisplayDialog);
   detailsDialogView._addHandlerHideDialog(controlHideDialog);
