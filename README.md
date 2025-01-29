@@ -112,7 +112,7 @@ For this project, I decided to create high-fidelity wireframes to better visuali
 9. **Core.js** (integrated with Babel) - Core.js is a powerful JavaScript library that provides polyfills for ECMAScript features, ensuring compatibility across different browsers and environments. More about Core.js on this [GitHub repository](https://github.com/zloirock/core-js).
 10. **Regenerator-runtime** - The Regenerator-runtime library provides a runtime for generators and async functions, enabling the use of modern asynchronous JavaScript syntax (like async/await) in environments that do not natively support it. More about the Regenerator-runtime [here](https://www.npmjs.com/package/regenerator-runtime).
 ### Deployment
-This project was created using [Visual Studio Code], committed to [Git] and pushed to [GitHub] using Git's built-in function `git push`.
+This project was created using [Visual Studio Code](https://code.visualstudio.com/), committed to [Git](https://git-scm.com/) and pushed to [GitHub](https://github.com/) using Git's built-in function `git push`.
 As this project was created using the development environment provided by [Parcel.js](https://parceljs.org/), I decided to deploy it on [Netlify](https://www.netlify.com/) as the deployment process was much easier. The next steps were followed:
 1. **Build the Project**
    - After the development process, I made sure the project is built for production by running the following command in the terminal: `npm run build`
