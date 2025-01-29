@@ -81,6 +81,7 @@ const controlHideFormSubmissionDialog = function () {
   formSubmissionDialogView._hideFormSubmissionDialog();
 };
 
+// The init function establishes the functionality for each user interaction as the page loads
 const init = function () {
   flightResultsView._addHandlerRender(controlOnLoadSearch);
   flightsOffersView._addHandlerLoadFlightsOffers(controlDisplayFlightsOffers);

@@ -16,11 +16,14 @@ class FlightClassSelectionView {
 
   // This method handles the flight class selection from the user and dynamically adds the 'selected' class
   _selectFlightClass() {
+    // Loop through the flight class buttons
     this._flightClassBtns.forEach((btn) => {
       btn.addEventListener("click", () => {
+        // Make sure no button has the 'selected' class
         this._flightClassBtns.forEach((btn) => {
           btn.classList.remove("selected");
         });
+        // Add the selected class to the clicked button
         btn.classList.add("selected");
         this._selectedBtn = btn;
         this._flightClassQuery = btn.dataset.flightClass;

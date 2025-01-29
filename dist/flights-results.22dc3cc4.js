@@ -663,6 +663,7 @@ const controlDisplayFormSubmissionDialog = function() {
 const controlHideFormSubmissionDialog = function() {
     (0, _formSubmissionDialogViewDefault.default)._hideFormSubmissionDialog();
 };
+// The init function establishes the functionality for each user interaction as the page loads
 const init = function() {
     (0, _flightResultsViewDefault.default)._addHandlerRender(controlOnLoadSearch);
     (0, _flightsOffersViewDefault.default)._addHandlerLoadFlightsOffers(controlDisplayFlightsOffers);
@@ -788,7 +789,7 @@ class FlightsOffersView {
     _clearMarkup() {
         this._parentEl.innerHTML = "";
     }
-    // Add a second parameter of type boolean so we can separate the initial load of the Intersection Observer API loads
+    // Add a second parameter of type 'boolean' so we can separate the initial load of the Intersection Observer API loads
     _renderMarkup(data, isInitialLoad = true) {
         // Clear the markup on the inital load
         if (isInitialLoad) this._clearMarkup();
@@ -812,11 +813,15 @@ class FlightsOffersView {
             });
             // Map through the unique airlines values and return the markup for the airline icon and airline name
             operatingAirline = uniqueAirlines.map((leg)=>{
+                // This variables will store the markup
                 let airlineName;
                 let airlineIcon;
+                // Extract the iata code and the airlines array
                 const iataCode = leg.flightInfo.carrierInfo.operatingCarrier;
                 const airlines = data.flightsSearchResults.aggregation.airlines;
-                for (const airline of airlines)if (airline.iataCode === iataCode) {
+                // Loop through the airlines array
+                for (const airline of airlines)// Check for the equality between the leg's carrier iata code and each airline iata code for a dynamic display of the icon and the airline name
+                if (airline.iataCode === iataCode) {
                     airlineIcon = `
                   <img
                       src=${airline.logoUrl}
@@ -923,7 +928,7 @@ class FlightsOffersView {
         // Render the markup which informs the user that there are no more flights to be loaded when scrolling
         if (data.flightsSearchResults.flightOffers.length === 0) this._renderEndOfResults();
     }
-    //   This method will return flight duration displayed as hours and minutes
+    // This method will return flight duration displayed as hours and minutes
     _calculateFlightHours(seconds) {
         let flightHoursString = "";
         const hours = Math.floor(seconds / 3600);
@@ -931,6 +936,7 @@ class FlightsOffersView {
         flightHoursString = `${hours.toFixed(0)}h ${minutes === 0 ? "" : minutes.toFixed(0) + "m"}`;
         return flightHoursString;
     }
+    // This method will extract the number of hours and minutes from a given timestring passed as a parameter
     _extractHoursAndMinutes(timeString) {
         const [hours, minutes] = timeString.split(":");
         return `${hours}:${minutes}`;
@@ -943,11 +949,14 @@ class FlightsOffersView {
             rootMargin: "0px",
             threshold: 0
         };
-        // Loop through the callback entries, increase the page and assign the handler function which will be called in the flightResultsController.js
+        // Loop through the callback entries, increase the page number and assign the handler function which will be called in the flightResultsController.js
+        // The page number is a parameter required by the booking API
+        // Each time the number of the page is increased, the fetch function will be called again with the new value
         const observerCallback = (entries)=>{
             entries.forEach((entry)=>{
                 if (entry.isIntersecting) {
                     (0, _flightResultsViewDefault.default)._pageNumber += 1;
+                    // The handler function which was passed as a parameter will be responsible for triggering a new API request with the new value of the page number assigned to it
                     handler();
                 }
             });
@@ -993,7 +1002,7 @@ class DetailsDialogView {
                 // Extract the data token from each parent div of the details button
                 const flightItem = detailsBtn.closest(".flight-item");
                 const token = flightItem.dataset.token;
-                // Use the Pub/Sub pattern to assign the token to the handler function which will be called in the flightResultsController.js
+                // Use the Publisher/Subscriber pattern to assign the token to the handler function which will be called in the flightResultsController.js with the token as the value for the API request in the model.js
                 handler(token);
             }
         });
@@ -1061,7 +1070,8 @@ class DetailsDialogView {
         flightSummary = data.flightDetails.segments.map((segment)=>{
             // Extract the arrival time and departure time to make the calculations for the layover
             // Use e separate loop to avoing the conflict between omitting the first item in the legs array and rendering the markup
-            layover = segment.legs.map((_, index, arr)=>{
+            layover = segment.legs// The value of the individual array item (leg) is not needed in this array method, so I replace it with an underscore (_)
+            .map((_, index, arr)=>{
                 // This if statement makes sure the first leg is omitted
                 // The layover is calculated by subtracting the first's leg arrival value of the next leg's departure value
                 if (index > 0) {

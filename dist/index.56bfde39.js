@@ -816,7 +816,7 @@ class PersonsSelectionView {
     _adults = 1;
     _children = 0;
     _childrenSelectAgeMarkup = [];
-    // Create the handler render method and assign the handler parameter which will be passed as a function in controller.js
+    // Create the handler render method and assign the handler parameter which will be passed as a function in flightSearchController.js
     _addHandlerRender(handler) {
         window.addEventListener("load", handler);
     }
@@ -930,12 +930,14 @@ class PersonsSelectionView {
         this._adultsParentEl.addEventListener("click", (e)=>{
             if (e.target.closest(".selection-increase-btn")) {
                 this._adults++;
+                // Generate the markup for the persons selection button
                 (0, _personsSelectionBtnViewDefault.default)._generateMarkup(this._adults, this._children);
                 this._generateAdultsMarkup();
                 this._generateChildrenMarkup();
             }
             if (e.target.closest(".selection-decrease-btn")) {
                 this._adults--;
+                // Generate the markup for the persons selection button
                 (0, _personsSelectionBtnViewDefault.default)._generateMarkup(this._adults, this._children);
                 this._generateAdultsMarkup();
                 this._generateChildrenMarkup();
@@ -948,6 +950,7 @@ class PersonsSelectionView {
         this._childrenParentEl.addEventListener("click", (e)=>{
             if (e.target.closest(".selection-increase-btn")) {
                 this._children++;
+                // Generate the markup for the persons selection button
                 (0, _personsSelectionBtnViewDefault.default)._generateMarkup(this._adults, this._children);
                 this._generateSelectChildAgeMarkup(this._children);
                 this._showChildrenSelectAgeParentEl();
@@ -957,6 +960,7 @@ class PersonsSelectionView {
             }
             if (e.target.closest(".selection-decrease-btn")) {
                 this._children--;
+                // Generate the markup for the persons selection button
                 (0, _personsSelectionBtnViewDefault.default)._generateMarkup(this._adults, this._children);
                 this._removeChildAgeEl(this._childrenSelectAgeMarkup);
                 this._displaySelectChildAgeEl();
@@ -976,6 +980,7 @@ class PersonsSelectionView {
     // This method removes the last child age select element from the array
     _removeChildAgeEl(array) {
         array.pop();
+        // Hide the container if the array is empty
         if (array.length === 0) this._hideChildrenSelectAgeParentEl();
         return array;
     }
@@ -1039,11 +1044,14 @@ class FlightClassSelectionView {
     }
     // This method handles the flight class selection from the user and dynamically adds the 'selected' class
     _selectFlightClass() {
+        // Loop through the flight class buttons
         this._flightClassBtns.forEach((btn)=>{
             btn.addEventListener("click", ()=>{
+                // Make sure no button has the 'selected' class
                 this._flightClassBtns.forEach((btn)=>{
                     btn.classList.remove("selected");
                 });
+                // Add the selected class to the clicked button
                 btn.classList.add("selected");
                 this._selectedBtn = btn;
                 this._flightClassQuery = btn.dataset.flightClass;
@@ -1239,7 +1247,7 @@ class LocationSearchView {
                     </a>
            </li>
           `;
-                // If the previous item of AIRPORT type if from a different location, remove the margin and label the city name, the region name and the country name instead of the distance from the centre of the city
+                // If the previous item of AIRPORT type is from a different location, remove the margin and label the city name, the region name and the country name instead of the distance from the centre of the city
                 if (previousItem && currentItem.regionName !== previousItem.regionName || data.length === 1) return `
             <li class="result-list-item">
                     <a
@@ -1280,6 +1288,7 @@ class LocationSearchView {
             this._displayDeleteInputButton();
         });
     }
+    // This method displays the delete input buttons
     _displayDeleteInputButton() {
         this._searchLocationInput.nextElementSibling.classList.remove("d-none");
     }
@@ -1315,7 +1324,7 @@ parcelHelpers.defineInteropFlag(exports);
 class ReverseInputValuesBtn {
     // DOM elements
     _locationsReverseBtn = document.querySelector(".locations-reverse-button");
-    // Create the handler reverse values method and assign the handler parameter which will be passed as a function in controller.js
+    // Create the handler reverse values method and assign the handler parameter which will be passed as a function in flightsSearchController.js
     _addHandlerReverseValues(handler) {
         this._locationsReverseBtn.addEventListener("click", ()=>{
             handler();
@@ -7192,7 +7201,7 @@ class ClearInputBtn {
                             break;
                         case "return-date":
                             (0, _datePickerViewDefault.default)._queryValues.returnDate = "";
-                            // As the return date is optional and doesn't need to be validated, I had to remove it manually from the queryStringValues
+                            // As the return date is optional and doesn't need to be validated, I had to remove it manually from the queryStringValues in case the user selected a return date
                             (0, _searchResultsBtnViewDefault.default)._queryStringValues.returnDate = "";
                             break;
                     }
@@ -7203,6 +7212,8 @@ class ClearInputBtn {
                     // Enable the input
                     inputEl.removeAttribute("disabled");
                     inputEl.value = "";
+                    // Focus the input
+                    inputEl.focus();
                 }
             });
         });

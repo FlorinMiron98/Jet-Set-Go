@@ -22,7 +22,7 @@ class DetailsDialogView {
         const flightItem = detailsBtn.closest(".flight-item");
         const token = flightItem.dataset.token;
 
-        // Use the Pub/Sub pattern to assign the token to the handler function which will be called in the flightResultsController.js
+        // Use the Publisher/Subscriber pattern to assign the token to the handler function which will be called in the flightResultsController.js with the token as the value for the API request in the model.js
         handler(token);
       }
     });
@@ -104,6 +104,7 @@ class DetailsDialogView {
         // Extract the arrival time and departure time to make the calculations for the layover
         // Use e separate loop to avoing the conflict between omitting the first item in the legs array and rendering the markup
         layover = segment.legs
+          // The value of the individual array item (leg) is not needed in this array method, so I replace it with an underscore (_)
           .map((_, index, arr) => {
             // This if statement makes sure the first leg is omitted
             // The layover is calculated by subtracting the first's leg arrival value of the next leg's departure value

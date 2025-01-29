@@ -160,7 +160,7 @@ export default class LocationSearchView {
           `;
           }
 
-          // If the previous item of AIRPORT type if from a different location, remove the margin and label the city name, the region name and the country name instead of the distance from the centre of the city
+          // If the previous item of AIRPORT type is from a different location, remove the margin and label the city name, the region name and the country name instead of the distance from the centre of the city
           if (
             (previousItem &&
               currentItem.regionName !== previousItem.regionName) ||
@@ -215,6 +215,7 @@ export default class LocationSearchView {
     });
   }
 
+  // This method displays the delete input buttons
   _displayDeleteInputButton() {
     this._searchLocationInput.nextElementSibling.classList.remove("d-none");
   }

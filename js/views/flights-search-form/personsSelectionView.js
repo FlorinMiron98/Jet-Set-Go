@@ -15,7 +15,7 @@ class PersonsSelectionView {
   _children = 0;
   _childrenSelectAgeMarkup = [];
 
-  // Create the handler render method and assign the handler parameter which will be passed as a function in controller.js
+  // Create the handler render method and assign the handler parameter which will be passed as a function in flightSearchController.js
   _addHandlerRender(handler) {
     window.addEventListener("load", handler);
   }
@@ -142,12 +142,14 @@ class PersonsSelectionView {
     this._adultsParentEl.addEventListener("click", (e) => {
       if (e.target.closest(".selection-increase-btn")) {
         this._adults++;
+        // Generate the markup for the persons selection button
         personsSelectionBtnView._generateMarkup(this._adults, this._children);
         this._generateAdultsMarkup();
         this._generateChildrenMarkup();
       }
       if (e.target.closest(".selection-decrease-btn")) {
         this._adults--;
+        // Generate the markup for the persons selection button
         personsSelectionBtnView._generateMarkup(this._adults, this._children);
         this._generateAdultsMarkup();
         this._generateChildrenMarkup();
@@ -161,6 +163,7 @@ class PersonsSelectionView {
     this._childrenParentEl.addEventListener("click", (e) => {
       if (e.target.closest(".selection-increase-btn")) {
         this._children++;
+        // Generate the markup for the persons selection button
         personsSelectionBtnView._generateMarkup(this._adults, this._children);
         this._generateSelectChildAgeMarkup(this._children);
         this._showChildrenSelectAgeParentEl();
@@ -170,6 +173,7 @@ class PersonsSelectionView {
       }
       if (e.target.closest(".selection-decrease-btn")) {
         this._children--;
+        // Generate the markup for the persons selection button
         personsSelectionBtnView._generateMarkup(this._adults, this._children);
         this._removeChildAgeEl(this._childrenSelectAgeMarkup);
         this._displaySelectChildAgeEl();
@@ -192,6 +196,7 @@ class PersonsSelectionView {
   _removeChildAgeEl(array) {
     array.pop();
 
+    // Hide the container if the array is empty
     if (array.length === 0) {
       this._hideChildrenSelectAgeParentEl();
     }

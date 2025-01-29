@@ -71,7 +71,7 @@ class FlightsOffersView {
     this._parentEl.innerHTML = "";
   }
 
-  // Add a second parameter of type boolean so we can separate the initial load of the Intersection Observer API loads
+  // Add a second parameter of type 'boolean' so we can separate the initial load of the Intersection Observer API loads
   _renderMarkup(data, isInitialLoad = true) {
     // Clear the markup on the inital load
     if (isInitialLoad) {
@@ -117,13 +117,17 @@ class FlightsOffersView {
         // Map through the unique airlines values and return the markup for the airline icon and airline name
         operatingAirline = uniqueAirlines
           .map((leg) => {
+            // This variables will store the markup
             let airlineName;
             let airlineIcon;
 
+            // Extract the iata code and the airlines array
             const iataCode = leg.flightInfo.carrierInfo.operatingCarrier;
             const airlines = data.flightsSearchResults.aggregation.airlines;
 
+            // Loop through the airlines array
             for (const airline of airlines) {
+              // Check for the equality between the leg's carrier iata code and each airline iata code for a dynamic display of the icon and the airline name
               if (airline.iataCode === iataCode) {
                 airlineIcon = `
                   <img
@@ -258,7 +262,7 @@ class FlightsOffersView {
     }
   }
 
-  //   This method will return flight duration displayed as hours and minutes
+  // This method will return flight duration displayed as hours and minutes
   _calculateFlightHours(seconds) {
     let flightHoursString = "";
 
@@ -272,6 +276,7 @@ class FlightsOffersView {
     return flightHoursString;
   }
 
+  // This method will extract the number of hours and minutes from a given timestring passed as a parameter
   _extractHoursAndMinutes(timeString) {
     const [hours, minutes] = timeString.split(":");
     return `${hours}:${minutes}`;
@@ -286,11 +291,14 @@ class FlightsOffersView {
       threshold: 0,
     };
 
-    // Loop through the callback entries, increase the page and assign the handler function which will be called in the flightResultsController.js
+    // Loop through the callback entries, increase the page number and assign the handler function which will be called in the flightResultsController.js
+    // The page number is a parameter required by the booking API
+    // Each time the number of the page is increased, the fetch function will be called again with the new value
     const observerCallback = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           flightResultsView._pageNumber += 1;
+          // The handler function which was passed as a parameter will be responsible for triggering a new API request with the new value of the page number assigned to it
           handler();
         }
       });
