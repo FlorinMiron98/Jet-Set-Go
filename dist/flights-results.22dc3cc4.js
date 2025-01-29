@@ -991,7 +991,7 @@ class DetailsDialogView {
     _detailsDialog = document.querySelector(".details-dialog");
     _resultsList = document.querySelector(".results-list");
     _closeDialogBtn = document.querySelector(".close-dialog-btn");
-    _parentEl = document.querySelector(".details-dialog main");
+    _parentEl = document.querySelector(".details-content-wrapper");
     _errorMessage = "Something went wrong while fetching flight details. Please try again";
     // Create the handler display dialog method for each of the view details buttons
     _addHandlerDisplayDialog(handler) {
