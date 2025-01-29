@@ -34,7 +34,7 @@ class ClearInputBtn {
               break;
             case "return-date":
               datePickerView._queryValues.returnDate = "";
-              // As the return date is optional and doesn't need to be validated, I had to remove it manually from the queryStringValues
+              // As the return date is optional and doesn't need to be validated, I had to remove it manually from the queryStringValues in case the user selected a return date
               searchResultsBtnView._queryStringValues.returnDate = "";
               break;
           }
@@ -48,6 +48,8 @@ class ClearInputBtn {
           // Enable the input
           inputEl.removeAttribute("disabled");
           inputEl.value = "";
+          // Focus the input
+          inputEl.focus();
         }
       });
     });
