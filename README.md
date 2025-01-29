@@ -38,9 +38,9 @@ This is a flights tickets booking website designed to facilitate seamless flight
     - [Run This Project Locally](#run-the-project-locally)
 6. [Credits](#credits)
     - [Content](#content)
-    - Media
-    - Code
-    - Inspirations
+    - [Media](#media)
+    - [Code](#code)
+    - [Inspirations](#inspirations)
 ### UX
 The user experience (UX) of Jet-Set-Go website has been carefully designed to ensure simplicity, clarity, and ease of navigation.
 #### Project Goals
@@ -111,6 +111,7 @@ For this project, I decided to create high-fidelity wireframes to better visuali
 8. **Babel** (included in Parcel.js by default) - Babel is a JavaScript compiler that allows developers to use the latest ECMAScript features by converting modern JavaScript (ES6) into a version compatible with older browsers and environments. Babel can only transpile ES6 syntax(e.g. arrow functions, classes, const). The same is not true for new features like new array methods (e.g. find) or promises, but here is where polyfilling comes into play. More about Babel on the [official website](https://babeljs.io/).
 9. **Core.js** (integrated with Babel) - Core.js is a powerful JavaScript library that provides polyfills for ECMAScript features, ensuring compatibility across different browsers and environments. More about Core.js on this [GitHub repository](https://github.com/zloirock/core-js).
 10. **Regenerator-runtime** - The Regenerator-runtime library provides a runtime for generators and async functions, enabling the use of modern asynchronous JavaScript syntax (like async/await) in environments that do not natively support it. More about the Regenerator-runtime [here](https://www.npmjs.com/package/regenerator-runtime).
+11. **Booking API** - The Booking API focuses on flight-related services. It provides real-time data on arrival and departure locations, flight dates and available flight offers. The API allows users to search for flights and view flight options.
 ### Deployment
 This project was created using [Visual Studio Code](https://code.visualstudio.com/), committed to [Git](https://git-scm.com/) and pushed to [GitHub](https://github.com/) using Git's built-in function `git push`.
 As this project was created using the development environment provided by [Parcel.js](https://parceljs.org/), I decided to deploy it on [Netlify](https://www.netlify.com/) as the deployment process was much easier. The next steps were followed:
@@ -157,10 +158,13 @@ To clone this project from GitHub into a local IDE such as Visual Studio Code, f
 ### Credits
 #### Content
 - [ChatGPT](https://chatgpt.com/) - Used to create content for:
-  - Services Section
-  - Best cities section
+  - Introduction section
+  - Best destinations section
   - Best seasonal destination
+  - `<meta>` keywords attribute
+  - `<meta>` description attribute
 #### Media
+- favicon: [Image Source](https://www.flaticon.com/free-icon/globe_744502?term=plane&page=1&position=22&origin=search&related_id=744502)
 - The logo images both for desktop and mobile screen were created using [Figma](https://www.figma.com/)
 - The airplane image with no background: [Image Source](https://unsplash.com/photos/air-canada-airline-X_MOr6oa4-k) - Photo by [John McArthur](https://unsplash.com/@snowjam)
 - The sky background image of the `header` element for **desktop**: [Image Source](https://unsplash.com/photos/above-cloud-photo-of-blue-skies-yQorCngxzwI) - Photo by [Taylor Van Riper](https://unsplash.com/@taylorvanriper925)
@@ -176,5 +180,20 @@ To clone this project from GitHub into a local IDE such as Visual Studio Code, f
 - paris.jpg: [Image Source](https://www.pexels.com/photo/picture-of-eiffel-tower-338515/) - Photo by [Thorsten technoman](https://www.pexels.com/@thorsten-technoman-109353/)
 - aspen.jpg: [Image Source](https://www.pexels.com/photo/snow-covered-mountain-3628990/) - Photo by [Hui Huang](https://www.pexels.com/@hui-huang-1364440/)
 The responsive screen mockups was created using [Yujin Yeoh Mockup Generator](https://yujinyeoh.com/website-mockup-generator).
+#### Code
+1. Code for all website's icons was created using [Font Awesome](https://fontawesome.com/).
+2. Code for importing Google Fonts inside the `assets/styles.css` file was created using [Google Fonts](https://fonts.google.com/).
+3. Code for the layout of the introduction section was created using [Bootstrap Grid System](https://getbootstrap.com/docs/5.3/layout/grid/#example).
+4. Code for introduction section cards was created using [Bootstrap Cards](https://getbootstrap.com/docs/5.3/components/card/#about) and slightly modified to fit the project's needs and design.
+5. Code for best destinations section cards was created using [Bootstrap Cards](https://getbootstrap.com/docs/5.3/components/card/#about) and heavily edited to fit the project's needs and design.
+6. Code for flight booking form and its layout was created using [Bootstrap Forms](https://getbootstrap.com/docs/5.3/forms/overview/#overview) and [Bootstrap Grid System](https://getbootstrap.com/docs/5.3/layout/grid/#example).
+7. Code for ordered lists inside the details dialog was created using [Bootstrap List Groups](https://getbootstrap.com/docs/5.3/components/list-group/#basic-example);
+8. Code for spinner loaders was created using this [W3C Article](https://www.w3schools.com/howto/howto_css_loader.asp) and slightly modified to fit the project's needs.
+9. Code for CSS selectors used to style the **Tippy.js** box was created using [Tippy.js Themes](https://atomiks.github.io/tippyjs/v6/themes/).
+10. Code for **Tippy.js** options was created using [Tippy.js Customization](https://atomiks.github.io/tippyjs/v6/customization/).
+11. Code for setting the options and the initialisation of the **Air-datepicker.js** was created using [Airdatepicker.js Examples](https://air-datepicker.com/examples).
+12. Code for adding the correct CSS prefixes to ensure the cross-browser compatibility was created using [Autoprefixer CSS online](https://autoprefixer.github.io/).
+13. Code for darkening background images was taken from this [Stack Overflow post](https://stackoverflow.com/questions/26621513/darken-css-background-image).
+14. Code for **regular expressions** used in flight booking form inputs was created using [ChatGPT](https://chatgpt.com/).
 #### Inspirations
 - [Booking.com](https://www.booking.com) - For the overall layout of the results page.
