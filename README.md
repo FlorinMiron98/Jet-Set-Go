@@ -13,7 +13,7 @@ This is a flights tickets booking website designed to facilitate seamless flight
     - [Business Goals](#business-goals)
     - [User Stories](#user-stories)
     - Design Choices
-    - Wireframes
+    - [Wireframes](#wireframes)
 2. Features
     - Homepage
       - Hero
@@ -84,6 +84,7 @@ The user experience (UX) of Jet-Set-Go website has been carefully designed to en
    Allow users to easily cancel their bookings.
 
 5. Optimize for Speed and Performance
+
    Ensure that your website is fast and responsive to improve user experience
 #### User Stories
 1. As a customer, I want to search for available flights by entering my departure and arrival cities, travel dates, and number of passengers so that I can find flights that meet my needs.
@@ -93,3 +94,63 @@ The user experience (UX) of Jet-Set-Go website has been carefully designed to en
 5. As a customer, I want to be able to load more flight search results, so that I can view additional options beyond the initial set without having to perform a new search.
 #### Wireframes
 For this project, I decided to create high-fidelity wireframes to better visualize the final product. High-fidelity wireframes provide a more detailed representation of the design compared to low-fidelity wireframes.
+1. [Homepage - Desktop](https://postimg.cc/CnTjwvvz)
+2. [Homepage - Tablet](https://postimg.cc/SYfzkm2v)
+3. [Homepage - Mobile](https://postimg.cc/bG4nRCf3)
+4. [Results Page - Desktop](https://postimg.cc/BX3xyVLz)
+5. [Results Page - Tablet](https://postimg.cc/BX3xyVLz)
+6. [Results Page - Mobile](https://postimg.cc/7b03Kk67)
+### Technologies Used
+1. **HTML5** - The foundational markup language for structuring web content.
+2. **CSS3** - Used for styling and layout, enhancing the visual appearance of the project.
+3. **Bootstrap 5** - Used for creating responsiveness across all screen sizes, pre-designed components and utility classes. More about Bootstrap on the [official Bootstrap website](https://getbootstrap.com/).
+4. **JavaScript** - It is used to handle user interactions, manipulate the DOM, and manage application logic.
+5. **Tippy.js** - Tippy.js is a lightweight and highly customizable library for creating tooltips and popovers in web applications. More about Tippy.js on the [official website](https://atomiks.github.io/tippyjs/).
+6. **Air-datepicker** - Air-datepicker is a simple and flexible date-picker library that makes it easy for users to select dates. More about Air-datepicker on the [official website](https://air-datepicker.com/).
+7. **Parcel.js** - Parcel.js is a fast, zero-config web application bundler. It simplifies the development process by automatically handling tasks such as bundling JavaScript, CSS and assets. More about Parcel.js on the [official website](https://parceljs.org/).
+8. **Babel** (included in Parcel.js by default) - Babel is a JavaScript compiler that allows developers to use the latest ECMAScript features by converting modern JavaScript (ES6) into a version compatible with older browsers and environments. Babel can only transpile ES6 syntax(e.g. arrow functions, classes, const). The same is not true for new features like new array methods (e.g. find) or promises, but here is where polyfilling comes into play. More about Babel on the [official website](https://babeljs.io/).
+9. **Core.js** (integrated with Babel) - Core.js is a powerful JavaScript library that provides polyfills for ECMAScript features, ensuring compatibility across different browsers and environments. More about Core.js on this [GitHub repository](https://github.com/zloirock/core-js).
+10. **Regenerator-runtime** - The Regenerator-runtime library provides a runtime for generators and async functions, enabling the use of modern asynchronous JavaScript syntax (like async/await) in environments that do not natively support it. More about the Regenerator-runtime [here](https://www.npmjs.com/package/regenerator-runtime).
+### Deployment
+This project was created using [Visual Studio Code](https://code.visualstudio.com/), committed to [Git](https://git-scm.com/) and pushed to [GitHub](https://github.com/) using Git's built-in function `git push`.
+As this project was created using the development environment provided by [Parcel.js](https://parceljs.org/), I decided to deploy it on [Netlify](https://www.netlify.com/) as the deployment process was much easier. The next steps were followed:
+1. **Build the Project**
+   - After the development process, I made sure the project is built for production by running the following command in the terminal: `npm run build`
+   - This whill generate the production-ready files inside the `dist/` folder (or the configured output folder).
+2. **Create a Netlify Account**
+   - If you dont't have a Netflify account, sign-up at [Netlify](https://www.netlify.com/).
+3. **Log In to Netlify**
+   - Once your account is created, log in to the **Netlify Dashboard**.
+4. **Deploy the Project Manually**
+   - In the Netlify Dashboard, look for the "Deploy manually" option on the next screen.
+   - Drag and drop your entire `dist/` folder (the output folder from Parcel) into the provided area on the Netlify interface.
+   - Netlify will automatically upload and deploy your site.
+5. **Access the Live Website**
+   - After deployment is complete, Netlify will provide with a unique URL for the website.
+6. **Optional: Set Up a Custom Domain**
+   - I created a custom domain by going to Domain Settings in the Netlify site dashboard.
+#### Run the Project Locally
+To clone this project from GitHub into a local IDE such as Visual Studio Code, follow the next steps:
+1. Follow this link to the [GitHub Project Repository](https://github.com/FlorinMiron98/Jet-Set-Go)
+2. Under the repository name, click **<> Code**
+![code-button](https://github.com/user-attachments/assets/1de54cc8-457d-452d-a95b-747446c40480)
+3. Copy the clone URL for the repository.
+
+![clone-URL](https://github.com/user-attachments/assets/3995b2ae-86d3-452d-a46c-0d927313f9bd)
+
+4. Navigate to the Project Directory
+   - Once the repository is cloned, navigate to the location where you want the cloned directory to be created using this command: `cd your-repository`.
+5. Clone the Repository
+   - Clone the project repository to your local machine using `git clone https://github.com/FlorinMiron98/Jet-Set-Go.git`.
+6. Install Dependencies
+   - Before running the project, you'll need to install all required dependencies. These dependencies are listed in the `package.json` file. In order to install them, run the command `npm install`.
+7. Run the Project Locally
+   - Now, start the Parcel development server to view the project locally using the followin command: `npm run start`.
+   - Alternatively, if the script is not defined in `package.json`, you can run Parcel directly by specifying the entry HTML file (e.g., `index.html`): `parcel index.html`.
+   - Parcel will start a development server and provide a local URL, typically `http://localhost:1234`.
+8. View the Project In Your Browser
+   - Open your web browser and go to the following URL: `http://localhost:1234` (or the one provided in the terminal).
+9. Make Changes and See Live Updates
+   - While the development server is running, any changes you make to the project’s source files will automatically reload in the browser, providing a live preview of your changes.
+10. Stop the Development Server
+    - When you’re done, you can stop the Parcel development server by pressing `Ctrl + C` in the terminal.
