@@ -26,7 +26,7 @@ This is a flights tickets booking website designed to facilitate seamless flight
       - Flight Details Dialog
       - Submit Dialog
     - Booking Confirmation Page
-3. Technologies Used
+3. Technologies Used(#technologies-used)
 4. Testing
     - Validator Testing
     - Performance, Accessibility and Best Practices
@@ -34,9 +34,9 @@ This is a flights tickets booking website designed to facilitate seamless flight
     - Testing Client Stories From UX
     - Functional Testing
     - Bugs
-5. Deployment
-    - Run This Project Locally
-6. Credits
+5. Deployment(#deployment)
+    - Run This Project Locally(#run-the-project-locally)
+6. Credits(#credits)
     - Content
     - Media
     - Code
@@ -154,3 +154,10 @@ To clone this project from GitHub into a local IDE such as Visual Studio Code, f
    - While the development server is running, any changes you make to the project’s source files will automatically reload in the browser, providing a live preview of your changes.
 10. Stop the Development Server
     - When you’re done, you can stop the Parcel development server by pressing `Ctrl + C` in the terminal.
+### Credits
+#### Content
+- [ChatGPT](https://chatgpt.com/) - Used to create content for:
+  - Services Section
+  - Best cities section
+  - Best seasonal destination
+
