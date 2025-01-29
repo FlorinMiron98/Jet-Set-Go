@@ -26,7 +26,7 @@ This is a flights tickets booking website designed to facilitate seamless flight
       - Flight Details Dialog
       - Submit Dialog
     - Booking Confirmation Page
-3. Technologies Used(#technologies-used)
+3. [Technologies Used](#technologies-used)
 4. Testing
     - Validator Testing
     - Performance, Accessibility and Best Practices
@@ -34,8 +34,8 @@ This is a flights tickets booking website designed to facilitate seamless flight
     - Testing Client Stories From UX
     - Functional Testing
     - Bugs
-5. Deployment(#deployment)
-    - Run This Project Locally(#run-the-project-locally)
+5. [Deployment](#deployment)
+    - [Run This Project Locally](#run-the-project-locally)
 6. [Credits](#credits)
     - [Content](#content)
     - Media
@@ -176,3 +176,5 @@ To clone this project from GitHub into a local IDE such as Visual Studio Code, f
 - paris.jpg: [Image Source](https://www.pexels.com/photo/picture-of-eiffel-tower-338515/) - Photo by [Thorsten technoman](https://www.pexels.com/@thorsten-technoman-109353/)
 - aspen.jpg: [Image Source](https://www.pexels.com/photo/snow-covered-mountain-3628990/) - Photo by [Hui Huang](https://www.pexels.com/@hui-huang-1364440/)
 The responsive screen mockups was created using [Yujin Yeoh Mockup Generator](https://yujinyeoh.com/website-mockup-generator).
+#### Inspirations
+- [Booking.com](https://www.booking.com) - For the overall layout of the results page.
