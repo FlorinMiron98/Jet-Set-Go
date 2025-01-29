@@ -26,7 +26,7 @@ This is a flights tickets booking website designed to facilitate seamless flight
       - Flight Details Dialog
       - Submit Dialog
     - Booking Confirmation Page
-3. Technologies Used
+3. [Technologies Used](#technologies-used)
 4. Testing
     - Validator Testing
     - Performance, Accessibility and Best Practices
@@ -34,10 +34,10 @@ This is a flights tickets booking website designed to facilitate seamless flight
     - Testing Client Stories From UX
     - Functional Testing
     - Bugs
-5. Deployment
-    - Run This Project Locally
-6. Credits
-    - Content
+5. [Deployment](#deployment)
+    - [Run This Project Locally](#run-the-project-locally)
+6. [Credits](#credits)
+    - [Content](#content)
     - Media
     - Code
     - Inspirations
@@ -154,3 +154,27 @@ To clone this project from GitHub into a local IDE such as Visual Studio Code, f
    - While the development server is running, any changes you make to the project’s source files will automatically reload in the browser, providing a live preview of your changes.
 10. Stop the Development Server
     - When you’re done, you can stop the Parcel development server by pressing `Ctrl + C` in the terminal.
+### Credits
+#### Content
+- [ChatGPT](https://chatgpt.com/) - Used to create content for:
+  - Services Section
+  - Best cities section
+  - Best seasonal destination
+#### Media
+- The logo images both for desktop and mobile screen were created using [Figma](https://www.figma.com/)
+- The airplane image with no background: [Image Source](https://unsplash.com/photos/air-canada-airline-X_MOr6oa4-k) - Photo by [John McArthur](https://unsplash.com/@snowjam)
+- The sky background image of the `header` element for **desktop**: [Image Source](https://unsplash.com/photos/above-cloud-photo-of-blue-skies-yQorCngxzwI) - Photo by [Taylor Van Riper](https://unsplash.com/@taylorvanriper925)
+- The sky background image of the `header` element for **mobile**: [Image Source](https://www.pexels.com/photo/scenic-view-of-sky-1367180/) - Photo by [eberhard grossgasteiger](https://www.pexels.com/@eberhardgross/)
+- flight-booking-prices.jpg: [Image Source](https://www.pexels.com/photo/silver-imac-displaying-line-graph-placed-on-desk-572056/) - Photo by [Serpstat](https://www.pexels.com/@serpstat-177219/)
+- multiple-airlines.jpg: [Image Source](https://www.pexels.com/photo/person-using-self-check-in-kiosk-3943949/) - Photo by [Anna Shvets](https://www.pexels.com/@shvetsa/)
+- easy-booking.jpg: [Image Source](https://www.pexels.com/photo/person-using-macbook-pro-on-white-table-5077049/) - Photo by [cottonbro studio](https://www.pexels.com/@cottonbro/)
+- new-york.jpg: [Image Source](https://www.pexels.com/photo/high-angle-view-of-cityscape-against-cloudy-sky-313782/) - Photo by [Quintin Gellar](https://www.pexels.com/@quintingellar/)
+- tokyo.jpg: [Image Source](https://www.pexels.com/photo/people-walking-on-the-streets-surrounded-by-buildings-1510595/) - Photo by [Aleksandar Pasaric](https://www.pexels.com/@apasaric/)
+- rio-de-janeiro.jpg: [Image Source](https://pixabay.com/photos/rio-rio-de-janeiro-sugar-loaf-4348017/) - Photo by [pauloduarte](https://pixabay.com/users/pauloduarte-2508074/)
+- sydney.jpg: [Image Source](https://www.pexels.com/photo/aerial-view-of-sydney-995764/) - Photo by [Patrick McLachlan](https://www.pexels.com/@patrick/)
+- cairo.jpg: [Image Source](https://pixabay.com/photos/cairo-mosque-egypt-islam-1980350/) - Photo by [shadyshaker](https://pixabay.com/users/shadyshaker-4265067/)
+- paris.jpg: [Image Source](https://www.pexels.com/photo/picture-of-eiffel-tower-338515/) - Photo by [Thorsten technoman](https://www.pexels.com/@thorsten-technoman-109353/)
+- aspen.jpg: [Image Source](https://www.pexels.com/photo/snow-covered-mountain-3628990/) - Photo by [Hui Huang](https://www.pexels.com/@hui-huang-1364440/)
+The responsive screen mockups was created using [Yujin Yeoh Mockup Generator](https://yujinyeoh.com/website-mockup-generator).
+#### Inspirations
+- [Booking.com](https://www.booking.com) - For the overall layout of the results page.
