@@ -691,7 +691,7 @@ header #nav .right-navigation li i:hover {
   right: 1.25rem;
   width: 1.5rem;
   height: 1.5rem;
-  border-radius: 50%;
+  border-radius: var(--border-rounded);
   background-color: var(--color-red-light);
 }
 
@@ -703,7 +703,7 @@ header #nav .right-navigation li i:hover {
 #flights-header #flights-search-form .input-wrapper .locations-reverse-button {
   height: 2rem;
   width: 2rem;
-  border-radius: 50%;
+  border-radius: var(--border-rounded);
   right: 0;
   -webkit-transform: translate(50%);
   -ms-transform: translate(50%);
@@ -1004,7 +1004,7 @@ footer .social-media-links a:active {
   height: 2.4rem;
   color: var(--color-white);
   background-color: var(--color-red);
-  border-radius: 50%;
+  border-radius: var(--border-rounded);
   border: none;
   right: 1rem;
   top: 1rem;
