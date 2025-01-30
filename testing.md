@@ -5,7 +5,7 @@
 ## Table of Contents
 1. [Validator Testing](#validator-testing)
 2. [Performance, Accessibility and Best Practices Testing](#performance-accessibility-and-best-practices-testing)
-3. Manual Testing
+3. [Manual Testing](#manual-testing)
 4. Testing Client Stories From UX
 5. Functional Testing
 6. Bugs
