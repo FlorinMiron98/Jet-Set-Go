@@ -27,10 +27,10 @@ This is a flights tickets booking website designed to facilitate seamless flight
       - Submit Dialog
     - Booking Confirmation Page
 3. [Technologies Used](#technologies-used)
-4. Testing
-    - Validator Testing
-    - Performance, Accessibility and Best Practices
-    - Manual Testing
+4. [Testing](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/testing.md)
+    - [Validator Testing](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/testing.md#validator-testing)
+    - [Performance, Accessibility and Best Practices](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/testing.md#performance-accessibility-and-best-practices-testing)
+    - [Manual Testing](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/testing.md#manual-testing)
     - Testing Client Stories From UX
     - Functional Testing
     - Bugs
