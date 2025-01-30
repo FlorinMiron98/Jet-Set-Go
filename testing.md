@@ -29,7 +29,7 @@
        ![CSS validation](https://github.com/user-attachments/assets/c1c8506d-bb73-44fd-b3d9-d07062896788)
 
 ### Performance, Accessibility and Best Practices Testing
-Performance, accessibility, and best practices tests were conducted using Google Lighthouse. The results help ensure the application is optimized for speed, user accessibility, and adherence to modern development standards.
+Performance, accessibility, and best practices tests were conducted using [Google Lighthouse](https://developer.chrome.com/docs/lighthouse/overview). The results help ensure the application is optimized for speed, user accessibility, and adherence to modern development standards.
 Results for each page:
 - Homepage(index.html):
   - **Performance:** Score 93/100
@@ -52,6 +52,8 @@ Results for each page:
  
     ![booking-confirmation-page-scores](https://github.com/user-attachments/assets/5085e3ba-073c-48ab-aa84-a64438296d99)
 
+### Manual Testing
+Manual testing was conducted to ensure the application functions as expected across various use cases and user interactions.
 
 
 
