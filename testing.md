@@ -18,6 +18,7 @@
      - booking-confirmation.html
    - Results
      - The result for `flights-results.html` and `booking-confirmation.html` files is "_Document checking completed. No errors or warnings to show._".
+       
        ![search-results-page-html-validator](https://github.com/user-attachments/assets/86cf4d8b-679b-40bb-aaf1-de6bc4792bb3)
      - The results for `index.html` file throws a single error: "_Element `a` is missing required attribute `href`_".
        ![homepage-html-validator-error](https://github.com/user-attachments/assets/f8b00356-dbb7-4998-ac7e-c3eaeeae2215)
