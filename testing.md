@@ -6,7 +6,7 @@
 1. [Validator Testing](#validator-testing)
 2. [Performance, Accessibility and Best Practices Testing](#performance-accessibility-and-best-practices-testing)
 3. [Manual Testing](#manual-testing)
-4. Testing Client Stories From UX
+4. [Testing Client Stories From UX](#testing-client-stories-from-ux)
 5. Functional Testing
 6. Bugs
 
@@ -56,7 +56,7 @@ Results for each page:
 Manual testing was conducted to ensure the application functions as expected across various use cases and user interactions.
 - **Desktop Testing:** Verified compatibility using Chrome, Firefox, Microsoft Edge, Opera as well as Safari through [Playwright](https://playwright.dev/) on a Windows computer.
 - **Mobile Testing(Android):** Checking responsiveness and functionality with Chrome, Firefox and Opera browsers on an Android device.
-- **Link Verification:** All manually tested links, both internal(redirect the user to the booking confirmation page after completing the form) and external(footer links to social media), have been verified and successfully confirmed to function correctly, ensuring seamless navigation.
+- **Link Verification:** All manually tested links, both internal and external(footer links to social media), have been verified and successfully confirmed to function correctly, ensuring seamless navigation.
 - **Form Validation:** The booking form has undergone thorough validation testing to ensure that users receive appropriate feedback for any input errors. The form accurately checks for required fields and correct formatting.
 #### !!!Important notes
 While the website is designed to work seamlessly across modern browsers such as Chrome, Firefox, Opera, and Edge, some features may not function as expected in Safari. This section outlines known issues related to modern layout techniques (such as CSS Grid and Flexbox) and the handling of asynchronous code, including unhandled promise rejections. These discrepancies are mainly due to differences in how Safari interprets and implements web standards. Below, you'll find a detailed explanation of these issues and potential workarounds to ensure optimal functionality.
@@ -67,4 +67,10 @@ While the website is designed to work seamlessly across modern browsers such as 
    - While the code for handling asynchronous operations is wrapped in a `try...catch` block to catch errors, Safari may still throw an **"Unhandled Promise Rejection"** error in certain cases. This occurs because Safari's behavior around promise rejections can sometimes be more strict or behave differently than other browsers (such as Chrome, Firefox, Opera, and Edge). Even with proper error handling using `try...catch`, Safari may still interpret certain rejection cases as unhandled or trigger the error unexpectedly.
  
 ![unhandled-promise-rejection-safari](https://github.com/user-attachments/assets/b3eb83cd-e79a-4230-977b-85d40a2433ea)
+
+### Testing Client Stories From UX
+1. As a customer, I want to search for available flights by entering my departure and arrival cities, travel dates, and number of passengers so that I can find flights that meet my needs.
+   | **Test Description** | **Outcome** | **Status** |
+   | -------------------- | ----------- | ---------- |
+   | Verify that the search flight tickets form is displayed | Flight tickets search form should be visible on the page | Passed |
 
