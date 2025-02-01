@@ -105,3 +105,15 @@ While the website is designed to work seamlessly across modern browsers such as 
    | Verify that recommended flight destinations are displayed on the homepage or relevant page. | The recommended destinations should be visible and clearly labeled on the page. | Passed |
    | Verify that the recommended destinations are displayed correctly and are clickable on mobile devices. | Recommended destinations should be properly displayed on mobile screens without layout issues. | Passed |
 **Note**: The functionality beyond displaying the recommended flight destinations is yet to be implemented.
+
+5. As a customer, I want to be able to load more flight search results, so that I can view additional options beyond the initial set without having to perform a new search.
+   | **Test Description** | **Outcome** | **Status** |
+   | -------------------- | ----------- | ---------- |
+   | Verify that the **IntersectionObserver** is correctly triggered when the user scrolls to the bottom of the flight results list. | When the user scrolls near the bottom of the page, the IntersectionObserver should be triggered, initiating the loading of more results. | Passed |
+   | Verify that when the IntersectionObserver triggers, new flight results are loaded without needing the user to click a button. | Additional flight results should load seamlessly below the initial set when the user scrolls down. | Passed |
+   | Verify that the additional results loaded via the IntersectionObserver are relevant to the search query and do not include duplicates. | New results should match the initial search criteria, and duplicates should not appear. | Passed |
+   | Verify that a loading spinner or indicator is shown while the additional results are being fetched. | A loading spinner should be displayed while new results are loading, providing visual feedback to the user. | Passed |
+   | Verify that using the IntersectionObserver for infinite scrolling does not negatively impact page performance. | The page should load additional results without significant performance degradation or delays, even with many results. | Passed |
+   | Verify that the IntersectionObserver behavior works correctly on mobile and tablet devices, including loading additional results. | The IntersectionObserver should work seamlessly across different screen sizes, including mobile and tablet. | Passed |
+   | Verify that after applying sorting, the IntersectionObserver continues to load results that match the new criteria. | The IntersectionObserver should load additional results based on the updated filters or sorting options applied by the user. | Passed |
+   | Verify that the infinite scrolling functionality does not conflict with other UI elements. | The IntersectionObserver should work without interfering with other interactive elements on the page. | Passed | 
