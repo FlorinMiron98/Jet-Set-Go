@@ -170,5 +170,11 @@ While the website is designed to work seamlessly across modern browsers such as 
    | **Test Description** | **Expected Result** | **Status** |
    | -------------------- | ------------------- | ---------- |
    | Click 'Return to Main Page' button | Return the user to the Homepage | Passed |
-   
+### Bugs
+- Issue with `.parcel-cache` File:
+  - The `.parcel-cache` file was omitted from the `.gitignore` file during development. As a result, Git preserved a reference to the `.parcel-cache` and it was accidentally pushed to GitHub. The process of removing the `.parcel-cache` from the repository on GitHub caused some duplicate commits to appear in the commit history.
+  **Solution**
+    - Added the `.parcel-cache` file to `.gitignore` to prevent it from being tracked by Git in the future.
+    - Removed the `.parcel-cache` file from the Git history using [BFG Repo-Cleaner](https://rtyley.github.io/bfg-repo-cleaner/) to clean the history and prevent duplication.
+    - Force-pushed the cleaned history to the remote GitHub repository.
    
