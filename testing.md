@@ -80,3 +80,11 @@ While the website is designed to work seamlessly across modern browsers such as 
    | Test search with valid input values | A message that no flight offer has been found should be displayed | Passed |
    | Test search with blank fields | A `tippy.js` tooltip should be displaying requiring the user to enter the relevant data | Passed |
 
+2. As a customer, I want to be able to sort flight search results by best, cheapest, and fastest, so that I can easily find the option that best fits my travel needs based on price, duration, or overall quality.
+   | **Test Description** | **Outcome** | **Status** |
+   | -------------------- | ----------- | ---------- |
+   | Verify that the flight search results are sorted by the "best" option (combining factors like price and duration) by default once the results are displayed. | Flights offers should automatically be sorted by the "best" option when first displayed. | Passed |
+   | Verify that flight search results can be sorted by the cheapest option (lowest price). | Flights should be listed from the lowest to the highest price. | Passed |
+   | Verify that flight search results can be sorted by the fastest option (shortest duration). | Flights should be listed from the shortest to the longest duration. | Passed |
+   | Verify that each sorting button is styled differently when active | The active button must have a different styling than the unactive ones | Passed |
+   | Verify that the sorting functionality works consistently across different screen sizes. | Sorting by cheapest, fastest, and best should work seamlessly on mobile and tablet views. | Passed |
