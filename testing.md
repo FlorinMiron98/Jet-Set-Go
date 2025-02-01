@@ -98,3 +98,10 @@ While the website is designed to work seamlessly across modern browsers such as 
    | Verify that the information displayed on the flight details modal matches what was shown in the search results. | Flight details on the details modal should match the information presented in the search results. | Passed |
    | Verify that the flight selection, details modal and booking process works correctly on mobile devices. | Flight selection, details modal and booking should be fully functional on mobile devices with no layout issues. | Passed
    | Verify that the user can cancel the flight selection and return to the search results. | The user should be able to cancel the selection and go back to the search results without losing their previous search parameters. | Passed |
+
+4. As a customer, I want to see recommended flight destinations so that I can discover new places to visit and book flights easily.
+   | **Test Description** | **Outcome** | **Status** |
+   | -------------------- | ----------- | ---------- |
+   | Verify that recommended flight destinations are displayed on the homepage or relevant page. | The recommended destinations should be visible and clearly labeled on the page. | Passed |
+   | Verify that the recommended destinations are displayed correctly and are clickable on mobile devices. | Recommended destinations should be properly displayed on mobile screens without layout issues. | Passed |
+**Note**: The functionality beyond displaying the recommended flight destinations is yet to be implemented.
