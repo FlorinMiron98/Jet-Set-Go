@@ -163,17 +163,18 @@ Manual testing was conducted to ensure the application functions as expected acr
 ### Bugs
 - Issue with `.parcel-cache` File:
   - The `.parcel-cache` file was omitted from the `.gitignore` file during development. As a result, Git preserved a reference to the `.parcel-cache` and it was accidentally pushed to GitHub. The process of removing the `.parcel-cache` from the repository on GitHub caused some duplicate commits to appear in the commit history.
+    
   **Solution**
     - Added the `.parcel-cache` file to `.gitignore` to prevent it from being tracked by Git in the future.
     - Removed the `.parcel-cache` file from the Git history using [BFG Repo-Cleaner](https://rtyley.github.io/bfg-repo-cleaner/) to clean the history and prevent duplication.
     - Force-pushed the cleaned history to the remote GitHub repository.
 - Issue with Safari:
   - While the website is designed to work seamlessly across modern browsers such as Chrome, Firefox, Opera, and Edge, some features may not function as expected in Safari. This section outlines known issues related to modern layout techniques (such as CSS Grid and Flexbox) and the handling of asynchronous code, including unhandled promise rejections. These discrepancies are mainly due to differences in how Safari interprets and implements web standards. Below, you'll find a detailed explanation of these issues and potential workarounds to ensure optimal functionality.
-1. **Layout Issues in Safari**
-   - **CSS Grid:** Safari has had inconsistent behavior when using `grid-template-areas`. Sometimes, it doesn't respect the grid areas as expected or has visual inconsistencies when compared to other browsers like Chrome or Firefox. This can result in misalignment or incorrect placement of grid items.
-   - **CSS Flexbox:** There are certain Flexbox issues with Safari, especially with items stretching or aligning incorrectly. For example, setting align-items: stretch may not always stretch items to their full container size in Safari.
-2. **Asynchronous Code**
-   - While the code for handling asynchronous operations is wrapped in a `try...catch` block to catch errors, Safari may still throw an **"Unhandled Promise Rejection"** error in certain cases. This occurs because Safari's behavior around promise rejections can sometimes be more strict or behave differently than other browsers (such as Chrome, Firefox, Opera, and Edge). Even with proper error handling using `try...catch`, Safari may still interpret certain rejection cases as unhandled or trigger the error unexpectedly.
+  1. **Layout Issues in Safari**
+     - **CSS Grid:** Safari has had inconsistent behavior when using `grid-template-areas`. Sometimes, it doesn't respect the grid areas as expected or has visual inconsistencies when compared to other browsers like Chrome or Firefox. This can result in misalignment or incorrect placement of grid items.
+     - **CSS Flexbox:** There are certain Flexbox issues with Safari, especially with items stretching or aligning incorrectly. For example, setting align-items: stretch may not always stretch items to their full container size in Safari.
+  2. **Asynchronous Code**
+     - While the code for handling asynchronous operations is wrapped in a `try...catch` block to catch errors, Safari may still throw an **"Unhandled Promise Rejection"** error in certain cases. This occurs because Safari's behavior around promise rejections can sometimes be more strict or behave differently than other browsers (such as Chrome, Firefox, Opera, and Edge). Even with proper error handling using `try...catch`, Safari may still interpret certain rejection cases as unhandled or trigger the error unexpectedly.
  
-![unhandled-promise-rejection-safari](https://github.com/user-attachments/assets/b3eb83cd-e79a-4230-977b-85d40a2433ea)
+     ![unhandled-promise-rejection-safari](https://github.com/user-attachments/assets/b3eb83cd-e79a-4230-977b-85d40a2433ea)
    
