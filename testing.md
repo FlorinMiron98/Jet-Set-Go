@@ -73,4 +73,10 @@ While the website is designed to work seamlessly across modern browsers such as 
    | **Test Description** | **Outcome** | **Status** |
    | -------------------- | ----------- | ---------- |
    | Verify that the search flight tickets form is displayed | Flight tickets search form should be visible on the page | Passed |
+   | Test search with valid departure and arrival cities, valid travel dates and number of passengers | A new page is displayed in a new tab displaying the flight offers results | Passed |
+   | Test search with invalid departure and arrival cities | A dropdown box containing an error message should be displayed | Passed |
+   | Test search with valid departure and arrival cities, invalid travel dates (e.g. past dates) | A message that no flight offer has been found should be displayed | Passed |
+   | Test search with valid departure and arrival cities, travel dates and unselected children's ages(if that's the case) | A `tippy.js` tooltip should be displayed requiring each child's age to be introduced | Passed |
+   | Test search with valid input values | A message that no flight offer has been found should be displayed | Passed |
+   | Test search with blank fields | A `tippy.js` tooltip should be displaying requiring the user to enter the relevant data | Passed |
 
