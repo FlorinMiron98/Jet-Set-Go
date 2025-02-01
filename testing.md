@@ -7,7 +7,7 @@
 2. [Performance, Accessibility and Best Practices Testing](#performance-accessibility-and-best-practices-testing)
 3. [Manual Testing](#manual-testing)
 4. [Testing Client Stories From UX](#testing-client-stories-from-ux)
-5. Functional Testing
+5. [Functional Testing](#functional-testing)
 6. Bugs
 
 ### Validator Testing
@@ -117,3 +117,58 @@ While the website is designed to work seamlessly across modern browsers such as 
    | Verify that the IntersectionObserver behavior works correctly on mobile and tablet devices, including loading additional results. | The IntersectionObserver should work seamlessly across different screen sizes, including mobile and tablet. | Passed |
    | Verify that after applying sorting, the IntersectionObserver continues to load results that match the new criteria. | The IntersectionObserver should load additional results based on the updated filters or sorting options applied by the user. | Passed |
    | Verify that the infinite scrolling functionality does not conflict with other UI elements. | The IntersectionObserver should work without interfering with other interactive elements on the page. | Passed | 
+### Functional Testing
+1. **Homepage**
+   | **Test Description** | **Expected Result** | **Status** |
+   | -------------------- | ------------------- | ---------- |
+   | Click the Hamburger button from the navigation bar | The overlay and the sidebar navigation should be displayed. The background color of the navigation bar should turn to blue | Passed |
+   | Click the overlay | The sidebar navigation should be hidden. If the `scrollY` property is bigger than 1, the background color of the navigation bar should be blue. If the `scrollY` property is 0, the background color of the navigation bar should be transparent. | Passed |
+   | Click the persons selection button | A dropdown container should be displayed containing the number of adults and children, as well as the buttons to increase or decrease their number | Passed |
+   | Increase or decrease the number of adults or children | The content of the persons selection button should dynamically update to reflect the changes | Passed |
+   | Increase the number of children | A select element should be displayed where the user is asked to select each child's age | Passed |
+   | Decrease the number of children | The select element should be hidden | Passed |
+   | Each time the user increases the number of adults or children, the total number should not be bigger than 9. | Disable the increase buttons when the total number of adults and children is equal to 9 | Passed |
+   | Click the cabin class button | A dropdown list should be displayed containing all flight classes (economy, premium economy, business class, first class) | Passed |
+   | Select a cabin class | The content of the cabin class button should dynamically update to reflect the changes. Style the selected class differently for a proper User Experience | Passed |
+   | Look for a departure/arrival location | A dropdown list should be displayed containing results based on the input value introduced by the user | Passed |
+   | Click one of the departure/arrival location results | The input value should update with the location code and the location name. The clear input button should be displayed | Passed |
+   | Introduce an invalid departure/location value | The dropdown list should contain a message stating that no result matches the user's query | Passed |
+   | Click the departure/return date input | A datepicker should be displayed where the minimum value is the today date | Passed |
+   | Select a departure/return date | The input value should update with the selected date. The clear input button should be displayed | Passed |
+   | Click 'Search' button without selecting each child's age if that's the case | A `tippy.js` tooltip should appear asking the user to select all children's age | Passed |
+   | Click 'Search' button without selecting a departure/arrival location | A `tippy.js` tooltip should appear asing the user to select a value for the departure/arrival location | Passed |
+   | Click 'Search' button without selecting a departure date | A `tippy.js` tooltip should appear asing the user to select a departure date | Passed |
+   | Click on the clear input button for each input | The input value should be cleared and the input should receive focus | Passed |
+   
+2. **Results page**
+   | **Test Description** | **Expected Result** | **Status** |
+   | -------------------- | ------------------- | ---------- |
+   | Click 'Search' button without introducing a return date | The search results page should open with the relevant flight offers results as the return date is optional | Passed |
+   | Click 'Search' button with valid data | The search results page should open containing the three sort buttons (best, cheapest, fastest) and the loading spinner. The loading spinner will be hidden and the flight offers will be displayed when the data is received | Passed |
+   | Click 'Search' button with invalid data | The search results page should open containing the three sort buttons (best, cheapest, fastest) and the loading spinner. The loading spinner will be hidden and a message that no flight result matches the search criteria will be displayed for the user | Passed |
+   | Click the 'View Details' button from the flight offers | A modal should be displayed containing all the relevant data for the flight offer selected by the user (e.g. departure and arrival locations, departure and return date, layover, operating carrier, included features) | Passed |
+   | Click the sort buttons (best, cheapest, fastest) | The results page should reload and display the flight offers that match the sort button | Passed |
+   | Scroll to the bottom of the page | The Intersection Observer API should load more flight offers for the user | Passed |
+
+3. **Book flight form**
+   | **Test Description** | **Expected Result** | **Status** |
+   | -------------------- | ------------------- | ---------- |
+   | Click the 'Select' button from the flight details modal | A new modal should appear containing a form for the user to complete in order to book the selected flight | Passed |
+   | Leave the 'First Name' input empty when clicking the 'Submit' button | Display a message for the user to fill the input | Passed |
+   | Verify that the first name field accepts only alphabetic characters and is required. | The field should only allow alphabetic characters and display an error message if left empty. | Passed |
+   | Verify that the last name field accepts only alphabetic characters and is required. | The field should only allow alphabetic characters and display an error message if left empty. | Passed |
+   | Verify that the email address field accepts a valid email format and is required. | The field should accept a valid email format (e.g. user@example.com) and show an error if invalid or empty. | Passed |
+   | Verify that the phone number field accepts a valid phone number format and is required. | The field should accept a phone number in the international format and display an error if left empty or incorrect. | Passed |
+   | Verify that the card number field accepts a valid credit/debit card number and is required. | The field should accept 16-digit card numbers and display an error message if it doesn't match the format or is left empty. | Passed |
+   | Verify that the CVV field accepts a 3-digit CVV code and is required. | The field should only accept a 3-digit number and display an error if left empty or incorrect. | Passed |
+   | Verify that the message field is optional and can accept text input. | The field should allow text input but is not required for submission. | Passed |
+   | Verify that the form cannot be submitted unless all required fields are filled out correctly. | The submit button display an error if any required fields are missing or invalid. | Passed |
+   | Verify that the form fields and layout adjust properly on mobile devices. | The form should be fully functional and properly displayed on mobile devices with no layout issues. | Passed |
+   | Click the 'Submit' button after the data was properly introduced | The user should be redirected to a booking confirmation page which contains a confirmation message and a 'Return to Main Page' button | Passed |
+
+4. **Booking confirmation page**
+   | **Test Description** | **Expected Result** | **Status** |
+   | -------------------- | ------------------- | ---------- |
+   | Click 'Return to Main Page' button | Return the user to the Homepage | Passed |
+   
+   
