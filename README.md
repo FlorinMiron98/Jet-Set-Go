@@ -31,9 +31,9 @@ This is a flights tickets booking website designed to facilitate seamless flight
     - [Validator Testing](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/testing.md#validator-testing)
     - [Performance, Accessibility and Best Practices](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/testing.md#performance-accessibility-and-best-practices-testing)
     - [Manual Testing](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/testing.md#manual-testing)
-    - Testing Client Stories From UX
-    - Functional Testing
-    - Bugs
+    - [Testing Client Stories From UX](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/testing.md#testing-client-stories-from-ux)
+    - [Functional Testing](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/testing.md#functional-testing)
+    - [Bugs](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/testing.md#bugs)
 5. [Deployment](#deployment)
     - [Run This Project Locally](#run-the-project-locally)
 6. [Credits](#credits)
