@@ -8,7 +8,7 @@
 3. [Manual Testing](#manual-testing)
 4. [Testing Client Stories From UX](#testing-client-stories-from-ux)
 5. [Functional Testing](#functional-testing)
-6. Bugs
+6. [Bugs](#bugs)
 
 ### Validator Testing
 1. [W3C Markup Validator](https://validator.w3.org/)
