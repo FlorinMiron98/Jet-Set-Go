@@ -88,3 +88,13 @@ While the website is designed to work seamlessly across modern browsers such as 
    | Verify that flight search results can be sorted by the fastest option (shortest duration). | Flights should be listed from the shortest to the longest duration. | Passed |
    | Verify that each sorting button is styled differently when active | The active button must have a different styling than the unactive ones | Passed |
    | Verify that the sorting functionality works consistently across different screen sizes. | Sorting by cheapest, fastest, and best should work seamlessly on mobile and tablet views. | Passed |
+
+3. As a customer, I want to select a flight from the search results, view flight details, and proceed to booking so that I can finalize my flight purchase.
+   | **Test Description** | **Outcome** | **Status** |
+   | -------------------- | ----------- | ---------- |
+   | Verify that a customer can select a flight from the search results. | Each flight offer should contain a 'View Details' button which will open a modal containing the flight details | Passed |
+   | Verify that the flight details page displays accurate information (e.g. departure/arrival times, duration, price). | All flight details should be displayed correctly on the details page. | Passed |
+   | Verify that the user can click the "Book Now" or equivalent button to proceed to the booking page after viewing the flight details. | Clicking "Book Now" or the equivalent button should open a modal with the relevant form requiring user's details | Passed |
+   | Verify that the information displayed on the flight details modal matches what was shown in the search results. | Flight details on the details modal should match the information presented in the search results. | Passed |
+   | Verify that the flight selection, details modal and booking process works correctly on mobile devices. | Flight selection, details modal and booking should be fully functional on mobile devices with no layout issues. | Passed
+   | Verify that the user can cancel the flight selection and return to the search results. | The user should be able to cancel the selection and go back to the search results without losing their previous search parameters. | Passed |
