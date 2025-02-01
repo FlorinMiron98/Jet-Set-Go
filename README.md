@@ -112,6 +112,8 @@ For this project, I decided to create high-fidelity wireframes to better visuali
 9. **Core.js** (integrated with Babel) - Core.js is a powerful JavaScript library that provides polyfills for ECMAScript features, ensuring compatibility across different browsers and environments. More about Core.js on this [GitHub repository](https://github.com/zloirock/core-js).
 10. **Regenerator-runtime** - The Regenerator-runtime library provides a runtime for generators and async functions, enabling the use of modern asynchronous JavaScript syntax (like async/await) in environments that do not natively support it. More about the Regenerator-runtime [here](https://www.npmjs.com/package/regenerator-runtime).
 11. **Booking API** - The Booking API focuses on flight-related services. It provides real-time data on arrival and departure locations, flight dates and available flight offers. The API allows users to search for flights and view flight options.
+12. **Intersection Observer API** - The Intersection Observer API is a web API that allows you to monitor the visibility and position of elements within a viewport or container. It provides a way to asynchronously observe changes in the intersection of an element with a parent element or the viewport, without needing to manually track scroll events. This API is commonly used for implementing features like infinite scrolling, lazy loading images, and triggering animations when elements come into view. More about the Intersection Observer API [here](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API).
+13. **Intl** - The Intl API (Internationalization API) is a built-in JavaScript API that provides a set of functions and objects for handling language-sensitive operations. It helps developers build web applications that can adapt to various languages, formats, and cultural conventions. More about Intl [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl).
 ### Deployment
 This project was created using [Visual Studio Code](https://code.visualstudio.com/), committed to [Git](https://git-scm.com/) and pushed to [GitHub](https://github.com/) using Git's built-in function `git push`.
 As this project was created using the development environment provided by [Parcel.js](https://parceljs.org/), I decided to deploy it on [Netlify](https://www.netlify.com/) as the deployment process was much easier. The next steps were followed:
@@ -187,13 +189,15 @@ The responsive screen mockups was created using [Yujin Yeoh Mockup Generator](ht
 4. Code for introduction section cards was created using [Bootstrap Cards](https://getbootstrap.com/docs/5.3/components/card/#about) and slightly modified to fit the project's needs and design.
 5. Code for best destinations section cards was created using [Bootstrap Cards](https://getbootstrap.com/docs/5.3/components/card/#about) and heavily edited to fit the project's needs and design.
 6. Code for flight booking form and its layout was created using [Bootstrap Forms](https://getbootstrap.com/docs/5.3/forms/overview/#overview) and [Bootstrap Grid System](https://getbootstrap.com/docs/5.3/layout/grid/#example).
-7. Code for ordered lists inside the details dialog was created using [Bootstrap List Groups](https://getbootstrap.com/docs/5.3/components/list-group/#basic-example);
+7. Code for ordered lists inside the details dialog was created using [Bootstrap List Groups](https://getbootstrap.com/docs/5.3/components/list-group/#basic-example).
 8. Code for spinner loaders was created using this [W3C Article](https://www.w3schools.com/howto/howto_css_loader.asp) and slightly modified to fit the project's needs.
 9. Code for CSS selectors used to style the **Tippy.js** box was created using [Tippy.js Themes](https://atomiks.github.io/tippyjs/v6/themes/).
 10. Code for **Tippy.js** options was created using [Tippy.js Customization](https://atomiks.github.io/tippyjs/v6/customization/).
 11. Code for setting the options and the initialisation of the **Air-datepicker.js** was created using [Airdatepicker.js Examples](https://air-datepicker.com/examples).
-12. Code for adding the correct CSS prefixes to ensure the cross-browser compatibility was created using [Autoprefixer CSS online](https://autoprefixer.github.io/).
-13. Code for darkening background images was taken from this [Stack Overflow post](https://stackoverflow.com/questions/26621513/darken-css-background-image).
-14. Code for **regular expressions** used in flight booking form inputs was created using [ChatGPT](https://chatgpt.com/).
+12. Code for implementing infinite scroll for displaying more search results was created using the [MDN Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API).
+13. Code for date formatting on search results page and flight details dialog was created using [MDN Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat).
+14. Code for adding the correct CSS prefixes to ensure the cross-browser compatibility was created using [Autoprefixer CSS online](https://autoprefixer.github.io/).
+15. Code for darkening background images was taken from this [Stack Overflow post](https://stackoverflow.com/questions/26621513/darken-css-background-image).
+16. Code for **regular expressions** used in flight booking form inputs was created using [ChatGPT](https://chatgpt.com/).
 #### Inspirations
 - [Booking.com](https://www.booking.com) - For the overall layout of the results page.
