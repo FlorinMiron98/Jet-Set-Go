@@ -107,6 +107,7 @@ This feature provides validation tooltips to guide users when certain selections
   - If the user does not select a location for either departure or arrival, a tooltip is displayed above the corresponding input field.
   - The tooltip informs the user to select a valid departure and/or arrival location.
   - The tooltip is triggered when the form is submitted or when the user interacts with the location input fields and has not selected a location.
+  
   ![departure-location-input-validation](https://github.com/user-attachments/assets/e6504ce4-4f14-479c-81bd-6eea7af1d505)
   ![arrival-location-input-validation](https://github.com/user-attachments/assets/9cabad43-6d3b-4d9f-947a-d5a9801a5255)
 
