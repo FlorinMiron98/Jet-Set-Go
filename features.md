@@ -9,8 +9,7 @@
      - [Main Features Link Buttons](#main-features-links)
      - [Persons Selection Button](#persons-selection-button)
      - [Flight Class Selection Button](#flight-class-selection-button)
-     - Departure/Arrival Location Input
-     - Departure/Arrival Location Search Results
+     - [Departure/Arrival Location Input](#departure/arrival-location-input)
      - Departure/Return Date Input
      - Clear Input Button
      - Form Validation Tooltips
@@ -68,3 +67,14 @@
 - When the user selects a flight class, the content of the flight class selection button is updated to reflect the chosen class.
 - The selected flight class button is visually distinguished with a blue border, marking it as the active selection.
 - The dropdown menu closes when clicking the 'Done' button or anywhere else outside the container.
+#### Departure/Arrival Location Input
+- This feature provides a search input for users to find and select a departure or arrival location, displaying relevant city and airport information in a dropdown results container.
+![departure-arrival-location-search-input](https://github.com/user-attachments/assets/e0f77a50-4738-4767-8bfc-ca43975b1c20)
+
+- As the user types into the search input, a dropdown container displays search results based on the input.
+- Cities are displayed with an associated city icon, which is sourced from the booking API.
+- Airports within the same city are listed with the airport code, airport name, the distance from the city center. Airports within the same city have a larger gap between the edge of the container to make them easier to distinguish.
+![departure-arrival-location-results-dropdown](https://github.com/user-attachments/assets/18e068d2-9ec9-4e25-bf4c-41ba8377beb8)
+
+![departure-arrival-location-results-dropdown-2](https://github.com/user-attachments/assets/a3a93c81-bae5-4e94-8947-4cb3e6cfcc4d)
+- Airports from other cities are displayed with the airport code, airport name, the location.
