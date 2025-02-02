@@ -16,7 +16,7 @@
      - [Search Button](#search-button)
    - [Services](#services)
    - [Best Destinations](#best-destinations)
-   - The Best Seasonal Destination
+   - [The Best Seasonal Destination](#the-best-seasonal-destination)
 5. Results Page
    - Sort Buttons
    - Flights Results
@@ -130,3 +130,9 @@ This section highlights some of the top travel destinations around the world, sh
 
 - Each card features a beautiful image of the city to capture the user's attention and provide a preview of the destination.
 - The buttons are placeholders for future functionality, where users will be able to explore booking options for flights, hotels, car rentals, attractions, and access detailed information about each city.
+### The Best Seasonal Destination
+This section highlights the best travel destinations for each season, showcasing cards for top locations with an inviting "Book Now" call to action.
+![best-seasonal-destination](https://github.com/user-attachments/assets/9decc0e0-bdef-4c30-a73b-1c523b61d7f0)
+
+- The card contains an image of the location, the location name, a short description of the location highlighting why it's an ideal seasonal destination, and a call-to-action button 'Book Now'(the functionality for this button will be implemented in the future).
+- The functionality for displaying the location dynamically based on the season will be implemented in the future.
