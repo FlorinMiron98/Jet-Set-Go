@@ -7,7 +7,7 @@
 4. [Homepage](#homepage)
    - [Hero](#hero)
      - [Main Features Link Buttons](#main-features-links)
-     - Persons Selection Input
+     - [Persons Selection Button](#persons-selection-button)
      - Flight Class Selection Input
      - Departure/Arrival Location Input
      - Departure/Arrival Location Search Results
@@ -49,3 +49,16 @@
 #### Main Features Link Buttons
 ![main-features-links](https://github.com/user-attachments/assets/fc97d43a-749a-412b-8e44-db97a4206243)
 - Each button will open a page in a new tab. The page will contain one of the main features of the website. This will be implemented in the future.
+#### Persons Selection Button
+![persons-selection-button](https://github.com/user-attachments/assets/efa35eb4-921c-4d13-b03e-e0fbf0d534f5)
+![persons-selection-dropdown](https://github.com/user-attachments/assets/42076bd9-77ba-411e-83c4-1b0c1e7e4d1d)
+- This feature provides a dynamic dropdown container with functionality that allows users to adjust the number of adults and children for a given selection.
+- The dropdown contains options to increase or decrease the number of adults and children.
+- The user can adjust the count of adults and children by selecting the respective increment or decrement buttons.
+- When the user increases the number of children, a corresponding select element is created for each additional child.
+- Each select element allows the user to choose the age of the child, with available options ranging from 1 to 17 years old.
+- The content of the button is updated dynamically to reflect the current number of adults and children based on the user's selections.
+- The dropdown container is hidden when the user clicks the 'Done' button or anywhere else outside the container.
+
+
+
