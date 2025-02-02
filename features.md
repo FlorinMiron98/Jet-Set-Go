@@ -9,6 +9,7 @@
    - Best Destinations
    - The Best Seasonal Destination
 4. Results Page
+   - Sort Buttons
    - Flights Results
    - Flight Details Dialog
    - Submit Dialog
