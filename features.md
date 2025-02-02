@@ -2,8 +2,9 @@
 
 ## Table of Contents
 1. [Navigation](#navigation)
-2. Footer
-3. Homepage
+   - [Sidebar Navigation](#sadiebar-navigation)
+3. Footer
+4. Homepage
    - Hero
      - Main Features Links
      - Persons Selection Input
@@ -17,12 +18,12 @@
    - Services
    - Best Destinations
    - The Best Seasonal Destination
-4. Results Page
+5. Results Page
    - Sort Buttons
    - Flights Results
    - Flight Details Dialog
    - Flight Book Dialog
-5. Booking Confirmation Page
+6. Booking Confirmation Page
 
 ## [Main README.md file](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/README.md)
 
@@ -33,3 +34,8 @@
 
 ![navbar-colored](https://github.com/user-attachments/assets/82b442ad-202b-43d8-a237-0397dbc9eed1)
 - The background color of the navigation bar turns into blue when the `scrollY` property is bigger than 0.
+### Sidebar Navigation
+![sidebar-navigation](https://github.com/user-attachments/assets/483d35b2-b77c-4056-925c-4b50775b62c1)
+- The sidebar navigation opens when the user clicks the hamburger button. It contains links to the main features of the website. Besides the Flights page, the rest of them will be implemented in the future.
+- The overlay opens together with the sidebar navigation and it helps the sidebar navigation to stand out.
+- The sidebar navigation closes once the user clicks the hamburger button again or the overlay.
