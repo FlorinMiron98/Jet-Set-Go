@@ -9,9 +9,9 @@
      - [Main Features Link Buttons](#main-features-links)
      - [Persons Selection Button](#persons-selection-button)
      - [Flight Class Selection Button](#flight-class-selection-button)
-     - [Departure/Arrival Location Input](#departure/arrival-location-input)
-     - [Departure/Return Date Input](#departure/return-date-input)
-     - Clear Input Button
+     - [Departure/Arrival Location Inputs](#departure-and-arrival-location-inputs)
+     - [Departure/Return Date Inputs](#departure-and-return-date-inputs)
+     - [Clear Input Button](#clear-input-button)
      - Form Validation Tooltips
      - Search Button
    - Services
@@ -67,7 +67,7 @@
 - When the user selects a flight class, the content of the flight class selection button is updated to reflect the chosen class.
 - The selected flight class button is visually distinguished with a blue border, marking it as the active selection.
 - The dropdown menu closes when clicking the 'Done' button or anywhere else outside the container.
-#### Departure/Arrival Location Input
+#### Departure and Arrival Location Inputs
 - This feature provides a search input for users to find and select a departure or arrival location, displaying relevant city and airport information in a dropdown results container.
 ![departure-arrival-location-search-input](https://github.com/user-attachments/assets/e0f77a50-4738-4767-8bfc-ca43975b1c20)
 
@@ -78,7 +78,7 @@
 
 - Airports from other cities are displayed with the airport code, airport name, the location.
 ![departure-arrival-location-results-dropdown-2](https://github.com/user-attachments/assets/a3a93c81-bae5-4e94-8947-4cb3e6cfcc4d)
-#### Departure/Return Date Input
+#### Departure and Return Date Inputs
 - This feature allows users to select a departure and/or return date using an interactive calendar interface, provided by [Air-datepicker](https://air-datepicker.com/).
 - There are two date input fields: one for selecting the departure date and one for the return date.
 ![departure-return-date-input](https://github.com/user-attachments/assets/16f8def7-ebc9-46da-bbe7-cee21d0c70cd)
@@ -86,3 +86,10 @@
 - When the user clicks on either input field, a calendar (using Air-datepicker) is displayed for date selection.
 - The minimum selectable date for both departure and return is today, preventing users from selecting a past date.
 ![departure-return-date-dropdown](https://github.com/user-attachments/assets/9255e3e8-a0f9-4cff-93df-63355d593c7e)
+#### Clear Input Button
+- Once the user selects a value (location or date), the corresponding input field is updated with the selected value, and the input is disabled temporarily to prevent further manual editing.
+- A "Clear Input" button appears on the right edge of the input field (for both departure/arrival locations and departure/return dates) after the user has selected a value from the dropdown results container or the Air-datepicker calendar.
+![clear-input-button](https://github.com/user-attachments/assets/be16d508-9724-4cf6-8fd3-fe51e8a14ec3)
+
+- When the user clicks the clear input button the input field's value is cleared and the input field is refocused, ready for a new input or selection.
+![clear-input-button-focus](https://github.com/user-attachments/assets/43d69b35-7269-40d5-a498-2a65115d1dc6)
