@@ -38,6 +38,7 @@ class PersonsSelectionView {
                 <button
                 type="button"
                 class="selection-decrease-btn border-0 rounded-3 focus-ring"
+                title="Decrease Adults Number"
                 ${this._adults === 1 ? "disabled" : ""}
                 >
                 <i class="fa-solid fa-minus"></i>
@@ -46,6 +47,7 @@ class PersonsSelectionView {
                 <button
                 type="button"
                 class="selection-increase-btn border-0 rounded-3 focus-ring"
+                title="Increase Adults Number"
                 ${this._adults + this._children === 9 ? "disabled" : ""}
                 >
                 <i class="fa-solid fa-plus"></i>
@@ -68,6 +70,7 @@ class PersonsSelectionView {
                 <button
                 type="button"
                 class="selection-decrease-btn border-0 rounded-3 focus-ring"
+                title="Decrease Children Number"
                 ${this._children === 0 ? "disabled" : ""}
                 >
                 <i class="fa-solid fa-minus"></i>
@@ -76,6 +79,7 @@ class PersonsSelectionView {
                 <button
                 type="button"
                 class="selection-increase-btn border-0 rounded-3 focus-ring"
+                title="Increase Children Number"
                 ${this._adults + this._children === 9 ? "disabled" : ""}
                 >
                 <i class="fa-solid fa-plus"></i>
