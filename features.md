@@ -121,4 +121,7 @@ This feature provides validation tooltips to guide users when certain selections
 #### Search Button
 - After the user fills in valid inputs for all required fields (departure/arrival locations, departure/return dates, persons selection), the search button redirects the user to the results page, where the available flight offers matching their inputs are displayed.
 ![search-button](https://github.com/user-attachments/assets/ee9675ad-62ea-4eed-95e8-ddfe0205a3b0)
+### Services
+This feature displays a section with three cards, each highlighting a key service the website provides. These cards are designed to inform users about the primary benefits of using the website and make navigation more engaging. Each card contains an image, the service provided and a short description.
+![services](https://github.com/user-attachments/assets/7c658c7e-97e2-4483-81e8-4a153138531a)
 
