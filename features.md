@@ -12,7 +12,7 @@
    - Sort Buttons
    - Flights Results
    - Flight Details Dialog
-   - Submit Dialog
+   - Flight Book Dialog
 5. Booking Confirmation Page
 
 ## [Main README.md file](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/README.md)
