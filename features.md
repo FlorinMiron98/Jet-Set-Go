@@ -101,6 +101,8 @@ This feature provides validation tooltips to guide users when certain selections
   - The tooltip is triggered when the form is submitted and has not filled in the required child age fields.
   ![children-age-tooltip](https://github.com/user-attachments/assets/971da321-3386-4f3e-8e49-5ba1f4ce9005)
 
+- **Flight Class Button Validation**
+  - As the default value for the flight class selection is 'Economy', this button does not need to be validated.
 - **Departure/Arrival Location Input Validation**
   - If the user does not select a location for either departure or arrival, a tooltip is displayed above the corresponding input field.
   - The tooltip informs the user to select a valid departure and/or arrival location.
@@ -108,4 +110,15 @@ This feature provides validation tooltips to guide users when certain selections
   
   ![departure-location-input-validation](https://github.com/user-attachments/assets/e6504ce4-4f14-479c-81bd-6eea7af1d505)
   ![arrival-location-input-validation](https://github.com/user-attachments/assets/9cabad43-6d3b-4d9f-947a-d5a9801a5255)
+
+- **Departure/Return Date Input Validation**
+  - The user is required to select a valid departure date before submitting the form.
+  - If the departure date is not selected, a tooltip will appear, informing the user that the departure date is required.
+  - The tooltip for the departure date appears above the departure date input if the user has not selected a date. It prompts the user to select a valid departure date.
+  - The tooltip is triggered when the form is submitted and has not made a selection.
+  - The return date input is **optional**. Users may leave this field blank without triggering any validation error.
+
+  ![departure-date-input-validation](https://github.com/user-attachments/assets/e93f59cd-74b2-4175-887a-4b01ab7c119d)
+  ![return-date-input-validation](https://github.com/user-attachments/assets/b038c4c3-1742-438c-9733-82bbb18e45ce)
+
 
