@@ -12,7 +12,7 @@
      - [Departure/Arrival Location Inputs](#departure-and-arrival-location-inputs)
      - [Departure/Return Date Inputs](#departure-and-return-date-inputs)
      - [Clear Input Button](#clear-input-button)
-     - Form Validation Tooltips
+     - [Form Validation Tooltips](#form-validation-tooltips)
      - Search Button
    - Services
    - Best Destinations
@@ -93,3 +93,19 @@
 
 - When the user clicks the clear input button the input field's value is cleared and the input field is refocused, ready for a new input or selection.
 ![clear-input-button-focus](https://github.com/user-attachments/assets/43d69b35-7269-40d5-a498-2a65115d1dc6)
+#### Form Validation Tooltips
+This feature provides validation tooltips to guide users when certain selections are missing or incorrect, ensuring the form is completed correctly. The tooltips were created using [tippy.js](https://atomiks.github.io/tippyjs/).
+- **Persons Selection Button Validation:**
+  - If the user does not select an age for each child (in case children have been added), a tooltip is displayed above the persons selection button.
+  - The tooltip warns the user to select the age for all children.
+  - The tooltip is triggered when the form is submitted and has not filled in the required child age fields.
+  ![children-age-tooltip](https://github.com/user-attachments/assets/971da321-3386-4f3e-8e49-5ba1f4ce9005)
+
+- **Departure/Arrival Location Input Validation**
+  - If the user does not select a location for either departure or arrival, a tooltip is displayed above the corresponding input field.
+  - The tooltip informs the user to select a valid departure and/or arrival location.
+  - The tooltip is triggered when the form is submitted or when the user interacts with the location input fields and has not selected a location.
+  
+  ![departure-location-input-validation](https://github.com/user-attachments/assets/e6504ce4-4f14-479c-81bd-6eea7af1d505)
+  ![arrival-location-input-validation](https://github.com/user-attachments/assets/9cabad43-6d3b-4d9f-947a-d5a9801a5255)
+
