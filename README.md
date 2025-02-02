@@ -19,6 +19,15 @@ This is a flights tickets booking website designed to facilitate seamless flight
     - Footer
     - Homepage
       - Hero
+        - Main Features Links
+        - Persons Selection Input
+        - Flight Class Selection Input
+        - Departure/Arrival Location Input
+        - Departure/Arrival Location Search Results
+        - Departure/Return Date Input
+        - Clear Input Button
+        - Form Validation Tooltips
+        - Search Button
       - Services
       - Best Destinations
       - The Best Seasonal Destination
