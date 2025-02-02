@@ -15,6 +15,8 @@ This is a flights tickets booking website designed to facilitate seamless flight
     - Design Choices
     - [Wireframes](#wireframes)
 2. Features
+    - Navigation
+    - Footer
     - Homepage
       - Hero
       - Services
@@ -26,17 +28,17 @@ This is a flights tickets booking website designed to facilitate seamless flight
       - Flight Details Dialog
       - Submit Dialog
     - Booking Confirmation Page
-3. [Technologies Used](#technologies-used)
-4. [Testing](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/testing.md)
+4. [Technologies Used](#technologies-used)
+5. [Testing](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/testing.md)
     - [Validator Testing](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/testing.md#validator-testing)
     - [Performance, Accessibility and Best Practices](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/testing.md#performance-accessibility-and-best-practices-testing)
     - [Manual Testing](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/testing.md#manual-testing)
     - [Testing Client Stories From UX](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/testing.md#testing-client-stories-from-ux)
     - [Functional Testing](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/testing.md#functional-testing)
     - [Bugs](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/testing.md#bugs)
-5. [Deployment](#deployment)
+6. [Deployment](#deployment)
     - [Run This Project Locally](#run-the-project-locally)
-6. [Credits](#credits)
+7. [Credits](#credits)
     - [Content](#content)
     - [Media](#media)
     - [Code](#code)
@@ -119,7 +121,7 @@ This project was created using [Visual Studio Code](https://code.visualstudio.co
 As this project was created using the development environment provided by [Parcel.js](https://parceljs.org/), I decided to deploy it on [Netlify](https://www.netlify.com/) as the deployment process was much easier. The next steps were followed:
 1. **Build the Project**
    - After the development process, I made sure the project is built for production by running the following command in the terminal: `npm run build`
-   - This whill generate the production-ready files inside the `dist/` folder (or the configured output folder).
+   - This will generate the production-ready files inside the `dist/` folder (or the configured output folder).
 2. **Create a Netlify Account**
    - If you dont't have a Netflify account, sign-up at [Netlify](https://www.netlify.com/).
 3. **Log In to Netlify**
