@@ -14,8 +14,8 @@
      - [Clear Input Button](#clear-input-button)
      - [Form Validation Tooltips](#form-validation-tooltips)
      - [Search Button](#search-button)
-   - Services
-   - Best Destinations
+   - [Services](#services)
+   - [Best Destinations](#best-destinations)
    - The Best Seasonal Destination
 5. Results Page
    - Sort Buttons
@@ -124,4 +124,9 @@ This feature provides validation tooltips to guide users when certain selections
 ### Services
 This feature displays a section with three cards, each highlighting a key service the website provides. These cards are designed to inform users about the primary benefits of using the website and make navigation more engaging. Each card contains an image, the service provided and a short description.
 ![services](https://github.com/user-attachments/assets/7c658c7e-97e2-4483-81e8-4a153138531a)
+### Best Destinations
+This section highlights some of the top travel destinations around the world, showcasing cards for each city with key features related to booking travel.
+![best-destinations](https://github.com/user-attachments/assets/2e6418f6-4397-4836-bc29-34c47cc7213d)
 
+- Each card features a beautiful image of the city to capture the user's attention and provide a preview of the destination.
+- The buttons are placeholders for future functionality, where users will be able to explore booking options for flights, hotels, car rentals, attractions, and access detailed information about each city.
