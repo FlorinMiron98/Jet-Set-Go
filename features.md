@@ -8,7 +8,7 @@
    - [Hero](#hero)
      - [Main Features Link Buttons](#main-features-links)
      - [Persons Selection Button](#persons-selection-button)
-     - Flight Class Selection Input
+     - [Flight Class Selection Button](#flight-class-selection-button)
      - Departure/Arrival Location Input
      - Departure/Arrival Location Search Results
      - Departure/Return Date Input
@@ -51,6 +51,7 @@
 - Each button will open a page in a new tab. The page will contain one of the main features of the website. This will be implemented in the future.
 #### Persons Selection Button
 ![persons-selection-button](https://github.com/user-attachments/assets/efa35eb4-921c-4d13-b03e-e0fbf0d534f5)
+
 ![persons-selection-dropdown](https://github.com/user-attachments/assets/42076bd9-77ba-411e-83c4-1b0c1e7e4d1d)
 - This feature provides a dynamic dropdown container with functionality that allows users to adjust the number of adults and children for a given selection.
 - The dropdown contains options to increase or decrease the number of adults and children.
@@ -59,6 +60,11 @@
 - Each select element allows the user to choose the age of the child, with available options ranging from 1 to 17 years old.
 - The content of the button is updated dynamically to reflect the current number of adults and children based on the user's selections.
 - The dropdown container is hidden when the user clicks the 'Done' button or anywhere else outside the container.
+#### Flight Class Selection Button
+![flight-class-selection-button](https://github.com/user-attachments/assets/fb4c0811-1bcf-497b-833f-542f520f965c)
 
-
-
+![flight-class-selection-dropdown](https://github.com/user-attachments/assets/48fe7091-29c6-492b-9fd1-e2b263c18cc1)
+- The flight class selection button opens a dropdown menu containing 4 flight class options(Economy, Premium Economy, Business Class, First Class).
+- When the user selects a flight class, the content of the flight class selection button is updated to reflect the chosen class.
+- The selected flight class button is visually distinguished with a blue border, marking it as the active selection.
+- The dropdown menu closes when clicking the 'Done' button or anywhere else outside the container.
