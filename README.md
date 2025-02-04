@@ -125,6 +125,9 @@ The user experience (UX) of Jet-Set-Go website has been carefully designed to en
 4. **Footer**
    - The footer has a sky blue background color, offering a soft contrast to the rest of the page while creating a distinct section at the bottom.
    - The text within the footer is white, ensuring high contrast and readability against the sky blue background, making important information easy to find and read.
+5. **Layout**
+   - The core functionality of the website is showcased in the hero section where users are immediately presented with the most important features like flight search and calls to action.
+   - The most modern CSS layout techniques were used to build the website, including CSS Flexbox, CSS Grid and the [Bootstrap Grid System](https://getbootstrap.com/docs/5.3/layout/grid/#example).
 #### Wireframes 
 For this project, I decided to create high-fidelity wireframes to better visualize the final product. High-fidelity wireframes provide a more detailed representation of the design compared to low-fidelity wireframes.
 1. [Homepage - Desktop](https://postimg.cc/CnTjwvvz)
