@@ -14,29 +14,29 @@ This is a flights tickets booking website designed to facilitate seamless flight
     - [User Stories](#user-stories)
     - Design Choices
     - [Wireframes](#wireframes)
-2. Features
-    - Navigation
-    - Footer
-    - Homepage
-      - Hero
-        - Main Features Links
-        - Persons Selection Input
-        - Flight Class Selection Input
-        - Departure/Arrival Location Input
-        - Departure/Arrival Location Search Results
-        - Departure/Return Date Input
-        - Clear Input Button
-        - Form Validation Tooltips
-        - Search Button
-      - Services
-      - Best Destinations
-      - The Best Seasonal Destination
-      - Footer
-    - Results Page
-      - Flights Results
-      - Flight Details Dialog
-      - Submit Dialog
-    - Booking Confirmation Page
+2. [Features](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/features.md)
+    - [Navigation](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/features.md#navigation)
+      - [Sidebar Navigation](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/features.md#sidebar-navigation)
+    - [Footer](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/features.md#footer)
+    - [Homepage](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/features.md#homepage)
+      - [Hero](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/features.md#hero)
+        - [Main Features Links](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/features.md#main-features-link-buttons)
+        - [Persons Selection Button](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/features.md#persons-selection-button)
+        - [Flight Class Selection Button](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/features.md#flight-class-selection-button)
+        - [Departure/Arrival Location Inputs](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/features.md#departure-and-arrival-location-inputs)
+        - [Departure/Return Date Input](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/features.md#departure-and-return-date-inputs)
+        - [Clear Input Button](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/features.md#clear-input-button)
+        - [Form Validation Tooltips](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/features.md#form-validation-tooltips)
+        - [Search Button](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/features.md#search-button)
+      - [Services](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/features.md#services)
+      - [Best Destinations](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/features.md#best-destinations)
+      - [The Best Seasonal Destination](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/features.md#the-best-seasonal-destination)
+    - [Results Page](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/features.md#results-page)
+      - [Sort Buttons](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/features.md#sort-buttons)
+      - [Flights Results](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/features.md#flights-results)
+      - [Flight Details Dialog](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/features.md#flight-details-dialog)
+      - [Flight Booking Dialog](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/features.md#flight-booking-dialog)
+    - [Booking Confirmation Page](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/features.md#booking-confirmation-page)
 4. [Technologies Used](#technologies-used)
 5. [Testing](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/testing.md)
     - [Validator Testing](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/testing.md#validator-testing)
