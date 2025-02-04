@@ -22,7 +22,7 @@
    - [Flights Results](#flights-results)
    - [Flight Details Dialog](#flight-details-dialog)
    - [Flight Booking Dialog](#flight-booking-dialog)
-6. Booking Confirmation Page
+6. [Booking Confirmation Page](#booking-confirmation-page)
 
 ## [Main README.md file](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/README.md)
 
@@ -185,4 +185,9 @@ The modal includes the additional information that wasn't shown in the flight re
 - This form allows the user to enter all necessary information to complete their booking.
 - The form also includes validation to ensure all required fields are completed correctly.
 - Upon successful submission, the user is redirected to the confirmation page.
+## Booking Confirmation Page
+![booking-confirmation](https://github.com/user-attachments/assets/80d22a38-cd91-4b6d-920a-1c455a90f53b)
+
+- Once the user successfully submits their flight booking form, they are redirected to the Booking Confirmation Page
+- This page confirms that the booking was completed successfully and provides the user with a button which can be clicked to return to the main page.
 
