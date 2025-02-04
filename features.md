@@ -6,7 +6,7 @@
 3. [Footer](#footer)
 4. [Homepage](#homepage)
    - [Hero](#hero)
-     - [Main Features Link Buttons](#main-features-links)
+     - [Main Features Link Buttons](#main-features-link-buttons)
      - [Persons Selection Button](#persons-selection-button)
      - [Flight Class Selection Button](#flight-class-selection-button)
      - [Departure/Arrival Location Inputs](#departure-and-arrival-location-inputs)
