@@ -20,7 +20,7 @@
 5. [Results Page](#results-page)
    - [Sort Buttons](#sort-buttons)
    - [Flights Results](#flights-results)
-   - Flight Details Dialog
+   - [Flight Details Dialog](#flight-details-dialog)
    - Flight Book Dialog
 6. Booking Confirmation Page
 
@@ -167,3 +167,14 @@ This feature offers intuitive sorting options to help you quickly find the fligh
     - This button will allow users to save the flight for future reference. The Save button’s functionality will be added in the future.
   - **View Details Button**
     - Clicking this button will open a more detailed view of the selected flight, showing other essential details.
+### Flight Details Dialog
+![flight-details-dialog-1](https://github.com/user-attachments/assets/7e2e5f80-bb0f-4b06-b0f3-c87e13615e41)
+![flight-details-dialog-2](https://github.com/user-attachments/assets/b10aadba-32d8-455c-997f-c68d2dd381b9)
+
+The modal includes the additional information that wasn't shown in the flight results container, and that information is layover time(if that's the case), operating carrier features and the 'Select' button.
+- **Layover Time**
+  - If the flight includes layovers, the modal will display the layover time for each stop. This gives users a clear idea of how long they will need to wait between connecting flights.
+- **Operating Carrier Features**
+  - This information will help users make a more informed decision based on the amenities available during the flight.
+- **Select Button**
+  - The 'Select' button will be clearly visible, allowing users to move to the booking form with ease.
