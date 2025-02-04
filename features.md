@@ -21,7 +21,7 @@
    - [Sort Buttons](#sort-buttons)
    - [Flights Results](#flights-results)
    - [Flight Details Dialog](#flight-details-dialog)
-   - Flight Book Dialog
+   - [Flight Booking Dialog](#flight-booking-dialog)
 6. Booking Confirmation Page
 
 ## [Main README.md file](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/README.md)
@@ -178,3 +178,11 @@ The modal includes the additional information that wasn't shown in the flight re
   - This information will help users make a more informed decision based on the amenities available during the flight.
 - **Select Button**
   - The 'Select' button will be clearly visible, allowing users to move to the booking form with ease.
+### Flight Booking Dialog
+![flight-booking-dialog](https://github.com/user-attachments/assets/2f6d628f-2863-4af0-8556-7422e1c2b1c6)
+
+- Once the user clicks the 'Select' button from the Flight Details modal, they are redirected to the Flight Booking Form.
+- This form allows the user to enter all necessary information to complete their booking.
+- The form also includes validation to ensure all required fields are completed correctly.
+- Upon successful submission, the user is redirected to the confirmation page.
+
