@@ -12,7 +12,7 @@ This is a flights tickets booking website designed to facilitate seamless flight
     - [Project Goals](#project-goals)
     - [Business Goals](#business-goals)
     - [User Stories](#user-stories)
-    - Design Choices
+    - [Design Choices](#design-choices)
     - [Wireframes](#wireframes)
 2. [Features](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/features.md)
     - [Navigation](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/features.md#navigation)
@@ -103,6 +103,11 @@ The user experience (UX) of Jet-Set-Go website has been carefully designed to en
 3. As a customer, I want to select a flight from the search results, view flight details, and proceed to booking so that I can finalize my flight purchase.
 4. As a customer, I want to see recommended flight destinations so that I can discover new places to visit and book flights easily.
 5. As a customer, I want to be able to load more flight search results, so that I can view additional options beyond the initial set without having to perform a new search.
+#### Design Choices
+1. **Typography**
+   - The font families used for this project are 'Poppins' as the primary font and 'Roboto' as the secondary font.
+   - Poppins has been selected for all headings of the website. It offers a bold and clear presence, making it ideal for headings, which need to grab the user’s attention immediately.
+   - Roboto is used for all body text. It has been chosen for its excellent legibility, especially at smaller sizes. This is critical for ensuring that all textual content remains easily readable on various screen sizes, from desktops to mobile devices.
 #### Wireframes
 For this project, I decided to create high-fidelity wireframes to better visualize the final product. High-fidelity wireframes provide a more detailed representation of the design compared to low-fidelity wireframes.
 1. [Homepage - Desktop](https://postimg.cc/CnTjwvvz)
