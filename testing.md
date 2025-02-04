@@ -179,4 +179,11 @@ Manual testing was conducted to ensure the application functions as expected acr
      - While the code for handling asynchronous operations is wrapped in a `try...catch` block to catch errors, Safari may still throw an **"Unhandled Promise Rejection"** error in certain cases. This occurs because Safari's behavior around promise rejections can sometimes be more strict or behave differently than other browsers (such as Chrome, Firefox, Opera, and Edge). Even with proper error handling using `try...catch`, Safari may still interpret certain rejection cases as unhandled or trigger the error unexpectedly.
  
      ![unhandled-promise-rejection-safari](https://github.com/user-attachments/assets/b3eb83cd-e79a-4230-977b-85d40a2433ea)
-   
+
+- Missing airline information:
+  - Some flight offers may not display the airline name and airline icon. This issue arises because the API does not provide the relevant information for the operating carriers in certain flight offers. As a result, these details may be missing or unavailable for those particular flights.
+
+    ![missing-airline-information](https://github.com/user-attachments/assets/e04e3b15-ceb4-4d87-93b7-f7cb8364773d)
+
+- Handling non-existent pages/resources:
+  - While the requirement is to redirect users to the main page if they navigate to a non-existent page or resource, there is an exception for the flight results page. Since flight results open in a new tab, if something goes wrong with the flight data, users should simply close the new tab and return to the main page where they can modify their search values. This behavior is intended as a workaround for scenarios where direct redirection isn't feasible.
