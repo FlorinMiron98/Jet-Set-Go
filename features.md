@@ -17,9 +17,9 @@
    - [Services](#services)
    - [Best Destinations](#best-destinations)
    - [The Best Seasonal Destination](#the-best-seasonal-destination)
-5. Results Page
-   - Sort Buttons
-   - Flights Results
+5. [Results Page](#results-page)
+   - [Sort Buttons](#sort-buttons)
+   - [Flights Results](#flights-results)
    - Flight Details Dialog
    - Flight Book Dialog
 6. Booking Confirmation Page
@@ -137,3 +137,33 @@ This section highlights the best travel destinations for each season, showcasing
 
 - The card contains an image of the location, the location name, a short description of the location highlighting why it's an ideal seasonal destination, and a call-to-action button 'Book Now'(the functionality for this button will be implemented in the future).
 - The functionality for displaying the location dynamically based on the season will be implemented in the future.
+## Results Page
+### Sort Buttons
+This feature offers intuitive sorting options to help you quickly find the flights that best suit your needs.
+![sort-buttons](https://github.com/user-attachments/assets/fdb920e3-fbdd-4708-a175-8d211b993bc7)
+
+- Users can toggle between the sorting options using the three buttons labeled **Best**, **Cheapest**, and **Fastest**.
+- When a user clicks one of the sorting buttons, a new API request is triggered to fetch the sorted list of flights based on the selected criteria.
+- To indicate which sorting option is currently active, the button representing the selected sort option is visually highlighted with a blue border at the bottom.
+### Flights Results
+![flight-offers](https://github.com/user-attachments/assets/2da03ce4-d975-434d-baac-885b0c87636f)
+
+- Each flight result is presented within a container, showcasing the most relevant details in a clear and organized manner:
+  - **Operating Carrier**
+    - The airline responsible for the flight is shown with the logo of the airline for easy identification and the full name of the airline.
+  - **Flight Class**
+    - This label displays the flight class (e.g., Economy, Business, First Class) to give users an idea of the comfort and services provided on board.
+  - **Departure/Arrival Date & Time**
+    - The exact date and time when the flight departs and when it arrives at the destination
+  - **Departure & Arrival Airport Codes**
+    - The IATA codes of the airport where the flight departs and of the airport where the flight arrives. (e.g. LAX, JFK)
+  - **Flight Duration**
+    - An indicator displaying the total flight time, helping users quickly understand how long the flight will take from departure to arrival.
+  - **Number of Stops**
+    - A simple indicator showing whether the flight is non-stop or how many layovers are included.
+  - **Price**
+    - The total cost of the flight is shown here, helping users evaluate their options based on budget.
+  - **Save Button**
+    - This button will allow users to save the flight for future reference. The Save button’s functionality will be added in the future.
+  - **View Details Button**
+    - Clicking this button will open a more detailed view of the selected flight, showing other essential details.
