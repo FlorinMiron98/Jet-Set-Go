@@ -122,6 +122,9 @@ The user experience (UX) of Jet-Set-Go website has been carefully designed to en
    - The following aspects were taken into consideration for designing the navigation bar to ensure the user has a smooth experience on navigating the website:
      - **Background Color:** The navigation bar features a blue background color, which aligns with the overall color scheme of the site and ensures consistency with the flight booking section. This color also helps the navigation stand out while maintaining a clean and professional look.
      - **Fixed Position:** The navigation bar is fixed at the top of the screen, remaining visible as the user scrolls. This ensures quick access to important site sections, enhancing usability and improving user experience by keeping navigation options readily available at all times.
+4. **Footer**
+   - The footer has a sky blue background color, offering a soft contrast to the rest of the page while creating a distinct section at the bottom.
+   - The text within the footer is white, ensuring high contrast and readability against the sky blue background, making important information easy to find and read.
 #### Wireframes 
 For this project, I decided to create high-fidelity wireframes to better visualize the final product. High-fidelity wireframes provide a more detailed representation of the design compared to low-fidelity wireframes.
 1. [Homepage - Desktop](https://postimg.cc/CnTjwvvz)
