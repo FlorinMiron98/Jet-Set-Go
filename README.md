@@ -52,9 +52,9 @@ This is a flights tickets booking website designed to facilitate seamless flight
     - [Media](#media)
     - [Code](#code)
     - [Inspirations](#inspirations)
-### UX
+## UX
 The user experience (UX) of Jet-Set-Go website has been carefully designed to ensure simplicity, clarity, and ease of navigation.
-#### Project Goals
+### Project Goals
 1. UX Design
    
    Ensure the website is responsive across all screen sizes and provide an aesthetically pleasing and modern design that aligns with travel industry standards.
@@ -79,7 +79,7 @@ The user experience (UX) of Jet-Set-Go website has been carefully designed to en
 8. SEO Optimisation and Performance
 
    Implement the best SEO practices ro tank well for relevant keywords inside the user's browser. Optimize website performance to ensure fast loading times.
-#### Business Goals
+### Business Goals
 1. Provide a Seamless User Experience(UX)
 
    Create a website that is intuitive, easy to navigate and allows users to easily book flights.
@@ -97,13 +97,13 @@ The user experience (UX) of Jet-Set-Go website has been carefully designed to en
 5. Optimize for Speed and Performance
 
    Ensure that your website is fast and responsive to improve user experience
-#### User Stories
+### User Stories
 1. As a customer, I want to search for available flights by entering my departure and arrival cities, travel dates, and number of passengers so that I can find flights that meet my needs.
 2. As a customer, I want to be able to sort flight search results by best, cheapest, and fastest, so that I can easily find the option that best fits my travel needs based on price, duration, or overall quality.
 3. As a customer, I want to select a flight from the search results, view flight details, and proceed to booking so that I can finalize my flight purchase.
 4. As a customer, I want to see recommended flight destinations so that I can discover new places to visit and book flights easily.
 5. As a customer, I want to be able to load more flight search results, so that I can view additional options beyond the initial set without having to perform a new search.
-#### Design Choices
+### Design Choices
 1. **Typography**
    - The font families used for this project are 'Poppins' as the primary font and 'Roboto' as the secondary font.
    - Poppins has been selected for all headings of the website. It offers a bold and clear presence, making it ideal for headings, which need to grab the user’s attention immediately.
@@ -128,7 +128,19 @@ The user experience (UX) of Jet-Set-Go website has been carefully designed to en
 5. **Layout**
    - The core functionality of the website is showcased in the hero section where users are immediately presented with the most important features like flight search and calls to action.
    - The most modern CSS layout techniques were used to build the website, including CSS Flexbox, CSS Grid and the [Bootstrap Grid System](https://getbootstrap.com/docs/5.3/layout/grid/#example).
-#### Wireframes 
+6. **Images**
+   - All images are carefully selected and of high quality. The images were optimised using (Image Resizer)(https://imageresizer.com/image-compressor) as image compressor.
+   - The hero background image was created using [Figma](https://www.figma.com/) and highlights the main feature of the website.
+7. **Modals**
+   - The website includes modals for displaying detailed flight information and for the flight booking form, both of which are created using the `<dialog>` element. This choice allows for efficient and accessible modal management, leveraging built-in methods for displaying and hiding the modals.
+   - The `<dialog>` element provides convenient built-in methods such as `.showModal()` and `.close()`, making it easier to control the visibility of the modals using JavaScript.
+   - The `<dialog>` element enhances accessibility by providing a semantic way to define modals. This helps ensure that the modals are properly recognized by screen readers and other assistive technologies, improving the overall user experience for all users, including those with disabilities.
+   - More about the `<dialog>` element on [MDN dialog](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog).
+8. **Cards**
+   - The services section utilizes [Bootstrap's Card Components](https://getbootstrap.com/docs/5.3/components/card/#about) to present key features of the site. Each service is displayed in its own dedicated card, providing a visually structured and user-friendly way to highlight these unique selling points.
+9. **Responsive Design**
+    - The content adapts seamlessly to all screen sizes and devices, ensuring a smooth user experience.
+### Wireframes 
 For this project, I decided to create high-fidelity wireframes to better visualize the final product. High-fidelity wireframes provide a more detailed representation of the design compared to low-fidelity wireframes.
 1. [Homepage - Desktop](https://postimg.cc/CnTjwvvz)
 2. [Homepage - Tablet](https://postimg.cc/SYfzkm2v)
@@ -136,7 +148,7 @@ For this project, I decided to create high-fidelity wireframes to better visuali
 4. [Results Page - Desktop](https://postimg.cc/BX3xyVLz)
 5. [Results Page - Tablet](https://postimg.cc/BX3xyVLz)
 6. [Results Page - Mobile](https://postimg.cc/7b03Kk67)
-### Technologies Used
+## Technologies Used
 1. **HTML5** - The foundational markup language for structuring web content.
 2. **CSS3** - Used for styling and layout, enhancing the visual appearance of the project.
 3. **Bootstrap 5** - Used for creating responsiveness across all screen sizes, pre-designed components and utility classes. More about Bootstrap on the [official Bootstrap website](https://getbootstrap.com/).
@@ -150,7 +162,7 @@ For this project, I decided to create high-fidelity wireframes to better visuali
 11. **Booking API** - The Booking API focuses on flight-related services. It provides real-time data on arrival and departure locations, flight dates and available flight offers. The API allows users to search for flights and view flight options.
 12. **Intersection Observer API** - The Intersection Observer API is a web API that allows you to monitor the visibility and position of elements within a viewport or container. It provides a way to asynchronously observe changes in the intersection of an element with a parent element or the viewport, without needing to manually track scroll events. This API is commonly used for implementing features like infinite scrolling, lazy loading images, and triggering animations when elements come into view. More about the Intersection Observer API [here](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API).
 13. **Intl** - The Intl API (Internationalization API) is a built-in JavaScript API that provides a set of functions and objects for handling language-sensitive operations. It helps developers build web applications that can adapt to various languages, formats, and cultural conventions. More about Intl [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl).
-### Deployment
+## Deployment
 This project was created using [Visual Studio Code](https://code.visualstudio.com/), committed to [Git](https://git-scm.com/) and pushed to [GitHub](https://github.com/) using Git's built-in function `git push`.
 As this project was created using the development environment provided by [Parcel.js](https://parceljs.org/), I decided to deploy it on [Netlify](https://www.netlify.com/) as the deployment process was much easier. The next steps were followed:
 1. **Build the Project**
@@ -168,7 +180,7 @@ As this project was created using the development environment provided by [Parce
    - After deployment is complete, Netlify will provide with a unique URL for the website.
 6. **Optional: Set Up a Custom Domain**
    - I created a custom domain by going to Domain Settings in the Netlify site dashboard.
-#### Run the Project Locally
+### Run the Project Locally
 To clone this project from GitHub into a local IDE such as Visual Studio Code, follow the next steps:
 1. Follow this link to the [GitHub Project Repository](https://github.com/FlorinMiron98/Jet-Set-Go)
 2. Under the repository name, click **<> Code**
@@ -193,15 +205,15 @@ To clone this project from GitHub into a local IDE such as Visual Studio Code, f
    - While the development server is running, any changes you make to the project’s source files will automatically reload in the browser, providing a live preview of your changes.
 10. Stop the Development Server
     - When you’re done, you can stop the Parcel development server by pressing `Ctrl + C` in the terminal.
-### Credits
-#### Content
+## Credits
+### Content
 - [ChatGPT](https://chatgpt.com/) - Used to create content for:
   - Introduction section
   - Best destinations section
   - Best seasonal destination
   - `<meta>` keywords attribute
   - `<meta>` description attribute
-#### Media
+### Media
 - favicon: [Image Source](https://www.flaticon.com/free-icon/globe_744502?term=plane&page=1&position=22&origin=search&related_id=744502)
 - The logo images both for desktop and mobile screen were created using [Figma](https://www.figma.com/)
 - The airplane image with no background: [Image Source](https://unsplash.com/photos/air-canada-airline-X_MOr6oa4-k) - Photo by [John McArthur](https://unsplash.com/@snowjam)
@@ -218,7 +230,7 @@ To clone this project from GitHub into a local IDE such as Visual Studio Code, f
 - paris.jpg: [Image Source](https://www.pexels.com/photo/picture-of-eiffel-tower-338515/) - Photo by [Thorsten technoman](https://www.pexels.com/@thorsten-technoman-109353/)
 - aspen.jpg: [Image Source](https://www.pexels.com/photo/snow-covered-mountain-3628990/) - Photo by [Hui Huang](https://www.pexels.com/@hui-huang-1364440/)
 The responsive screen mockups was created using [Yujin Yeoh Mockup Generator](https://yujinyeoh.com/website-mockup-generator).
-#### Code
+### Code
 1. Code for all website's icons was created using [Font Awesome](https://fontawesome.com/).
 2. Code for importing Google Fonts inside the `assets/styles.css` file was created using [Google Fonts](https://fonts.google.com/).
 3. Code for the layout of the introduction section was created using [Bootstrap Grid System](https://getbootstrap.com/docs/5.3/layout/grid/#example).
@@ -235,5 +247,5 @@ The responsive screen mockups was created using [Yujin Yeoh Mockup Generator](ht
 14. Code for adding the correct CSS prefixes to ensure the cross-browser compatibility was created using [Autoprefixer CSS online](https://autoprefixer.github.io/).
 15. Code for darkening background images was taken from this [Stack Overflow post](https://stackoverflow.com/questions/26621513/darken-css-background-image).
 16. Code for **regular expressions** used in flight booking form inputs was created using [ChatGPT](https://chatgpt.com/).
-#### Inspirations
+### Inspirations
 - [Booking.com](https://www.booking.com) - For the overall layout of the results page.
