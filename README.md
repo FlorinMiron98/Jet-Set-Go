@@ -118,6 +118,10 @@ The user experience (UX) of Jet-Set-Go website has been carefully designed to en
    - **Black** is used for key textual elements, including the departure and arrival hours in the flight offers, providing strong contrast for readability. It is also applied to the headings and content within the flight details dialog.
    - **Green** is used to highlight the cabin class and label the included features within the flight details dialog, providing a clear and visually appealing way to draw attention to important information and enhancing the overall user experience.
    - **Gray** is primarily used as a hover color for the footer social media buttons and for the sorting buttons (best, cheapest, fastest) on the flight results page, providing a subtle visual cue that enhances interactivity without overwhelming the design.
+3. **Navigation**
+   - The following aspects were taken into consideration for designing the navigation bar to ensure the user has a smooth experience on navigating the website:
+     - **Background Color:** The navigation bar features a blue background color, which aligns with the overall color scheme of the site and ensures consistency with the flight booking section. This color also helps the navigation stand out while maintaining a clean and professional look.
+     - **Fixed Position:** The navigation bar is fixed at the top of the screen, remaining visible as the user scrolls. This ensures quick access to important site sections, enhancing usability and improving user experience by keeping navigation options readily available at all times.
 #### Wireframes 
 For this project, I decided to create high-fidelity wireframes to better visualize the final product. High-fidelity wireframes provide a more detailed representation of the design compared to low-fidelity wireframes.
 1. [Homepage - Desktop](https://postimg.cc/CnTjwvvz)
