@@ -161,6 +161,8 @@ Manual testing was conducted to ensure the application functions as expected acr
    | -------------------- | ------------------- | ---------- |
    | Click 'Return to Main Page' button | Return the user to the Homepage | Passed |
 ### Bugs
+- Issue with data fetching time:
+  - When fetching data from the booking API (such as departure/arrival locations, flight offers, or flight details), there may be a delay of a few seconds before the data is fully loaded. This is due to the time it takes to retrieve and process the information from the external API. Users may experience a brief loading period, which is normal during this process.
 - Issue with `.parcel-cache` File:
   - The `.parcel-cache` file was omitted from the `.gitignore` file during development. As a result, Git preserved a reference to the `.parcel-cache` and it was accidentally pushed to GitHub. The process of removing the `.parcel-cache` from the repository on GitHub caused some duplicate commits to appear in the commit history.
     
