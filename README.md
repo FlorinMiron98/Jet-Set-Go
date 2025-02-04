@@ -129,7 +129,7 @@ The user experience (UX) of Jet-Set-Go website has been carefully designed to en
    - The core functionality of the website is showcased in the hero section where users are immediately presented with the most important features like flight search and calls to action.
    - The most modern CSS layout techniques were used to build the website, including CSS Flexbox, CSS Grid and the [Bootstrap Grid System](https://getbootstrap.com/docs/5.3/layout/grid/#example).
 6. **Images**
-   - All images are carefully selected and of high quality. The images were optimised using (Image Resizer)(https://imageresizer.com/image-compressor) as image compressor.
+   - All images are carefully selected and of high quality. The images were optimised using [Image Resizer](https://imageresizer.com/image-compressor) as image compressor.
    - The hero background image was created using [Figma](https://www.figma.com/) and highlights the main feature of the website.
 7. **Modals**
    - The website includes modals for displaying detailed flight information and for the flight booking form, both of which are created using the `<dialog>` element. This choice allows for efficient and accessible modal management, leveraging built-in methods for displaying and hiding the modals.
