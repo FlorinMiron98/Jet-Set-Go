@@ -183,29 +183,30 @@ As this project was created using the development environment provided by [Parce
 ### Run the Project Locally
 #### Windows
 To clone this project from GitHub into a local IDE such as [Visual Studio Code](https://code.visualstudio.com/), follow the next steps:
-1. Create an account on [RapidAPI](https://rapidapi.com/hub).
-2. Search for the Booking API and click it.
+1. Download and install [Node.js](https://nodejs.org/en/download) on your local machine.
+2. Create an account on [RapidAPI](https://rapidapi.com/hub).
+3. Search for the Booking API and click it.
    ![booking-api-search](https://github.com/user-attachments/assets/f6abefcc-5876-4eb0-a7cb-faad1be0b0f8)
 
-3. On the right windows, select **JavaScript** as Target and **fetch** as Client in order to get the `options` object which will be the second parameter for the `fetch` function when making an API request
+4. On the right windows, select **JavaScript** as Target and **fetch** as Client in order to get the `options` object which will be the second parameter for the `fetch` function when making an API request
    ![rapid-api-key](https://github.com/user-attachments/assets/14efd693-1f12-4127-8975-37ccfeb44aac)
 
    
-4. Follow this link to the [GitHub Project Repository](https://github.com/FlorinMiron98/Jet-Set-Go)
-5. Under the repository name, click **<> Code**
+5. Follow this link to the [GitHub Project Repository](https://github.com/FlorinMiron98/Jet-Set-Go)
+6. Under the repository name, click **<> Code**
 ![code-button](https://github.com/user-attachments/assets/1de54cc8-457d-452d-a95b-747446c40480)
-6. Copy the clone URL for the repository.
+7. Copy the clone URL for the repository.
 ![clone-URL](https://github.com/user-attachments/assets/3995b2ae-86d3-452d-a46c-0d927313f9bd)
 
-7. Navigate to the Project Directory
+8. Navigate to the Project Directory
    - Once the repository is cloned, navigate to the location where you want the cloned directory to be created using this command: `cd your-directory`.
-8. Clone the Repository
+9. Clone the Repository
    - Clone the project repository to your local machine using `git clone https://github.com/FlorinMiron98/Jet-Set-Go.git`.
-9. Navigate to the newly created folder.
+10. Navigate to the newly created folder.
     - The newly created folder is the cloned repository where you should navigate to using `cd Jet-Set-Go`.
-10. Install Dependencies
+11. Install Dependencies
    - Before running the project, you'll need to install all required dependencies. These dependencies are listed in the `package.json` file. In order to install them, run the command `npm install`.
-11. Create the `config.js` file.
+12. Create the `config.js` file.
    - In the `js/` directory, create a new file `config.js`.
    - Create the `OPTIONS` object. Copy and paste the following code inside `config.js`
      ```javascript
@@ -220,16 +221,24 @@ To clone this project from GitHub into a local IDE such as [Visual Studio Code](
      export { OPTIONS };
      ```
    - Inside the `headers` property introduce the API key value and the RapidAPI host from your booking API.  
-11. Run the Project Locally
+13. Run the Project Locally
    - Now, start the Parcel development server to view the project locally using the followin command: `npm run start`.
    - Alternatively, if the script is not defined in `package.json`, you can run Parcel directly by specifying the entry HTML file (e.g., `index.html`): `parcel index.html`.
    - Parcel will start a development server and provide a local URL, typically `http://localhost:1234`.
-12. View the Project In Your Browser
+14. View the Project In Your Browser
    - Open your web browser and go to the following URL: `http://localhost:1234` (or the one provided in the terminal).
-13. Make Changes and See Live Updates
+15. Make Changes and See Live Updates
    - While the development server is running, any changes you make to the project’s source files will automatically reload in the browser, providing a live preview of your changes.
-14. Stop the Development Server
-    - When you’re done, you can stop the Parcel development server by pressing `Ctrl + C` in the terminal.
+16. Stop the Development Server
+   - When you’re done, you can stop the Parcel development server by pressing `Ctrl + C` in the terminal.
+#### MacOS
+**Follow the first 10 steps from Windows instructions above**
+**Important Note**
+As this project was built on a Windows, trying to run it on macOS might cause additional issues. It's possible that the `node_modules` directory still has the Windows-specific version of other platform-specific dependencies that aren't compatible with macOS. (e.g Parcel.js uses [Lightningcss](https://lightningcss.dev/) for CSS minification and optimization. This can cause an error on macOS when running a project that was built on Windows). To solve this issue, follow the next steps:
+- **Delete `package-lock.json` (if it exists):** If you still have the `package-lock.json` file in your project, it may contain platform-specific dependencies from the previous Windows environment. It’s a good practice to delete this file before reinstalling dependencies to avoid platform-specific conflicts. Run `rm package-lock.json` in your command line.
+- **Install dependencies on macOS:** Run `npm install` to install all the dependencies fresh on your macOS machine. This will ensure that the right versions of all packages for macOS are installed. The packages will be installed based on your system's platform and architecture, and any platform-specific versions of dependencies (like Lightningcss) will be installed correctly for macOS.
+- **Verify the installation:** Once the dependencies are installed, you can verify that everything is working correctly by running `npm start`.
+**After completing the steps above, you can follow the rest of the steps from Windows instructions**
 ## Credits
 ### Content
 - [ChatGPT](https://chatgpt.com/) - Used to create content for:
