@@ -233,6 +233,7 @@ To clone this project from GitHub into a local IDE such as [Visual Studio Code](
    - When you’re done, you can stop the Parcel development server by pressing `Ctrl + C` in the terminal.
 #### MacOS
 **Follow the first 10 steps from Windows instructions above**
+
 **Important Note**
 As this project was built on a Windows, trying to run it on macOS might cause additional issues. It's possible that the `node_modules` directory still has the Windows-specific version of other platform-specific dependencies that aren't compatible with macOS. (e.g Parcel.js uses [Lightningcss](https://lightningcss.dev/) for CSS minification and optimization. This can cause an error on macOS when running a project that was built on Windows). To solve this issue, follow the next steps:
 - **Delete `package-lock.json` (if it exists):** If you still have the `package-lock.json` file in your project, it may contain platform-specific dependencies from the previous Windows environment. It’s a good practice to delete this file before reinstalling dependencies to avoid platform-specific conflicts. Run `rm package-lock.json` in your command line.
