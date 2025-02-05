@@ -1,4 +1,4 @@
-# JavaScript Validator
+# Jet-Set-Go - JavaScript Validator
 In this project, I opted for **JSHint** over **JSLint** primarily because JSHint offers better support for modern JavaScript syntax (ES6 and beyond). You can have a better look on this tool [here](https://jshint.com/).
 ## Table of Contents
 1. [Model](#model)
