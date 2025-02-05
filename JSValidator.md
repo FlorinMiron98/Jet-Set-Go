@@ -24,6 +24,7 @@ In this project, I opted for **JSHint** over **JSLint** primarily because JSHint
    - [Flight Offers View](#flight-offers-view)
    - [Details Dialog View](#details-dialog-view)
    - [Form Submission Dialog View](#form-submission-dialog-view)
+4. [Common Warnings](#common-warnings)
 ## [Main README.md file](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/README.md)
 
 **Important Notes**
@@ -96,3 +97,20 @@ In this project, I opted for **JSHint** over **JSLint** primarily because JSHint
 
 ### Form Submission Dialog View
 ![form-submission-dialog-view](https://github.com/user-attachments/assets/10804959-c60a-4735-81bd-4b6d4186ad96)
+
+## Common Warnings
+The following warnings are common across the view classes. These are typically related to coding style and modern JavaScript practices, and they do not impact the functionality of the application:
+1. **Class properties must be methods. Expected '(' but instead saw '=':**
+   - This warning occurs because arrow functions are used inside class properties. While JSHint expects methods to be defined using parentheses, the arrow functions are intentionally used to bind the correct `this` context in modern JavaScript.
+2. **Expected an assignment or function call and instead saw an expression:**
+   - This warning happens when a statement is written as an expression without performing any assignment or function call. The expression is valid but may not align with JSHint's expectations for how the code should be structured.
+3. **Expected an identifier and instead saw ';'**
+   - This warning is triggered by placement of semicolons in the code, though it doesn’t affect functionality(most probably introduced automatically by the Prettier extension). JavaScript is flexible with semicolons, and the code runs fine despite this warning.
+4. **Expected an identifier and instead saw CSS selector**
+   - This warning occurs when a CSS selector (e.g., .sidebar-navigation) is used where an identifier is expected. In this case, it's used correctly to select and manipulate DOM elements, so the warning can be ignored.
+5. **Expected an identifier and instead saw '=>'.**
+   - JSHint flags the use of arrow functions (`=>`) inside classes as a potential issue, though it’s intentional. Arrow functions are used here to preserve the `this` context, which is important in handling event listeners and other asynchronous functions in modern JavaScript.
+6. **Duplicate class method `'this'`**
+   - It's likely to refer to an actual reference to this rather than a method name, which does not interfere with functionality.
+7. **Misleading line break before '?'; readers may interpret this as an expression boundary**
+   - This warning appears because of a line break before a ternary operator (`?`), which JSHint interprets as potentially confusing for readability. However, the code is syntactically correct and works as expected.
