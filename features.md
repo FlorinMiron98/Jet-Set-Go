@@ -139,7 +139,7 @@ This section highlights the best travel destinations for each season, showcasing
 - The functionality for displaying the location dynamically based on the season will be implemented in the future.
 ## Results Page
 ### Sort Buttons
-This feature offers intuitive sorting options to help you quickly find the flights that best suit your needs.
+This feature offers intuitive sorting options to help the user quickly find the flights that best suit his needs.
 ![sort-buttons](https://github.com/user-attachments/assets/fdb920e3-fbdd-4708-a175-8d211b993bc7)
 
 - Users can toggle between the sorting options using the three buttons labeled **Best**, **Cheapest**, and **Fastest**.
