@@ -205,6 +205,21 @@ To clone this project from GitHub into a local IDE such as [Visual Studio Code](
     - The newly created folder is the cloned repository where you should navigate to using `cd Jet-Set-Go`.
 10. Install Dependencies
    - Before running the project, you'll need to install all required dependencies. These dependencies are listed in the `package.json` file. In order to install them, run the command `npm install`.
+11. Create the `config.js` file.
+   - In the `js/` directory, create a new file `config.js`.
+   - Create the `OPTIONS` object. Copy and paste the following code inside `config.js`
+     ```javascript
+     const OPTIONS = {
+        method: "GET",
+        headers: {
+               "x-rapidapi-key": "your-api-key",
+               "x-rapidapi-host": "rapid-api-host",
+        },
+     };
+
+     export { OPTIONS };
+     ```
+   - Inside the `headers` property introduce the API key value and the RapidAPI host from your booking API.  
 11. Run the Project Locally
    - Now, start the Parcel development server to view the project locally using the followin command: `npm run start`.
    - Alternatively, if the script is not defined in `package.json`, you can run Parcel directly by specifying the entry HTML file (e.g., `index.html`): `parcel index.html`.
