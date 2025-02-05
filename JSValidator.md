@@ -1,28 +1,29 @@
 # JavaScript Validator
+In this project, I opted for **JSHint** over **JSLint** primarily because JSHint offers better support for modern JavaScript syntax (ES6 and beyond). You can have a better look on this tool [here](https://jshint.com/).
 ## Table of Contents
 1. [Model](#model)
 2. [Controller](#controller)
    - [Flights Search Controller](#flights-search-controller)
-   - Flights Results Controller
-3. Views
-   - Navbar View
-   - Side Navbar View
-   - Header Content View
-   - Persons Selection View
-   - Persons Selection Button View
-   - Flight Class Selection View
-   - Flight Class Selection Button View
-   - Location Search View
-   - Departure Location Search View
-   - Arrival Location Search View
-   - Reverse Input Values View
-   - Date Picker View
-   - Clear Input Button View
-   - Search Results Button View
-   - Flight Results View
-   - Flight Offers View
-   - Details Dialog View
-   - Form Submission Dialog View
+   - [Flights Results Controller](#flights-results-controller)
+3. [Views](#views)
+   - [Navbar View](#navbar-view)
+   - [Side Navbar View](#side-navbar-view)
+   - [Header Content View](#header-content-view)
+   - [Persons Selection Button View](#persons-selection-button-view)
+   - [Persons Selection View](#persons-selection-view)
+   - [Flight Class Selection Button View](#flight-class-selection-button-view)
+   - [Flight Class Selection View](#flight-class-selection-view)
+   - [Location Search View](#location-search-view)
+   - [Departure Location Search View](#departure-location-search-view)
+   - [Arrival Location Search View](#arrival-location-search-view)
+   - [Reverse Input Values Button View](#reverse-input-values-button-view)
+   - [Date Picker View](#date-picker-view)
+   - [Clear Input Button View](#clear-input-button-view)
+   - [Search Results Button View](#search-results-button-view)
+   - [Flight Results View](#flight-results-view)
+   - [Flight Offers View](#flight-offers-view)
+   - [Details Dialog View](#details-dialog-view)
+   - [Form Submission Dialog View](#form-submission-dialog-view)
 ## [Main README.md file](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/README.md)
 
 **Important Notes**
@@ -37,3 +38,61 @@
 ## Controller
 ### Flights Search Controller
 ![flight-search-controller](https://github.com/user-attachments/assets/5c988075-a17c-4bf9-a361-3472a1fe034c)
+
+### Flights Results Controller
+![flight-results-controller](https://github.com/user-attachments/assets/df0f2381-169b-49d9-96df-a40f7e81fbd8)
+
+## Views
+### Navbar View
+![navbar-view](https://github.com/user-attachments/assets/672c3610-1388-4581-ba12-c7fef425b390)
+
+### Side Navbar View
+![side-navbar-view](https://github.com/user-attachments/assets/7d1979c1-5865-48bd-889e-69833d4002c7)
+
+### Header Content View
+![header-content-view](https://github.com/user-attachments/assets/7c72cdcc-c5df-47d8-bc2f-0dc95c38b3ec)
+
+### Persons Selection Button View
+![persons-selection-btn-view](https://github.com/user-attachments/assets/b50953d9-fa12-40eb-8128-bb1ad91e5699)
+
+### Persons Selection View
+![persons-selection-view](https://github.com/user-attachments/assets/ac0d78c5-a288-4344-a520-1322ef80cafd)
+
+### Flight Class Selection Button View
+![flight-class-selection-btn-view](https://github.com/user-attachments/assets/70661998-ce69-44bd-bca0-3f4ed6c720f0)
+
+### Flight Class Selection View
+![flight-class-selection-view](https://github.com/user-attachments/assets/00a20885-5086-457b-8103-75d8c3c79654)
+
+### Location Search View
+![location-search-view](https://github.com/user-attachments/assets/14135456-a20d-4023-a2ba-810709fb2238)
+
+### Departure Location Search View
+![departure-location-search-view](https://github.com/user-attachments/assets/0efa8126-96bd-4eca-ae4b-2d0d4510dd21)
+
+### Arrival Location Search View
+![arrival-location-search-view](https://github.com/user-attachments/assets/4396577c-bb96-40c3-ad46-eba57c1c936f)
+
+### Reverse Input Values Button View
+![reverse-input-values-btn-view](https://github.com/user-attachments/assets/76c6d5f5-ff45-4e58-b326-010d6af8b442)
+
+### Date Picker View
+![date-picker-view](https://github.com/user-attachments/assets/a7b6329a-1c43-45e1-9e3a-9bfc2c1d0c81)
+
+### Clear Input Button View
+![clear-input-btn-view](https://github.com/user-attachments/assets/48315091-d14b-41ef-817c-6413794d1cc3)
+
+### Search Results Button View
+![search-results-btn-view](https://github.com/user-attachments/assets/5ecb4517-9747-4f69-8961-ba27d9376d90)
+
+### Flight Results View
+![flights-results-view](https://github.com/user-attachments/assets/6c3a4ea6-bb0b-4e5f-aadf-cc7a04670cc0)
+
+### Flight Offers View
+![flights-offers-view](https://github.com/user-attachments/assets/41bea5b0-37be-414e-af3d-0f68ca3d8c6a)
+
+### Details Dialog View
+![details-dialog-view](https://github.com/user-attachments/assets/33bd5576-f689-4bab-aabd-2a5da985aa18)
+
+### Form Submission Dialog View
+![form-submission-dialog-view](https://github.com/user-attachments/assets/10804959-c60a-4735-81bd-4b6d4186ad96)
