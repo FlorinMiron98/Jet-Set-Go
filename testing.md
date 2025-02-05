@@ -27,6 +27,7 @@
    - The CSS file was validated and is used across all HTML pages. **Results:**
      - The result for CSS file checking is "_Congratulations! No Error Found._"
        ![CSS validation](https://github.com/user-attachments/assets/c1c8506d-bb73-44fd-b3d9-d07062896788)
+3. **You can find the JavaScript validator in the separate [JSValidator.md file](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/JSValidator.md)**
 
 ### Performance, Accessibility and Best Practices Testing
 Performance, accessibility, and best practices tests were conducted using [Google Lighthouse](https://developer.chrome.com/docs/lighthouse/overview). The results help ensure the application is optimized for speed, user accessibility, and adherence to modern development standards.
