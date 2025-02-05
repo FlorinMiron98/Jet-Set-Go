@@ -33,6 +33,7 @@ In this project, I opted for **JSHint** over **JSLint** primarily because JSHint
   - **Model:** Responsible for fetching and storing data.
   - **View**: Responsible for displaying data and user interface.
   - **Controller:** Responsible for updating the Model and View. (a bridge between Model and View)
+- The Publisher/Subscriber design pattern is slightly used in the Details Dialog View.
 ## Model
 ![model](https://github.com/user-attachments/assets/1d58aa30-2e61-4aa9-a10f-e8f0c6515441)
 
