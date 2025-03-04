@@ -10,6 +10,12 @@
 5. [Functional Testing](#functional-testing)
 6. [Bugs](#bugs)
 
+Automated testing refers to using software tools to automatically execute tests on your application. Automated tests are scripted and can run without human intervention. The primary goal is to increase the efficiency and repeatability of tests.
+
+Manual testing involves human testers executing test cases without using any automated tools. It is often employed to assess the usability and user experience.
+
+Automated testing should be deployed during development and performance testing, while manual testing is essential for early development, user acceptance, and testing complex features before full automation.
+
 ### Validator Testing
 1. [W3C Markup Validator](https://validator.w3.org/)
    - Pages validated:
