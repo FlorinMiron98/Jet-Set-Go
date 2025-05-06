@@ -26,3 +26,5 @@ class loginNavView {
     document.body.classList.add("no-scroll");
   }
 }
+
+export default new loginNavView();

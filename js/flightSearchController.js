@@ -16,6 +16,7 @@ import reverseInputValuesView from "./views/flights-search-form/reverseInputValu
 import datePickerView from "./views/flights-search-form/datePickerView.js";
 import searchResultsBtnView from "./views/flights-search-form/searchResultsBtnView.js";
 import clearInputBtnView from "./views/flights-search-form/clearInputBtnView.js";
+import loginNavView from "./views/loginNavView.js";
 
 // Include polyfilling for ES6 code and asynchronous code
 import "core-js/stable";
@@ -143,6 +144,14 @@ const controlReturnSearchQueries = function () {
   searchResultsBtnView._assignQueryParameterValues();
 };
 
+const controlDisplayRegisterDialog = function () {
+  loginNavView._displayRegisterDialog();
+};
+
+const controlDisplayLoginDialog = function () {
+  loginNavView._displayLoginDialog();
+};
+
 // The init function establishes the functionality for each user interaction as the page loads
 const init = function () {
   personsSelectionView._addHandlerRender(controlSelectPersons);
@@ -166,6 +175,9 @@ const init = function () {
   searchResultsBtnView._addHandlerCreateQueries(controlReturnSearchQueries);
 
   clearInputBtnView._clearInput();
+
+  loginNavView._addHandlerDisplayLoginDialog(controlDisplayLoginDialog);
+  loginNavView._addHandlerDisplayRegisterDialog(controlDisplayRegisterDialog);
 
   // Dynamic styling
   navbarView._setDynamicStyling();
