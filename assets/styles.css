@@ -77,6 +77,10 @@
     rgba(0, 0, 0, 0.45),
     rgba(0, 0, 0, 0.45)
   );
+  --lightening-bg-image: linear-gradient(
+    rgba(255, 255, 255, 0.65),
+    rgba(255, 255, 255, 0.65)
+  );
 
   --box-shadow-dark: 0px 9px 6px -4px rgb(70, 70, 70);
   --box-shadow-light: 0px 2px 8px 1px rgb(175, 175, 175);
@@ -1101,6 +1105,32 @@ footer .social-media-links a:active {
   background-color: var(--flights-secondary);
 }
 
+.login-dialog,
+.register-dialog {
+  min-width: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--lightening-bg-image), url("./images/login-register-bg.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.login-dialog::backdrop,
+.register-dialog::backdrop {
+  backdrop-filter: blur(10px);
+}
+
+.login-dialog h1,
+.register-dialog h1 {
+  color: var(--flights-secondary);
+}
+
+.login-dialog form label,
+.register-dialog form label {
+  color: var(--flights-primary);
+}
+
 /* Form Submission Dialog */
 .form-submission-dialog textarea {
   resize: none;
@@ -1184,6 +1214,11 @@ footer .social-media-links a:active {
 
   .details-dialog {
     min-width: 90%;
+  }
+
+  .login-dialog,
+  .register-dialog {
+    min-width: 75%;
   }
 
   .details-dialog .close-dialog-btn {
@@ -1375,7 +1410,9 @@ footer .social-media-links a:active {
 
   /* Increase the size of the dialogs for small screen sizes */
   .details-dialog,
-  .form-submission-dialog {
+  .form-submission-dialog,
+  .login-dialog,
+  .register-dialog {
     min-width: 95%;
   }
 }
