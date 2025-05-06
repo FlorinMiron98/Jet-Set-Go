@@ -10,6 +10,12 @@
 5. [Functional Testing](#functional-testing)
 6. [Bugs](#bugs)
 
+Automated testing refers to using software tools to automatically execute tests on your application. Automated tests are scripted and can run without human intervention. The primary goal is to increase the efficiency and repeatability of tests.
+
+Manual testing involves human testers executing test cases without using any automated tools. It is often employed to assess the usability and user experience.
+
+Automated testing should be deployed during development and performance testing, while manual testing is essential for early development, user acceptance, and testing complex features before full automation.
+
 ### Validator Testing
 1. [W3C Markup Validator](https://validator.w3.org/)
    - Pages validated:
@@ -27,6 +33,7 @@
    - The CSS file was validated and is used across all HTML pages. **Results:**
      - The result for CSS file checking is "_Congratulations! No Error Found._"
        ![CSS validation](https://github.com/user-attachments/assets/c1c8506d-bb73-44fd-b3d9-d07062896788)
+3. To maintain code readability and keep the project organized, I decided to create a separate `.md` file for the JSHint validator instead of embedding the linting testing directly within this file. This approach ensures that the documentation remains clean, without cluttering the files with extensive linting testing. **You can find the JavaScript validator in the separate [JSValidator.md file](https://github.com/FlorinMiron98/Jet-Set-Go/blob/main/JSValidator.md)**
 
 ### Performance, Accessibility and Best Practices Testing
 Performance, accessibility, and best practices tests were conducted using [Google Lighthouse](https://developer.chrome.com/docs/lighthouse/overview). The results help ensure the application is optimized for speed, user accessibility, and adherence to modern development standards.
@@ -187,3 +194,5 @@ Manual testing was conducted to ensure the application functions as expected acr
 
 - Handling non-existent pages/resources:
   - While the requirement is to redirect users to the main page if they navigate to a non-existent page or resource, there is an exception for the flight results page. Since flight results open in a new tab, if something goes wrong with the flight data, users should simply close the new tab and return to the main page where they can modify their search values. This behavior is intended as a workaround for scenarios where direct redirection isn't feasible.
+- API Requests Limits and API key limitations
+  - The project uses the booking API that provides only 25 requests per month. This limit may restrict the ability to fully assess the project, especially if more frequent API calls are required during testing or evaluation. A database for storing and managing API keys was not implemented because it is considered a feature beyond the scope of this project. As a result, users will need to manually provide their own API key, which may be inconvenient if the API's request limit is reached.
