@@ -343,10 +343,25 @@ header #nav .left-navigation {
 }
 
 header #nav .right-navigation ul {
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
-header #nav .right-navigation li i {
+header #nav .right-navigation .login-btn,
+header #nav .right-navigation .register-btn {
+  border: 3px solid var(--color-gray-light);
+  /* border-radius: 2rem; */
+  color: var(--color-gray-light);
+  letter-spacing: 1.1px;
+  background-color: var(--color-gray-transparent);
+}
+
+header #nav .right-navigation .login-btn:hover,
+header #nav .right-navigation .register-btn:hover {
+  background-color: var(--color-gray-light);
+  color: var(--color-flights-highlight);
+}
+
+/* header #nav .right-navigation li i {
   -webkit-transition: color 0.25s linear;
   -o-transition: color 0.25s linear;
   transition: color 0.25s linear;
@@ -354,7 +369,7 @@ header #nav .right-navigation li i {
 
 header #nav .right-navigation li i:hover {
   color: var(--color-highlight);
-}
+} */
 
 /* Style the flights search header */
 #flights-header {
@@ -1283,6 +1298,10 @@ footer .social-media-links a:active {
   /* Change the size of the image */
   header #nav .logo-container img {
     height: 2rem;
+  }
+
+  header #nav .right-navigation ul {
+    gap: 0.3rem;
   }
 
   #flights-header #flights-search-form .dropdown-inputs-container {
