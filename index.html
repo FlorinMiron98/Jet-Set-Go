@@ -966,25 +966,54 @@
     </footer>
 
     <!-- Register dialog -->
-    <dialog class="register-dialog">
-      <h1>Register dialog</h1>
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta
-        molestiae sint quas sequi! Aspernatur, voluptatibus obcaecati? Dolorem
-        hic vel nam?
-      </p>
+    <dialog class="register-dialog rounded-3 border-0 p-5">
+      <h1 class="text-center">Register</h1>
+      <form>
+        <div class="mb-3">
+          <label for="username-register" class="form-label">Username</label>
+          <input type="text" class="form-control" id="username-register" />
+        </div>
+        <div class="mb-3">
+          <label for="register-password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="register-password" />
+        </div>
+        <div class="mb-3">
+          <label for="confirm-password" class="form-label"
+            >Confirm Password</label
+          >
+          <input type="password" class="form-control" id="confirm-password" />
+        </div>
+        <div class="mb-3 form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="terms-check"
+            required
+          />
+          <label class="form-check-label" for="terms-check"
+            >I agree to the Terms and Conditions</label
+          >
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+      </form>
     </dialog>
 
     <!-- Login dialog -->
-    <dialog class="login-dialog">
-      <h1>Login dialog</h1>
-      <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores ea
-        animi ad architecto quidem dolorem quo. Dolorem, rem quia praesentium
-        dolorum obcaecati quas fugiat facilis, eos perferendis nulla accusamus
-        nisi!
-      </p>
+    <dialog class="login-dialog rounded-3 border-0 p-5">
+      <h1 class="text-center">Login</h1>
+      <form>
+        <div class="mb-3">
+          <label for="username-login" class="form-label">Username</label>
+          <input type="text" class="form-control" id="username-login" />
+        </div>
+        <div class="mb-3">
+          <label for="login-password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="login-password" />
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
     </dialog>
+
     <!-- Bootstrap's compiled JavaScript -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
