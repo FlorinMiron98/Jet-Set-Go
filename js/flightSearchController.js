@@ -152,6 +152,14 @@ const controlDisplayLoginDialog = function () {
   loginNavView._displayLoginDialog();
 };
 
+const controlHideRegisterDialog = function () {
+  loginNavView._hideRegisterDialog();
+};
+
+const controlHideLoginDialog = function () {
+  loginNavView._hideLoginDialog();
+};
+
 // The init function establishes the functionality for each user interaction as the page loads
 const init = function () {
   personsSelectionView._addHandlerRender(controlSelectPersons);
@@ -179,6 +187,8 @@ const init = function () {
   loginNavView._addHandlerDisplayLoginDialog(controlDisplayLoginDialog);
   loginNavView._addHandlerDisplayRegisterDialog(controlDisplayRegisterDialog);
   loginNavView._hideDialogKeypress();
+  loginNavView._addHandlerHideRegisterDialog(controlHideRegisterDialog);
+  loginNavView._addHandlerHideLoginDialog(controlHideLoginDialog);
 
   // Dynamic styling
   navbarView._setDynamicStyling();
