@@ -178,6 +178,7 @@ const init = function () {
 
   loginNavView._addHandlerDisplayLoginDialog(controlDisplayLoginDialog);
   loginNavView._addHandlerDisplayRegisterDialog(controlDisplayRegisterDialog);
+  loginNavView._hideDialogKeypress();
 
   // Dynamic styling
   navbarView._setDynamicStyling();

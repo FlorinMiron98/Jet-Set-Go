@@ -25,6 +25,14 @@ class loginNavView {
     this._loginDialog.showModal();
     document.body.classList.add("no-scroll");
   }
+
+  _hideDialogKeypress() {
+    document.body.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && document.body.classList.contains("no-scroll")) {
+        document.body.classList.remove("no-scroll");
+      }
+    });
+  }
 }
 
 export default new loginNavView();
