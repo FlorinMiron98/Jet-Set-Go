@@ -966,7 +966,14 @@
     </footer>
 
     <!-- Register dialog -->
-    <dialog class="register-dialog rounded-3 border-0 p-5">
+    <dialog
+      class="register-dialog position-fixed rounded-3 border-0 p-3 p-sm-5"
+    >
+      <button
+        class="close-register-dialog-btn position-absolute border-0 focus-ring"
+      >
+        <i class="fa-solid fa-xmark fw-bold"></i>
+      </button>
       <h1 class="text-center">Register</h1>
       <form>
         <div class="mb-3">
@@ -999,7 +1006,12 @@
     </dialog>
 
     <!-- Login dialog -->
-    <dialog class="login-dialog rounded-3 border-0 p-5">
+    <dialog class="login-dialog position-fixed rounded-3 border-0 p-3 p-sm-5">
+      <button
+        class="close-login-dialog-btn position-absolute border-0 focus-ring"
+      >
+        <i class="fa-solid fa-xmark fw-bold"></i>
+      </button>
       <h1 class="text-center">Login</h1>
       <form>
         <div class="mb-3">
